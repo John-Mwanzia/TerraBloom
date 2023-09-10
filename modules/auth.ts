@@ -1,16 +1,19 @@
 import jwt from 'jsonwebtoken'
 
 export const generateToken = (user:any) => {
+  console.log( process.env.NEXT_JWT_SECRET);
+  
   const token = jwt.sign(
     {
       id: user.id,
       email: user.email,
       name: user.name,
     },
-    process.env.JWT_SECRET
+    process.env.NEXT_JWT_SECRET as string,
+    {
+      expiresIn: "30d",
+    }
   );
-
-  return token;
 };
 
 export const protect = (req:any, res:any, next:any) => {
@@ -25,8 +28,8 @@ export const protect = (req:any, res:any, next:any) => {
     res.status(401).json({ message: "invalid token" });
   }
 
-  try {
-     const payload = jwt.verify(token, process.env.JWT_SECRET as String)
+  try {                               
+     const payload = jwt.verify(token, process.env.NEXT_JWT_SECRET as string)
      req.user = payload
      next();
   } catch (error) {

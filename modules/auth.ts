@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
 
 export const generateToken = (user:any) => {
   console.log( process.env.NEXT_JWT_SECRET);
@@ -14,6 +15,14 @@ export const generateToken = (user:any) => {
       expiresIn: "30d",
     }
   );
+};
+
+export const comparePassword = (password:string, hash:string) => {
+  return bcrypt.compare(password, hash);  // return true or false after comparing
+};
+
+export const hashPassword = (password:string) => {
+  return bcrypt.hash(password, 10);
 };
 
 export const protect = (req:any, res:any, next:any) => {

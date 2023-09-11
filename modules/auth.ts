@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 export const generateToken = (user:any) => {
-  console.log( process.env.NEXT_JWT_SECRET);
   
   const token = jwt.sign(
     {
@@ -15,6 +14,8 @@ export const generateToken = (user:any) => {
       expiresIn: "30d",
     }
   );
+
+  return token;
 };
 
 export const comparePassword = (password:string, hash:string) => {

@@ -27,21 +27,21 @@ export const hashPassword = (password:string) => {
 };
 
 export const protect = (req:any, res:any, next:any) => {
-  const bearer = req.headers.authorization;
+  const bearer = req.headers.authorization; //get the authorization header from the request             
   if (!bearer) {
     res.status(401).json({ message: "not authorized" });
     return;
   }
 
-  const [, token] = bearer.split(" ");
+  const [, token] = bearer.split(" "); //split the bearer token into two parts and get the second part which is the token
   if (!token) {
     res.status(401).json({ message: "invalid token" });
   }
 
   try {                               
-     const payload = jwt.verify(token, process.env.NEXT_JWT_SECRET as string)
-     req.user = payload
-     next();
+     const payload = jwt.verify(token, process.env.NEXT_JWT_SECRET as string) //verify the token
+     req.user = payload //set the user to the payload
+     next(); //call the next middleware
   } catch (error) {
     console.log(error);
     res.status(401).json({message: "not authorized"})

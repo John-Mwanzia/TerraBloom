@@ -1,4 +1,4 @@
-const crops = [
+const Crops = [
   {
     name: "BANANA	FARMING",
     Introduction:
@@ -77,3 +77,5 @@ const crops = [
       "Bananas	are	ready	for	harvesting	after	about	12-15	months.	However,	maturity	indices	may	vary widely	among	varieties.	Yield	of	up	to	14 ton/acre	per	year	is	possible	under	good	management.	",
   },
 ];
+
+export default Crops;

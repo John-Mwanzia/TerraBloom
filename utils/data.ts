@@ -66,11 +66,14 @@ const crops = [
       " Rotate	your	banana	field	after	8	years.	For	a	poorly	managed	field,	rotate	after	5	years",
     ],
     Pests_and_Diseases: {
-      Weevils:	 "Eat	the	stems	so	the	trees	fall.	Dig	up	and	burn	infected	trees	so weevils do	not	move	to	other	trees.",
-      Nematodes: "Attack	the	roots.	To	stop	nematodes,	use	a	Nematicide	powder	like	Meticode	or	Nemacur	at	planting,	remove	infected	stems	and	do	not	intercrop	bananas	with	maize,	cowpeas	or	sorghum.",
-      Black_Sigatoka : "	disease:	Leaves	turn	yellow	so	the	banana	trees	give	small	bunches.	Use	resistant	varieties	and	take	off	infected	leaves."
+      Weevils:
+        "Eat	the	stems	so	the	trees	fall.	Dig	up	and	burn	infected	trees	so weevils do	not	move	to	other	trees.",
+      Nematodes:
+        "Attack	the	roots.	To	stop	nematodes,	use	a	Nematicide	powder	like	Meticode	or	Nemacur	at	planting,	remove	infected	stems	and	do	not	intercrop	bananas	with	maize,	cowpeas	or	sorghum.",
+      Black_Sigatoka:
+        "	disease:	Leaves	turn	yellow	so	the	banana	trees	give	small	bunches.	Use	resistant	varieties	and	take	off	infected	leaves.",
     },
-    Maturity: "Bananas	are	ready	for	harvesting	after	about	12-15	months.	However,	maturity	indices	may	vary widely	among	varieties.	Yield	of	up	to	14 ton/acre	per	year	is	possible	under	good	management.	"
-
+    Maturity:
+      "Bananas	are	ready	for	harvesting	after	about	12-15	months.	However,	maturity	indices	may	vary widely	among	varieties.	Yield	of	up	to	14 ton/acre	per	year	is	possible	under	good	management.	",
   },
 ];

@@ -18,3 +18,17 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Crop {
+  id                   String    @id @default(uuid())
+  name                  String    @unique
+  introduction          String    
+  ecologicalRequirements String
+  varieties             String    
+  landPreparation        String    
+  establishment         String []  
+  establishmentImg      String    
+  routineManagementPractices String []
+  pestsAndDiseases      String
+  maturity              String    
+}

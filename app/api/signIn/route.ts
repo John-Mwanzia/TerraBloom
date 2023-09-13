@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req: Request) => {
   const request = await req.json();
-  console.log(request);
 
   const { email, password } = request;
 

@@ -7,6 +7,7 @@ export const generateToken = (user: any) => {
       id: user.id,
       email: user.email,
       name: user.name,
+      isAdmin: user.isAdmin
     },
     process.env.NEXT_JWT_SECRET as string,
     {

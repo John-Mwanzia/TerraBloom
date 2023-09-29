@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
+//generate token
 export const generateToken = (user: any) => {
   const token = jwt.sign(
     {

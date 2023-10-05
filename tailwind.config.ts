@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundColor:{
-        lightGray: "#E5E5E6",
+        "light-gray": "#E5E5E6",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

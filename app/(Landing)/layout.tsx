@@ -12,16 +12,21 @@ const CommunityLayout = ({ children }) => {
             height={133}
           />
           <div className="pl-16 mt-8 ">
-             <h1>Home</h1>
-             <h1 className="font-bold">Welcome</h1>
-             <h1>Announcements</h1>
-             <h1>Introduction</h1>
-             <h1>FAQ</h1>
-             <h1>Chat</h1>
-             <h1>Community</h1>
-             <h1>Resources</h1>
-             <h1>Showcase</h1>
-             <h1>Events</h1>
+            <h1>Home</h1>
+            <div className="mt-8">
+              <h1 className="font-bold">Welcome</h1>
+              <h1 className="py-4 pl-4">Announcements</h1>
+              <h1 className="py-4 pl-4">Introduction</h1>
+              <h1 className="py-4 pl-4">FAQ</h1>
+              <h1 className="py-4 pl-4">Chat</h1>
+            </div>
+
+            <div className="mt-8">
+              <h1 className="font-bold">Community</h1>
+              <h1 className="py-4 pl-4">Resources</h1>
+              <h1 className="py-4 pl-4">Showcase</h1>
+              <h1 className="py-4 pl-4">Events</h1>
+            </div>
           </div>
         </div>
         <div className="flex-1">
@@ -33,7 +38,9 @@ const CommunityLayout = ({ children }) => {
               height={79}
             />
           </div>
-          <div className="bg-light-gray/40 rounded-tl-sm h-[100%]">{children}</div>
+          <div className="bg-light-gray/40 rounded-tl-sm h-[100%]">
+            {children}
+          </div>
         </div>
       </div>
     </>

@@ -13,7 +13,7 @@ const CommunityLayout = ({ children }) => {
           />
         </div>
         <div className="flex-1">
-          <div className="flex justify-end pr-3">
+          <div className="flex justify-end pr-3 border-l">
             <Image
               src="community/avatar.svg"
               alt="Avatar"
@@ -21,7 +21,7 @@ const CommunityLayout = ({ children }) => {
               height={79}
             />
           </div>
-          <div className="bg-light-gray h-[100%]">{children}</div>
+          <div className="bg-light-gray/40 rounded-tl-sm h-[100%]">{children}</div>
         </div>
       </div>
     </>

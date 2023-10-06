@@ -11,6 +11,18 @@ const CommunityLayout = ({ children }) => {
             width={180}
             height={133}
           />
+          <div className="pl-16 mt-8 ">
+             <h1>Home</h1>
+             <h1 className="font-bold">Welcome</h1>
+             <h1>Announcements</h1>
+             <h1>Introduction</h1>
+             <h1>FAQ</h1>
+             <h1>Chat</h1>
+             <h1>Community</h1>
+             <h1>Resources</h1>
+             <h1>Showcase</h1>
+             <h1>Events</h1>
+          </div>
         </div>
         <div className="flex-1">
           <div className="flex justify-end pr-3 border-l">

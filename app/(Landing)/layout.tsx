@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 const CommunityLayout = ({ children }) => {
   return (
     <>
@@ -12,20 +13,20 @@ const CommunityLayout = ({ children }) => {
             height={133}
           />
           <div className="pl-16 mt-8 ">
-            <h1>Home</h1>
+            <Link href="/">Home</Link>
             <div className="mt-8">
               <h1 className="font-bold">Welcome</h1>
-              <h1 className="py-4 pl-4">Announcements</h1>
-              <h1 className="py-4 pl-4">Introduction</h1>
-              <h1 className="py-4 pl-4">FAQ</h1>
-              <h1 className="py-4 pl-4">Chat</h1>
+              <Link href="/">Announcements</Link>
+              <Link href="/">Introduction</Link>
+              <Link href="/">FAQ</Link>
+              <Link href="/">Chat</Link>
             </div>
 
             <div className="mt-8">
               <h1 className="font-bold">Community</h1>
-              <h1 className="py-4 pl-4">Resources</h1>
-              <h1 className="py-4 pl-4">Showcase</h1>
-              <h1 className="py-4 pl-4">Events</h1>
+              <Link href="/">Resources</Link>
+              <Link href="/">Showcase</Link>
+              <Link href="/">Events</Link>
             </div>
           </div>
         </div>

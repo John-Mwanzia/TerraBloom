@@ -16,17 +16,31 @@ const CommunityLayout = ({ children }) => {
             <Link href="/">Home</Link>
             <div className="mt-8">
               <h1 className="font-bold">Welcome</h1>
-              <Link href="/">Announcements</Link>
-              <Link href="/">Introduction</Link>
-              <Link href="/">FAQ</Link>
-              <Link href="/">Chat</Link>
+              <Link className="py-4 pl-4" href="/">
+                Announcements
+              </Link>
+              <Link className="py-4 pl-4" href="/">
+                Introduction
+              </Link>
+              <Link className="py-4 pl-4" href="/">
+                FAQ
+              </Link>
+              <Link className="py-4 pl-4" href="/">
+                Chat
+              </Link>
             </div>
 
             <div className="mt-8">
               <h1 className="font-bold">Community</h1>
-              <Link href="/">Resources</Link>
-              <Link href="/">Showcase</Link>
-              <Link href="/">Events</Link>
+              <Link className="py-4 pl-4" href="/">
+                Resources
+              </Link>
+              <Link className="py-4 pl-4" href="/">
+                Showcase
+              </Link>
+              <Link className="py-4 pl-4" href="/">
+                Events
+              </Link>
             </div>
           </div>
         </div>

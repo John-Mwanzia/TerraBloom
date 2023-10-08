@@ -57,7 +57,7 @@ const CommunityLayout = ({ children }) => {
         )}
         <div className="flex-1">
           <div className="flex justify-between items-center pr-3 border-l">
-            <button onClick = {()=>setActiveMenu(!activeMenu)}>
+            <button onClick={() => setActiveMenu(!activeMenu)}>
               <div className="pl-3">
                 <div className="h-[0.1875rem] rounded-md w-[1.875rem] bg-green-950 mb-1"></div>
                 <div className="h-[0.1875rem] rounded-md  w-[1.4rem] bg-green-950 mb-1"></div>

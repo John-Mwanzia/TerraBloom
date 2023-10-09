@@ -19,20 +19,34 @@ const CommunityLayout = ({ children }) => {
               height={133}
             />
             <div className="pl-16 mt-8 ">
-              <Link href="/">Home</Link>
+              <Link href="/" className="flex gap-1">
+                <Image
+                  src="community/home.svg"
+                  alt="home icon"
+                  width={20}
+                  height={20}
+                />
+                Home
+              </Link>
               <div className="mt-8">
                 <h1 className="font-bold">Welcome</h1>
                 <div className="flex flex-col">
                   <Link className="py-4 pl-4" href="/">
-                  ⭐ Announcements
+                    ⭐ Announcements
                   </Link>
                   <Link className="py-4 pl-4" href="/">
-                  👋  Introductions
+                    👋 Introductions
                   </Link>
                   <Link className="py-4 pl-4" href="/">
-                  🔮 FAQ
+                    🔮 FAQ
                   </Link>
-                  <Link className="py-4 pl-4" href="/">
+                  <Link className="py-4 pl-4 flex gap-1" href="/">
+                    <Image
+                      src="community/chat.svg"
+                      alt="logochat"
+                      width={22}
+                      height={18}
+                    />
                     Chat
                   </Link>
                 </div>
@@ -42,12 +56,18 @@ const CommunityLayout = ({ children }) => {
                 <h1 className="font-bold">Community</h1>
                 <div className="flex flex-col">
                   <Link className="py-4 pl-4" href="/">
-                  🌟  Resources
+                    🌟 Resources
                   </Link>
                   <Link className="py-4 pl-4" href="/">
-                  ✨  Showcase
+                    ✨ Showcase
                   </Link>
-                  <Link className="py-4 pl-4" href="/">
+                  <Link className="py-4 pl-4 flex gap-1" href="/">
+                    <Image
+                      src="community/events.svg"
+                      alt="logochat"
+                      width={20}
+                      height={20}
+                    />
                     Events
                   </Link>
                 </div>

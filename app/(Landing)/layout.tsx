@@ -24,13 +24,13 @@ const CommunityLayout = ({ children }) => {
                 <h1 className="font-bold">Welcome</h1>
                 <div className="flex flex-col">
                   <Link className="py-4 pl-4" href="/">
-                    Announcements
+                  ⭐ Announcements
                   </Link>
                   <Link className="py-4 pl-4" href="/">
-                    Introduction
+                  👋  Introductions
                   </Link>
                   <Link className="py-4 pl-4" href="/">
-                    FAQ
+                  🔮 FAQ
                   </Link>
                   <Link className="py-4 pl-4" href="/">
                     Chat
@@ -42,10 +42,10 @@ const CommunityLayout = ({ children }) => {
                 <h1 className="font-bold">Community</h1>
                 <div className="flex flex-col">
                   <Link className="py-4 pl-4" href="/">
-                    Resources
+                  🌟  Resources
                   </Link>
                   <Link className="py-4 pl-4" href="/">
-                    Showcase
+                  ✨  Showcase
                   </Link>
                   <Link className="py-4 pl-4" href="/">
                     Events

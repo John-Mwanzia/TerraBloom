@@ -3,12 +3,10 @@ import ModalForm from "./ModalForm";
 import Image from "next/image";
 
 interface PostModalProps {
-    setShowModal: (value: boolean) => void;
-  }
-  
+  setShowModal: (value: boolean) => void;
+}
 
-
-export default function PostModal({ setShowModal}: PostModalProps) {
+export default function PostModal({ setShowModal }: PostModalProps) {
   return (
     <div className="bg-black/80 w-screen h-screen fixed  top-0 right-0">
       <div>
@@ -17,7 +15,7 @@ export default function PostModal({ setShowModal}: PostModalProps) {
             <h1 className="text-3xl">Create Post</h1>
             <div className="flex gap-4 items-center">
               <div>
-                <button type="button" onClick={()=> setShowModal(false)}>
+                <button type="button" onClick={() => setShowModal(false)}>
                   <Image
                     src="/community/close.svg"
                     alt="close"
@@ -26,11 +24,56 @@ export default function PostModal({ setShowModal}: PostModalProps) {
                   />
                 </button>
               </div>
-              <button className="bg-[#0E9AA9] rounded px-3 py-2">Post</button>
             </div>
           </div>
           <div className="mt-6">
             <ModalForm />
+          </div>
+          <div className="flex justify-between absolute bottom-4 px-6 border-t-2  w-full pt-4">
+            <div className="flex gap-6">
+              <div>
+                <button>
+                  <Image
+                    src="/community/attach.svg"
+                    alt="close"
+                    width={22}
+                    height={18}
+                  />
+                </button>
+              </div>
+              <div>
+                <button>
+                  <Image
+                    src="/community/video.svg"
+                    alt="close"
+                    width={22}
+                    height={18}
+                  />
+                </button>
+              </div>
+              <div>
+                <button>
+                  <Image
+                    src="/community/gif.svg"
+                    alt="close"
+                    width={22}
+                    height={18}
+                  />
+                </button>
+              </div>
+              <div>
+                <button>
+                  <Image
+                    src="/community/emoji.svg"
+                    alt="close"
+                    width={22}
+                    height={18}
+                  />
+                </button>
+              </div>
+            </div>
+
+            <button className="bg-[#0E9AA9] rounded px-3 py-2">Post</button>
           </div>
         </div>
       </div>

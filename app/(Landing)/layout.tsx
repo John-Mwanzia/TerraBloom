@@ -1,9 +1,9 @@
 "use client";
-
+import React, { ReactNode } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-const CommunityLayout = ({ children }) => {
+const CommunityLayout = ({ children } : {children: ReactNode}) => {
   const [activeMenu, setActiveMenu] = useState(true);
 
   return (

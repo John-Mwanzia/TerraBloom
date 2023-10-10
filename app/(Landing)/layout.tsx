@@ -1,9 +1,10 @@
 "use client";
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-const CommunityLayout = ({ children } : {children: ReactNode}) => {
+import { Button, Tooltip } from "@nextui-org/react";
+const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
 
   return (
@@ -84,12 +85,56 @@ const CommunityLayout = ({ children } : {children: ReactNode}) => {
                 <div className="h-[0.1875rem] rounded-md w-[1.875rem ] bg-[#0E9AA9] mb-1"></div>
               </div>
             </button>
-            <Image
-              src="community/avatar.svg"
-              alt="Avatar"
-              width={64}
-              height={79}
-            />
+            <div className="flex items-center gap-4">
+              <div>
+                <Tooltip
+                  showArrow
+                  placement="bottom"
+                  content="notifications"
+                  classNames={{
+                    base:
+                      "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
+                    arrow: "bg-neutral-400 dark:bg-white",
+                  }}
+                >
+                  <Button variant="flat">
+                    <Image
+                      src="community/notification.svg"
+                      alt="logochat"
+                      width={22}
+                      height={18}
+                    />
+                  </Button>
+                </Tooltip>
+              </div>
+              <div>
+                <Tooltip
+                  showArrow
+                  placement="bottom"
+                  content="messages"
+                  classNames={{
+                    base:
+                      "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
+                    arrow: "bg-neutral-400 dark:bg-white",
+                  }}
+                >
+                  <Button variant="flat">
+                    <Image
+                      src="community/chat.svg"
+                      alt="logochat"
+                      width={22}
+                      height={18}
+                    />
+                  </Button>
+                </Tooltip>
+              </div>
+              <Image
+                src="community/avatar.svg"
+                alt="Avatar"
+                width={64}
+                height={79}
+              />
+            </div>
           </div>
           <div className="bg-light-gray/40 rounded-tl-sm h-[100%]">
             {children}

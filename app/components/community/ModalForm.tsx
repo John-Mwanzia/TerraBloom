@@ -14,10 +14,11 @@ export default function ModalForm() {
           </div>
           <div>
             <textarea
-              className=" border-none  outline-none pl-6"
+              className=" border-none  outline-none pl-6 w-full"
               name="content"
               id=""
               placeholder="content"
+              style={{ resize: "none", height: "auto" }}
             ></textarea>
           </div>
         </div>

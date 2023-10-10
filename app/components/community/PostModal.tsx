@@ -1,12 +1,123 @@
-import React from "react";
+// import React from "react";
+// import ModalForm from "./ModalForm";
+// import Image from "next/image";
+
+// interface PostModalProps {
+//   setShowModal: (value: boolean) => void;
+// }
+
+// export default function PostModal({ setShowModal }: PostModalProps) {
+//   return (
+//     <div className="bg-black/80 w-screen h-screen fixed  top-0 right-0">
+//       <div>
+//         <div className="bg-white w-[50rem] h-[40rem] rounded-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+//           <div className="flex justify-between px-4 pt-6 border-b-2 pb-2">
+//             <h1 className="text-3xl">Create Post</h1>
+//             <div className="flex gap-4 items-center">
+//               <div>
+//                 <button type="button" onClick={() => setShowModal(false)}>
+//                   <Image
+//                     src="/community/close.svg"
+//                     alt="close"
+//                     width={22}
+//                     height={18}
+//                   />
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//           <div className="mt-6">
+//             <ModalForm />
+//           </div>
+//           <div className="flex justify-between absolute bottom-4 px-6 border-t-2  w-full pt-4">
+//             <div className="flex gap-6">
+//               <div>
+//                 <button>
+//                   <Image
+//                     src="/community/attach.svg"
+//                     alt="close"
+//                     width={22}
+//                     height={18}
+//                   />
+//                 </button>
+//               </div>
+//               <div>
+//                 <button>
+//                   <Image
+//                     src="/community/video.svg"
+//                     alt="close"
+//                     width={22}
+//                     height={18}
+//                   />
+//                 </button>
+//               </div>
+//               <div>
+//                 <button>
+//                   <Image
+//                     src="/community/imageUpload.svg"
+//                     alt="close"
+//                     width={22}
+//                     height={18}
+//                   />
+//                 </button>
+//               </div>
+//               <div>
+//                 <button>
+//                   <Image
+//                     src="/community/gif.svg"
+//                     alt="close"
+//                     width={22}
+//                     height={18}
+//                   />
+//                 </button>
+//               </div>
+//               <div>
+//                 <button>
+//                   <Image
+//                     src="/community/emoji.svg"
+//                     alt="close"
+//                     width={22}
+//                     height={18}
+//                   />
+//                 </button>
+//               </div>
+//             </div>
+
+//             <button className="bg-[#0E9AA9] rounded px-3 py-2">Post</button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+// PostModal.js
+import React, { useState } from "react";
 import ModalForm from "./ModalForm";
 import Image from "next/image";
+import VideoModal from "./VideoModal";
 
-interface PostModalProps {
-  setShowModal: (value: boolean) => void;
-}
+export default function PostModal({ setShowModal }) {
+  const [isVideoModalOpen, setVideoModalOpen] = useState(false);
+  const [text, setText] = useState("");
 
-export default function PostModal({ setShowModal }: PostModalProps) {
+  const handleUploadVideo = (file) => {
+    // Handle video upload logic here
+    // You can update the 'text' state with the video content
+    const videoContent = `[Video: ${file.name}]`;
+    setText(text + videoContent);
+  };
+
+  const handleOpenVideoModal = () => {
+    setVideoModalOpen(true);
+  };
+
+  const handleCloseVideoModal = () => {
+    setVideoModalOpen(false);
+  };
+
   return (
     <div className="bg-black/80 w-screen h-screen fixed  top-0 right-0">
       <div>
@@ -15,7 +126,10 @@ export default function PostModal({ setShowModal }: PostModalProps) {
             <h1 className="text-3xl">Create Post</h1>
             <div className="flex gap-4 items-center">
               <div>
-                <button type="button" onClick={() => setShowModal(false)}>
+                <button
+                  type="button"
+                  onClick={() => setShowModal(false)}
+                >
                   <Image
                     src="/community/close.svg"
                     alt="close"
@@ -32,51 +146,29 @@ export default function PostModal({ setShowModal }: PostModalProps) {
           <div className="flex justify-between absolute bottom-4 px-6 border-t-2  w-full pt-4">
             <div className="flex gap-6">
               <div>
-                <button>
-                  <Image
-                    src="/community/attach.svg"
-                    alt="close"
-                    width={22}
-                    height={18}
-                  />
-                </button>
-              </div>
-              <div>
-                <button>
+                <button onClick={handleOpenVideoModal}>
                   <Image
                     src="/community/video.svg"
-                    alt="close"
+                    alt="video"
                     width={22}
                     height={18}
                   />
                 </button>
               </div>
-              <div>
-                <button>
-                  <Image
-                    src="/community/gif.svg"
-                    alt="close"
-                    width={22}
-                    height={18}
-                  />
-                </button>
-              </div>
-              <div>
-                <button>
-                  <Image
-                    src="/community/emoji.svg"
-                    alt="close"
-                    width={22}
-                    height={18}
-                  />
-                </button>
-              </div>
+              {/* Add buttons for other actions here */}
             </div>
 
             <button className="bg-[#0E9AA9] rounded px-3 py-2">Post</button>
           </div>
         </div>
       </div>
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={handleCloseVideoModal}
+        onUpload={handleUploadVideo}
+        onEmbed={() => {}}
+      />
+      <div contentEditable="true">{text}</div>
     </div>
   );
 }

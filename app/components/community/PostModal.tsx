@@ -91,17 +91,21 @@
 //   );
 // }
 
-
-
 // PostModal.js
 import React, { useState } from "react";
 import ModalForm from "./ModalForm";
 import Image from "next/image";
 import VideoModal from "./VideoModal";
+import AttachFileModal from "./AttachFileModal";
 
 export default function PostModal({ setShowModal }) {
   const [isVideoModalOpen, setVideoModalOpen] = useState(false);
   const [text, setText] = useState("");
+  const [isAttachFileModalOpen, setAttachFileModalOpen] = useState(false);
+
+  const handleOpenAttachFileModal = () => {
+    setAttachFileModalOpen(true);
+  };
 
   const handleUploadVideo = (file) => {
     // Handle video upload logic here
@@ -126,10 +130,7 @@ export default function PostModal({ setShowModal }) {
             <h1 className="text-3xl">Create Post</h1>
             <div className="flex gap-4 items-center">
               <div>
-                <button
-                  type="button"
-                  onClick={() => setShowModal(false)}
-                >
+                <button type="button" onClick={() => setShowModal(false)}>
                   <Image
                     src="/community/close.svg"
                     alt="close"
@@ -145,6 +146,16 @@ export default function PostModal({ setShowModal }) {
           </div>
           <div className="flex justify-between absolute bottom-4 px-6 border-t-2  w-full pt-4">
             <div className="flex gap-6">
+              <div>
+                <button onClick={handleOpenAttachFileModal}>
+                  <Image
+                    src="/community/attach.svg"
+                    alt="Attach File"
+                    width={22}
+                    height={18}
+                  />
+                </button>
+              </div>
               <div>
                 <button onClick={handleOpenVideoModal}>
                   <Image
@@ -162,6 +173,18 @@ export default function PostModal({ setShowModal }) {
           </div>
         </div>
       </div>
+      <AttachFileModal
+        isOpen={isAttachFileModalOpen}
+        onClose={() => setAttachFileModalOpen(false)}
+        onAttach={(file) => {
+          // Handle attaching the file here
+          // You can update the state or perform any necessary actions
+          console.log("Attached file:", file);
+          // Close the modal
+          setAttachFileModalOpen(false);
+        }}
+      />
+
       <VideoModal
         isOpen={isVideoModalOpen}
         onClose={handleCloseVideoModal}

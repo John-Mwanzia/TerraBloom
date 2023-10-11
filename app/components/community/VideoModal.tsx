@@ -2,13 +2,13 @@
 import React, { useState, useRef } from "react";
 
 interface VideoModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-    onUpload: (file: File) => void;
-    onEmbed: (link: string) => void;
-  }
-  
-  function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
+  isOpen: boolean;
+  onClose: () => void;
+  onUpload: (file: File) => void;
+  onEmbed: (link: string) => void;
+}
+
+function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
   const [mode, setMode] = useState("upload");
   const [file, setFile] = useState<File | null>(null);
 
@@ -57,7 +57,6 @@ interface VideoModalProps {
       setFile(droppedFile || null);
     }
   };
-
 
   return (
     <div

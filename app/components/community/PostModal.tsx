@@ -166,10 +166,21 @@ export default function PostModal({ setShowModal }) {
                   />
                 </button>
               </div>
+
+              <div>
+                <button>
+                  <Image
+                    src="/community/imageUpload.svg"
+                    alt="close"
+                    width={22}
+                    height={18}
+                  />
+                </button>
+              </div>
               {/* Add buttons for other actions here */}
             </div>
 
-            <button className="bg-[#0E9AA9] rounded px-3 py-2">Post</button>
+            <button className="bg-[#0E9AA9] rounded px-4 py-1">Post</button>
           </div>
         </div>
       </div>

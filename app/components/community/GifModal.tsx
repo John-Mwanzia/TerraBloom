@@ -27,6 +27,21 @@ function GifModal({ isOpen, onClose, onUpload, gifPacks }: GifModalProps) {
     onClose();
   };
 
+  const dummyGifs = {
+    "Pack 1": [
+      { title: "GIF 1", url: "https://example.com/gif1.gif" },
+      { title: "GIF 2", url: "https://example.com/gif2.gif" },
+      // Add more GIFs for "Pack 1"
+    ],
+    "Pack 2": [
+      { title: "GIF 3", url: "https://example.com/gif3.gif" },
+      { title: "GIF 4", url: "https://example.com/gif4.gif" },
+      // Add more GIFs for "Pack 2"
+    ],
+    // Define more packs and their respective GIFs
+  };
+  
+
   return (
     <div
       className={`fixed inset-0 z-50 ${
@@ -56,17 +71,21 @@ function GifModal({ isOpen, onClose, onUpload, gifPacks }: GifModalProps) {
                 <h3 className="pack-title">{pack}</h3>
                 <div className="gif-list">
                   {/* Map through GIFs in the pack and display them */}
-                  {/* Add an onClick event to each GIF to handle selection */}
+                  {dummyGifs[pack].map((gif, gifIndex) => (
+                    <img
+                      key={gifIndex}
+                      src={gif.url}
+                      alt={gif.title}
+                      onClick={() => handleGifSelect(gif.url)}
+                    />
+                  ))}
                 </div>
               </div>
             ))}
           </div>
         </div>
         <div className="modal-footer">
-          <button
-            className="btn btn-primary"
-            onClick={handleUpload}
-          >
+          <button className="btn btn-primary" onClick={handleUpload}>
             Upload
           </button>
           <button className="btn btn-secondary" onClick={onClose}>

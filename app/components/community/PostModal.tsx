@@ -98,12 +98,18 @@ import Image from "next/image";
 import VideoModal from "./VideoModal";
 import AttachFileModal from "./AttachFileModal";
 import ImageUploadModal from "./ImageUploadModal";
+import GifModal from "./GifModal";
+import { dummyGifs } from "../../../data/gifPacks"; // Import your dummy GIF packs
 
 export default function PostModal({ setShowModal }) {
   const [isVideoModalOpen, setVideoModalOpen] = useState(false);
   const [text, setText] = useState("");
   const [isAttachFileModalOpen, setAttachFileModalOpen] = useState(false);
   const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false); // State for ImageUploadModal
+  const [isGifModalOpen, setGifModalOpen] = useState(false);
+
+  // State to store the selected GIF
+  const [selectedGif, setSelectedGif] = useState("");
 
   const handleOpenAttachFileModal = () => {
     setAttachFileModalOpen(true);
@@ -132,6 +138,17 @@ export default function PostModal({ setShowModal }) {
     setImageUploadModalOpen(false);
   };
 
+  // Function to handle GIF selection
+  const handleGifSelect = (gifUrl) => {
+    setSelectedGif(gifUrl);
+    setGifModalOpen(false);
+  };
+
+  // Function to handle posting
+  const handlePost = () => {
+    // Perform the post action with the selectedGif
+    // ...
+  };
   return (
     <div className="bg-black/80 w-screen h-screen fixed  top-0 right-0">
       <div>
@@ -224,6 +241,19 @@ export default function PostModal({ setShowModal }) {
           handleCloseImageUploadModal();
         }}
       />
+
+      <GifModal
+        isOpen={isGifModalOpen}
+        onClose={() => setGifModalOpen(false)}
+        onUpload={handleGifSelect}
+        dummyGifs = {dummyGifs}
+      />
+       {/* Render the selected GIF if one is selected */}
+       {selectedGif && (
+        <div>
+          <img src={selectedGif} alt="Selected GIF" />
+        </div>
+      )}
       <div contentEditable="true">{text}</div>
     </div>
   );

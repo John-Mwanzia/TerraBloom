@@ -11,8 +11,8 @@ export default function GifModal({ isOpen, onClose, onUpload }: any) {
             &times;
           </button>
         </div>
-        <div className="modal-body">
-          <div className="mb-4">
+        <div className="flex justify-center">
+          <div className="mb-4 ">
             <ReactGiphySearchbox
               apiKey="pXDMLXZW5bcvRo7M1yulP9Y32QW3pO7l" 
               onSelect={(item: any) => onUpload(item)}

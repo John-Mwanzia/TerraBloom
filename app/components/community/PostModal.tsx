@@ -97,11 +97,13 @@ import ModalForm from "./ModalForm";
 import Image from "next/image";
 import VideoModal from "./VideoModal";
 import AttachFileModal from "./AttachFileModal";
+import ImageUploadModal from "./ImageUploadModal";
 
 export default function PostModal({ setShowModal }) {
   const [isVideoModalOpen, setVideoModalOpen] = useState(false);
   const [text, setText] = useState("");
   const [isAttachFileModalOpen, setAttachFileModalOpen] = useState(false);
+  const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false); // State for ImageUploadModal
 
   const handleOpenAttachFileModal = () => {
     setAttachFileModalOpen(true);
@@ -120,6 +122,14 @@ export default function PostModal({ setShowModal }) {
 
   const handleCloseVideoModal = () => {
     setVideoModalOpen(false);
+  };
+
+  const handleOpenImageUploadModal = () => {
+    setImageUploadModalOpen(true);
+  };
+
+  const handleCloseImageUploadModal = () => {
+    setImageUploadModalOpen(false);
   };
 
   return (
@@ -168,10 +178,10 @@ export default function PostModal({ setShowModal }) {
               </div>
 
               <div>
-                <button>
+                <button onClick={handleOpenImageUploadModal}>
                   <Image
                     src="/community/imageUpload.svg"
-                    alt="close"
+                    alt="Image Upload"
                     width={22}
                     height={18}
                   />
@@ -201,6 +211,18 @@ export default function PostModal({ setShowModal }) {
         onClose={handleCloseVideoModal}
         onUpload={handleUploadVideo}
         onEmbed={() => {}}
+      />
+
+      <ImageUploadModal
+        isOpen={isImageUploadModalOpen}
+        onClose={handleCloseImageUploadModal}
+        onUpload={(file) => {
+          // Handle image upload logic
+          // You can update the 'text' state with the image content
+          const imageContent = `[Image: ${file.name}]`;
+          setText(text + imageContent);
+          handleCloseImageUploadModal();
+        }}
       />
       <div contentEditable="true">{text}</div>
     </div>

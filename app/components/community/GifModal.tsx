@@ -16,6 +16,10 @@ export default function GifModal({ isOpen, onClose, onUpload }: any) {
             <ReactGiphySearchbox
               apiKey="pXDMLXZW5bcvRo7M1yulP9Y32QW3pO7l" 
               onSelect={(item: any) => onUpload(item)}
+              masonryConfig={[
+                { columns: 2, imageWidth: 110, gutter: 5 },
+                { mq: "700px", columns: 3, imageWidth: 120, gutter: 5 }
+                ]}
             />
           </div>
         </div>

@@ -99,7 +99,6 @@ import VideoModal from "./VideoModal";
 import AttachFileModal from "./AttachFileModal";
 import ImageUploadModal from "./ImageUploadModal";
 import GifModal from "./GifModal";
-import { dummyGifs } from "../../../data/gifPacks"; // Import your dummy GIF packs
 
 export default function PostModal({ setShowModal }) {
   const [isVideoModalOpen, setVideoModalOpen] = useState(false);
@@ -138,17 +137,19 @@ export default function PostModal({ setShowModal }) {
     setImageUploadModalOpen(false);
   };
 
-  // Function to handle GIF selection
-  const handleGifSelect = (gifUrl) => {
+  const handleGifUpload = (gifUrl) => {
+    // Update the 'text' state with the GIF content or perform any action needed
+    // For example, adding a GIF tag to the text
+    const gifContent = `[GIF: ${gifUrl}]`;
+    setText(text + gifContent);
+
+    // Store the selected GIF URL in state
     setSelectedGif(gifUrl);
+
+    // Close the GifModal
     setGifModalOpen(false);
   };
 
-  // Function to handle posting
-  const handlePost = () => {
-    // Perform the post action with the selectedGif
-    // ...
-  };
   return (
     <div className="bg-black/80 w-screen h-screen fixed  top-0 right-0">
       <div>
@@ -204,6 +205,18 @@ export default function PostModal({ setShowModal }) {
                   />
                 </button>
               </div>
+              <div>
+                <button onClick={() => setGifModalOpen(true)}>
+                  {" "}
+                  {/* Open GifModal */}
+                  <Image
+                    src="/community/gif.svg"
+                    alt="GIF"
+                    width={22}
+                    height={18}
+                  />
+                </button>
+              </div>
               {/* Add buttons for other actions here */}
             </div>
 
@@ -245,11 +258,16 @@ export default function PostModal({ setShowModal }) {
       <GifModal
         isOpen={isGifModalOpen}
         onClose={() => setGifModalOpen(false)}
-        onUpload={handleGifSelect}
-        dummyGifs = {dummyGifs}
+        onUpload={handleGifUpload}
       />
-       {/* Render the selected GIF if one is selected */}
-       {selectedGif && (
+      {/* Render the selected GIF if one is selected */}
+      {selectedGif && (
+        <div>
+          <img src={selectedGif} alt="Selected GIF" />
+        </div>
+      )}
+
+      {selectedGif && (
         <div>
           <img src={selectedGif} alt="Selected GIF" />
         </div>

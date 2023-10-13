@@ -1,5 +1,5 @@
-// ImageUploadModal.js
 import React, { useState, useRef, ChangeEvent, DragEvent } from "react";
+import { useImageContext } from "../../context/store";
 
 interface ImageUploadModalProps {
   isOpen: boolean;
@@ -10,22 +10,39 @@ interface ImageUploadModalProps {
 function ImageUploadModal({
   isOpen,
   onClose,
-  onUpload,
+  // onUpload
 }: ImageUploadModalProps) {
   const [file, setFile] = useState<File | null>(null);
+  // const [previewImage, setPreviewImage] = useState<string | null>(null);
   const dropAreaRef = useRef<HTMLDivElement>(null);
+  const { previewImage, setPreviewImage } = useImageContext();
 
+
+  console.log(previewImage);
+  
+
+  const [uploadedImage, setUploadedImage] = useState(null);
+
+  const handleUpload = (file) => {
+    // Handle image upload logic here
+    // For example, you can upload the image to a server and get the image URL
+    // Once you have the image URL, set it in the state
+    const imageUrl  = previewImage
+    setUploadedImage(previewImage);
+  };
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files && event.target.files[0];
-    setFile(selectedFile || null);
-  };
-
-  const handleUpload = () => {
-    if (file) {
-      onUpload(file);
+    if (selectedFile) {
+      setFile(selectedFile);
+      // Display a preview of the selected image
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setPreviewImage(e.target.result as string);
+      };
+      reader.readAsDataURL(selectedFile);
     }
-    onClose();
   };
+  
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -46,7 +63,15 @@ function ImageUploadModal({
       dropAreaRef.current.classList.remove("border-dashed", "border-[#0E9AA9]");
 
       const droppedFile = e.dataTransfer.files[0];
-      setFile(droppedFile || null);
+      if (droppedFile) {
+        setFile(droppedFile);
+        // Display a preview of the dropped image
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          setPreviewImage(ev.target.result as string);
+        };
+        reader.readAsDataURL(droppedFile);
+      }
     }
   };
 
@@ -79,8 +104,17 @@ function ImageUploadModal({
               onChange={handleFileChange}
             />
           </div>
+          {previewImage && (
+            <div className="mb-4 text-center">
+              <img
+                src={previewImage}
+                alt="Image Preview"
+                className="max-h-80 mx-auto"
+              />
+            </div>
+          )}
         </div>
-        <div className="modal-footer">
+        <div className="flex justify-between">
           <button className="btn btn-primary" onClick={handleUpload}>
             Upload
           </button>

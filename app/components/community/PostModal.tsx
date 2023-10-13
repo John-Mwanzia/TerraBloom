@@ -246,13 +246,7 @@ export default function PostModal({ setShowModal }) {
       <ImageUploadModal
         isOpen={isImageUploadModalOpen}
         onClose={handleCloseImageUploadModal}
-        onUpload={(file) => {
-          // Handle image upload logic
-          // You can update the 'text' state with the image content
-          const imageContent = `[Image: ${file.name}]`;
-          setText(text + imageContent);
-          handleCloseImageUploadModal();
-        }}
+        // onUpload={handleUploadImage} // Pass the upload function
       />
 
       <GifModal

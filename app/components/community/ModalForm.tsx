@@ -1,9 +1,10 @@
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ImageContext } from "../../context/store";
+
 
 export default function ModalForm() {
-  const [uploadedImageUrl, setuploadedImageUrl] = useState(null); // State to store the uploaded image
-
+  const { previewImage, setPreviewImage ,uploadedImage, setUploadedImage } = useContext(ImageContext);
 
   return (
     <div>
@@ -25,10 +26,10 @@ export default function ModalForm() {
               style={{ resize: "none", height: "auto" }}
             ></textarea>
           </div>
-          {uploadedImageUrl && (
-            <div className="mb-4 text-center">
+          {uploadedImage && (
+            <div className="mb-4 text-center outline-none border-none" contentEditable ='true'>
               <img
-                src={uploadedImageUrl}
+                src={uploadedImage}
                 alt="Uploaded Image"
                 className="max-h-80 mx-auto"
               />

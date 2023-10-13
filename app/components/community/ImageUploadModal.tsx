@@ -1,5 +1,7 @@
-import React, { useState, useRef, ChangeEvent, DragEvent } from "react";
-import { useImageContext } from "../../context/store";
+'use client';
+
+import React, { useState, useRef, ChangeEvent, DragEvent, useContext } from "react";
+import { ImageContext } from "../../context/store";
 
 interface ImageUploadModalProps {
   isOpen: boolean;
@@ -15,20 +17,11 @@ function ImageUploadModal({
   const [file, setFile] = useState<File | null>(null);
   // const [previewImage, setPreviewImage] = useState<string | null>(null);
   const dropAreaRef = useRef<HTMLDivElement>(null);
-  const { previewImage, setPreviewImage } = useImageContext();
+  const { previewImage, setPreviewImage, uploadedImage, setUploadedImage } = useContext(ImageContext);
 
-
-  console.log(previewImage);
-  
-
-  const [uploadedImage, setUploadedImage] = useState(null);
-
-  const handleUpload = (file) => {
-    // Handle image upload logic here
-    // For example, you can upload the image to a server and get the image URL
-    // Once you have the image URL, set it in the state
-    const imageUrl  = previewImage
+  const handleUpload = () => {
     setUploadedImage(previewImage);
+    onClose();
   };
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files && event.target.files[0];

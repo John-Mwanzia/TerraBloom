@@ -134,7 +134,7 @@ function ImageUploadModal({
                 onChange={handleFileChange}
               />
               {previewImage && (
-                <div className="mb-4 text-center">
+                <div className="mb-4 text-center mt-6">
                   <img
                     src={previewImage}
                     alt="Image Preview"
@@ -156,14 +156,9 @@ function ImageUploadModal({
                 }}
                 className="border border-gray-200 p-2 rounded-lg w-full"
               />
-              <button
-                className="bg-[#0E9AA9] mt-4 py-2 px-4 rounded-md"
-                onClick={handleEmbed}
-              >
-                Submit Link
-              </button>
+            
               {previewImage && (
-                <div className="mb-4 text-center">
+                <div className="mb-4 text-center mt-6">
                   <img
                     src={previewImage}
                     alt="Image Preview"
@@ -174,9 +169,9 @@ function ImageUploadModal({
             </div>
           )}
         </div>
-        <div className="modal-footer">
+        <div className="">
           <button
-            className="btn btn-primary"
+            className="mr-4 bg-[#0E9AA9] py-2 px-4 rounded-md"
             onClick={mode === "upload" ? handleUpload : handleEmbed}
           >
             {mode === "upload" ? "Upload" : "Embed"}

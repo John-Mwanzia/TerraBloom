@@ -4,7 +4,10 @@ import { ImageContext } from "../../context/store";
 
 
 export default function ModalForm() {
-  const { previewImage, setPreviewImage ,uploadedImage, setUploadedImage } = useContext(ImageContext);
+  const { previewImage, setPreviewImage ,uploadedImage, setUploadedImage, uploadedVideo } = useContext(ImageContext);
+
+
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,6 +41,15 @@ export default function ModalForm() {
                 alt="Uploaded Image"
                 className="max-h-80 mx-auto"
               />
+            </div>
+          )}
+          {uploadedVideo && (
+            <div className="mb-4 text-center outline-none border-none" contentEditable ='true'>
+              <video
+                src={uploadedVideo}
+                controls
+                className="max-h-80 mx-auto"
+              ></video>
             </div>
           )}
         </div>

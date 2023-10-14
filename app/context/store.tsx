@@ -11,6 +11,7 @@ export const ImageContext = createContext<{
   setPreviewVideo: (previewVideo: string | null) => void;
   uploadedVideo: string | null;
   setUploadedVideo: (uploadedVideo: string | null) => void;
+  
 }>({
   previewImage: null,
   setPreviewImage: () => {},
@@ -19,7 +20,7 @@ export const ImageContext = createContext<{
   previewVideo: null,
   setPreviewVideo: () => {},
   uploadedVideo: null,
-  setUploadedVideo: () => {},
+  setUploadedVideo: () => {}
 });
 
 export const ImageProvider = ({ children }) => {

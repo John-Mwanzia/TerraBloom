@@ -92,13 +92,14 @@
 // }
 
 // PostModal.js
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ModalForm from "./ModalForm";
 import Image from "next/image";
 import VideoModal from "./VideoModal";
 import AttachFileModal from "./AttachFileModal";
 import ImageUploadModal from "./ImageUploadModal";
 import GifModal from "./GifModal";
+import { ImageContext } from "@/app/context/store";
 
 export default function PostModal({ setShowModal }) {
   const [isVideoModalOpen, setVideoModalOpen] = useState(false);
@@ -106,12 +107,21 @@ export default function PostModal({ setShowModal }) {
   const [isAttachFileModalOpen, setAttachFileModalOpen] = useState(false);
   const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false); // State for ImageUploadModal
   const [isGifModalOpen, setGifModalOpen] = useState(false);
+  const { previewImage, setPreviewImage ,uploadedImage, setUploadedImage } = useContext(ImageContext);
 
   // State to store the selected GIF
   const [selectedGif, setSelectedGif] = useState("");
 
   const handleOpenAttachFileModal = () => {
     setAttachFileModalOpen(true);
+  };
+
+  const handleImageEmbed = (link ) => {
+    console.log("Image link:", link);
+    setUploadedImage(link);
+
+    console.log("uploadedImage", uploadedImage);
+    
   };
 
   const handleUploadVideo = (file) => {
@@ -246,6 +256,7 @@ export default function PostModal({ setShowModal }) {
       <ImageUploadModal
         isOpen={isImageUploadModalOpen}
         onClose={handleCloseImageUploadModal}
+        onEmbed={handleImageEmbed}
         // onUpload={handleUploadImage} // Pass the upload function
       />
 

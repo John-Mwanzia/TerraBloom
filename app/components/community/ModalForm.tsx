@@ -6,9 +6,14 @@ import { ImageContext } from "../../context/store";
 export default function ModalForm() {
   const { previewImage, setPreviewImage ,uploadedImage, setUploadedImage } = useContext(ImageContext);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("submit");
+  }
+
   return (
     <div>
-      <form action="">
+      <form action="handleSubmit">
         <div className="flex flex-col">
           <div className="mb-6">
             <input

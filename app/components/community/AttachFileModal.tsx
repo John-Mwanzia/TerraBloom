@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import { ImageContext } from "@/app/context/store";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { AiFillFileImage } from "react-icons/ai";
 
 interface AttachFileModalProps {
@@ -9,8 +10,17 @@ interface AttachFileModalProps {
 
 function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
   const [file, setFile] = useState<File | null>(null);
-  const [fileName, setFileName] = useState<string | null>(null);
-  const [previewFile, setPreviewFile] = useState<string | null>(null); // Add state for file preview
+
+  const {
+    fileName,
+    setFileName,
+    previewFile,
+    setPreviewFile,
+    uploadedFile,
+    setUploadedFile,
+  } = useContext(ImageContext);
+  // const [fileName, setFileName] = useState<string | null>(null);
+  // const [previewFile, setPreviewFile] = useState<string | null>(null);
   const dropAreaRef = useRef<HTMLDivElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +43,7 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
   const handleAttach = () => {
     if (file) {
       onAttach(file);
+      setUploadedFile(previewFile);
     }
     onClose();
   };

@@ -11,7 +11,12 @@ export const ImageContext = createContext<{
   setPreviewVideo: (previewVideo: string | null) => void;
   uploadedVideo: string | null;
   setUploadedVideo: (uploadedVideo: string | null) => void;
-  
+  fileName: string | null;
+  setFileName: (fileName: string | null) => void;
+  previewFile: string | null;
+  setPreviewFile: (previewFile: string | null) => void;
+  uploadedFile: string | null;
+  setUploadedFile: (uploadedFile: string | null) => void;
 }>({
   previewImage: null,
   setPreviewImage: () => {},
@@ -20,7 +25,13 @@ export const ImageContext = createContext<{
   previewVideo: null,
   setPreviewVideo: () => {},
   uploadedVideo: null,
-  setUploadedVideo: () => {}
+  setUploadedVideo: () => {},
+  fileName: null,
+  setFileName: () => {},
+  previewFile: null,
+  setPreviewFile: () => {},
+  uploadedFile: null,
+  setUploadedFile: () => {},
 });
 
 export const ImageProvider = ({ children }) => {
@@ -28,10 +39,28 @@ export const ImageProvider = ({ children }) => {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [previewVideo, setPreviewVideo] = useState<string | null>(null);
   const [uploadedVideo, setUploadedVideo] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
+  const [previewFile, setPreviewFile] = useState<string | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<string | null>(null);
 
   return (
     <ImageContext.Provider
-      value={{ previewImage, setPreviewImage, uploadedImage, setUploadedImage , previewVideo, setPreviewVideo, uploadedVideo, setUploadedVideo}}
+      value={{
+        previewImage,
+        setPreviewImage,
+        uploadedImage,
+        setUploadedImage,
+        previewVideo,
+        setPreviewVideo,
+        uploadedVideo,
+        setUploadedVideo,
+        fileName,
+        setFileName,
+        previewFile,
+        setPreviewFile,
+        uploadedFile,
+        setUploadedFile,
+      }}
     >
       {children}
     </ImageContext.Provider>

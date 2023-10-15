@@ -151,6 +151,7 @@
 import { ImageContext } from "@/app/context/store";
 import React, { useState, useRef, ChangeEvent, DragEvent, useContext, use, useEffect } from "react";
 
+
 interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -298,14 +299,16 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
                   setInitialVideo(e.target.value)}}
                 className="border border-gray-200 p-2 rounded-lg w-full"
               />
-      
+       
 
               {initialVideo && (
                 <video
-                  src={initialVideo}
                   controls
                   className="max-h-80 mx-auto"
-                ></video>
+                >
+                  <source src={initialVideo} type="video/mp4" />
+
+                </video>
               )}
             </div>
           )}

@@ -146,11 +146,16 @@
 
 // export default VideoModal;
 
-
-
-import { ImageContext } from "@/app/context/store";
-import React, { useState, useRef, ChangeEvent, DragEvent, useContext, use, useEffect } from "react";
-
+import { UploadContext } from "@/app/context/store";
+import React, {
+  useState,
+  useRef,
+  ChangeEvent,
+  DragEvent,
+  useContext,
+  use,
+  useEffect,
+} from "react";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -164,15 +169,15 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
   const [file, setFile] = useState<File | null>(null);
   const [embedLink, setEmbedLink] = useState("");
   const dropAreaRef = useRef<HTMLDivElement>(null);
-  const {previewVideo, setPreviewVideo, setUploadedVideo} = useContext(ImageContext)
+  const { previewVideo, setPreviewVideo, setUploadedVideo } = useContext(
+    UploadContext
+  );
   const [initialVideo, setInitialVideo] = useState<string | null>(null);
 
   useEffect(() => {
     console.log(initialVideo);
-  }
-  , [initialVideo])
-    
- 
+  }, [initialVideo]);
+
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files && event.target.files[0];
     setFile(selectedFile || null);
@@ -187,7 +192,7 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
   const handleUpload = () => {
     if (file) {
       onUpload(file);
-      setUploadedVideo(previewVideo)
+      setUploadedVideo(previewVideo);
     }
     onClose();
   };
@@ -195,7 +200,7 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
   const handleEmbed = () => {
     if (embedLink) {
       onEmbed(embedLink);
-      setUploadedVideo(embedLink)
+      setUploadedVideo(embedLink);
     }
     onClose();
   };
@@ -294,20 +299,16 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
                 type="text"
                 placeholder="Enter video link"
                 value={embedLink}
-                onChange={(e) =>{
-                  setEmbedLink(e.target.value)
-                  setInitialVideo(e.target.value)}}
+                onChange={(e) => {
+                  setEmbedLink(e.target.value);
+                  setInitialVideo(e.target.value);
+                }}
                 className="border border-gray-200 p-2 rounded-lg w-full"
               />
-       
 
               {initialVideo && (
-                <video
-                  controls
-                  className="max-h-80 mx-auto"
-                >
+                <video controls className="max-h-80 mx-auto">
                   <source src={initialVideo} type="video/mp4" />
-
                 </video>
               )}
             </div>

@@ -1,7 +1,11 @@
-
-import React, { useState, useRef, ChangeEvent, DragEvent, useContext } from "react";
-import { ImageContext } from "../../context/store";
-
+import React, {
+  useState,
+  useRef,
+  ChangeEvent,
+  DragEvent,
+  useContext,
+} from "react";
+import { UploadContext } from "../../context/store";
 
 interface ImageUploadModalProps {
   isOpen: boolean;
@@ -20,10 +24,13 @@ function ImageUploadModal({
   const [file, setFile] = useState<File | null>(null);
   const [embedLink, setEmbedLink] = useState("");
   const dropAreaRef = useRef<HTMLDivElement>(null);
-  const { previewImage, setPreviewImage, uploadedImage, setUploadedImage } = useContext(ImageContext);
+  const {
+    previewImage,
+    setPreviewImage,
+    uploadedImage,
+    setUploadedImage,
+  } = useContext(UploadContext);
 
-
- 
   const handleUpload = () => {
     setUploadedImage(previewImage);
     onClose();
@@ -35,7 +42,7 @@ function ImageUploadModal({
       // Display a preview of the selected image
       const reader = new FileReader(); //built-in JavaScript API that allows you to read the contents of files asynchronously
       // When the reader successfully loads the image, update the previewImage state
-      reader.onload = (e) => {  
+      reader.onload = (e) => {
         setPreviewImage(e.target!.result as string);
       };
       // Read the selected file as a data URL (which can be used to display an image)
@@ -50,7 +57,6 @@ function ImageUploadModal({
     onClose();
   };
 
-  
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (dropAreaRef.current) {
@@ -81,7 +87,6 @@ function ImageUploadModal({
       }
     }
   };
-
 
   return (
     <div
@@ -151,12 +156,12 @@ function ImageUploadModal({
                 placeholder="Enter image link"
                 value={embedLink}
                 onChange={(e) => {
-                  setEmbedLink(e.target.value)
-                  setPreviewImage(e.target.value)
+                  setEmbedLink(e.target.value);
+                  setPreviewImage(e.target.value);
                 }}
                 className="border border-gray-200 p-2 rounded-lg w-full"
               />
-            
+
               {previewImage && (
                 <div className="mb-4 text-center mt-6">
                   <img

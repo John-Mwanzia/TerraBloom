@@ -1,4 +1,4 @@
-import { ImageContext } from "@/app/context/store";
+import { UploadContext } from "@/app/context/store";
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { AiFillFileImage } from "react-icons/ai";
 
@@ -18,7 +18,7 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
     setPreviewFile,
     uploadedFile,
     setUploadedFile,
-  } = useContext(ImageContext);
+  } = useContext(UploadContext);
   // const [fileName, setFileName] = useState<string | null>(null);
   // const [previewFile, setPreviewFile] = useState<string | null>(null);
   const dropAreaRef = useRef<HTMLDivElement>(null);

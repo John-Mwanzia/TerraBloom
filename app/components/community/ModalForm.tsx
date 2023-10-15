@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ImageContext } from "../../context/store";
+import { UploadContext } from "../../context/store";
 import { AiFillFileImage, AiOutlineCloseCircle } from "react-icons/ai";
 
 export default function ModalForm() {
@@ -16,19 +16,17 @@ export default function ModalForm() {
     uploadedFile,
     setUploadedFile,
     selectedGif,
-  } = useContext(ImageContext);
+  } = useContext(UploadContext);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("submit");
   };
-    const handleCancel = () => {
-      setUploadedFile(null);
-      setFileName(null);
-      setPreviewFile(null);
-    }
- 
-    
+  const handleCancel = () => {
+    setUploadedFile(null);
+    setFileName(null);
+    setPreviewFile(null);
+  };
 
   return (
     <div>
@@ -90,7 +88,12 @@ export default function ModalForm() {
           )}
           {selectedGif?.images?.original?.url && (
             <div>
-              <img src={selectedGif.images.original.url} alt="Selected GIF" className="h-[17.5rem] ml-6" onError={(e) => console.error("Error loading GIF:", e)} />
+              <img
+                src={selectedGif.images.original.url}
+                alt="Selected GIF"
+                className="h-[17.5rem] ml-6"
+                onError={(e) => console.error("Error loading GIF:", e)}
+              />
             </div>
           )}
         </div>

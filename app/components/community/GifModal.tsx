@@ -1,14 +1,16 @@
-import { ImageContext } from "@/app/context/store";
-import React, {  useContext, useEffect } from "react";
-import ReactGiphySearchbox from 'react-giphy-searchbox'
+import { UploadContext } from "@/app/context/store";
+import React, { useContext, useEffect } from "react";
+import ReactGiphySearchbox from "react-giphy-searchbox";
 
 export default function GifModal({ isOpen, onClose, onUpload }: any) {
-  const {selectedGif, setSelectedGif} = useContext(ImageContext);
+  const { selectedGif, setSelectedGif } = useContext(UploadContext);
 
-  
-    
   return (
-    <div className={`fixed inset-0 z-50 ${isOpen ? "block" : "hidden"} bg-black bg-opacity-80 flex items-center justify-center`}>
+    <div
+      className={`fixed inset-0 z-50 ${
+        isOpen ? "block" : "hidden"
+      } bg-black bg-opacity-80 flex items-center justify-center`}
+    >
       <div className="modal-container p-6 bg-white w-[500px] rounded-lg shadow-lg">
         <div className="modal-header flex justify-between mb-4">
           <h2 className="text-xl font-bold">Choose a GIF</h2>
@@ -19,17 +21,17 @@ export default function GifModal({ isOpen, onClose, onUpload }: any) {
         <div className="flex justify-center">
           <div className="mb-4 ">
             <ReactGiphySearchbox
-              apiKey="pXDMLXZW5bcvRo7M1yulP9Y32QW3pO7l" 
+              apiKey="pXDMLXZW5bcvRo7M1yulP9Y32QW3pO7l"
               onSelect={(item: any) => {
                 // onUpload(item)
                 // console.log(item);
-                setSelectedGif(item)
-                onClose()
+                setSelectedGif(item);
+                onClose();
               }}
               masonryConfig={[
                 { columns: 2, imageWidth: 110, gutter: 5 },
-                { mq: "700px", columns: 3, imageWidth: 120, gutter: 5 }
-                ]}
+                { mq: "700px", columns: 3, imageWidth: 120, gutter: 5 },
+              ]}
             />
           </div>
         </div>

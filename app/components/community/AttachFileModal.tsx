@@ -8,11 +8,23 @@ interface AttachFileModalProps {
 
 function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
   const [file, setFile] = useState<File | null>(null);
+  const [previewFile, setPreviewFile] = useState<string | null>(null); // Add state for file preview
   const dropAreaRef = useRef<HTMLDivElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files && event.target.files[0];
     setFile(selectedFile || null);
+
+    // Set the file preview when a file is selected
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setPreviewFile(e.target!.result as string);
+      };
+      reader.readAsDataURL(selectedFile);
+    } else {
+      setPreviewFile(null); // Clear the preview if no file is selected
+    }
   };
 
   const handleAttach = () => {
@@ -42,6 +54,15 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
 
       const droppedFile = e.dataTransfer.files[0];
       setFile(droppedFile || null);
+
+      // Set the file preview for the dropped file
+      if (droppedFile) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          setPreviewFile(e.target!.result as string);
+        };
+        reader.readAsDataURL(droppedFile);
+      }
     }
   };
 
@@ -70,15 +91,23 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
             <input
               type="file"
               className="mt-4"
+              accept=".pdf, .docx, .jpg, .png, .mp3, .mp4"
               onChange={handleFileChange}
             />
           </div>
+          {/* Display the file preview */}
+          {previewFile && (
+            <div className="mb-4 text-center">
+              <img
+                src={previewFile}
+                alt="File Preview"
+                className="max-h-80 mx-auto"
+              />
+            </div>
+          )}
         </div>
         <div className="modal-footer">
-          <button
-            className="btn btn-primary"
-            onClick={handleAttach}
-          >
+          <button className="btn btn-primary" onClick={handleAttach}>
             Attach
           </button>
           <button className="btn btn-secondary" onClick={onClose}>

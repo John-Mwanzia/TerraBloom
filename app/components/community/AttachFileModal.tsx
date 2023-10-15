@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { AiFillFileImage } from "react-icons/ai";
 
 interface AttachFileModalProps {
   isOpen: boolean;
@@ -8,12 +9,14 @@ interface AttachFileModalProps {
 
 function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
   const [file, setFile] = useState<File | null>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
   const [previewFile, setPreviewFile] = useState<string | null>(null); // Add state for file preview
   const dropAreaRef = useRef<HTMLDivElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files && event.target.files[0];
     setFile(selectedFile || null);
+    setFileName(selectedFile?.name || null);
 
     // Set the file preview when a file is selected
     if (selectedFile) {
@@ -54,6 +57,7 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
 
       const droppedFile = e.dataTransfer.files[0];
       setFile(droppedFile || null);
+      setFileName(droppedFile?.name || null);
 
       // Set the file preview for the dropped file
       if (droppedFile) {
@@ -65,6 +69,10 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
       }
     }
   };
+
+  useEffect(() => {
+    console.log(fileName);
+  }, [previewFile, fileName]);
 
   return (
     <div
@@ -97,12 +105,9 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
           </div>
           {/* Display the file preview */}
           {previewFile && (
-            <div className="mb-4 text-center">
-              <img
-                src={previewFile}
-                alt="File Preview"
-                className="max-h-80 mx-auto"
-              />
+            <div>
+              <AiFillFileImage color = '#1475cf' />
+              <span>{fileName}</span>
             </div>
           )}
         </div>

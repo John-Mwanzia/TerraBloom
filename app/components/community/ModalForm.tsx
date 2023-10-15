@@ -90,7 +90,7 @@ export default function ModalForm() {
           )}
           {selectedGif?.images?.original?.url && (
             <div>
-              <img src={selectedGif.images.original.url} alt="Selected GIF" onError={(e) => console.error("Error loading GIF:", e)} />
+              <img src={selectedGif.images.original.url} alt="Selected GIF" className="h-[17.5rem] ml-6" onError={(e) => console.error("Error loading GIF:", e)} />
             </div>
           )}
         </div>

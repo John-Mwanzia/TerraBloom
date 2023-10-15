@@ -28,7 +28,6 @@ export default function ModalForm() {
       setPreviewFile(null);
     }
  
-    console.log(selectedGif?.url);
     
 
   return (
@@ -89,7 +88,7 @@ export default function ModalForm() {
               </button>
             </div>
           )}
-          {selectedGif && (
+          {selectedGif?.images?.original?.url && (
             <div>
               <img src={selectedGif.images.original.url} alt="Selected GIF" onError={(e) => console.error("Error loading GIF:", e)} />
             </div>

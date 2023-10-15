@@ -1,6 +1,15 @@
 "use client";
 
 import { createContext, useContext,ReactNode, useState } from "react";
+
+type GifType = {
+  images: {
+    original: {
+      url: string | null;
+    } | null;
+  } | null;
+};
+
 export const ImageContext = createContext<{
   previewImage: string | null;
   setPreviewImage: (previewImage: string | null) => void;
@@ -16,8 +25,8 @@ export const ImageContext = createContext<{
   setPreviewFile: (previewFile: string | null) => void;
   uploadedFile: string | null;
   setUploadedFile: (uploadedFile: string | null) => void;
-  selectedGif: { url: string | null } | null;
-  setSelectedGif: (selectedGif: { url: string | null } | null) => void;
+  selectedGif: GifType | null;
+  setSelectedGif: (selectedGif: GifType | null) => void;
 }>({
   previewImage: null,
   setPreviewImage: () => {},
@@ -46,7 +55,7 @@ export const ImageProvider = ({ children } : { children: ReactNode }) => {
   const [fileName, setFileName] = useState<string | null>(null);
   const [previewFile, setPreviewFile] = useState<string | null>(null);
   const [uploadedFile, setUploadedFile] = useState<string | null>(null);
-  const [selectedGif, setSelectedGif] = useState<{ url: string | null } | null>(null);
+  const [selectedGif, setSelectedGif] = useState<GifType | null>(null);
 
   return (
     <ImageContext.Provider

@@ -15,6 +15,7 @@ export default function ModalForm() {
     setPreviewFile,
     uploadedFile,
     setUploadedFile,
+    selectedGif,
   } = useContext(ImageContext);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,6 +28,8 @@ export default function ModalForm() {
       setPreviewFile(null);
     }
  
+    console.log(selectedGif?.url);
+    
 
   return (
     <div>
@@ -84,6 +87,11 @@ export default function ModalForm() {
               <button onClick={handleCancel}>
                 <AiOutlineCloseCircle className=" absolute -top-1 -right-1 text-2xl cursor-pointer" />
               </button>
+            </div>
+          )}
+          {selectedGif && (
+            <div>
+              <img src={selectedGif.images.original.url} alt="Selected GIF" onError={(e) => console.error("Error loading GIF:", e)} />
             </div>
           )}
         </div>

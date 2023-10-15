@@ -1,7 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useContext,ReactNode, useState } from "react";
 export const ImageContext = createContext<{
   previewImage: string | null;
   setPreviewImage: (previewImage: string | null) => void;
@@ -17,6 +16,8 @@ export const ImageContext = createContext<{
   setPreviewFile: (previewFile: string | null) => void;
   uploadedFile: string | null;
   setUploadedFile: (uploadedFile: string | null) => void;
+  selectedGif: { url: string | null } | null;
+  setSelectedGif: (selectedGif: { url: string | null } | null) => void;
 }>({
   previewImage: null,
   setPreviewImage: () => {},
@@ -32,9 +33,12 @@ export const ImageContext = createContext<{
   setPreviewFile: () => {},
   uploadedFile: null,
   setUploadedFile: () => {},
+  selectedGif: null,
+  setSelectedGif: () => {},
 });
 
-export const ImageProvider = ({ children }) => {
+
+export const ImageProvider = ({ children } : { children: ReactNode }) => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [previewVideo, setPreviewVideo] = useState<string | null>(null);
@@ -42,6 +46,7 @@ export const ImageProvider = ({ children }) => {
   const [fileName, setFileName] = useState<string | null>(null);
   const [previewFile, setPreviewFile] = useState<string | null>(null);
   const [uploadedFile, setUploadedFile] = useState<string | null>(null);
+  const [selectedGif, setSelectedGif] = useState<{ url: string | null } | null>(null);
 
   return (
     <ImageContext.Provider
@@ -60,6 +65,8 @@ export const ImageProvider = ({ children }) => {
         setPreviewFile,
         uploadedFile,
         setUploadedFile,
+        selectedGif,
+        setSelectedGif,
       }}
     >
       {children}

@@ -105,17 +105,22 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
           </div>
           {/* Display the file preview */}
           {previewFile && (
-            <div>
-              <AiFillFileImage color = '#1475cf' />
-              <span>{fileName}</span>
+            <div className="flex mt-4 gap-2 items-center">
+              <span className="text-2xl">
+                <AiFillFileImage color="#1475cf" />
+              </span>
+              <span className="text-xl">{fileName}</span>
             </div>
           )}
         </div>
-        <div className="modal-footer">
-          <button className="btn btn-primary" onClick={handleAttach}>
+        <div className="mt-6">
+          <button
+            className="mr-6 bg-[#0E9AA9] py-2 px-4 rounded-md"
+            onClick={handleAttach}
+          >
             Attach
           </button>
-          <button className="btn btn-secondary" onClick={onClose}>
+          <button className="" onClick={onClose}>
             Cancel
           </button>
         </div>

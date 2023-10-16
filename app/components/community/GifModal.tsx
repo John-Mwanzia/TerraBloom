@@ -11,10 +11,10 @@ export default function GifModal({ isOpen, onClose, onUpload }: any) {
         isOpen ? "block" : "hidden"
       } bg-black bg-opacity-80 flex items-center justify-center`}
     >
-      <div className="modal-container p-6 bg-white w-[500px] rounded-lg shadow-lg">
-        <div className="modal-header flex justify-between mb-4">
+      <div className=" p-6 bg-white w-[500px] rounded-lg shadow-lg">
+        <div className=" flex justify-between mb-4">
           <h2 className="text-xl font-bold">Choose a GIF</h2>
-          <button className="modal-close text-3xl" onClick={onClose}>
+          <button className=" text-3xl" onClick={onClose}>
             &times;
           </button>
         </div>
@@ -35,8 +35,8 @@ export default function GifModal({ isOpen, onClose, onUpload }: any) {
             />
           </div>
         </div>
-        <div className="modal-footer">
-          <button className="btn btn-primary" onClick={onClose}>
+        <div className="">
+          <button className="" onClick={onClose}>
             Close
           </button>
         </div>

@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import ReactGiphySearchbox from "react-giphy-searchbox";
 
 export default function GifModal({ isOpen, onClose, onUpload }: any) {
-  const { selectedGif, setSelectedGif } = useContext(UploadContext);
+  const { setSelectedGif } = useContext(UploadContext);
 
   return (
     <div
@@ -23,8 +23,6 @@ export default function GifModal({ isOpen, onClose, onUpload }: any) {
             <ReactGiphySearchbox
               apiKey="pXDMLXZW5bcvRo7M1yulP9Y32QW3pO7l"
               onSelect={(item: any) => {
-                // onUpload(item)
-                // console.log(item);
                 setSelectedGif(item);
                 onClose();
               }}

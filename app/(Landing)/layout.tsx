@@ -32,7 +32,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               <div className="mt-8">
                 <h1 className="font-bold">Welcome</h1>
                 <div className="flex flex-col">
-                  <Link className="py-4 pl-4" href="/">
+                  <Link className="py-4 pl-4" href="/announcement">
                     ⭐ Announcements
                   </Link>
                   <Link className="py-4 pl-4" href="/introduction">
@@ -56,13 +56,13 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               <div className="mt-8">
                 <h1 className="font-bold">Community</h1>
                 <div className="flex flex-col">
-                  <Link className="py-4 pl-4" href="/">
+                  <Link className="py-4 pl-4" href="/Resources">
                     🌟 Resources
                   </Link>
-                  <Link className="py-4 pl-4" href="/">
+                  <Link className="py-4 pl-4" href="/Showcase">
                     ✨ Showcase
                   </Link>
-                  <Link className="py-4 pl-4 flex gap-1" href="/">
+                  <Link className="py-4 pl-4 flex gap-1" href="/Events">
                     <Image
                       src="community/events.svg"
                       alt="logochat"

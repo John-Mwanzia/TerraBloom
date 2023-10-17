@@ -62,7 +62,6 @@ model Like {
 
 model Introduction {
   id        String   @id @default(uuid())
-  avatar    String
   title     String
   content   String
   author    User     @relation(fields: [authorId], references: [id])

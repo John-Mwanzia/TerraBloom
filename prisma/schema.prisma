@@ -11,20 +11,21 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(uuid())
-  email     String    @unique
-  name      String?
-  password  String
-  isAdmin   Boolean  @default(false)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  posts     Post[]
-  comments  Comment[]
-  Likes     Like[]
+  id           String        @id @default(uuid())
+  email        String        @unique
+  name         String?
+  password     String
+  isAdmin      Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  posts        Post[]
+  comments     Comment[]
+  Likes        Like[]
+  Introduction Introduction?
 }
 
 model Post {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(uuid())
   title     String
   content   String
   Image     String?
@@ -40,21 +41,32 @@ model Post {
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   text      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String
   post      Post     @relation(fields: [postId], references: [id])
-  postId    Int
+  postId    String
 }
 
 model Like {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
   userId    String
   post      Post     @relation(fields: [postId], references: [id])
-  postId    Int
+  postId    String
+}
+
+model Introduction {
+  id        String   @id @default(uuid())
+  avatar    String
+  title     String
+  content   String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

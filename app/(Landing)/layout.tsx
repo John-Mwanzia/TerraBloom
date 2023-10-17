@@ -13,16 +13,16 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
         {activeMenu && (
           <div className="bg-white h-screen w-[16.3rem]">
             <Image
-              src="community/logo.svg"
+              src="/bloomCommAssets/logo.svg"
               alt="logo"
               className="mx-auto"
               width={180}
               height={133}
             />
             <div className="pl-16 mt-8 ">
-              <Link href="/" className="flex gap-1">
+              <Link href="/community/Home" className="flex gap-1">
                 <Image
-                  src="community/home.svg"
+                  src="/bloomCommAssets/home.svg"
                   alt="home icon"
                   width={20}
                   height={20}
@@ -32,18 +32,18 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               <div className="mt-8">
                 <h1 className="font-bold">Welcome</h1>
                 <div className="flex flex-col">
-                  <Link className="py-4 pl-4" href="/announcement">
+                  <Link className="py-4 pl-4" href="/community/announcement">
                     ⭐ Announcements
                   </Link>
-                  <Link className="py-4 pl-4" href="/introduction">
+                  <Link className="py-4 pl-4" href="/community/introduction">
                     👋 Introductions
                   </Link>
-                  <Link className="py-4 pl-4" href="/FAQ">
+                  <Link className="py-4 pl-4" href="/community/FAQ">
                     🔮 FAQ
                   </Link>
-                  <Link className="py-4 pl-4 flex gap-1" href="/Chat">
+                  <Link className="py-4 pl-4 flex gap-1" href="/community/Chat">
                     <Image
-                      src="community/chat.svg"
+                      src="/bloomCommAssets/chat.svg"
                       alt="logochat"
                       width={22}
                       height={18}
@@ -56,15 +56,15 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               <div className="mt-8">
                 <h1 className="font-bold">Community</h1>
                 <div className="flex flex-col">
-                  <Link className="py-4 pl-4" href="/Resources">
+                  <Link className="py-4 pl-4" href="/community/Resources">
                     🌟 Resources
                   </Link>
-                  <Link className="py-4 pl-4" href="/Showcase">
+                  <Link className="py-4 pl-4" href="/community/Showcase">
                     ✨ Showcase
                   </Link>
-                  <Link className="py-4 pl-4 flex gap-1" href="/Events">
+                  <Link className="py-4 pl-4 flex gap-1" href="/community/Events">
                     <Image
-                      src="community/events.svg"
+                      src="/bloomCommAssets/events.svg"
                       alt="logochat"
                       width={20}
                       height={20}
@@ -99,7 +99,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                 >
                   <Button variant="flat">
                     <Image
-                      src="community/notification.svg"
+                      src="/bloomCommAssets/notification.svg"
                       alt="logochat"
                       width={22}
                       height={18}
@@ -120,7 +120,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                 >
                   <Button variant="flat">
                     <Image
-                      src="community/chat.svg"
+                      src="/bloomCommAssets/chat.svg"
                       alt="logochat"
                       width={22}
                       height={18}
@@ -129,7 +129,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                 </Tooltip>
               </div>
               <Image
-                src="community/avatar.svg"
+                src="/bloomCommAssets/avatar.svg"
                 alt="Avatar"
                 width={64}
                 height={79}

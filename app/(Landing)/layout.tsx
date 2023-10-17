@@ -35,13 +35,13 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                   <Link className="py-4 pl-4" href="/">
                     ⭐ Announcements
                   </Link>
-                  <Link className="py-4 pl-4" href="/">
+                  <Link className="py-4 pl-4" href="/introduction">
                     👋 Introductions
                   </Link>
-                  <Link className="py-4 pl-4" href="/">
+                  <Link className="py-4 pl-4" href="/FAQ">
                     🔮 FAQ
                   </Link>
-                  <Link className="py-4 pl-4 flex gap-1" href="/">
+                  <Link className="py-4 pl-4 flex gap-1" href="/Chat">
                     <Image
                       src="community/chat.svg"
                       alt="logochat"

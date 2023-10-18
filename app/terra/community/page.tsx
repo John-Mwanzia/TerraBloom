@@ -4,7 +4,9 @@ export default function page() {
   return (
     <>
        <main className='h-screen bg-black/80'>
-             terraBloom community
+             <div>
+                
+             </div>
        </main>
     </>
   )

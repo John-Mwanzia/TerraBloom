@@ -6,7 +6,7 @@ export default function page() {
     <>
       <main className=" bg-black">
         <section className="flex justify-center  pt-4 ">
-          <div className="flex justify-center items-center gap-20 max-w-[80%]">
+          <div className="flex justify-center items-center gap-12 max-w-[80%]">
             <div>
               <div className="flex items-center relative">
                 <Image
@@ -32,19 +32,19 @@ export default function page() {
               </div>
 
               <div className="mt-16">
-                <p className="text-white">
+                <p className="text-white text-xl">
                   Join the Terra Community to learn, share, and grow with other
                   farmers.
                 </p>
               </div>
 
               <div className="mt-16">
-                <button className="bg-[#99BF1A]  rounded-md px-4 py-2">
+                <button className="bg-[#99BF1A]  rounded-lg px-6 py-2">
                   Join Us Today
                 </button>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative pl-4">
               <Image
                 src="/terraCommAssets/smallStar.svg"
                 alt="hero star"

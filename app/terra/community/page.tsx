@@ -26,20 +26,20 @@ export default function page() {
               </div>
 
               <div className="mt-16">
-                <h1 className="text-[#A47344] font-semibold text-5xl ">
+                <h1 className="text-[#A47344] font-semibold font-staatliches text-5xl ">
                   Unite, Cultivate, and Prosper
                 </h1>
               </div>
 
               <div className="mt-16">
-                <p className="text-white text-xl">
+                <p className="text-white text-xl font-outfit">
                   Join the Terra Community to learn, share, and grow with other
                   farmers.
                 </p>
               </div>
 
               <div className="mt-16">
-                <button className="bg-[#99BF1A]  rounded-lg px-6 py-2">
+                <button className="bg-[#99BF1A]  rounded-lg px-6 py-2 font-old-standard">
                   Join Us Today
                 </button>
               </div>

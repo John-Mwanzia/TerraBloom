@@ -26,8 +26,8 @@ const config: Config = {
         'outfit': ['Outfit', 'sans-serif'],
       },
 
-    },
+    }
   },
   plugins: [],
 }
-export default config
+export default config;

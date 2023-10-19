@@ -64,7 +64,7 @@ export default function page() {
         </section>
 
         <section className="flex justify-center mt-44 pb-40">
-          <div className="flex justify-center  gap-96 max-w-[80%]">
+          <div className="flex justify-center items-start  gap-96 max-w-[80%]">
             <div className="flex">
               <Image
                 src="/terraCommAssets/convo.svg"
@@ -83,10 +83,10 @@ export default function page() {
             </div>
             <div>
               <div >
-                <h1 className="text-white font-old-standard text-5xl mb-8">Join The Conversations</h1>
+                <h1 className="text-white font-old-standard text-5xl mb-16">Join The Conversations</h1>
               </div>
               <div>
-                <p className="text-white max-w-xl">
+                <p className="text-white max-w-lg">
                   Dive into engaging discussions, where farmers exchange ideas,
                   troubleshoot challenges, and share their success stories.
                   Collaborate in forums designed for both newcomers and seasoned

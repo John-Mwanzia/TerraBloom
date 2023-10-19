@@ -6,7 +6,7 @@ export default function page() {
     <>
       <main className=" bg-black">
         <section className="flex justify-center  pt-4 ">
-          <div className="flex justify-center items-center gap-12 max-w-[80%]">
+          <div className="flex justify-center items-center gap-4 max-w-[80%]">
             <div>
               <div className="flex items-center relative">
                 <Image
@@ -26,7 +26,7 @@ export default function page() {
               </div>
 
               <div className="mt-16">
-                <h1 className="text-[#A47344] font-semibold font-staatliches text-5xl ">
+                <h1 className="text-[#A47344] font-semibold font-inter text-5xl ">
                   Unite, Cultivate, and Prosper
                 </h1>
               </div>
@@ -50,7 +50,7 @@ export default function page() {
                 alt="hero star"
                 width={400}
                 height={400}
-                className="absolute -top-16 -left-16"
+                className="absolute -top-16 -right-16"
               />
 
               <Image
@@ -59,6 +59,41 @@ export default function page() {
                 width={729}
                 height={711}
               />
+            </div>
+          </div>
+        </section>
+
+        <section className="flex justify-center mt-44 pb-40">
+          <div className="flex justify-center  gap-96 max-w-[80%]">
+            <div className="flex">
+              <Image
+                src="/terraCommAssets/convo.svg"
+                alt="convo"
+                width={86}
+                height={84}
+                className=""
+              />
+
+              <Image
+                src="/terraCommAssets/preview.svg"
+                alt="preview"
+                width={106}
+                height={100}
+              />
+            </div>
+            <div>
+              <div >
+                <h1 className="text-white font-old-standard text-5xl mb-8">Join The Conversations</h1>
+              </div>
+              <div>
+                <p className="text-white max-w-xl">
+                  Dive into engaging discussions, where farmers exchange ideas,
+                  troubleshoot challenges, and share their success stories.
+                  Collaborate in forums designed for both newcomers and seasoned
+                  agripreneurs. Unleash your farming potential among a
+                  supportive and dynamic community.
+                </p>
+              </div>
             </div>
           </div>
         </section>

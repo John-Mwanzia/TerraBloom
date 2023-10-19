@@ -4,7 +4,7 @@ import React from "react";
 export default function HeroSection() {
   return (
     <>
-      <div className="flex justify-center items-center gap-4 max-w-[80%]">
+      <div className="flex justify-center items-center gap-4 max-w-[80%] flex-wrap relative">
         <div>
           <div className="flex items-center relative">
             <Image
@@ -12,19 +12,19 @@ export default function HeroSection() {
               alt="heroFarmer"
               width={247}
               height={242}
-              className="z-10"
+              className="z-10  h-52 w-52  md:h-60 md:w-60"
             />
             <Image
               src="/terraCommAssets/ellipse-16.svg"
               alt="ellipse"
               width={244}
               height={244}
-              className="absolute top-0 left-24"
+              className="absolute top-0 left-24  h-52 w-52  md:h-60 md:w-60"
             />
           </div>
 
           <div className="mt-16">
-            <h1 className="text-[#A47344] font-semibold font-inter text-5xl ">
+            <h1 className="text-[#A47344] font-semibold font-inter text-5xl z-50">
               Unite, Cultivate, and Prosper 
             </h1>
           </div>
@@ -44,13 +44,13 @@ export default function HeroSection() {
             </button>
           </div>
         </div>
-        <div className="relative pl-4">
+        <div className=" pl-4">
           <Image
             src="/terraCommAssets/smallStar.svg"
             alt="hero star"
             width={400}
             height={400}
-            className="absolute -top-16 -right-16"
+            className="absolute -z-[100px] h-[10rem] lg:h-[20rem] top-64 -right-32 lg:top-2 lg:-right-16 "
           />
 
           <Image
@@ -58,6 +58,7 @@ export default function HeroSection() {
             alt="hero star"
             width={729}
             height={711}
+            className="absolute -z-[100px] h-[20rem] top-64 -right-8 lg:-top-16 lg:-right-16 lg:static lg:h-[45rem]"
           />
         </div>
       </div>

@@ -25,14 +25,16 @@ export default function HeroSection() {
 
           <div className="mt-16">
             <h1 className="text-[#A47344] font-semibold font-inter text-5xl ">
-              Unite, Cultivate, and Prosper
+              Unite, Cultivate, and Prosper 
             </h1>
           </div>
 
-          <div className="mt-16">
-            <p className="text-white text-xl font-outfit">
+          <div className="mt-16 max-w-lg">
+            <p className="text-white/70 font-outfit text-lg ">
               Join the Terra Community to learn, share, and grow with other
-              farmers.
+              farmers. Discover new farming techniques, exchange ideas, and stay
+              updated on the latest innovations in agriculture. Let's cultivate
+              success together!
             </p>
           </div>
 

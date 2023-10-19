@@ -28,7 +28,7 @@ export default function Conversation() {
             </h1>
           </div>
           <div>
-            <p className="text-white max-w-lg">
+            <p className="text-white/70 max-w-lg">
               Dive into engaging discussions, where farmers exchange ideas,
               troubleshoot challenges, and share their success stories.
               Collaborate in forums designed for both newcomers and seasoned

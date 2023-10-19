@@ -1,5 +1,5 @@
 import Conversation from "@/app/components/community/Conversation";
-import HeroSection from "@/app/components/community/heroSection";
+import HeroSection from "@/app/components/community/HeroSection";
 
 import React from "react";
 

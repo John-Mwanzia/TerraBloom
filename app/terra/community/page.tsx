@@ -25,7 +25,7 @@ export default function page() {
           <StatsSection />
         </section>
 
-        <section className="flex justify-center mt-24  mb-40 ">
+        <section className="flex justify-center mt-24  pb-40 ">
           <CTA />
         </section>
       </main>

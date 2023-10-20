@@ -1,3 +1,4 @@
+import CTA from "@/app/components/community/CTA";
 import Conversation from "@/app/components/community/Conversation";
 import Features from "@/app/components/community/Features";
 import HeroSection from "@/app/components/community/HeroSection";
@@ -22,6 +23,10 @@ export default function page() {
 
         <section className="flex justify-center mt-24  mb-40 ">
           <StatsSection />
+        </section>
+
+        <section className="flex justify-center mt-24  mb-40 ">
+          <CTA />
         </section>
       </main>
     </>

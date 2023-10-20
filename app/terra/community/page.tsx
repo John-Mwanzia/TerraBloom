@@ -20,7 +20,7 @@ export default function page() {
           <Features />
         </section>
 
-        <section className="flex justify-center  pb-40">
+        <section className="flex justify-center mt-24  mb-40 ">
           <StatsSection />
         </section>
       </main>

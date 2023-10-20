@@ -15,7 +15,7 @@ export default function page() {
         <section className="flex justify-center mt-44 pb-40">
           <Conversation />
         </section>
-        <section className="flex justify-center mt-44 pb-40">
+        <section className="flex justify-center  pb-40">
           <Features />
         </section>
       </main>

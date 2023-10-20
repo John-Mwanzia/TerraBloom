@@ -4,7 +4,7 @@ import React from "react";
 export default function HeroSection() {
   return (
     <>
-      <div className="flex justify-center items-center gap-4 max-w-[80%] flex-wrap relative">
+      <div className="flex justify-center items-center gap-4 max-w-[80%]  relative">
         <div>
           <div className="flex items-center relative">
             <Image
@@ -58,7 +58,7 @@ export default function HeroSection() {
             alt="hero star"
             width={729}
             height={711}
-            className="absolute -z-[100px] h-[20rem] top-64 -right-8 lg:-top-16 lg:-right-16 lg:static lg:h-[45rem]"
+            className="absolute -z-[100px] h-[20rem] top-64 -right-8 lg:-top-16 md:-right-16 lg:static lg:h-[45rem]"
           />
         </div>
       </div>

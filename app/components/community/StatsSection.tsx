@@ -37,7 +37,7 @@ export default function StatsSection() {
             2500+
           </h1>
           <p className="text-[#87A818] text-xl">
-          farmers growing together in our thriving community
+            farmers growing together in our thriving community
           </p>
         </div>
       </div>

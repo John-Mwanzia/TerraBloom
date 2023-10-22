@@ -1,5 +1,6 @@
 import CTA from "@/app/components/community/CTA";
 import Conversation from "@/app/components/community/Conversation";
+import FAQ from "@/app/components/community/FAQ";
 import Features from "@/app/components/community/Features";
 import HeroSection from "@/app/components/community/HeroSection";
 import StatsSection from "@/app/components/community/StatsSection";
@@ -27,6 +28,10 @@ export default function page() {
 
         <section className="flex justify-center mt-24  pb-40 ">
           <CTA />
+        </section>
+
+        <section className="flex justify-center mt-24  pb-40 ">
+          <FAQ />
         </section>
       </main>
     </>

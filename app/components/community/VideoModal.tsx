@@ -174,9 +174,6 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
   );
   const [initialVideo, setInitialVideo] = useState<string | null>(null);
 
-  useEffect(() => {
-    console.log(initialVideo);
-  }, [initialVideo]);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files && event.target.files[0];

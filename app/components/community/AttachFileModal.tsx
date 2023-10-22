@@ -81,9 +81,6 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
     }
   };
 
-  useEffect(() => {
-    console.log(fileName);
-  }, [previewFile, fileName]);
 
   return (
     <div

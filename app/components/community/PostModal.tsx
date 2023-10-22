@@ -174,7 +174,7 @@ export default function PostModal({ setShowModal }) {
               <div>
                 <button type="button" onClick={() => setShowModal(false)}>
                   <Image
-                    src="/community/close.svg"
+                    src="/bloomCommAssets/close.svg"
                     alt="close"
                     width={22}
                     height={18}
@@ -191,7 +191,7 @@ export default function PostModal({ setShowModal }) {
               <div>
                 <button onClick={handleOpenAttachFileModal}>
                   <Image
-                    src="/community/attach.svg"
+                    src="/bloomCommAssets/attach.svg"
                     alt="Attach File"
                     width={22}
                     height={18}
@@ -201,7 +201,7 @@ export default function PostModal({ setShowModal }) {
               <div>
                 <button onClick={handleOpenVideoModal}>
                   <Image
-                    src="/community/video.svg"
+                    src="/bloomCommAssets/video.svg"
                     alt="video"
                     width={22}
                     height={18}
@@ -212,7 +212,7 @@ export default function PostModal({ setShowModal }) {
               <div>
                 <button onClick={handleOpenImageUploadModal}>
                   <Image
-                    src="/community/imageUpload.svg"
+                    src="/bloomCommAssets/imageUpload.svg"
                     alt="Image Upload"
                     width={22}
                     height={18}
@@ -224,7 +224,7 @@ export default function PostModal({ setShowModal }) {
                   {" "}
                   {/* Open GifModal */}
                   <Image
-                    src="/community/gif.svg"
+                    src="/bloomCommAssets/gif.svg"
                     alt="GIF"
                     width={22}
                     height={18}
@@ -234,7 +234,7 @@ export default function PostModal({ setShowModal }) {
               {/* Add buttons for other actions here */}
             </div>
 
-            <button className="bg-[#0E9AA9] rounded px-4 py-1">Post</button>
+           
           </div>
         </div>
       </div>

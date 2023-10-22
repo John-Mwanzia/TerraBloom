@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UploadContext } from "../../context/store";
 import { AiFillFileImage, AiOutlineCloseCircle } from "react-icons/ai";
+import { myAction } from "@/utils/actions";
 
 export default function ModalForm() {
   const {
@@ -18,10 +19,6 @@ export default function ModalForm() {
     selectedGif,
   } = useContext(UploadContext);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("submit");
-  };
   const handleCancel = () => {
     setUploadedFile(null);
     setFileName(null);
@@ -30,13 +27,14 @@ export default function ModalForm() {
 
   return (
     <div>
-      <form action="handleSubmit">
+      <form action={myAction}>
         <div className="flex flex-col">
           <div className="mb-6">
             <input
               className="border-b border-gray-100 outline-none w-full pl-6"
               type="text"
               placeholder="Title"
+              name="title"
             />
           </div>
           <div>
@@ -48,6 +46,7 @@ export default function ModalForm() {
               style={{ resize: "none", height: "auto" }}
             ></textarea>
           </div>
+
           {uploadedImage && (
             <div
               className="mb-4 text-center outline-none border-none"
@@ -97,8 +96,11 @@ export default function ModalForm() {
             </div>
           )}
         </div>
+        <button className="bg-[#0E9AA9] absolute bottom-4 z-10 right-6 rounded px-4 py-1 cursor-pointer">
+          Post
+        </button>
       </form>
-      {/* <button onClick={handleImageUpload}>Upload Image</button> */}
+  
     </div>
   );
 }

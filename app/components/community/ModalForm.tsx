@@ -23,16 +23,19 @@ export default function ModalForm() {
 
   } = useContext(UploadContext);
 
-  const handleSubmit =  async(e) => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleSubmit =  async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const res = await postUpload({
-      title: e.target.title.value,
-      content: e.target.content.value,
-      image: uploadedImage,
-      video: uploadedVideo,
-      file: uploadedFile,
-      gif: selectedGif?.images?.original?.url,
+      title,
+      content,
+      image: uploadedImage || '',
+      video: uploadedVideo || '',
+      file: uploadedFile || '',
+      gif: selectedGif?.images?.original?.url || '',
     });
 
 
@@ -67,6 +70,7 @@ export default function ModalForm() {
               type="text"
               placeholder="Title"
               name="title"
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <div>
@@ -76,6 +80,7 @@ export default function ModalForm() {
               id=""
               placeholder="content"
               style={{ resize: "none", height: "auto" }}
+              onChange={(e) => setContent(e.target.value)}
             ></textarea>
           </div>
 

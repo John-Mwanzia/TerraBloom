@@ -10,6 +10,13 @@ export const postUpload = async ({
   video,
   file,
   gif,
+}: {
+  title: string;
+  content: string;
+  image: string;
+  video: string;
+  file: string;
+  gif: string;
 }) => {
   const res = await fetch(new Request("/api/newPost"), {
     method: "POST",

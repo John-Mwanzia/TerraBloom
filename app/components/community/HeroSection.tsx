@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function HeroSection() {
@@ -25,7 +26,7 @@ export default function HeroSection() {
 
           <div className="mt-16">
             <h1 className="text-[#A47344] font-semibold font-inter text-5xl z-50">
-              Unite, Cultivate, and Prosper 
+              Unite, Cultivate, and Prosper
             </h1>
           </div>
 
@@ -39,9 +40,11 @@ export default function HeroSection() {
           </div>
 
           <div className="mt-16">
-            <button className="bg-[#99BF1A]  rounded-lg px-6 py-2 font-old-standard">
-              Join Us Today
-            </button>
+            <Link href="/community/Home">
+              <button className="bg-[#99BF1A]  rounded-lg px-6 py-2 font-old-standard">
+                Join Us Today
+              </button>
+            </Link>
           </div>
         </div>
         <div className=" pl-4">

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function CTA() {
@@ -28,9 +29,11 @@ export default function CTA() {
           valuable insights and connections.
         </p>
         <div className="mt-16">
-          <button className="bg-[#99BF1A]  rounded-lg px-6 py-2 font-old-standard">
-            Join Us Today
-          </button>
+          <Link href="/community/Home">
+            <button className="bg-[#99BF1A]  rounded-lg px-6 py-2 font-old-standard">
+              Join Us Today
+            </button>
+          </Link>
         </div>
       </div>
     </div>

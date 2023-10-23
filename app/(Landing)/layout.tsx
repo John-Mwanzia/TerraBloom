@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Button, Tooltip } from "@nextui-org/react";
+import { UserButton } from "@clerk/nextjs";
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
 
@@ -85,7 +86,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                 <div className="h-[0.1875rem] rounded-md w-[1.875rem ] bg-[#0E9AA9] mb-1"></div>
               </div>
             </button>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 py-6">
               <div>
                 <Tooltip
                   showArrow
@@ -128,12 +129,9 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                   </Button>
                 </Tooltip>
               </div>
-              <Image
-                src="/bloomCommAssets/avatar.svg"
-                alt="Avatar"
-                width={64}
-                height={79}
-              />
+              <div>
+              <UserButton afterSignOutUrl="/"/>
+              </div>
             </div>
           </div>
           <div className="bg-light-gray/40 rounded-tl-sm h-[100%]">

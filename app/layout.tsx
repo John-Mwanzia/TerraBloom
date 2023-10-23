@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import {Providers} from "./providers";
 import { ImageProvider } from './context/store';
+import { ClerkProvider } from '@clerk/nextjs'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,14 +18,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+
+    <ClerkProvider>
+    <Providers>
+      <ImageProvider>
     <html lang="en">
       <body className={inter.className}>
-      <Providers>
-        <ImageProvider>
+     
         {children}
-        </ImageProvider>
-        </Providers>
+       
         </body>
     </html>
+    </ImageProvider>
+        </Providers>
+        </ClerkProvider>
   )
 }

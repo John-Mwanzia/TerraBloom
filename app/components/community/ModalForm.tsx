@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { UploadContext } from "../../context/store";
 import { AiFillFileImage, AiOutlineCloseCircle } from "react-icons/ai";
 import { myAction } from "@/utils/actions";
+import { postUpload } from "@/utils/api";
 
 export default function ModalForm() {
   const {
@@ -10,6 +11,7 @@ export default function ModalForm() {
     uploadedImage,
     setUploadedImage,
     uploadedVideo,
+    setUploadedVideo,
     fileName,
     setFileName,
     previewFile,
@@ -17,7 +19,37 @@ export default function ModalForm() {
     uploadedFile,
     setUploadedFile,
     selectedGif,
+    setSelectedGif,
+
   } = useContext(UploadContext);
+
+  const handleSubmit =  async(e) => {
+    e.preventDefault();
+
+    const res = await postUpload({
+      title: e.target.title.value,
+      content: e.target.content.value,
+      image: uploadedImage,
+      video: uploadedVideo,
+      file: uploadedFile,
+      gif: selectedGif?.images?.original?.url,
+    });
+
+
+    if (res) {
+      setPreviewImage(null);
+      setUploadedImage(null);
+      setUploadedVideo(null);
+      setFileName(null);
+      setPreviewFile(null);
+      setUploadedFile(null);
+      setSelectedGif(null);
+    }
+
+    console.log(res);
+    
+  }
+    
 
   const handleCancel = () => {
     setUploadedFile(null);
@@ -27,7 +59,7 @@ export default function ModalForm() {
 
   return (
     <div>
-      <form action={myAction}>
+      <form onSubmit={handleSubmit}>
         <div className="flex flex-col">
           <div className="mb-6">
             <input
@@ -76,6 +108,7 @@ export default function ModalForm() {
               <a
                 href={uploadedFile}
                 className="flex items-center justify-start pl-5 text-[#0E9AA9] cursor-pointer"
+                download
               >
                 <AiFillFileImage className="text-3xl " />
                 {fileName}
@@ -96,11 +129,13 @@ export default function ModalForm() {
             </div>
           )}
         </div>
-        <button className="bg-[#0E9AA9] absolute bottom-4 z-10 right-6 rounded px-4 py-1 cursor-pointer">
+        <button
+          type="submit"
+          className="bg-[#0E9AA9] absolute bottom-4 z-10 right-6 rounded px-4 py-1 cursor-pointer"
+        >
           Post
         </button>
       </form>
-  
     </div>
   );
 }

@@ -14,15 +14,15 @@ export const myAction = async (formData: FormData) => {
   const data = {
     title,
     content,
-     Image: image,
+    Image: image,
     video,
     file,
     gif,
     author: {
-        connect: {
-            id: '6382a2ec-ef0b-4540-b118-01b7c42fb5e2',
-        },
-        },
+      connect: {
+        id: "6382a2ec-ef0b-4540-b118-01b7c42fb5e2",
+      },
+    },
   };
 
   const res = await prisma.post.create({

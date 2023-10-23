@@ -20,17 +20,17 @@ export default function RootLayout({
   return (
 
     <ClerkProvider>
-    <Providers>
-      <ImageProvider>
+    
     <html lang="en">
       <body className={inter.className}>
-     
+      <Providers>
+      <ImageProvider>
         {children}
-       
+        </ImageProvider>
+        </Providers>
         </body>
     </html>
-    </ImageProvider>
-        </Providers>
+   
         </ClerkProvider>
   )
 }

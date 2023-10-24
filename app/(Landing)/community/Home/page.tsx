@@ -8,13 +8,16 @@ interface Post {
   id: string;
   title: string;
   content: string;
+  author: {
+    avatarUrl: string;
+    firstName: string;
+    lastName: string;
+  };
   Image?: string;
   video?: string;
   gif?: string;
   file?: string;
 }
-
-
 
 export default function Page() {
   const [showModal, setShowModal] = useState(false);
@@ -56,11 +59,26 @@ export default function Page() {
             </div>
           ) : (
             posts.map((post) => (
-              <div key={post.id}
-              className="bg-white py-8 px-16 shadow-xl w-[45rem] flex flex-col items-center"
+              <div
+                key={post.id}
+                className="bg-white py-8 px-16 shadow-xl w-[45rem] flex flex-col items-center"
               >
+                {post.author.avatarUrl && (
+                  <div>
+                    {" "}
+                    <img
+                      src={post.author.avatarUrl}
+                      alt="avatar"
+                      className="w-[2rem] h-[2rem] rounded-full mb-6"
+                    />{" "}
+                  </div>
+                )}
                 <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
-                {post.content && <div className="mb-6 text-xl"><p>{post.content}</p></div>}
+                {post.content && (
+                  <div className="mb-6 text-xl">
+                    <p>{post.content}</p>
+                  </div>
+                )}
                 {post.Image && <img src={post.Image} alt="Post Image" />}
                 {post.video && <video src={post.video} controls />}
                 {post.gif && <img src={post.gif} alt="GIF" />}

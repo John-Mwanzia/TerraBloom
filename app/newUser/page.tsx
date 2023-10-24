@@ -16,7 +16,9 @@ const syncNewUser = async () => {
       data: {
         clerkId: user?.id as string,
         email: user?.emailAddresses[0].emailAddress as string,
-        avatarUrl : user?.imageUrl as string
+        avatarUrl : user?.imageUrl as string,
+        firstName : user?.firstName as string,
+        lastName : user?.lastName as string
       },
     });
   }

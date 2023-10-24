@@ -61,21 +61,25 @@ export default function Page() {
             posts.map((post) => (
               <div
                 key={post.id}
-                className="bg-white py-8 px-16 shadow-xl w-[45rem] flex flex-col items-center"
+                className="bg-white py-8 px-4 shadow-xl w-[45rem] flex flex-col"
               >
                 {post.author.avatarUrl && (
-                  <div>
+                  <div className="flex gap-6 items-center mb-4">
                     {" "}
                     <img
                       src={post.author.avatarUrl}
                       alt="avatar"
-                      className="w-[2rem] h-[2rem] rounded-full mb-6"
+                      className="w-[3rem] h-[3rem] rounded-full "
                     />{" "}
+
+                    {post.author.firstName} {post.author.lastName
+                    }{" "}
+
                   </div>
                 )}
-                <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
+                <h1 className="text-2xl font-bold mb-6">{post.title}</h1>
                 {post.content && (
-                  <div className="mb-6 text-xl">
+                  <div className="mb-6 ">
                     <p>{post.content}</p>
                   </div>
                 )}

@@ -8,7 +8,7 @@ interface Post {
   id: string;
   title: string;
   content: string;
-  image?: string;
+  Image?: string;
   video?: string;
   gif?: string;
   file?: string;
@@ -61,7 +61,7 @@ export default function Page() {
               >
                 <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
                 {post.content && <div className="mb-6 text-xl"><p>{post.content}</p></div>}
-                {post.image && <img src={post.image} alt="Post Image" />}
+                {post.Image && <img src={post.Image} alt="Post Image" />}
                 {post.video && <video src={post.video} controls />}
                 {post.gif && <img src={post.gif} alt="GIF" />}
                 {post.file && <a href={post.file}>Download File</a>}

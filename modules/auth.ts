@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { auth } from "@clerk/nextjs";
+import prisma from "./db";
 
 //generate token
 export const generateToken = (user: any) => {
@@ -48,3 +50,15 @@ export const protect = (req: any, res: any, next: any) => {
     res.status(401).json({ message: "not authorized" });
   }
 };
+
+export const getUserFromClerkID = async (select = { id: true }) => {
+  const { userId } = auth()
+  const user = await prisma.user.findUniqueOrThrow({
+    where: {
+      clerkId: userId as string,
+    },
+    select,
+  })
+
+  return user
+}

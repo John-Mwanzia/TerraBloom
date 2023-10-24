@@ -15,7 +15,8 @@ const syncNewUser = async () => {
     await prisma.user.create({
       data: {
         clerkId: user?.id as string,
-        email: user?.emailAddresses[0].emailAddress,
+        email: user?.emailAddresses[0].emailAddress as string,
+        avatarUrl : user?.imageUrl as string
       },
     });
   }

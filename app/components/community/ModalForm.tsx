@@ -20,24 +20,22 @@ export default function ModalForm() {
     setUploadedFile,
     selectedGif,
     setSelectedGif,
-
   } = useContext(UploadContext);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmit =  async(e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const res = await postUpload({
       title,
       content,
-      image: uploadedImage || '',
-      video: uploadedVideo || '',
-      file: uploadedFile || '',
-      gif: selectedGif?.images?.original?.url || '',
+      image: uploadedImage || "",
+      video: uploadedVideo || "",
+      file: uploadedFile || "",
+      gif: selectedGif?.images?.original?.url || "",
     });
-
 
     if (res) {
       setPreviewImage(null);
@@ -48,11 +46,7 @@ export default function ModalForm() {
       setUploadedFile(null);
       setSelectedGif(null);
     }
-
-    console.log(res);
-    
-  }
-    
+  };
 
   const handleCancel = () => {
     setUploadedFile(null);

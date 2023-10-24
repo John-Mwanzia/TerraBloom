@@ -1,8 +1,13 @@
+import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function HeroSection() {
+export default async function HeroSection() {
+  const { userId } = await auth();
+
+  let href = userId ? "/community/Home" : "/newUser";
+
   return (
     <>
       <div className="flex justify-center items-center gap-4 max-w-[80%]  relative">
@@ -40,7 +45,7 @@ export default function HeroSection() {
           </div>
 
           <div className="mt-16">
-            <Link href="/community/Home">
+            <Link href={href}>
               <button className="bg-[#99BF1A]  rounded-lg px-6 py-2 font-old-standard">
                 Join Us Today
               </button>

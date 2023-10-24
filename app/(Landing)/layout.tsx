@@ -10,7 +10,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <div className="flex overflow-y-hidden">
+      <div className="flex">
         {activeMenu && (
           <div className="bg-white h-screen w-[16.3rem]">
             <Image

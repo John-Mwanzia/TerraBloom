@@ -1,5 +1,5 @@
 const createURL = (path: string) => {
-  const url = window.location.href + path;
+  const url = window.location.origin + path;
   return url;
 };
 
@@ -18,7 +18,7 @@ export const postUpload = async ({
   file: string;
   gif: string;
 }) => {
-  const res = await fetch(new Request("/api/newPost"), {
+  const res = await fetch(new Request(createURL("/api/newPost")), {
     method: "POST",
     body: JSON.stringify({
       title,
@@ -36,3 +36,16 @@ export const postUpload = async ({
     throw new Error("Something went wrong on API server!");
   }
 };
+
+
+export const getPosts = async () => {
+  const res = await fetch(new Request(createURL("/api/newPost")), {
+    method: "GET",
+  });
+
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Something went wrong on API server!");
+  }
+}

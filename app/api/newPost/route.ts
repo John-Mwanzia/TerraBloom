@@ -25,3 +25,19 @@ export const POST = async (req: Request) => {
   return NextResponse.json({data: post})
   
 };
+
+export const GET = async (req: Request) => {
+  const posts = await prisma.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      comments: true,
+      likes: true,
+    }
+  });
+
+  return NextResponse.json({data: posts})
+}
+
+

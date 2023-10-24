@@ -7,6 +7,7 @@ export default authMiddleware({
     publicRoutes: [  
         '/',
         '/terra/community',
+        '/api/newPost',
     ],
 
 });

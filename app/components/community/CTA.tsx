@@ -1,8 +1,14 @@
+import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function CTA() {
+export default async function CTA() {
+
+  const { userId } = await auth();
+
+  let href = userId ? "/community/Home" : "/newUser";
+
   return (
     <div className="flex justify-center gap-64 max-w-[80%]">
       <div>
@@ -29,7 +35,7 @@ export default function CTA() {
           valuable insights and connections.
         </p>
         <div className="mt-16">
-          <Link href="/community/Home">
+          <Link href = {href}>
             <button className="bg-[#99BF1A]  rounded-lg px-6 py-2 font-old-standard">
               Join Us Today
             </button>

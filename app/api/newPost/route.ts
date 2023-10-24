@@ -34,6 +34,7 @@ export const GET = async (req: Request) => {
     include: {
       comments: true,
       likes: true,
+      author: true
     }
   });
 

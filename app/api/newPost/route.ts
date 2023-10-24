@@ -1,8 +1,10 @@
+import { getUserFromClerkID } from "@/modules/auth";
 import prisma from "@/modules/db";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: Request) => {
   const data = await req.json();
+  const user = await getUserFromClerkID();
   const post = await prisma.post.create({
     data: {
       title: data.title,
@@ -14,7 +16,7 @@ export const POST = async (req: Request) => {
 
       author: {
         connect: {
-          id: "6382a2ec-ef0b-4540-b118-01b7c42fb5e2",
+          id: user.id,
         },
       },
     },

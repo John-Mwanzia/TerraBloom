@@ -44,8 +44,8 @@ export default function Page() {
 
   return (
     <>
-      <div className="h-[calc(100vh-5rem)]">
-        <div className="flex justify-between px-4 pt-6">
+      <div className="h-screen flex flex-col">
+        <div className="bg-white flex justify-between px-4 pb-4">
           <h1 className="text-3xl">Home</h1>
           <button
             className="bg-[#0E9AA9] rounded px-3 py-2"
@@ -54,45 +54,49 @@ export default function Page() {
             Create Post
           </button>
         </div>
-        <div className="flex flex-col items-center pt-24 gap-16 relative">
-          {loading ? (
-            <div>
-              <h1>...loading</h1>
-            </div>
-          ) : (
-            posts.map((post) => (
-              <div
-                key={post.id}
-                className="bg-white py-8 px-4 shadow-xl w-[45rem] flex flex-col"
-              >
-                {post.author.avatarUrl && (
-                  <div className="flex gap-6 items-center mb-4">
-                    {" "}
-                    <img
-                      src={post.author.avatarUrl}
-                      alt="avatar"
-                      className="w-[3rem] h-[3rem] rounded-full "
-                    />{" "}
-                    {post.author.firstName} {post.author.lastName}{" "}
-                    <p>Posted {getTimeSincePostCreation(post.createdAt)}</p>
-                  </div>
-                )}
-                <h1 className="text-2xl font-bold mb-6">{post.title}</h1>
-                {post.content && (
-                  <div className="mb-6 ">
-                    <p>{post.content}</p>
-                  </div>
-                )}
-                {post.Image && <img src={post.Image} alt="Post Image" />}
-                {post.video && <video src={post.video} controls />}
-                {post.gif && <img src={post.gif} alt="GIF" />}
-                {post.file && <a href={post.file}>Download File</a>}
+        <div className="flex-1 overflow-y-auto">
+          <div className="flex flex-col items-center pt-24 gap-16 relative">
+            {loading ? (
+              <div>
+                <h1>...loading</h1>
               </div>
-            ))
-          )}
+            ) : (
+              posts.map((post) => (
+                <div
+                  key={post.id}
+                  className="bg-white py-8 px-4 shadow-xl w-[45rem] flex flex-col"
+                >
+                  {post.author.avatarUrl && (
+                    <div className="flex gap-6 items-center mb-4">
+                      {" "}
+                      <img
+                        src={post.author.avatarUrl}
+                        alt="avatar"
+                        className="w-[3rem] h-[3rem] rounded-full"
+                      />{" "}
+                      {post.author.firstName} {post.author.lastName}{" "}
+                      <p className="text-sm">
+                        Posted {getTimeSincePostCreation(post.createdAt)}
+                      </p>
+                    </div>
+                  )}
+                  <h1 className="text-2xl font-bold mb-6">{post.title}</h1>
+                  {post.content && (
+                    <div className="mb-6">
+                      <p>{post.content}</p>
+                    </div>
+                  )}
+                  {post.Image && <img src={post.Image} alt="Post Image" />}
+                  {post.video && <video src={post.video} controls />}
+                  {post.gif && <img src={post.gif} alt="GIF" />}
+                  {post.file && <a href={post.file}>Download File</a>}
+                </div>
+              ))
+            )}
+          </div>
         </div>
+        {showModal && <PostModal setShowModal={setShowModal} />}
       </div>
-      {showModal && <PostModal setShowModal={setShowModal} />}
     </>
   );
 }

@@ -10,9 +10,9 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <div className="flex">
+      <div className="">
         {activeMenu && (
-          <div className="bg-white h-screen w-[16.3rem]">
+          <div className="bg-white h-screen fixed w-[16.3rem]">
             <Image
               src="/bloomCommAssets/logo.svg"
               alt="logo"
@@ -63,7 +63,10 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                   <Link className="py-4 pl-4" href="/community/Showcase">
                     ✨ Showcase
                   </Link>
-                  <Link className="py-4 pl-4 flex gap-1" href="/community/Events">
+                  <Link
+                    className="py-4 pl-4 flex gap-1"
+                    href="/community/Events"
+                  >
                     <Image
                       src="/bloomCommAssets/events.svg"
                       alt="logochat"
@@ -77,66 +80,68 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
             </div>
           </div>
         )}
-        <div className="flex-1">
-          <div className="flex justify-between items-center pr-3 border-l">
-            <button onClick={() => setActiveMenu(!activeMenu)}>
-              <div className="pl-3">
-                <div className="h-[0.1875rem] rounded-md w-[1.875rem] bg-[#0E9AA9] mb-1"></div>
-                <div className="h-[0.1875rem] rounded-md  w-[1.4rem] mb-1 bg-[#0E9AA9]"></div>
-                <div className="h-[0.1875rem] rounded-md w-[1.875rem ] bg-[#0E9AA9] mb-1"></div>
-              </div>
-            </button>
-            <div className="flex items-center gap-4 py-6">
-              <div>
-                <Tooltip
-                  showArrow
-                  placement="bottom"
-                  content="notifications"
-                  classNames={{
-                    base:
-                      "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
-                    arrow: "bg-neutral-400 dark:bg-white",
-                  }}
-                >
-                  <Button variant="flat">
-                    <Image
-                      src="/bloomCommAssets/notification.svg"
-                      alt="logochat"
-                      width={22}
-                      height={18}
-                    />
-                  </Button>
-                </Tooltip>
-              </div>
-              <div>
-                <Tooltip
-                  showArrow
-                  placement="bottom"
-                  content="messages"
-                  classNames={{
-                    base:
-                      "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
-                    arrow: "bg-neutral-400 dark:bg-white",
-                  }}
-                >
-                  <Button variant="flat">
-                    <Image
-                      src="/bloomCommAssets/chat.svg"
-                      alt="logochat"
-                      width={22}
-                      height={18}
-                    />
-                  </Button>
-                </Tooltip>
-              </div>
-              <div>
-              <UserButton afterSignOutUrl="/"/>
+        <div className="">
+          <div>
+            <div className=" fixed ml-[16.3rem] w-[calc(100vw-16.3rem)]">
+              <div className="flex justify-between items-center pr-3 border-l  ">
+                <button onClick={() => setActiveMenu(!activeMenu)}>
+                  <div className="pl-3">
+                    <div className="h-[0.1875rem] rounded-md w-[1.875rem] bg-[#0E9AA9] mb-1"></div>
+                    <div className="h-[0.1875rem] rounded-md  w-[1.4rem] mb-1 bg-[#0E9AA9]"></div>
+                    <div className="h-[0.1875rem] rounded-md w-[1.875rem ] bg-[#0E9AA9] mb-1"></div>
+                  </div>
+                </button>
+                <div className="flex items-center gap-4 py-6 ">
+                  <div>
+                    <Tooltip
+                      showArrow
+                      placement="bottom"
+                      content="notifications"
+                      classNames={{
+                        base:
+                          "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
+                        arrow: "bg-neutral-400 dark:bg-white",
+                      }}
+                    >
+                      <Button variant="flat">
+                        <Image
+                          src="/bloomCommAssets/notification.svg"
+                          alt="logochat"
+                          width={22}
+                          height={18}
+                        />
+                      </Button>
+                    </Tooltip>
+                  </div>
+                  <div>
+                    <Tooltip
+                      showArrow
+                      placement="bottom"
+                      content="messages"
+                      classNames={{
+                        base:
+                          "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
+                        arrow: "bg-neutral-400 dark:bg-white",
+                      }}
+                    >
+                      <Button variant="flat">
+                        <Image
+                          src="/bloomCommAssets/chat.svg"
+                          alt="logochat"
+                          width={22}
+                          height={18}
+                        />
+                      </Button>
+                    </Tooltip>
+                  </div>
+                  <div>
+                    <UserButton afterSignOutUrl="/" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="bg-light-gray/40 rounded-tl-sm h-[100%]">
-            {children}
-          </div>
+          <div className="bg-light-gray/40 fixed top-20 rounded-tl-sm w-[calc(100vw-16.3rem)] ml-[16.3rem] h-[calc(100vh-5rem)]">{children}</div>
         </div>
       </div>
     </>

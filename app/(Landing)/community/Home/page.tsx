@@ -1,6 +1,7 @@
 "use client";
 
 import PostModal from "@/app/components/community/PostModal";
+import getTimeSincePostCreation from "@/handlers/timeStamp";
 import { getPosts } from "@/utils/api";
 import React, { useEffect, useState } from "react";
 
@@ -17,6 +18,7 @@ interface Post {
   video?: string;
   gif?: string;
   file?: string;
+  createdAt: string;
 }
 
 export default function Page() {
@@ -71,10 +73,8 @@ export default function Page() {
                       alt="avatar"
                       className="w-[3rem] h-[3rem] rounded-full "
                     />{" "}
-
-                    {post.author.firstName} {post.author.lastName
-                    }{" "}
-
+                    {post.author.firstName} {post.author.lastName}{" "}
+                    <p>Posted {getTimeSincePostCreation(post.createdAt)}</p>
                   </div>
                 )}
                 <h1 className="text-2xl font-bold mb-6">{post.title}</h1>

@@ -3,6 +3,7 @@
 import PostModal from "@/app/components/community/PostModal";
 import getTimeSincePostCreation from "@/handlers/timeStamp";
 import { getPosts } from "@/utils/api";
+import { Spinner } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -59,7 +60,7 @@ export default function Page() {
           <div className="flex flex-col items-center pt-8 gap-16 relative">
             {loading ? (
               <div>
-                <h1>...loading</h1>
+                 <Spinner size="lg" />
               </div>
             ) : (
               posts.map((post) => (

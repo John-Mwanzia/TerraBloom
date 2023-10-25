@@ -4,6 +4,7 @@ import PostModal from "@/app/components/community/PostModal";
 import getTimeSincePostCreation from "@/handlers/timeStamp";
 import { getPosts } from "@/utils/api";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 interface Post {
   id: string;
@@ -35,7 +36,7 @@ export default function Page() {
         setLoading(false);
         console.log(response.data);
       } catch (error) {
-        console.error("Error fetching posts:", error);
+        toast.error("Error fetching posts:" + error);
       }
     }
 
@@ -55,7 +56,7 @@ export default function Page() {
           </button>
         </div>
         <div className="flex-1 overflow-y-auto">
-          <div className="flex flex-col items-center pt-24 gap-16 relative">
+          <div className="flex flex-col items-center pt-8 gap-16 relative">
             {loading ? (
               <div>
                 <h1>...loading</h1>

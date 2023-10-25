@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import {Providers} from "./providers";
 import { ImageProvider } from './context/store';
 import { ClerkProvider } from '@clerk/nextjs'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +27,7 @@ export default function RootLayout({
       <Providers>
       <ImageProvider>
         {children}
+        <Toaster position='top-center' />
         </ImageProvider>
         </Providers>
         </body>

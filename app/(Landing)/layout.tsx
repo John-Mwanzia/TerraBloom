@@ -83,7 +83,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
         <div className="">
           <div>
             <div className=" fixed ml-[16.3rem] w-[calc(100vw-16.3rem)]">
-              <div className="flex justify-between items-center pr-3 border-l  ">
+              <div className="flex justify-between items-center pr-3 border-l">
                 <button onClick={() => setActiveMenu(!activeMenu)}>
                   <div className="pl-3">
                     <div className="h-[0.1875rem] rounded-md w-[1.875rem] bg-[#0E9AA9] mb-1"></div>

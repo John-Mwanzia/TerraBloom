@@ -45,7 +45,7 @@ export default function Page() {
   return (
     <>
       <div className="h-screen flex flex-col">
-        <div className="bg-white flex justify-between px-4 pb-4">
+        <div className="bg-white flex justify-between px-4 pb-4 pt-3 border-t border-l">
           <h1 className="text-3xl">Home</h1>
           <button
             className="bg-[#0E9AA9] rounded px-3 py-2"

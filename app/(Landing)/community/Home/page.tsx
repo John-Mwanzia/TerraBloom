@@ -4,6 +4,7 @@ import PostModal from "@/app/components/community/PostModal";
 import getTimeSincePostCreation from "@/handlers/timeStamp";
 import { getPosts } from "@/utils/api";
 import { Spinner } from "@nextui-org/react";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -60,7 +61,7 @@ export default function Page() {
           <div className="flex flex-col items-center pt-8 gap-16 relative">
             {loading ? (
               <div>
-                 <Spinner size="lg" />
+                <Spinner size="lg" />
               </div>
             ) : (
               posts.map((post) => (
@@ -92,6 +93,25 @@ export default function Page() {
                   {post.video && <video src={post.video} controls />}
                   {post.gif && <img src={post.gif} alt="GIF" />}
                   {post.file && <a href={post.file}>Download File</a>}
+
+                  <div>
+                    <button>
+                      <Image
+                        src="/bloomCommAssets/like.svg"
+                        alt="like"
+                        width={24}
+                        height={24}
+                      />
+                    </button>
+                    <button>
+                      <Image
+                        src="/bloomCommAssets/comment.svg"
+                        alt="comment"
+                        width={24}
+                        height={24}
+                      />
+                    </button>
+                  </div>
                 </div>
               ))
             )}

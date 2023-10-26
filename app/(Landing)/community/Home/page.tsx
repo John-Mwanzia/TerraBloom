@@ -60,7 +60,7 @@ export default function Page() {
         <div className="flex-1 overflow-y-auto pb-8">
           <div className="flex flex-col items-center pt-8 gap-16 relative pb-24">
             {loading ? (
-              <div>
+              <div className="absolute top-72 ">
                 <Spinner size="lg" />
               </div>
             ) : (

@@ -20,7 +20,7 @@ export default async function CTA() {
         />
       </div>
       <div>
-        <div className="flex items-center mb-8">
+        <div className="flex items-center lg:mb-2 2xl:mb-8">
           <h1 className="text-white font-old-standard text-5xl">Join Now</h1>
           <Image
             src="/terraCommAssets/join-star.svg"
@@ -34,7 +34,7 @@ export default async function CTA() {
           community of passionate farmers. Empower your farming journey with
           valuable insights and connections.
         </p>
-        <div className="mt-16">
+        <div className=" lg:mt-6 2xl:mt-16">
           <Link href = {href}>
             <button className="bg-[#99BF1A]  rounded-lg px-6 py-2 font-old-standard">
               Join Us Today

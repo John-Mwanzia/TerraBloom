@@ -7,9 +7,9 @@ export default function FAQ() {
       <h1 className="text-4xl mt-4 font-old-standard text-white mb-4">
         Curious Corners
       </h1>
-      <div className="flex justify-center items-center gap-36">
+      <div className="flex justify-center items-center gap-36 2xl:gap-72">
         <div>
-          <h5 className="text-xl text-[#138853] font-outfit  mt-4">
+          <h5 className=" text-[#138853] font-outfit  mt-4">
             What is TerraBloom?
           </h5>
           <p className="text-white max-w-xl mt-8">
@@ -18,7 +18,7 @@ export default function FAQ() {
             world.
           </p>
 
-          <h5 className="text-xl text-[#138853] font-outfit mt-4 ">
+          <h5 className=" text-[#138853] font-outfit mt-4 ">
             How do I join the community?
           </h5>
           <p className="text-white max-w-xl mt-8">
@@ -26,7 +26,7 @@ export default function FAQ() {
             also join the community by signing up with your Google account.
           </p>
 
-          <h5 className="text-xl text-[#138853] font-outfit mt-4 ">
+          <h5 className=" text-[#138853] font-outfit mt-4 ">
             {" "}
             Is my data safe on TerraBloom?
           </h5>

@@ -7,7 +7,7 @@ export default function Features() {
       <h1 className="text-4xl mt-4 font-old-standard text-white mb-28">
         Explore Our Features
       </h1>
-      <div className="flex justify-center items-start gap-12">
+      <div className="flex flex-col md:flex-row justify-center items-start gap-12">
         <div>
           <Image
             src="/terraCommAssets/discussion.svg"

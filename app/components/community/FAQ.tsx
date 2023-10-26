@@ -7,7 +7,7 @@ export default function FAQ() {
       <h1 className="text-4xl mt-4 font-old-standard text-white mb-4">
         Curious Corners
       </h1>
-      <div className="flex justify-center items-center md:gap-6 2xl:gap-72">
+      <div className="flex justify-center items-center flex-col md:flex-row gap-6 md:gap-6 2xl:gap-72">
         <div>
           <h5 className=" text-[#138853] font-outfit  mt-4">
             What is TerraBloom?

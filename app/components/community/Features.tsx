@@ -7,7 +7,7 @@ export default function Features() {
       <h1 className="text-4xl mt-4 font-old-standard text-white mb-28">
         Explore Our Features
       </h1>
-      <div className="flex justify-center items-center gap-12">
+      <div className="flex justify-center items-start gap-12">
         <div>
           <Image
             src="/terraCommAssets/discussion.svg"
@@ -17,7 +17,7 @@ export default function Features() {
             className="mx-auto"
           />
           <div>
-            <h1 className="text-[#99BF1A]  mb-12 text-4xl mt-4 font-old-standard text-center"> 
+            <h1 className="text-[#99BF1A]  mb-12 md:mb-6 lg:mb-12 text-4xl  mt-4 font-old-standard text-center"> 
               Discussion Forums
             </h1>
           </div>
@@ -39,7 +39,7 @@ export default function Features() {
           />
 
           <div>
-            <h1 className="text-[#99BF1A]  mb-12 text-4xl mt-4 font-old-standard text-center">
+            <h1 className="text-[#99BF1A]  mb-12 md:mb-6 lg:mb-12 text-4xl mt-4 font-old-standard text-center">
             Knowledge base
             </h1>
           </div>

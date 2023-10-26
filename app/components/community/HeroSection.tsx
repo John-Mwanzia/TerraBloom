@@ -58,7 +58,7 @@ export default async function HeroSection() {
             alt="hero star"
             width={400}
             height={400}
-            className="absolute -z-[100px] h-[10rem] lg:h-[20rem] top-64 -right-32 lg:top-2 lg:-right-16 "
+            className="absolute -z-[100px] h-[10rem] lg:h-[20rem] top-64 -right-32 md:top-4 md:-right-24 lg:top-2 lg:-right-16 "
           />
 
           <Image
@@ -66,7 +66,7 @@ export default async function HeroSection() {
             alt="hero star"
             width={729}
             height={711}
-            className="absolute -z-[100px] h-[20rem] top-64 -right-8 lg:-top-16 md:-right-16 lg:static lg:h-[45rem]"
+            className="absolute -z-[100px] h-[20rem] top-64 -right-8 md:top-48 md:-right-44 lg:static  lg:-top-16 lg:h-[45rem]"
           />
         </div>
       </div>

@@ -23,7 +23,7 @@ export default function Conversation() {
         </div>
         <div>
           <div>
-            <h1 className="text-white font-old-standard text-5xl mb-16">
+            <h1 className="text-white font-old-standard text-5xl md:text-4xl lg:text-5xl mb-16 md:mb-7 lg:mb-16">
               Join The Conversations
             </h1>
           </div>

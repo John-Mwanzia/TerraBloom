@@ -46,6 +46,6 @@ export const getPosts = async () => {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Something went wrong on API server!");
+    throw new Error("Something went wrong while fetching posts from API server!");
   }
 }

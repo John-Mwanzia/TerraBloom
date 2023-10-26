@@ -38,7 +38,7 @@ export default function Page() {
         setLoading(false);
         console.log(response.data);
       } catch (error) {
-        toast.error("Error fetching posts:" + error);
+        toast.error("Error" + error);
       }
     }
 
@@ -57,8 +57,8 @@ export default function Page() {
             Create Post
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto">
-          <div className="flex flex-col items-center pt-8 gap-16 relative">
+        <div className="flex-1 overflow-y-auto pb-8">
+          <div className="flex flex-col items-center pt-8 gap-16 relative pb-24">
             {loading ? (
               <div>
                 <Spinner size="lg" />
@@ -94,23 +94,30 @@ export default function Page() {
                   {post.gif && <img src={post.gif} alt="GIF" />}
                   {post.file && <a href={post.file}>Download File</a>}
 
-                  <div>
-                    <button>
+                  <div className="mt-4 border-t flex justify-between items-center pt-4">
+                     <div className="flex gap-4">
+                     <button className="flex gap-2">
                       <Image
                         src="/bloomCommAssets/like.svg"
                         alt="like"
                         width={24}
                         height={24}
                       />
+                      like
                     </button>
-                    <button>
+                    <button className="flex gap-2">
                       <Image
                         src="/bloomCommAssets/comment.svg"
                         alt="comment"
                         width={24}
                         height={24}
                       />
+                      comment
                     </button>
+                     </div>
+                     <div>
+                      <p> 0 comments</p>
+                     </div>
                   </div>
                 </div>
               ))

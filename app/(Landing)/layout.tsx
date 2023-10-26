@@ -141,7 +141,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               </div>
             </div>
           </div>
-          <div className="bg-light-gray/40 fixed top-20 rounded-tl-sm w-[calc(100vw-16.3rem)] ml-[16.3rem] h-[calc(100vh-5rem)]">{children}</div>
+          <div className="bg-light-gray/40 fixed top-20 rounded-tl-sm w-[calc(100vw-16.3rem)] ml-[16.3rem] h-[calc(100vh-5rem)] ">{children}</div>
         </div>
       </div>
     </>

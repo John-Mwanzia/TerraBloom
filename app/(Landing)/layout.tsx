@@ -5,6 +5,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { Button, Tooltip } from "@nextui-org/react";
 import { UserButton } from "@clerk/nextjs";
+import { ImCancelCircle } from "react-icons/im";
+
+
+
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
 
@@ -21,14 +25,21 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
     <>
       <div className="">
         {activeMenu && (
-          <div className="bg-white h-screen fixed w-[16.3rem]  z-50">
-            <Image
-              src="/bloomCommAssets/logo.svg"
-              alt="logo"
-              className="mx-auto"
-              width={180}
-              height={133}
-            />
+          <div className="bg-white h-screen fixed w-[16.3rem]  z-50 ">
+            <div className="relative">
+              <Image
+                src="/bloomCommAssets/logo.svg"
+                alt="logo"
+                className="mx-auto"
+                width={180}
+                height={133}
+              />
+              <div className="absolute top-4 right-2 text-2xl   md:hidden">
+                  <button onClick={()=> setActiveMenu(false)}>
+                  <ImCancelCircle />
+                  </button>
+              </div>
+            </div>
             <div className="pl-16 mt-8 ">
               <Link href="/community/Home" className="flex gap-1">
                 <Image
@@ -91,11 +102,12 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
         )}
         <div className="">
           <div>
-            <div 
-            className={activeMenu?
-              " fixed md:ml-[16.3rem] md:static ": " w-screen"
-            }
-            
+            <div
+              className={
+                activeMenu
+                  ? " fixed md:ml-[16.3rem] md:static flex-1 "
+                  : " w-screen"
+              }
             >
               <div className="flex justify-between items-center pr-3 border-l">
                 <button onClick={() => setActiveMenu(!activeMenu)}>
@@ -155,11 +167,13 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               </div>
             </div>
           </div>
-          <div 
-          className= {
-            activeMenu? "bg-light-gray/40 fixed top-20 md:ml-[16.3rem] rounded-tl-sm w-[calc(100vw-16.3rem)]  h-[calc(100vh-5rem)] ":
-            "bg-light-gray/40 fixed top-20 rounded-tl-sm w-full ml-0 h-[calc(100vh-5rem)]"
-          }>
+          <div
+            className={
+              activeMenu
+                ? "bg-light-gray/40 fixed top-20 md:ml-[16.3rem] rounded-tl-sm w-[calc(100vw-16.3rem)]  h-[calc(100vh-5rem)] "
+                : "bg-light-gray/40 fixed top-20 rounded-tl-sm w-full ml-0 h-[calc(100vh-5rem)]"
+            }
+          >
             {children}
           </div>
         </div>

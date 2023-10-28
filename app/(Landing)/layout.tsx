@@ -7,14 +7,12 @@ import { Button, Tooltip } from "@nextui-org/react";
 import { UserButton } from "@clerk/nextjs";
 import { ImCancelCircle } from "react-icons/im";
 
-
-
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
 
   useEffect(() => {
     const screenSize = window.innerWidth;
-    if (screenSize <= 768) {
+    if (screenSize <= 900) {
       setActiveMenu(false);
     } else {
       setActiveMenu(true);
@@ -25,7 +23,10 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
     <>
       <div className="">
         {activeMenu && (
-          <div className="bg-white h-screen fixed w-[16.3rem]  z-50 ">
+          <div
+            className="bg-white h-screen fixed w-[16.3rem]"
+            style={{ zIndex: 999 }}
+          >
             <div className="relative">
               <Image
                 src="/bloomCommAssets/logo.svg"
@@ -34,10 +35,10 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                 width={180}
                 height={133}
               />
-              <div className="absolute top-4 right-2 text-2xl   md:hidden">
-                  <button onClick={()=> setActiveMenu(false)}>
+              <div className="absolute top-4 right-2 text-2xl   xl:hidden">
+                <button onClick={() => setActiveMenu(false)}>
                   <ImCancelCircle />
-                  </button>
+                </button>
               </div>
             </div>
             <div className="pl-16 mt-8 ">
@@ -104,9 +105,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
           <div>
             <div
               className={
-                activeMenu
-                  ? " fixed md:ml-[16.3rem] md:static flex-1 "
-                  : " w-screen"
+                activeMenu ? " fixed xl:ml-[16.3rem] xl:static  " : " w-screen"
               }
             >
               <div className="flex justify-between items-center pr-3 border-l">
@@ -170,8 +169,8 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
           <div
             className={
               activeMenu
-                ? "bg-light-gray/40 fixed top-20 md:ml-[16.3rem] rounded-tl-sm w-[calc(100vw-16.3rem)]  h-[calc(100vh-5rem)] "
-                : "bg-light-gray/40 fixed top-20 rounded-tl-sm w-full ml-0 h-[calc(100vh-5rem)]"
+                ? "bg-light-gray/40 fixed top-20 xl:ml-[16.3rem] w-full rounded-tl-sm xl:w-[calc(100vw-16.3rem)]  h-[calc(100vh-5rem)] "
+                : "bg-light-gray/40 fixed top-20 rounded-tl-sm w-screen ml-0 h-[calc(100vh-5rem)]"
             }
           >
             {children}

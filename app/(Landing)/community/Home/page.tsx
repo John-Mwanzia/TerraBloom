@@ -47,7 +47,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="h-screen flex flex-col">
+      <div className="h-screen w-full flex flex-col">
         <div className="bg-white flex justify-between px-4 pb-4 pt-3 border-t border-l">
           <h1 className="text-3xl">Home</h1>
           <button
@@ -67,7 +67,7 @@ export default function Page() {
               posts.map((post) => (
                 <div
                   key={post.id}
-                  className="bg-white py-8 px-4 shadow-xl w-[45rem] flex flex-col"
+                  className="bg-white py-8 px-4 shadow-xl md:w-[45rem] flex flex-col"
                 >
                   {post.author.avatarUrl && (
                     <div className="flex gap-6 items-center mb-4">

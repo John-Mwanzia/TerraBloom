@@ -21,7 +21,7 @@ export default function Conversation() {
             height={100}
           />
         </div>
-        <div>
+        <div className="2xl:pl-44">
           <div>
             <h1 className="text-white font-old-standard text-5xl md:text-4xl lg:text-5xl mb-16 md:mb-7 lg:mb-16">
               Join The Conversations

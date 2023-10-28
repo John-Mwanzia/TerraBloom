@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode } from "react";
+import React, { ReactNode, use, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -8,11 +8,20 @@ import { UserButton } from "@clerk/nextjs";
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
 
+  useEffect(() => {
+    const screenSize = window.innerWidth;
+    if (screenSize <= 768) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, []);
+
   return (
     <>
       <div className="">
         {activeMenu && (
-          <div className="bg-white h-screen fixed w-[16.3rem]">
+          <div className="bg-white h-screen fixed w-[16.3rem]  z-50">
             <Image
               src="/bloomCommAssets/logo.svg"
               alt="logo"
@@ -82,7 +91,12 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
         )}
         <div className="">
           <div>
-            <div className=" fixed ml-[16.3rem] w-[calc(100vw-16.3rem)]">
+            <div 
+            className={activeMenu?
+              " fixed md:ml-[16.3rem] md:static ": " w-screen"
+            }
+            
+            >
               <div className="flex justify-between items-center pr-3 border-l">
                 <button onClick={() => setActiveMenu(!activeMenu)}>
                   <div className="pl-3">
@@ -141,7 +155,13 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               </div>
             </div>
           </div>
-          <div className="bg-light-gray/40 fixed top-20 rounded-tl-sm w-[calc(100vw-16.3rem)] ml-[16.3rem] h-[calc(100vh-5rem)] ">{children}</div>
+          <div 
+          className= {
+            activeMenu? "bg-light-gray/40 fixed top-20 md:ml-[16.3rem] rounded-tl-sm w-[calc(100vw-16.3rem)]  h-[calc(100vh-5rem)] ":
+            "bg-light-gray/40 fixed top-20 rounded-tl-sm w-full ml-0 h-[calc(100vh-5rem)]"
+          }>
+            {children}
+          </div>
         </div>
       </div>
     </>

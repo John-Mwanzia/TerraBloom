@@ -102,66 +102,64 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
           </div>
         )}
         <div className="">
-          <div>
-            <div
-              className={
-                activeMenu ? " fixed xl:ml-[16.3rem] xl:static  " : " w-screen"
-              }
-            >
-              <div className="flex justify-between items-center pr-3 border-l">
-                <button onClick={() => setActiveMenu(!activeMenu)}>
-                  <div className="pl-3">
-                    <div className="h-[0.1875rem] rounded-md w-[1.875rem] bg-[#0E9AA9] mb-1"></div>
-                    <div className="h-[0.1875rem] rounded-md  w-[1.4rem] mb-1 bg-[#0E9AA9]"></div>
-                    <div className="h-[0.1875rem] rounded-md w-[1.875rem ] bg-[#0E9AA9] mb-1"></div>
-                  </div>
-                </button>
-                <div className="flex items-center gap-4 py-6 ">
-                  <div>
-                    <Tooltip
-                      showArrow
-                      placement="bottom"
-                      content="notifications"
-                      classNames={{
-                        base:
-                          "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
-                        arrow: "bg-neutral-400 dark:bg-white",
-                      }}
-                    >
-                      <Button variant="flat">
-                        <Image
-                          src="/bloomCommAssets/notification.svg"
-                          alt="logochat"
-                          width={22}
-                          height={18}
-                        />
-                      </Button>
-                    </Tooltip>
-                  </div>
-                  <div>
-                    <Tooltip
-                      showArrow
-                      placement="bottom"
-                      content="messages"
-                      classNames={{
-                        base:
-                          "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
-                        arrow: "bg-neutral-400 dark:bg-white",
-                      }}
-                    >
-                      <Button variant="flat">
-                        <Image
-                          src="/bloomCommAssets/chat.svg"
-                          alt="logochat"
-                          width={22}
-                          height={18}
-                        />
-                      </Button>
-                    </Tooltip>
-                  </div>
-                  <div>
-                    <UserButton afterSignOutUrl="/" />
-                  </div>
+          <div
+            className={
+              activeMenu ? "  xl:ml-[16.3rem] static  " : " w-screen"
+            }
+          >
+            <div className="flex justify-between items-center pr-3 border-l">
+              <button onClick={() => setActiveMenu(!activeMenu)}>
+                <div className="pl-3">
+                  <div className="h-[0.1875rem] rounded-md w-[1.875rem] bg-[#0E9AA9] mb-1"></div>
+                  <div className="h-[0.1875rem] rounded-md  w-[1.4rem] mb-1 bg-[#0E9AA9]"></div>
+                  <div className="h-[0.1875rem] rounded-md w-[1.875rem ] bg-[#0E9AA9] mb-1"></div>
+                </div>
+              </button>
+              <div className="flex items-center gap-4 py-6 ">
+                <div>
+                  <Tooltip
+                    showArrow
+                    placement="bottom"
+                    content="notifications"
+                    classNames={{
+                      base:
+                        "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
+                      arrow: "bg-neutral-400 dark:bg-white",
+                    }}
+                  >
+                    <Button variant="flat">
+                      <Image
+                        src="/bloomCommAssets/notification.svg"
+                        alt="logochat"
+                        width={22}
+                        height={18}
+                      />
+                    </Button>
+                  </Tooltip>
+                </div>
+                <div>
+                  <Tooltip
+                    showArrow
+                    placement="bottom"
+                    content="messages"
+                    classNames={{
+                      base:
+                        "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
+                      arrow: "bg-neutral-400 dark:bg-white",
+                    }}
+                  >
+                    <Button variant="flat">
+                      <Image
+                        src="/bloomCommAssets/chat.svg"
+                        alt="logochat"
+                        width={22}
+                        height={18}
+                      />
+                    </Button>
+                  </Tooltip>
+                </div>
+                <div>
+                  <UserButton afterSignOutUrl="/" />
                 </div>
               </div>
             </div>

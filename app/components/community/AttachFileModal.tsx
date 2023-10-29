@@ -88,7 +88,7 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
         isOpen ? "block" : "hidden"
       } bg-black bg-opacity-80 flex items-center justify-center`}
     >
-      <div className="modal-container p-6 bg-white w-[500px] rounded-lg shadow-lg">
+      <div className="modal-container p-6 bg-white  w-[90%] md:w-[500px] rounded-lg shadow-lg">
         <div className="modal-header flex justify-between mb-4">
           <h2 className="text-xl font-bold">Attach File</h2>
           <button className="modal-close text-3xl" onClick={onClose}>

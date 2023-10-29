@@ -11,7 +11,7 @@ export default function GifModal({ isOpen, onClose, onUpload }: any) {
         isOpen ? "block" : "hidden"
       } bg-black bg-opacity-80 flex items-center justify-center`}
     >
-      <div className=" p-6 bg-white w-[500px] rounded-lg shadow-lg">
+      <div className=" p-6 bg-white  w-[90%] md:w-[500px] rounded-lg shadow-lg">
         <div className=" flex justify-between mb-4">
           <h2 className="text-xl font-bold">Choose a GIF</h2>
           <button className=" text-3xl" onClick={onClose}>

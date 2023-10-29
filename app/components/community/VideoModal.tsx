@@ -237,7 +237,7 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
         isOpen ? "block" : "hidden"
       } bg-black bg-opacity-80 flex items-center justify-center`}
     >
-      <div className="modal-container p-6 bg-white w-[500px] rounded-lg shadow-lg">
+      <div className="modal-container p-6 bg-white  w-[90%] md:w-[500px] rounded-lg shadow-lg">
         <div className="modal-header flex justify-between mb-4">
           <h2 className="text-xl font-bold">Attach Video</h2>
           <button className="modal-close text-3xl" onClick={onClose}>
@@ -313,7 +313,7 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
         </div>
         <div className="modal-footer">
           <button
-            className="btn btn-primary"
+           className="mr-4 bg-[#0E9AA9] py-2 px-4 rounded-md"
             onClick={mode === "upload" ? handleUpload : handleEmbed}
           >
             {mode === "upload" ? "Upload" : "Embed"}

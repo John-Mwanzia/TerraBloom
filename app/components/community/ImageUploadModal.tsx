@@ -94,7 +94,7 @@ function ImageUploadModal({
         isOpen ? "block" : "hidden"
       } bg-black bg-opacity-80 flex items-center justify-center`}
     >
-      <div className="modal-container p-6 bg-white w-[500px] rounded-lg shadow-lg">
+      <div className="modal-container p-6 bg-white w-[90%] md:w-[500px] rounded-lg shadow-lg">
         <div className="modal-header flex justify-between mb-4">
           <h2 className="text-xl font-bold">Image Upload</h2>
           <button className="modal-close text-3xl" onClick={onClose}>
@@ -126,7 +126,8 @@ function ImageUploadModal({
           {mode === "upload" && (
             <div
               ref={dropAreaRef}
-              className={`border border-gray-200 p-12 mb-4 text-center cursor-pointer rounded-lg`}
+              className={`border border-gray-200 p-12 mb-4 text-center cursor-pointer rounded-lg overflow-hidden ${
+                previewImage ? "border-dashed border-[#0E9AA9]" : " "}`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}

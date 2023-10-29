@@ -27,6 +27,8 @@ export const UploadContext = createContext<{
   setUploadedFile: (uploadedFile: string | null) => void;
   selectedGif: GifType | null;
   setSelectedGif: (selectedGif: GifType | null) => void;
+  showModal: boolean;
+  setShowModal: (showModal: boolean) => void;
 }>({
   previewImage: null,
   setPreviewImage: () => {},
@@ -44,6 +46,8 @@ export const UploadContext = createContext<{
   setUploadedFile: () => {},
   selectedGif: null,
   setSelectedGif: () => {},
+  showModal: false,
+  setShowModal: () => {},
 });
 
 export const ImageProvider = ({ children }: { children: ReactNode }) => {
@@ -55,6 +59,7 @@ export const ImageProvider = ({ children }: { children: ReactNode }) => {
   const [previewFile, setPreviewFile] = useState<string | null>(null);
   const [uploadedFile, setUploadedFile] = useState<string | null>(null);
   const [selectedGif, setSelectedGif] = useState<GifType | null>(null);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <UploadContext.Provider
@@ -75,6 +80,8 @@ export const ImageProvider = ({ children }: { children: ReactNode }) => {
         setUploadedFile,
         selectedGif,
         setSelectedGif,
+        showModal,
+         setShowModal
       }}
     >
       {children}

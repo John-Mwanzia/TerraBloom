@@ -1,11 +1,12 @@
 "use client";
 
 import PostModal from "@/app/components/community/PostModal";
+import { UploadContext } from "@/app/context/store";
 import getTimeSincePostCreation from "@/handlers/timeStamp";
 import { getPosts } from "@/utils/api";
 import { Spinner } from "@nextui-org/react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 interface Post {
@@ -25,7 +26,7 @@ interface Post {
 }
 
 export default function Page() {
-  const [showModal, setShowModal] = useState(false);
+  const {showModal, setShowModal } = useContext(UploadContext);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -95,29 +96,29 @@ export default function Page() {
                   {post.file && <a href={post.file}>Download File</a>}
 
                   <div className="mt-4 border-t flex justify-between items-center pt-4">
-                     <div className="flex gap-4">
-                     <button className="flex gap-2">
-                      <Image
-                        src="/bloomCommAssets/like.svg"
-                        alt="like"
-                        width={24}
-                        height={24}
-                      />
-                      like
-                    </button>
-                    <button className="flex gap-2">
-                      <Image
-                        src="/bloomCommAssets/comment.svg"
-                        alt="comment"
-                        width={24}
-                        height={24}
-                      />
-                      comment
-                    </button>
-                     </div>
-                     <div>
+                    <div className="flex gap-4">
+                      <button className="flex gap-2">
+                        <Image
+                          src="/bloomCommAssets/like.svg"
+                          alt="like"
+                          width={24}
+                          height={24}
+                        />
+                        like
+                      </button>
+                      <button className="flex gap-2">
+                        <Image
+                          src="/bloomCommAssets/comment.svg"
+                          alt="comment"
+                          width={24}
+                          height={24}
+                        />
+                        comment
+                      </button>
+                    </div>
+                    <div>
                       <p> 0 comments</p>
-                     </div>
+                    </div>
                   </div>
                 </div>
               ))

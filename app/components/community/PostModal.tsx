@@ -165,7 +165,7 @@ export default function PostModal({ setShowModal }) {
   };
 
   return (
-    <div className="bg-black/80 w-screen h-screen fixed  top-0 right-0">
+    <div className="bg-black/80 w-screen h-screen fixed  top-0 right-0" style={{ zIndex: 1000000 }}>
       <div>
         <div className="bg-white w-[23rem] h-[70%] xl:w-[50rem] md:w-[90%] xl:h-[40rem] rounded-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="flex justify-between px-4 pt-6 border-b-2 pb-2">

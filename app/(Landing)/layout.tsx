@@ -1,14 +1,17 @@
 "use client";
-import React, { ReactNode, use, useEffect } from "react";
+import React, { ReactNode, use, useContext, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Button, Tooltip } from "@nextui-org/react";
 import { UserButton } from "@clerk/nextjs";
 import { ImCancelCircle } from "react-icons/im";
+import { UploadContext } from "../context/store";
 
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
+  const {showModal, setShowModal } = useContext(UploadContext);
+
 
   useEffect(() => {
     const screenSize = window.innerWidth;
@@ -24,8 +27,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
       <div className="">
         {activeMenu && (
           <div
-            className="bg-white h-screen fixed w-[16.3rem]"
-            style={{ zIndex: 999 }}
+            className={`bg-white h-screen fixed w-[16.3rem] ${showModal ?'z-0' : 'z-50'}`}
           >
             <div className="relative">
               <Image

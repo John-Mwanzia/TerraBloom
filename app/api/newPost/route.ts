@@ -22,8 +22,7 @@ export const POST = async (req: Request) => {
     },
   });
 
-  return NextResponse.json({data: post})
-  
+  return NextResponse.json({ data: post });
 };
 
 export const GET = async (req: Request) => {
@@ -34,11 +33,9 @@ export const GET = async (req: Request) => {
     include: {
       comments: true,
       likes: true,
-      author: true
-    }
+      author: true,
+    },
   });
 
-  return NextResponse.json({data: posts})
-}
-
-
+  return NextResponse.json({ data: posts });
+};

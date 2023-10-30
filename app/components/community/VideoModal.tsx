@@ -174,7 +174,6 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
   );
   const [initialVideo, setInitialVideo] = useState<string | null>(null);
 
-
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files && event.target.files[0];
     setFile(selectedFile || null);
@@ -313,7 +312,7 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
         </div>
         <div className="modal-footer">
           <button
-           className="mr-4 bg-[#0E9AA9] py-2 px-4 rounded-md"
+            className="mr-4 bg-[#0E9AA9] py-2 px-4 rounded-md"
             onClick={mode === "upload" ? handleUpload : handleEmbed}
           >
             {mode === "upload" ? "Upload" : "Embed"}

@@ -81,7 +81,7 @@ export const ImageProvider = ({ children }: { children: ReactNode }) => {
         selectedGif,
         setSelectedGif,
         showModal,
-         setShowModal
+        setShowModal,
       }}
     >
       {children}

@@ -3,7 +3,7 @@
 import PostModal from "@/app/components/community/PostModal";
 import { UploadContext } from "@/app/context/store";
 import getTimeSincePostCreation from "@/handlers/timeStamp";
-import { getPosts } from "@/utils/api";
+import { getPosts, updateLikes } from "@/utils/api";
 import { Spinner } from "@nextui-org/react";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
@@ -26,9 +26,12 @@ interface Post {
 }
 
 export default function Page() {
-  const {showModal, setShowModal } = useContext(UploadContext);
+  const { showModal, setShowModal } = useContext(UploadContext);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
+
 
   useEffect(() => {
     async function fetchPosts() {
@@ -46,6 +49,18 @@ export default function Page() {
     fetchPosts();
   }, []);
 
+
+  const handleLikeUPdate = async ({postID}: {postID : String}) => {
+    toast.success("Liked");
+    // setLikes(likes + 1);
+    setLiked(true);
+    setLikes(likes + 1);
+    // setLiked(true);
+    const res = await updateLikes(postID);
+    console.log(res.data);
+    
+
+  };
   return (
     <>
       <div className="h-screen w-full flex flex-col">
@@ -97,7 +112,10 @@ export default function Page() {
 
                   <div className="mt-4 border-t flex justify-between items-center pt-4">
                     <div className="flex gap-4">
-                      <button className="flex gap-2">
+                      <button
+                        onClick={() => handleLikeUPdate({postID : post.id})}
+                      
+                      className="flex gap-2">
                         <Image
                           src="/bloomCommAssets/like.svg"
                           alt="like"

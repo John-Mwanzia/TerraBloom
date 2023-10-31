@@ -15,48 +15,48 @@ export const POST = async ({ postId }: { postId: string }) => {
     console.log(post);
     console.log('====================================');
 
-    // if (!post) {
-    //   return NextResponse.next();
-    // }
+    if (!post) {
+      return NextResponse.next();
+    }
 
-    // const like = await prisma.like.findFirst({
-    //   where: {
-    //     postId: post.id,
-    //     userId: user.id,
-    //   },
-    // });
+    const like = await prisma.like.findFirst({
+      where: {
+        postId: post.id,
+        userId: user.id,
+      },
+    });
 
-    // if (like) {
-    //   await prisma.like.delete({
-    //     where: {
-    //       id: like.id,
-    //     },
-    //   });
+    if (like) {
+      await prisma.like.delete({
+        where: {
+          id: like.id,
+        },
+      });
 
-    //   return NextResponse.json({ data: { liked: false } });
-    // }
+      return NextResponse.json({ data: { liked: false } });
+    }
 
-    // await prisma.like.create({
-    //   data: {
-    //     post: {
-    //       connect: {
-    //         id: post.id,
-    //       },
-    //     },
-    //     user: {
-    //       connect: {
-    //         id: user.id,
-    //       },
-    //     },
-    //   },
-    // });
+    await prisma.like.create({
+      data: {
+        post: {
+          connect: {
+            id: post.id,
+          },
+        },
+        user: {
+          connect: {
+            id: user.id,
+          },
+        },
+      },
+    });
 
-    // return NextResponse.json({ data: { liked: true } });
+    return NextResponse.json({ data: { liked: true } });
   } catch (error ) {
-    console.log('====================================');
-    console.log(error.message);
-    console.log('====================================');
-    return NextResponse.json({ error: 'Internal Server Error' + error.message, }, { status: 500 })
+    // console.log('====================================');
+    // console.log(error.message);
+    // console.log('====================================');
+    // return NextResponse.json({ error: 'Internal Server Error' + error.message, }, { status: 500 })
  
     }
 };

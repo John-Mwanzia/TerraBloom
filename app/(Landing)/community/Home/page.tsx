@@ -32,7 +32,6 @@ export default function Page() {
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
 
-
   useEffect(() => {
     async function fetchPosts() {
       try {
@@ -49,17 +48,20 @@ export default function Page() {
     fetchPosts();
   }, []);
 
+  const handleLikeUPdate = async ({ postId }: { postId: string }) => {
+    console.log('====================================');
+    console.log(postId);
+    console.log('====================================');
+    try {
+      const response = await updateLikes({postId});
+      toast.success("Liked");
+      setLiked(true);
+      setLikes(likes + 1);
 
-  const handleLikeUPdate = async ({postID}: {postID : String}) => {
-    toast.success("Liked");
-    // setLikes(likes + 1);
-    setLiked(true);
-    setLikes(likes + 1);
-    // setLiked(true);
-    const res = await updateLikes(postID);
-    console.log(res.data);
-    
-
+      console.log(response);
+    } catch (error) {
+      toast.error("Error" + error);
+    }
   };
   return (
     <>
@@ -113,9 +115,9 @@ export default function Page() {
                   <div className="mt-4 border-t flex justify-between items-center pt-4">
                     <div className="flex gap-4">
                       <button
-                        onClick={() => handleLikeUPdate({postID : post.id})}
-                      
-                      className="flex gap-2">
+                        onClick={() => handleLikeUPdate({ postId: post.id})}
+                        className="flex gap-2"
+                      >
                         <Image
                           src="/bloomCommAssets/like.svg"
                           alt="like"

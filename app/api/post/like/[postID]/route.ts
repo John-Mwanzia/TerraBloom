@@ -11,43 +11,47 @@ export const POST = async ({ postId }: { postId: string }) => {
       },
     });
 
-    if (!post) {
-      return NextResponse.next();
-    }
+    console.log('====================================');
+    console.log(post);
+    console.log('====================================');
 
-    const like = await prisma.like.findFirst({
-      where: {
-        postId: post.id,
-        userId: user.id,
-      },
-    });
+    // if (!post) {
+    //   return NextResponse.next();
+    // }
 
-    if (like) {
-      await prisma.like.delete({
-        where: {
-          id: like.id,
-        },
-      });
+    // const like = await prisma.like.findFirst({
+    //   where: {
+    //     postId: post.id,
+    //     userId: user.id,
+    //   },
+    // });
 
-      return NextResponse.json({ data: { liked: false } });
-    }
+    // if (like) {
+    //   await prisma.like.delete({
+    //     where: {
+    //       id: like.id,
+    //     },
+    //   });
 
-    await prisma.like.create({
-      data: {
-        post: {
-          connect: {
-            id: post.id,
-          },
-        },
-        user: {
-          connect: {
-            id: user.id,
-          },
-        },
-      },
-    });
+    //   return NextResponse.json({ data: { liked: false } });
+    // }
 
-    return NextResponse.json({ data: { liked: true } });
+    // await prisma.like.create({
+    //   data: {
+    //     post: {
+    //       connect: {
+    //         id: post.id,
+    //       },
+    //     },
+    //     user: {
+    //       connect: {
+    //         id: user.id,
+    //       },
+    //     },
+    //   },
+    // });
+
+    // return NextResponse.json({ data: { liked: true } });
   } catch (error ) {
     console.log('====================================');
     console.log(error.message);

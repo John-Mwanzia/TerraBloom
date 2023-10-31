@@ -37,7 +37,6 @@ export const postUpload = async ({
   }
 };
 
-
 export const getPosts = async () => {
   const res = await fetch(new Request(createURL("/api/newPost")), {
     method: "GET",
@@ -46,17 +45,20 @@ export const getPosts = async () => {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Something went wrong while fetching posts from API server!");
+    throw new Error(
+      "Something went wrong while fetching posts from API server!"
+    );
   }
-}
+};
 
 export const updateLikes = async ({ postId }: { postId: string }) => {
-  console.log(postId);
-  
   try {
-    const res = await fetch(new Request(createURL(`/api/post/like/${postId}`)), {
-      method: "POST",
-    });
+    const res = await fetch(
+      new Request(createURL(`/api/post/like/${postId}`)),
+      {
+        method: "POST",
+      }
+    );
 
     if (res.ok) {
       return res.json();
@@ -64,6 +66,8 @@ export const updateLikes = async ({ postId }: { postId: string }) => {
       throw new Error("Failed to update like.");
     }
   } catch (error) {
-    throw new Error("Something went wrong while updating like: " + error.message);
+    throw new Error(
+      "Something went wrong while updating like: " + error.message
+    );
   }
 };

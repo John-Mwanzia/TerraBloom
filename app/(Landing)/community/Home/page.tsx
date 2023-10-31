@@ -49,9 +49,7 @@ export default function Page() {
   }, []);
 
   const handleLikeUPdate = async ({ postId }: { postId: string }) => {
-    console.log('====================================');
-    console.log(postId);
-    console.log('====================================');
+   
     try {
       const response = await updateLikes({postId});
       toast.success("Liked");

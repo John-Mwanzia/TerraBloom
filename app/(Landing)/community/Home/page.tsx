@@ -8,6 +8,8 @@ import { Spinner } from "@nextui-org/react";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { experimental_useOptimistic as useOptimistic } from "react";
+import { BiLike } from "react-icons/bi";
 
 interface Post {
   id: string;
@@ -39,7 +41,6 @@ export default function Page() {
         const response = await getPosts();
         setPosts(response.data);
         setLoading(false);
-        console.log(response.data);
       } catch (error) {
         toast.error("Error" + error);
       }
@@ -49,14 +50,11 @@ export default function Page() {
   }, []);
 
   const handleLikeUPdate = async ({ postId }: { postId: string }) => {
-   
     try {
-      const response = await updateLikes({postId});
+      const response = await updateLikes({ postId });
       toast.success("Liked");
       setLiked(true);
       setLikes(likes + 1);
-
-      console.log(response);
     } catch (error) {
       toast.error("Error" + error);
     }
@@ -111,18 +109,22 @@ export default function Page() {
                   {post.file && <a href={post.file}>Download File</a>}
 
                   <div className="mt-4 border-t flex justify-between items-center pt-4">
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 items-center">
                       <button
-                        onClick={() => handleLikeUPdate({ postId: post.id})}
-                        className="flex gap-2"
+                        onClick={() => handleLikeUPdate({ postId: post.id })}
+                        className={`flex gap-2 ${
+                          liked ? "text-[#0E9AA9]" : ""
+                        }`}
                       >
-                        <Image
-                          src="/bloomCommAssets/like.svg"
-                          alt="like"
-                          width={24}
-                          height={24}
-                        />
-                        like
+                      
+                        <div>
+                          <BiLike
+                            className={`w-6 h-6 text-black ${
+                              liked ? "text-[#0E9AA9]" : ""
+                            }`}
+                          />
+                        </div>
+                        {liked ? <p>liked</p> : <p>like</p>}
                       </button>
                       <button className="flex gap-2">
                         <Image

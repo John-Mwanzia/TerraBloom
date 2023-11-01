@@ -54,9 +54,6 @@ export const POST = async (req:Request) => {
 
     return NextResponse.json({ data: { liked: true } });
   } catch (error ) {
-    console.log('====================================');
-    console.log(error.message);
-    console.log('====================================');
     return NextResponse.json({ error: 'Internal Server Error' + error.message, }, { status: 500 })
  
     }

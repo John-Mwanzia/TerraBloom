@@ -54,7 +54,7 @@ export const getPosts = async () => {
 export const updateLikes = async ({ postId }: { postId: string }) => {
   try {
     const res = await fetch(
-      new Request(createURL(`/api/post/like/${postId}`)),
+      new Request(createURL(`/api/newPost/like/${postId}`)),
       {
         method: "POST",
       }

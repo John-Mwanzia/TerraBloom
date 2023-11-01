@@ -8,8 +8,8 @@ export default authMiddleware({
         '/',
         '/terra/community',
         '/api/newPost',
-        '/api/post/like/[postID]',
-        '/api/post/comment/[postID]',
+        '/api/post/like/[postId]',
+        '/api/post/comment/[postId]',
     ],
 
 });

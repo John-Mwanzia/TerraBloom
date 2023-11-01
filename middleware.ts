@@ -8,8 +8,8 @@ export default authMiddleware({
         '/',
         '/terra/community',
         '/api/newPost',
-        '/api/post/like/[postId]',
-        '/api/post/comment/[postId]',
+        '/api/newPost/(.*)',
+
     ],
 
 });
@@ -17,4 +17,5 @@ export default authMiddleware({
 export const config = {
       matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 };
- 
+
+

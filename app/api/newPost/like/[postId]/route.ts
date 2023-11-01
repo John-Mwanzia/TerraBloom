@@ -3,6 +3,9 @@ import prisma from "@/modules/db";
 import { NextResponse } from "next/server";
 
 export const POST = async ({ postId }: { postId: string }) => {
+  console.log('====================================');
+  console.log(postId);
+  console.log('====================================');
   try {
     const user = await getUserFromClerkID();
     const post = await prisma.post.findUnique({

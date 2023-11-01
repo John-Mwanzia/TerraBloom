@@ -1,11 +1,13 @@
 import { getUserFromClerkID } from "@/modules/auth";
 import prisma from "@/modules/db";
+import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export const POST = async ({ postId }: { postId: string }) => {
-  console.log('====================================');
+export const POST = async (req:Request) => {
+ const {postId} = await req.json();
+  
   console.log(postId);
-  console.log('====================================');
+  
   try {
     const user = await getUserFromClerkID();
     const post = await prisma.post.findUnique({
@@ -52,10 +54,10 @@ export const POST = async ({ postId }: { postId: string }) => {
 
     return NextResponse.json({ data: { liked: true } });
   } catch (error ) {
-    // console.log('====================================');
-    // console.log(error.message);
-    // console.log('====================================');
-    // return NextResponse.json({ error: 'Internal Server Error' + error.message, }, { status: 500 })
+    console.log('====================================');
+    console.log(error.message);
+    console.log('====================================');
+    return NextResponse.json({ error: 'Internal Server Error' + error.message, }, { status: 500 })
  
     }
 };

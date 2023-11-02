@@ -31,8 +31,9 @@ export default function Page() {
   const { showModal, setShowModal } = useContext(UploadContext);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
-  const [likes, setLikes] = useState(0);
+  // const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
+  const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
 
   useEffect(() => {
     async function fetchPosts() {
@@ -50,13 +51,13 @@ export default function Page() {
   }, []);
 
   const handleLikeUPdate = async ({ postId }: { postId: string }) => {
+    setOptimisticLiked(true);
+
     try {
-      const response = await updateLikes({ postId });
-      toast.success("Liked");
+      await updateLikes({ postId });
       setLiked(true);
-      setLikes(likes + 1);
     } catch (error) {
-      toast.error("Error" + error);
+      setOptimisticLiked(false);
     }
   };
   return (
@@ -116,7 +117,6 @@ export default function Page() {
                           liked ? "text-[#0E9AA9]" : ""
                         }`}
                       >
-                      
                         <div>
                           <BiLike
                             className={`w-6 h-6 text-black ${
@@ -124,7 +124,7 @@ export default function Page() {
                             }`}
                           />
                         </div>
-                        {liked ? <p>liked</p> : <p>like</p>}
+                        {optimisticLiked ? "Liked" : "Like"}
                       </button>
                       <button className="flex gap-2">
                         <Image

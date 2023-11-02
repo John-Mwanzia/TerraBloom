@@ -25,6 +25,7 @@ interface Post {
   gif?: string;
   file?: string;
   createdAt: string;
+  liked: boolean;
 }
 
 export default function Page() {
@@ -41,6 +42,8 @@ export default function Page() {
         setLoading(true);
         const response = await getPosts();
         setPosts(response.data);
+        console.log();
+        
         setLoading(false);
       } catch (error) {
         toast.error("Error" + error);

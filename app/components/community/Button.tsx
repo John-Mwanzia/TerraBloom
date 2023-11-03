@@ -2,10 +2,11 @@
 
 import { UploadContext } from "@/app/context/store";
 import React, { useContext } from "react";
-const { showModal, setShowModal } = useContext(UploadContext);
 
 
 export default function Button() {
+const { showModal, setShowModal } = useContext(UploadContext);
+
   return (
     <>
       <button

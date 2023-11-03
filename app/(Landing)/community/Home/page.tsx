@@ -32,7 +32,6 @@ export default function Page() {
   const { showModal, setShowModal } = useContext(UploadContext);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
-  // const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
   const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
 

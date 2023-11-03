@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export const POST = async (req: Request) => {
   const { postId } = await req.json();
 
-  
+  try {
     const user = await getUserFromClerkID();
     const post = await prisma.post.findUnique({
       where: {

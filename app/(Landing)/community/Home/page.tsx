@@ -29,7 +29,6 @@ interface Post {
 }
 
 export default function Page() {
-  const { showModal, setShowModal } = useContext(UploadContext);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
   const [liked, setLiked] = useState(false);
@@ -67,12 +66,7 @@ export default function Page() {
       <div className="h-screen w-full flex flex-col">
         <div className="bg-white flex justify-between px-4 pb-4 pt-3 border-t border-l">
           <h1 className="text-3xl">Home</h1>
-          <button
-            className="bg-[#0E9AA9] rounded px-3 py-2"
-            onClick={() => setShowModal(true)}
-          >
-            Create Post
-          </button>
+        
         </div>
         <div className="flex-1 overflow-y-auto pb-8">
           <div className="flex flex-col items-center pt-8 gap-16 px-2 md:px-0 relative pb-24">

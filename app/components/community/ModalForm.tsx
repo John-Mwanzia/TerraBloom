@@ -3,6 +3,7 @@ import { UploadContext } from "../../context/store";
 import { AiFillFileImage, AiOutlineCloseCircle } from "react-icons/ai";
 import { myAction } from "@/utils/actions";
 import { postUpload } from "@/utils/api";
+import toast from "react-hot-toast";
 
 export default function ModalForm() {
   const {
@@ -123,7 +124,7 @@ export default function ModalForm() {
                 src={selectedGif.images.original.url}
                 alt="Selected GIF"
                 className="h-[17.5rem]  mx-auto md:ml-6"
-                onError={(e) => console.error("Error loading GIF:", e)}
+                onError={(e) => toast.error("Error loading GIF:")}
               />
             </div>
           )}

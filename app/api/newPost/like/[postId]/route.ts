@@ -3,12 +3,10 @@ import prisma from "@/modules/db";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export const POST = async (req:Request) => {
- const {postId} = await req.json();
+export const POST = async (req: Request) => {
+  const { postId } = await req.json();
+
   
-  console.log(postId);
-  
-  try {
     const user = await getUserFromClerkID();
     const post = await prisma.post.findUnique({
       where: {
@@ -53,8 +51,10 @@ export const POST = async (req:Request) => {
     });
 
     return NextResponse.json({ data: { liked: true } });
-  } catch (error ) {
-    return NextResponse.json({ error: 'Internal Server Error' + error.message, }, { status: 500 })
- 
-    }
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Internal Server Error" + error.message },
+      { status: 500 }
+    );
+  }
 };

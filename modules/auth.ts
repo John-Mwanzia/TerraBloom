@@ -10,7 +10,7 @@ export const generateToken = (user: any) => {
       id: user.id,
       email: user.email,
       name: user.name,
-      isAdmin: user.isAdmin
+      isAdmin: user.isAdmin,
     },
     process.env.NEXT_JWT_SECRET as string,
     {
@@ -46,19 +46,18 @@ export const protect = (req: any, res: any, next: any) => {
     req.user = payload; //set the user to the payload
     next(); //call the next middleware
   } catch (error) {
-    console.log(error);
     res.status(401).json({ message: "not authorized" });
   }
 };
 
 export const getUserFromClerkID = async (select = { id: true }) => {
-  const { userId } = auth()
+  const { userId } = auth();
   const user = await prisma.user.findUniqueOrThrow({
     where: {
       clerkId: userId as string,
     },
     select,
-  })
+  });
 
-  return user
-}
+  return user;
+};

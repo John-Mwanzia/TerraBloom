@@ -4,7 +4,6 @@ import prisma from "@/modules/db";
 
 export const myAction = async (formData: FormData) => {
   const title = formData.get("title");
-  console.log(title);
 
   const content = formData.get("content");
   const image = formData.get("image");
@@ -28,6 +27,6 @@ export const myAction = async (formData: FormData) => {
   const res = await prisma.post.create({
     data,
   });
-  console.log(res);
+
   return res;
 };

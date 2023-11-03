@@ -29,10 +29,7 @@ export default function PostModal({ setShowModal }) {
   };
 
   const handleImageEmbed = (link) => {
-    console.log("Image link:", link);
     setUploadedImage(link);
-
-    console.log("uploadedImage", uploadedImage);
   };
 
   const handleUploadVideo = (file) => {
@@ -151,8 +148,7 @@ export default function PostModal({ setShowModal }) {
         onClose={() => setAttachFileModalOpen(false)}
         onAttach={(file) => {
           // Handle attaching the file here
-          // You can update the state or perform any necessary actions
-          console.log("Attached file:", file);
+
           // Close the modal
           setAttachFileModalOpen(false);
         }}

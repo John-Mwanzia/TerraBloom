@@ -141,7 +141,6 @@ export default function Page() {
             )}
           </div>
         </div>
-        {showModal && <PostModal setShowModal={setShowModal} />}
       </div>
     </>
   );

@@ -16,9 +16,9 @@ const syncNewUser = async () => {
       data: {
         clerkId: user?.id as string,
         email: user?.emailAddresses[0].emailAddress as string,
-        avatarUrl : user?.imageUrl as string,
-        firstName : user?.firstName as string,
-        lastName : user?.lastName as string
+        avatarUrl: user?.imageUrl as string,
+        firstName: user?.firstName as string,
+        lastName: user?.lastName as string,
       },
     });
   }
@@ -31,7 +31,7 @@ const NewUser = async () => {
 
   return (
     <div className="flex justify-center items-center h-screen w-screen">
-        <h1 className="text-3xl">Loading...</h1>
+      <h1 className="text-3xl">Loading...</h1>
     </div>
   );
 };

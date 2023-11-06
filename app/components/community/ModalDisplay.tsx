@@ -1,3 +1,5 @@
+'use client'
+
 import { UploadContext } from "@/app/context/store";
 import React, { useContext } from "react";
 import PostModal from "./PostModal";

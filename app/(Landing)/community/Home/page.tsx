@@ -1,9 +1,9 @@
-"use client";
+// "use client";
 
 import PostModal from "@/app/components/community/PostModal";
 import { UploadContext } from "@/app/context/store";
 import getTimeSincePostCreation from "@/handlers/timeStamp";
-import { getPosts, updateLikes } from "@/utils/api";
+// import { getPosts, updateLikes } from "@/utils/api";
 import { Spinner } from "@nextui-org/react";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
@@ -12,6 +12,7 @@ import { experimental_useOptimistic as useOptimistic } from "react";
 import { BiLike } from "react-icons/bi";
 import ModalDisplay from "@/app/components/community/ModalDisplay";
 import Button from "@/app/components/community/Button";
+import prisma from "@/modules/db";
 
 interface Post {
   id: string;
@@ -30,38 +31,57 @@ interface Post {
   liked: boolean;
 }
 
-export default function Page() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [liked, setLiked] = useState(false);
-  const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
+const getPosts = async()=>{
+  const posts = await prisma.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      comments: true,
+      likes: true,
+      author: true,
+    },
+  });
+  return posts;
 
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        setLoading(true);
-        const response = await getPosts();
-        setPosts(response.data);
+
+}
+
+export default async function Page() {
+  // const [posts, setPosts] = useState<Post[]>([]);
+  // const [loading, setLoading] = useState(false);
+  // const [liked, setLiked] = useState(false);
+  // const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
+
+  // useEffect(() => {
+  //   async function fetchPosts() {
+  //     try {
+  //       setLoading(true);
+  //       const response = await getPosts();
+  //       setPosts(response.data);
         
-        setLoading(false);
-      } catch (error) {
-        toast.error("Error" + error);
-      }
-    }
+  //       setLoading(false);
+  //     } catch (error) {
+  //       toast.error("Error" + error);
+  //     }
+  //   }
 
-    fetchPosts();
-  }, []);
+  //   fetchPosts();
+  // }, []);
 
-  const handleLikeUPdate = async ({ postId }: { postId: string }) => {
-    setOptimisticLiked(true);
+  // const handleLikeUPdate = async ({ postId }: { postId: string }) => {
+  //   setOptimisticLiked(true);
 
-    try {
-      await updateLikes({ postId });
-      setLiked(true);
-    } catch (error) {
-      setOptimisticLiked(false);
-    }
-  };
+  //   try {
+  //     await updateLikes({ postId });
+  //     setLiked(true);
+  //   } catch (error) {
+  //     setOptimisticLiked(false);
+  //   }
+  // };
+
+  const posts = await getPosts();
+  console.log(posts);
   return (
     <>
       <div className="h-screen w-full flex flex-col">
@@ -71,7 +91,7 @@ export default function Page() {
         </div>
         <div className="flex-1 overflow-y-auto pb-8">
           <div className="flex flex-col items-center pt-8 gap-16 px-2 md:px-0 relative pb-24">
-            {loading ? (
+            {/* {loading ? (
               <div className="absolute top-72 ">
                 <Spinner size="lg" />
               </div>
@@ -139,7 +159,7 @@ export default function Page() {
                   </div>
                 </div>
               ))
-            )}
+            )} */}
           </div>
         </div>
         <ModalDisplay />

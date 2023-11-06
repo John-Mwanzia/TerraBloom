@@ -62,7 +62,6 @@ export const updateLikes = async ({ postId }: { postId: string }) => {
         }),
       }
     );
-   
 
     if (res.ok) {
       return res.json();

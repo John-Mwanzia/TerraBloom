@@ -81,7 +81,6 @@ export default async function Page() {
   // };
 
   const posts = await getPosts();
-  console.log(posts);
   return (
     <>
       <div className="h-screen w-full flex flex-col">
@@ -91,11 +90,7 @@ export default async function Page() {
         </div>
         <div className="flex-1 overflow-y-auto pb-8">
           <div className="flex flex-col items-center pt-8 gap-16 px-2 md:px-0 relative pb-24">
-            {/* {loading ? (
-              <div className="absolute top-72 ">
-                <Spinner size="lg" />
-              </div>
-            ) : (
+            {
               posts.map((post) => (
                 <div
                   key={post.id}
@@ -127,9 +122,9 @@ export default async function Page() {
                   {post.file && <a href={post.file}>Download File</a>}
 
                   <div className="mt-4 border-t flex justify-between items-center pt-4">
-                    <div className="flex gap-4 items-center">
+                    {/* <div className="flex gap-4 items-center">
                       <button
-                        onClick={() => handleLikeUPdate({ postId: post.id })}
+                        // onClick={() => handleLikeUPdate({ postId: post.id })}
                         className={`flex gap-2 ${
                           liked ? "text-[#0E9AA9]" : ""
                         }`}
@@ -156,10 +151,11 @@ export default async function Page() {
                     <div>
                       <p> 0 comments</p>
                     </div>
-                  </div>
+                    */}
+                  </div> 
                 </div>
-              ))
-            )} */}
+              )
+            )} 
           </div>
         </div>
         <ModalDisplay />

@@ -17,7 +17,7 @@ export default function Features() {
             className="mx-auto"
           />
           <div>
-            <h1 className="text-[#99BF1A]  mb-12 md:mb-6 lg:mb-12 text-4xl  mt-4 font-old-standard text-center"> 
+            <h1 className="text-[#99BF1A]  mb-12 md:mb-6 lg:mb-12 text-4xl  mt-4 font-old-standard text-center">
               Discussion Forums
             </h1>
           </div>
@@ -35,12 +35,11 @@ export default function Features() {
             width={371}
             height={248}
             className="mx-auto"
-
           />
 
           <div>
             <h1 className="text-[#99BF1A]  mb-12 md:mb-6 lg:mb-12 text-4xl mt-4 font-old-standard text-center">
-            Knowledge base
+              Knowledge base
             </h1>
           </div>
 
@@ -58,7 +57,6 @@ export default function Features() {
             width={371}
             height={248}
             className="mx-auto"
-
           />
           <div>
             <h1 className="text-[#99BF1A] mb-12 text-4xl mt-4 font-old-standard text-center">

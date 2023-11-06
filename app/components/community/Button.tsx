@@ -1,11 +1,10 @@
-'use client';
+"use client";
 
 import { UploadContext } from "@/app/context/store";
 import React, { useContext } from "react";
 
-
 export default function Button() {
-const { showModal, setShowModal } = useContext(UploadContext);
+  const { showModal, setShowModal } = useContext(UploadContext);
 
   return (
     <>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 
 export default async function CTA() {
-
   const { userId } = await auth();
 
   let href = userId ? "/community/Home" : "/newUser";
@@ -21,7 +20,9 @@ export default async function CTA() {
       </div>
       <div>
         <div className="flex items-center lg:mb-2 2xl:mb-8">
-          <h1 className="text-white font-old-standard text-5xl md:text-4xl lg:text-5xl">Join Now</h1>
+          <h1 className="text-white font-old-standard text-5xl md:text-4xl lg:text-5xl">
+            Join Now
+          </h1>
           <Image
             src="/terraCommAssets/join-star.svg"
             alt="welcome star"
@@ -35,7 +36,7 @@ export default async function CTA() {
           valuable insights and connections.
         </p>
         <div className="mt-3 lg:mt-6 2xl:mt-16">
-          <Link href = {href}>
+          <Link href={href}>
             <button className="bg-[#99BF1A] rounded-lg px-6 py-2 font-old-standard">
               Join Us Today
             </button>

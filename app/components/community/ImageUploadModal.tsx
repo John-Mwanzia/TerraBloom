@@ -127,7 +127,8 @@ function ImageUploadModal({
             <div
               ref={dropAreaRef}
               className={`border border-gray-200 p-12 mb-4 text-center cursor-pointer rounded-lg overflow-hidden ${
-                previewImage ? "border-dashed border-[#0E9AA9]" : " "}`}
+                previewImage ? "border-dashed border-[#0E9AA9]" : " "
+              }`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}

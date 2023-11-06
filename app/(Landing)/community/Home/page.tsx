@@ -14,22 +14,7 @@ import Button from "@/app/components/community/Button";
 import prisma from "@/modules/db";
 import PostItem from "@/app/components/community/PostItem";
 
-interface Post {
-  id: string;
-  title: string;
-  content: string;
-  author: {
-    avatarUrl: string;
-    firstName: string;
-    lastName: string;
-  };
-  Image?: string;
-  video?: string;
-  gif?: string;
-  file?: string;
-  createdAt: string;
-  liked: boolean;
-}
+
 
 const getPosts = async()=>{
   const posts = await prisma.post.findMany({

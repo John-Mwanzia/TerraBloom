@@ -10,8 +10,7 @@ import { UploadContext } from "../context/store";
 
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
-  const {showModal, setShowModal } = useContext(UploadContext);
-
+  const { showModal, setShowModal } = useContext(UploadContext);
 
   useEffect(() => {
     const screenSize = window.innerWidth;
@@ -27,7 +26,9 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
       <div className="">
         {activeMenu && (
           <div
-            className={`bg-white h-screen fixed w-[16.3rem] ${showModal ?'z-0' : 'z-50'}`}
+            className={`bg-white h-screen fixed w-[16.3rem] ${
+              showModal ? "z-0" : "z-50"
+            }`}
           >
             <div className="relative">
               <Image
@@ -105,9 +106,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
         )}
         <div className="">
           <div
-            className={
-              activeMenu ? "  xl:ml-[16.3rem] static  " : " w-screen"
-            }
+            className={activeMenu ? "  xl:ml-[16.3rem] static  " : " w-screen"}
           >
             <div className="flex justify-between items-center pr-3 border-l">
               <button onClick={() => setActiveMenu(!activeMenu)}>

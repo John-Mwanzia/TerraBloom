@@ -4,6 +4,8 @@ import { AiFillFileImage, AiOutlineCloseCircle } from "react-icons/ai";
 import { myAction } from "@/utils/actions";
 import { postUpload } from "@/utils/api";
 import toast from "react-hot-toast";
+import { revalidatePath } from "next/cache";
+import { Spinner } from "@nextui-org/react";
 
 export default function ModalForm() {
   const {
@@ -21,14 +23,17 @@ export default function ModalForm() {
     setUploadedFile,
     selectedGif,
     setSelectedGif,
+    setShowModal,
   } = useContext(UploadContext);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setIsLoading(true);
     const res = await postUpload({
       title,
       content,
@@ -38,6 +43,7 @@ export default function ModalForm() {
       gif: selectedGif?.images?.original?.url || "",
     });
 
+    setIsLoading(false);
     if (res) {
       setPreviewImage(null);
       setUploadedImage(null);
@@ -46,6 +52,10 @@ export default function ModalForm() {
       setPreviewFile(null);
       setUploadedFile(null);
       setSelectedGif(null);
+      setTitle("");
+      setContent("");
+      setShowModal(false);
+      toast.success("Post created successfully");
     }
   };
 
@@ -132,8 +142,9 @@ export default function ModalForm() {
         <button
           type="submit"
           className="bg-[#0E9AA9] absolute bottom-4 z-10 right-6 rounded px-4 py-1 cursor-pointer"
+          disabled={isLoading}
         >
-          Post
+          {isLoading ? ( <p className="flex items-center gap-3 ">Posting <span><Spinner size="sm" /></span> </p> ) : "Post"}
         </button>
       </form>
     </div>

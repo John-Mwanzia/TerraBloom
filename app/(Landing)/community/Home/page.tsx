@@ -3,7 +3,6 @@
 import PostModal from "@/app/components/community/PostModal";
 import { UploadContext } from "@/app/context/store";
 // import { getPosts, updateLikes } from "@/utils/api";
-import { Spinner } from "@nextui-org/react";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";

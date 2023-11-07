@@ -1,5 +1,6 @@
 import { getUserFromClerkID } from "@/modules/auth";
 import prisma from "@/modules/db";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: Request) => {
@@ -22,6 +23,7 @@ export const POST = async (req: Request) => {
     },
   });
 
+  revalidatePath('/community/Home')
   return NextResponse.json({ data: post });
 };
 

@@ -66,7 +66,6 @@ export default async function Page() {
   // };
 
   const posts = await getPosts();
-  console.log(posts);
   return (
     <>
       <div className="h-screen w-full flex flex-col">

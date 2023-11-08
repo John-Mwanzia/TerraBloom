@@ -1,9 +1,10 @@
 import React from 'react'
+import HeroSection from './components/HomeLanding/HeroSection'
 
 export default function page() {
   return (
-    <div>
-        <h1>Page</h1>
+    <div className='bg-light-gray/40 h-screen flex justify-center'>
+        <HeroSection />
     </div>
   )
 }

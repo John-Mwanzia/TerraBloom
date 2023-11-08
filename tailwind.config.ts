@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       backgroundColor:{
         "light-gray": "#E5E5E6",
+        'body-bg': '#F4F4F5',
          
       },
       backgroundImage: {

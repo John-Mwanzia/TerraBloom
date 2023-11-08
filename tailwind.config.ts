@@ -25,7 +25,9 @@ const config: Config = {
         'old-standard': ['Old Standard TT', 'serif'],
         'staatliches': ['Staatliches', 'cursive'],
         'inter': ['Inter', 'sans-serif'],
-        'outfit': ['Outfit', 'sans-serif'],
+        outfit: ['Outfit', 'sans-serif'],
+        opensans: ['Open sans', 'sans-serif'],
+        mono: ['DM Mono', '...defaultTheme.fontFamily.mono'],
       },
 
     }

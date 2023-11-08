@@ -22,9 +22,9 @@ export default function HeroSection() {
     },
   ];
   return (
-    <div className="bg-white w-[85%] mt-8 rounded-[1.375rem]">
+    <div className="bg-white w-[78%] h-[63.3rem] mt-8 mb-12 rounded-[1.375rem] relative">
       <div className="flex justify-between items-center">
-        <div className="pl-4">
+        <div className="pl-12">
           <Image
             src="./bloomCommAssets/Logo.svg"
             width={180}
@@ -32,12 +32,12 @@ export default function HeroSection() {
             alt="logo"
           />
         </div>
-        <div className="pr-8 flex gap-12 items-center">
+        <div className="pr-8 flex gap-20 items-center z-50">
           {links.map((link, index) => (
             <div key={link.name}>
               <Link
                 href={link.link}
-                className=" font-outfit text-lg font-bold"
+                className=" font-outfit text-lg font-semibold "
               >
                 {link.name}
               </Link>
@@ -46,11 +46,32 @@ export default function HeroSection() {
 
           <Link
             href="/sign-up"
-            className="bg-[#A47344] rounded-3xl text-white px-4 py-2 font-outfit"
+            className="bg-[#A47344] rounded-3xl text-white px-8 py-2 font-outfit"
           >
             Sign Up
           </Link>
         </div>
+      </div>
+      <div className=" absolute top-0 right-0">
+        <Image
+          src="./landing/heroFarmer.svg"
+          width={1000}
+          height={1000}
+          alt="heroFarmer"
+          className="max-h-[64rem]"
+        />
+      </div>
+
+      <div className="mt-40 pl-12 max-w-xl mb-8">
+        <h1 className="text-4xl font-semibold font-outfit ">
+          Empowering Farmers with Knowledge and Insights.
+        </h1>
+      </div>
+      <div className="max-w-2xl pl-12">
+        <p className=" font-opensans">
+          Access real-time weather updates, market prices, expert advice, and a
+          supportive farming community—all in one place.
+        </p>
       </div>
     </div>
   );

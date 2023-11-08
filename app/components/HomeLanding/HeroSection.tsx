@@ -22,9 +22,9 @@ export default function HeroSection() {
     },
   ];
   return (
-    <div className="bg-white w-[78%] h-[63.3rem] mt-8 mb-12 rounded-[1.375rem] relative">
+    <div className="bg-white w-[80%] h-[63.3rem] mt-8 mb-12 rounded-[1.375rem] relative">
       <div className="flex justify-between items-center">
-        <div className="pl-12">
+        <div className="pl-12 pt-4">
           <Image
             src="./bloomCommAssets/Logo.svg"
             width={180}
@@ -37,7 +37,7 @@ export default function HeroSection() {
             <div key={link.name}>
               <Link
                 href={link.link}
-                className=" font-outfit text-lg font-semibold "
+                className=" font-outfit text-black/60 font-semibold "
               >
                 {link.name}
               </Link>
@@ -62,15 +62,15 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="mt-40 pl-12 max-w-xl mb-8">
-        <h1 className="text-4xl font-semibold font-outfit ">
+      <div className="mt-48 pl-12 max-w-xl mb-16">
+        <h1 className="text-5xl  text-black/80 font-bold font-outfit ">
           Empowering Farmers with Knowledge and Insights.
         </h1>
       </div>
       <div className="max-w-2xl pl-12">
         <p className=" font-opensans">
-          Access real-time weather updates, market prices, expert advice, and a
-          supportive farming community—all in one place.
+        Our platform provides real-time  weather updates, market prices, expert advice, and a
+          supportive farming community—all in one place.Empowering farmers to make informed decisions and cultivate growth.
         </p>
       </div>
     </div>

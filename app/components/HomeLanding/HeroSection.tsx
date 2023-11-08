@@ -22,9 +22,9 @@ export default function HeroSection() {
     },
   ];
   return (
-    <div className="bg-white w-[80%] h-[63.3rem] mt-8 mb-12 rounded-[1.375rem] relative">
+    <div className="bg-white w-[80%] xl:w-[90%] 2xl:w-[80%] h-[63.3rem] xl:h-[55rem] 2xl:h-[63.3rem] mt-8 mb-12 rounded-[1.375rem] relative">
       <div className="flex justify-between items-center">
-        <div className="pl-12 pt-4">
+        <div className="pl-12 xl:pl-8 2xl:pl-12 pt-4 xl:pt-2 2xl:pt-4">
           <Image
             src="./bloomCommAssets/Logo.svg"
             width={180}
@@ -32,7 +32,7 @@ export default function HeroSection() {
             alt="logo"
           />
         </div>
-        <div className="pr-8 flex gap-20 items-center z-50">
+        <div className="pr-8 flex xl:gap-12 2xl:gap-20 items-center z-50">
           {links.map((link, index) => (
             <div key={link.name}>
               <Link
@@ -53,21 +53,21 @@ export default function HeroSection() {
         </div>
       </div>
       <div className=" absolute top-0 right-0">
-        <Image
+        <img
           src="./landing/heroFarmer.svg"
-          width={1000}
-          height={1000}
+        //   width={1000}
+        //   height={900}
           alt="heroFarmer"
-          className="max-h-[64rem]"
+          className=" xl:h-[55rem] 2xl:h-[64rem]  "
         />
       </div>
 
-      <div className="mt-48 pl-12 max-w-xl mb-16">
-        <h1 className="text-5xl  text-black/80 font-bold font-outfit ">
+      <div className="mt-48 pl-12 xl:pl-8 2xl:pl-12 max-w-xl mb-16">
+        <h1 className="text-5xl  xl:text-4xl 2xl:text-5xl  text-black/80 font-bold font-outfit ">
           Empowering Farmers with Knowledge and Insights.
         </h1>
       </div>
-      <div className="max-w-2xl pl-12">
+      <div className="max-w-2xl xl:max-w-xl 2xl:max-w-2xl pl-12 xl:pl-8 2xl:pl-12">
         <p className=" font-opensans">
         Our platform provides real-time  weather updates, market prices, expert advice, and a
           supportive farming community—all in one place.Empowering farmers to make informed decisions and cultivate growth.

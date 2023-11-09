@@ -22,7 +22,7 @@ export default function HeroSection() {
     },
   ];
   return (
-    <div className="bg-white w-[90%] xl:w-[90%] 2xl:w-[80%] h-[63.3rem] xl:h-[55rem] 2xl:h-[63.3rem] mt-8 mb-12 rounded-[1.375rem] relative">
+    <div className="bg-white w-[90%] xl:w-[90%] 2xl:w-[80%] h-[35.4rem] xl:h-[55rem] 2xl:h-[63.3rem] mt-8 mb-12 rounded-[1.375rem] relative">
       <div className="flex justify-between items-center">
         <div className="pl-6 xl:pl-8 2xl:pl-12 pt-4 xl:pt-2 2xl:pt-4">
           <Image

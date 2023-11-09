@@ -31,7 +31,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="bg-white w-[90%] xl:w-[90%] 2xl:w-[80%] sm:h-[32.5rem] md:h-[35.4rem] xl:h-[55rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative">
+    <div className="bg-white w-[90%] xl:w-[90%] 2xl:w-[80%] sm:h-[31rem] md:h-[35.4rem] xl:h-[55rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative">
       <div className="flex justify-between items-center">
         <div className="pl-6 xl:pl-8 2xl:pl-12 pt-4 xl:pt-2 2xl:pt-4 z-[99999]">
           <Image
@@ -100,12 +100,12 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className=" sm:mt-32 xl:mt-42 2xl:mt-48 md:pl-6 xl:pl-8 2xl:pl-12 xl:max-w-xl md:max-w-sm mb-10 xl:mb-16">
+      <div className=" pl-4 max-w-sm sm:mt-32 xl:mt-42 2xl:mt-48 md:pl-6 xl:pl-8 2xl:pl-12 xl:max-w-xl md:max-w-sm mb-10 xl:mb-16">
         <h1 className=" sm:text-3xl xl:text-4xl 2xl:text-5xl  text-black/80 font-bold font-outfit ">
           Empowering Farmers with Knowledge and Insights.
         </h1>
       </div>
-      <div className="max-w-xs xl:max-w-xl 2xl:max-w-2xl md:pl-6 xl:pl-8 2xl:pl-12">
+      <div className=" pl-4 max-w-xs xl:max-w-xl 2xl:max-w-2xl md:pl-6 xl:pl-8 2xl:pl-12">
         <p className=" hidden lg:block font-opensans">
           Our platform provides real-time weather updates, market prices, expert
           advice, and a supportive farming community—all in one place.Empowering

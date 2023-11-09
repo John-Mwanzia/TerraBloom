@@ -31,15 +31,22 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="bg-white w-[90%] xl:w-[90%] 2xl:w-[80%] sm:h-[31rem] md:h-[35.4rem] xl:h-[55rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative">
+    <div className="bg-white w-[90%] xl:w-[90%] 2xl:w-[80%] h-[15.5rem] sm:h-[31rem] md:h-[35.4rem] xl:h-[55rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative">
       <div className="flex justify-between items-center">
-        <div className="pl-6 xl:pl-8 2xl:pl-12 pt-4 xl:pt-2 2xl:pt-4 z-[99999]">
+        <div className="pl-6 xl:pl-8 2xl:pl-12 pt-2 sm:pt-4 xl:pt-2 2xl:pt-4 z-[99999]">
+        <Image
+            src="./landing/logoSmall.svg"
+            width={82}
+            height={72}
+            alt="logo"
+            className="sm:hidden w-14"
+          />
           <Image
             src="./bloomCommAssets/Logo.svg"
             width={180}
             height={133}
             alt="logo"
-            className="h-[4.8rem] w-[5.4rem] xl:h-[11rem] xl:w-[11.6rem] "
+            className=" hidden sm:block sm:h-[4.8rem] sm:w-[5.4rem] xl:h-[11rem] xl:w-[11.6rem] "
           />
         </div>
         <div
@@ -89,7 +96,7 @@ export default function HeroSection() {
           width={590}
           height={527}
           alt="heroFarmer"
-          className="  w-[520px]  md:block md:h-[567px] md:w-[590px] xl:hidden 2xl:hidden  "
+          className="w-64  sm:w-[520px]  md:block md:h-[567px] md:w-[590px] xl:hidden 2xl:hidden  "
         />
         <img
           src="./landing/heroFarmer.svg"
@@ -100,12 +107,12 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className=" pl-4 max-w-sm sm:mt-32 xl:mt-42 2xl:mt-48 md:pl-6 xl:pl-8 2xl:pl-12 xl:max-w-xl md:max-w-sm mb-10 xl:mb-16">
+      <div className=" pl-4 mt-8 max-w-[12rem] sm:max-w-sm sm:mt-32 xl:mt-42 2xl:mt-48 md:pl-6 xl:pl-8 2xl:pl-12 xl:max-w-xl md:max-w-sm mb-6 sm:mb-10 xl:mb-16">
         <h1 className=" sm:text-3xl xl:text-4xl 2xl:text-5xl  text-black/80 font-bold font-outfit ">
           Empowering Farmers with Knowledge and Insights.
         </h1>
       </div>
-      <div className=" pl-4 max-w-xs xl:max-w-xl 2xl:max-w-2xl md:pl-6 xl:pl-8 2xl:pl-12">
+      <div className=" text-[0.6rem] sm:text-base pl-4 max-w-[12rem] sm:max-w-xs xl:max-w-xl 2xl:max-w-2xl md:pl-6 xl:pl-8 2xl:pl-12">
         <p className=" hidden lg:block font-opensans">
           Our platform provides real-time weather updates, market prices, expert
           advice, and a supportive farming community—all in one place.Empowering
@@ -113,7 +120,7 @@ export default function HeroSection() {
         </p>
         <p className="lg:hidden">
           Access real-time weather updates, market prices, expert advice, and a
-          supportive farming community—all in one place.
+          supportive farming community
         </p>
       </div>
     </div>

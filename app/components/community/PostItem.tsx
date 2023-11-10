@@ -1,7 +1,10 @@
-import React from "react";
+'use client';
+import React, { useState } from "react";
 import getTimeSincePostCreation from "@/handlers/timeStamp";
 import { BiLike } from "react-icons/bi";
 import Image from "next/image";
+import { experimental_useOptimistic as useOptimistic } from "react";
+import { updateLikes } from "@/utils/api";
 
 
 interface Post {
@@ -25,6 +28,22 @@ interface Post {
   }
 
   const PostItem: React.FC<PostItemProps> = ({ post }) => {
+     const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [liked, setLiked] = useState(false);
+  const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
+
+
+  const handleLikeUPdate = async ({ postId }: { postId: string }) => {
+    setOptimisticLiked(true);
+
+    try {
+      await updateLikes({ postId });
+      setLiked(true);
+    } catch (error) {
+      setOptimisticLiked(false);
+    }
+  };
   return (
     <div
       key={post.id}
@@ -56,7 +75,7 @@ interface Post {
       {post.file && <a href={post.file}>Download File</a>}
 
       <div className="mt-4 border-t flex justify-between items-center pt-4">
-        {/* <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center">
                       <button
                         // onClick={() => handleLikeUPdate({ postId: post.id })}
                         className={`flex gap-2 ${
@@ -85,7 +104,7 @@ interface Post {
                     <div>
                       <p> 0 comments</p>
                     </div>
-                    */}
+                   
       </div>
     </div>
   );

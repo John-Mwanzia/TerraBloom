@@ -13,9 +13,7 @@ import Button from "@/app/components/community/Button";
 import prisma from "@/modules/db";
 import PostItem from "@/app/components/community/PostItem";
 
-
-
-const getPosts = async()=>{
+const getPosts = async () => {
   const posts = await prisma.post.findMany({
     orderBy: {
       createdAt: "desc",
@@ -27,43 +25,9 @@ const getPosts = async()=>{
     },
   });
   return posts;
-
-
-}
+};
 
 export default async function Page() {
-  // const [posts, setPosts] = useState<Post[]>([]);
-  // const [loading, setLoading] = useState(false);
-  // const [liked, setLiked] = useState(false);
-  // const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
-
-  // useEffect(() => {
-  //   async function fetchPosts() {
-  //     try {
-  //       setLoading(true);
-  //       const response = await getPosts();
-  //       setPosts(response.data);
-        
-  //       setLoading(false);
-  //     } catch (error) {
-  //       toast.error("Error" + error);
-  //     }
-  //   }
-
-  //   fetchPosts();
-  // }, []);
-
-  // const handleLikeUPdate = async ({ postId }: { postId: string }) => {
-  //   setOptimisticLiked(true);
-
-  //   try {
-  //     await updateLikes({ postId });
-  //     setLiked(true);
-  //   } catch (error) {
-  //     setOptimisticLiked(false);
-  //   }
-  // };
-
   const posts = await getPosts();
   return (
     <>
@@ -74,13 +38,10 @@ export default async function Page() {
         </div>
         <div className="flex-1 overflow-y-auto pb-8">
           <div className="flex flex-col items-center pt-8 gap-16 px-2 md:px-0 relative pb-24">
-            {
-              posts.map((post) => (
-                // <PostItem key={post.id} post={post} />
-                <PostItem key={post.id} post={post} />
-
-              )
-            )} 
+            {posts.map((post) => (
+              // <PostItem key={post.id} post={post} />
+              <PostItem key={post.id} post={post} />
+            ))}
           </div>
         </div>
         <ModalDisplay />

@@ -31,14 +31,15 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
   const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
 
   const handleLikeUPdate = async ({ postId }: { postId: string }) => {
-    setOptimisticLiked(true);
-
+    setOptimisticLiked(liked => !liked);
+    console.log("optimisticLiked", optimisticLiked);
+    
     try {
       //api returns responce like this { data: { liked: false } }
       const { data } = await updateLikes({ postId });
       setLiked(data.liked);
     } catch (error) {
-      setOptimisticLiked(false);
+      setOptimisticLiked((prev) => !prev)
     }
   };
   return (
@@ -75,13 +76,12 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
         <div className="flex gap-4 items-center">
           <button
             onClick={() => handleLikeUPdate({ postId: post.id })}
-            className={`flex gap-2 ${liked ? "text-[#0E9AA9]" : ""}`}
+            className={`flex gap-2 ${optimisticLiked ? "text-[#0E9AA9]" : ""}`}
           >
             <div>
               <BiLike
-                className={`w-6 h-6 text-black ${
-                  liked ? "text-[#0E9AA9]" : ""
-                }`}
+               color={optimisticLiked ? "#0E9AA9" : "black"}
+                className="w-6 h-6 "
               />
             </div>
             {optimisticLiked ? "Liked" : "Like"}

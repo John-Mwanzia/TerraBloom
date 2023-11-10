@@ -77,7 +77,7 @@ interface Post {
       <div className="mt-4 border-t flex justify-between items-center pt-4">
         <div className="flex gap-4 items-center">
                       <button
-                        // onClick={() => handleLikeUPdate({ postId: post.id })}
+                        onClick={() => handleLikeUPdate({ postId: post.id })}
                         className={`flex gap-2 ${
                           liked ? "text-[#0E9AA9]" : ""
                         }`}

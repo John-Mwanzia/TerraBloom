@@ -49,8 +49,18 @@ export const POST = async (req: Request) => {
         },
       },
     });
+    const likedUserData = await prisma.user.findUnique({
+      where: {
+        id: user.id,
+      },
+      select: {
+        id: true,
+        firstName: true,
+        avatarUrl: true,
+      },
+    });
 
-    return NextResponse.json({ data: { liked: true } });
+    return NextResponse.json({ data: { liked: true, likedBy: likedUserData } });
   } catch (error) {
     return NextResponse.json(
       { error: "Internal Server Error" + error.message },

@@ -28,8 +28,6 @@ interface Post {
   }
 
   const PostItem: React.FC<PostItemProps> = ({ post }) => {
-     const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(false);
   const [liked, setLiked] = useState(false);
   const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
 

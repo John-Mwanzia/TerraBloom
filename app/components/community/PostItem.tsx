@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import getTimeSincePostCreation from "@/handlers/timeStamp";
 import { BiLike } from "react-icons/bi";
@@ -6,38 +6,37 @@ import Image from "next/image";
 import { experimental_useOptimistic as useOptimistic } from "react";
 import { updateLikes } from "@/utils/api";
 
-
 interface Post {
-    id: string;
-    title: string;
-    content: string;
-    author: {
-      avatarUrl: string;
-      firstName: string;
-      lastName: string;
-    };
-    Image?: string;
-    video?: string;
-    gif?: string;
-    file?: string;
-    createdAt: string;
-  }
+  id: string;
+  title: string;
+  content: string;
+  author: {
+    avatarUrl: string;
+    firstName: string;
+    lastName: string;
+  };
+  Image?: string;
+  video?: string;
+  gif?: string;
+  file?: string;
+  createdAt: string;
+}
 
-  interface PostItemProps {
-    post: Post; // Ensure the post prop is correctly typed
-  }
+interface PostItemProps {
+  post: Post; // Ensure the post prop is correctly typed
+}
 
-  const PostItem: React.FC<PostItemProps> = ({ post }) => {
+const PostItem: React.FC<PostItemProps> = ({ post }) => {
   const [liked, setLiked] = useState(false);
   const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
-
 
   const handleLikeUPdate = async ({ postId }: { postId: string }) => {
     setOptimisticLiked(true);
 
     try {
-      await updateLikes({ postId });
-      setLiked(true);
+      //api returns responce like this { data: { liked: false } }
+      const { data } = await updateLikes({ postId });
+      setLiked(data.liked);
     } catch (error) {
       setOptimisticLiked(false);
     }
@@ -74,39 +73,35 @@ interface Post {
 
       <div className="mt-4 border-t flex justify-between items-center pt-4">
         <div className="flex gap-4 items-center">
-                      <button
-                        onClick={() => handleLikeUPdate({ postId: post.id })}
-                        className={`flex gap-2 ${
-                          liked ? "text-[#0E9AA9]" : ""
-                        }`}
-                      >
-                        <div>
-                          <BiLike
-                            className={`w-6 h-6 text-black ${
-                              liked ? "text-[#0E9AA9]" : ""
-                            }`}
-                          />
-                        </div>
-                        {optimisticLiked ? "Liked" : "Like"}
-                      </button>
-                      <button className="flex gap-2">
-                        <Image
-                          src="/bloomCommAssets/comment.svg"
-                          alt="comment"
-                          width={24}
-                          height={24}
-                        />
-                        comment
-                      </button>
-                    </div>
-                    <div>
-                      <p> 0 comments</p>
-                    </div>
-                   
+          <button
+            onClick={() => handleLikeUPdate({ postId: post.id })}
+            className={`flex gap-2 ${liked ? "text-[#0E9AA9]" : ""}`}
+          >
+            <div>
+              <BiLike
+                className={`w-6 h-6 text-black ${
+                  liked ? "text-[#0E9AA9]" : ""
+                }`}
+              />
+            </div>
+            {optimisticLiked ? "Liked" : "Like"}
+          </button>
+          <button className="flex gap-2">
+            <Image
+              src="/bloomCommAssets/comment.svg"
+              alt="comment"
+              width={24}
+              height={24}
+            />
+            comment
+          </button>
+        </div>
+        <div>
+          <p> 0 comments</p>
+        </div>
       </div>
     </div>
   );
-}
-
+};
 
 export default PostItem;

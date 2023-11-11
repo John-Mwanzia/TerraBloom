@@ -20,6 +20,11 @@ interface Post {
   gif?: string;
   file?: string;
   createdAt: string;
+  likes: {
+    id: string;
+    userId: string;
+    postId: string;
+  };
 }
 
 interface PostItemProps {
@@ -29,15 +34,20 @@ interface PostItemProps {
 const PostItem: React.FC<PostItemProps> = ({ post }) => {
   const [liked, setLiked] = useState(false);
   const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
+  const [likedBy, setLikedBy] = useState();
+
+  console.log(post.likes);
+  
+  
 
   const handleLikeUPdate = async ({ postId }: { postId: string }) => {
     setOptimisticLiked(liked => !liked);
-    console.log("optimisticLiked", optimisticLiked);
     
     try {
       //api returns responce like this { data: { liked: false } }
       const { data } = await updateLikes({ postId });
       setLiked(data.liked);
+      setLikedBy(data.likedBy);
     } catch (error) {
       setOptimisticLiked((prev) => !prev)
     }

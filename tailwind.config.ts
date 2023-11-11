@@ -13,6 +13,7 @@ const config: Config = {
       backgroundColor:{
         "light-gray": "#E5E5E6",
         'body-bg': '#F4F4F5',
+        'light-pink': 'rgba(247, 200, 224, 0.42)',
          
       },
       backgroundImage: {

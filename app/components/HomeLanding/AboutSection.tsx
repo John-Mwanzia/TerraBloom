@@ -19,7 +19,7 @@ export default function AboutSection() {
         <div className="max-w-lg mt-20">
           <p className="font-outfit">
             Welcome to Terrabloom the leading agricultural web application that
-            empowers farmers with real-time information, AI-driven insights, and
+            empowers farmers with real-time information, Agricultural insights, and
             a thriving community. We are dedicated to revolutionizing the way
             farmers access vital agricultural resources, market data, and expert
             services. Join us in transforming your farming experience and

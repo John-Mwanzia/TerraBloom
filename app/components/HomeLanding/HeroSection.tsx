@@ -31,7 +31,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[15.5rem] sm:h-[31rem] md:h-[35.4rem] xl:h-[55rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative">
+    <div className="bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[15.5rem] sm:h-[31rem] md:h-[35.4rem] xl:h-[50rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative">
       <div className="flex justify-between items-center">
         <div className="pl-6 xl:pl-8 2xl:pl-12 pt-2 sm:pt-4 xl:pt-2 2xl:pt-4 z-[99999]">
         <Image
@@ -103,7 +103,7 @@ export default function HeroSection() {
           //   width={1000}
           //   height={900}
           alt="heroFarmer"
-          className="hidden xl:block 2xl:block md:h-[45rem] xl:h-[55rem] 2xl:h-[64rem]  "
+          className="hidden xl:block 2xl:block md:h-[45rem] xl:h-[50rem] 2xl:h-[64rem]  "
         />
       </div>
 

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AboutSection() {
   return (
-    <div className="bg-light-pink 2xl:max-w-[80%] mt-12 rounded-md flex justify-center px-24 gap-48 mb-24 pb-36 pt-12 pr-12">
+    <div className="bg-light-pink xl:max-w-[90%] 2xl:max-w-[80%] mt-12 rounded-md flex justify-center px-24 xl:gap-32 2xl:gap-48 mb-24 pb-36 pt-12 pr-12">
       <div>
         <Image
           src="./landing/about.svg"

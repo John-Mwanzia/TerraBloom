@@ -7,7 +7,7 @@ export default function FeaturesSection() {
       <div className="text-center font-outfit  text-3xl sm:text-4xl mx-auto  max-w-4xl">
         <h1>Powerful Features to Revolutionize Your Farming Experience</h1>
       </div>
-      <div className="mt-16">
+      <div className="mt-28">
         <div className="flex justify-center gap-72 mb-20">
           <div className="bg-[#89898a42] relative transform -skew-x-12 scale-y-100 text-center px-12 py-20 rounded-3xl shadow-xl">
             <Image
@@ -17,7 +17,7 @@ export default function FeaturesSection() {
               height={115}
               className="absolute -left-16 skew-x-12"
             />
-            <h3 className="mb-12 ml-24 text-2xl font-outfit text- skew-x-12  max-w-[15rem]">
+            <h3 className="mb-12 ml-12 text-2xl text-start font-outfit text- skew-x-12  max-w-[15rem]">
               Real-Time Weather Updates
             </h3>
             <p className="max-w-xs skew-x-12">
@@ -33,7 +33,7 @@ export default function FeaturesSection() {
               height={115}
               className="absolute -left-16 skew-x-12"
             />
-            <h3 className="mb-12 ml-24 text-2xl skew-x-12 font-outfit text-start  max-w-[15rem]">
+            <h3 className="mb-12 ml-12 text-2xl skew-x-12 font-outfit text-start  max-w-[15rem]">
               Comprehensive Crop Information
             </h3>
             <p className="max-w-xs skew-x-12">
@@ -51,7 +51,7 @@ export default function FeaturesSection() {
               height={115}
               className="absolute -left-16 skew-x-12"
             />
-            <h3 className="mb-12 ml-24 text-2xl font-outfit text-start  max-w-[15rem] skew-x-12">
+            <h3 className="mb-12 ml-12 text-2xl font-outfit text-start  max-w-[15rem] skew-x-12">
               Up-to-Date Market Prices
             </h3>
             <p className="max-w-xs skew-x-12">
@@ -67,7 +67,7 @@ export default function FeaturesSection() {
               height={115}
               className="absolute -left-16 skew-x-12"
             />
-            <h3 className="mb-12 ml-24 text-2xl font-outfit text-start  max-w-[15rem] skew-x-12">
+            <h3 className="mb-12 ml-12 text-2xl font-outfit text-start  max-w-[15rem] skew-x-12">
               Engaging Farmer Community
             </h3>
             <p className="max-w-xs skew-x-12">

@@ -15,28 +15,28 @@ export default function FeaturesSection() {
               alt="weather"
               width={115}
               height={115}
-              className="absolute -left-16"
+              className="absolute -left-16 skew-x-12"
             />
-            <h3 className="mb-12 ml-24 text-2xl font-outfit text-start  max-w-[15rem]">
+            <h3 className="mb-12 ml-24 text-2xl font-outfit text- skew-x-12  max-w-[15rem]">
               Real-Time Weather Updates
             </h3>
-            <p className="max-w-xs">
+            <p className="max-w-xs skew-x-12">
               Learn about cultivation techniques, pest management strategies,
               and soil requirements for various crops
             </p>
           </div>
           <div className="bg-white/70  relative transform -skew-x-12 scale-y-100 text-center px-12 py-20 rounded-3xl shadow-xl">
             <Image
-              src="./landing/weather.svg"
-              alt="weather"
+              src="./landing/crop-info.svg"
+              alt="crop-info"
               width={115}
               height={115}
-              className="absolute -left-16"
+              className="absolute -left-16 skew-x-12"
             />
-            <h3 className="mb-12 ml-24 text-2xl font-outfit text-start  max-w-[15rem]">
+            <h3 className="mb-12 ml-24 text-2xl skew-x-12 font-outfit text-start  max-w-[15rem]">
               Comprehensive Crop Information
             </h3>
-            <p className="max-w-xs">
+            <p className="max-w-xs skew-x-12">
               Stay informed with real-time weather forecasts and alerts specific
               to your region
             </p>
@@ -45,32 +45,32 @@ export default function FeaturesSection() {
         <div className="flex justify-center gap-72 ">
           <div className="bg-white/70  relative transform -skew-x-12 scale-y-100 text-center px-12 py-20 rounded-3xl shadow-xl">
             <Image
-              src="./landing/weather.svg"
-              alt="weather"
+              src="./landing/marketPrices.svg"
+              alt="marketPrices"
               width={115}
               height={115}
-              className="absolute -left-16"
+              className="absolute -left-16 skew-x-12"
             />
-            <h3 className="mb-12 ml-24 text-2xl font-outfit text-start  max-w-[15rem]">
+            <h3 className="mb-12 ml-24 text-2xl font-outfit text-start  max-w-[15rem] skew-x-12">
               Up-to-Date Market Prices
             </h3>
-            <p className="max-w-xs">
+            <p className="max-w-xs skew-x-12">
               Access the latest market prices to make informed decisions about
               your crops
             </p>
           </div>
           <div className="bg-[#b4e4ff63] relative transform -skew-x-12 scale-y-100 text-center px-12 py-20 rounded-3xl shadow-xl">
             <Image
-              src="./landing/weather.svg"
-              alt="weather"
+              src="./landing/community.svg"
+              alt="community"
               width={115}
               height={115}
-              className="absolute -left-16"
+              className="absolute -left-16 skew-x-12"
             />
-            <h3 className="mb-12 ml-24 text-2xl font-outfit text-start  max-w-[15rem]">
+            <h3 className="mb-12 ml-24 text-2xl font-outfit text-start  max-w-[15rem] skew-x-12">
               Engaging Farmer Community
             </h3>
-            <p className="max-w-xs">
+            <p className="max-w-xs skew-x-12">
               Connect, share experiences, and collaborate with fellow farmers in
               a supportive community
             </p>

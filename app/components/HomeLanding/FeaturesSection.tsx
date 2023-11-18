@@ -8,7 +8,7 @@ export default function FeaturesSection() {
         <h1>Powerful Features to Revolutionize Your Farming Experience</h1>
       </div>
       <div className="mt-28">
-        <div className="flex justify-center gap-72 mb-20">
+        <div className="flex justify-center xl:gap-40 2xl:gap-72 mb-20">
           <div className="bg-[#89898a42] relative transform -skew-x-12 scale-y-100 text-center px-12 py-20 rounded-3xl shadow-xl">
             <Image
               src="./landing/weather.svg"
@@ -42,7 +42,7 @@ export default function FeaturesSection() {
             </p>
           </div>
         </div>
-        <div className="flex justify-center gap-72 ">
+        <div className="flex justify-center xl:gap-40 2xl:gap-72 ">
           <div className="bg-white/70  relative transform -skew-x-12 scale-y-100 text-center px-12 py-20 rounded-3xl shadow-xl">
             <Image
               src="./landing/marketPrices.svg"

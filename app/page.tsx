@@ -2,6 +2,7 @@ import React from 'react'
 import HeroSection from './components/HomeLanding/HeroSection'
 import AboutSection from './components/HomeLanding/AboutSection'
 import FeaturesSection from './components/HomeLanding/FeaturesSection'
+import Testimonial from './components/HomeLanding/Testimonial'
 
 export default function page() {
   return (
@@ -9,6 +10,7 @@ export default function page() {
         <HeroSection />
         <AboutSection />
         <FeaturesSection />
+        <Testimonial />
     </div>
   )
 }

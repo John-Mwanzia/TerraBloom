@@ -6,7 +6,7 @@ import Testimonial from './components/HomeLanding/Testimonial'
 
 export default function page() {
   return (
-    <div className='bg-light-gray/40  flex justify-center items-center flex-col'>
+    <div className='bg-light-gray/40  flex justify-center items-center flex-col overflow-x-hidden'>
         <HeroSection />
         <AboutSection />
         <FeaturesSection />

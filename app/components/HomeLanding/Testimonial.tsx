@@ -29,11 +29,39 @@ export default function Testimonial() {
             height={194}
             className="absolute top-40 -left-36"
           />
-          <div className="bg-[#C3CFD9] w-28 h-28 absolute -right-16 rounded-3xl top-48">
-
+          <div className="bg-[#C3CFD9] w-28 h-28 absolute -right-16 rounded-3xl top-48"></div>
+        </div>
+        <div>
+          <div>
+            <Image
+              src="./landing/testimonial/quotes.svg"
+              alt="quotes"
+              width={98}
+              height={98}
+            />
+          </div>
+          <div>
+            <p>
+              I used to struggle with finding reliable information and services
+              for my farming needs. With this web app, everything is just a
+              click away. It has simplified and transformed my farming journey.
+            </p>
+          </div>
+          <div>
+          <Image
+              src="./landing/testimonial/left-arrow.svg"
+              alt="arrow"
+              width={60}
+              height={53}
+            />
+             <Image
+              src="./landing/testimonial/right-arrow.svg"
+              alt="arrow"
+              width={60}
+              height={53}
+            />
           </div>
         </div>
-        <div></div>
       </div>
     </div>
   );

@@ -14,13 +14,13 @@ export default function Testimonial() {
           applicationa
         </p>
       </div>
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-center mt-10 gap-24 items-center">
         <div className="relative">
           <Image
             src="./landing/testimonial/sunshine.svg"
             alt="testimonial sunshine"
-            width={536}
-            height={668}
+            width={436}
+            height={568}
           />
           <Image
             src="./landing/testimonial/farmer2.svg"
@@ -32,7 +32,7 @@ export default function Testimonial() {
           <div className="bg-[#C3CFD9] w-28 h-28 absolute -right-16 rounded-3xl top-48"></div>
         </div>
         <div>
-          <div>
+          <div className="mb-12 flex  justify-end">
             <Image
               src="./landing/testimonial/quotes.svg"
               alt="quotes"
@@ -40,14 +40,14 @@ export default function Testimonial() {
               height={98}
             />
           </div>
-          <div>
-            <p>
+          <div className="mb-12">
+            <p className="max-w-xl">
               I used to struggle with finding reliable information and services
               for my farming needs. With this web app, everything is just a
               click away. It has simplified and transformed my farming journey.
             </p>
           </div>
-          <div>
+          <div className="flex items-center gap-12 justify-end">
           <Image
               src="./landing/testimonial/left-arrow.svg"
               alt="arrow"

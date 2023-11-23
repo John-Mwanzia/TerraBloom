@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Testimonial() {
   return (
-    <div className=" bg-[#FFF] overflow-x-hidden w-screen  overflow-y-hidden mb-16">
+    <div className=" bg-[#FFF] overflow-x-hidden w-screen  overflow-y-hidden mb-16 pb-12">
       <div className=" flex justify-center flex-col items-center">
         <h1 className="font-outfit  text-3xl sm:text-4xl lg:text-5xl mt-16">
           What Our Farmers Say
@@ -14,7 +14,7 @@ export default function Testimonial() {
           applicationa
         </p>
       </div>
-      <div className="flex justify-center mt-10 gap-24 items-center">
+      <div className="flex justify-center mt-10 gap-32 items-center">
         <div className="relative">
           <Image
             src="./landing/testimonial/sunshine.svg"
@@ -29,7 +29,7 @@ export default function Testimonial() {
             height={194}
             className="absolute top-40 -left-36"
           />
-          <div className="bg-[#C3CFD9] w-28 h-28 absolute -right-16 rounded-3xl top-48"></div>
+          <div className="bg-[#C3CFD9] w-20 h-20 absolute -right-10 rounded-3xl top-56"></div>
         </div>
         <div>
           <div className="mb-12 flex  justify-end">

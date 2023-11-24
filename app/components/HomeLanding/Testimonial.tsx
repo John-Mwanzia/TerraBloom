@@ -39,6 +39,7 @@ export default function Testimonial() {
                 alt="quotes"
                 width={98}
                 height={98}
+                className=" md:w-16  xl:w-24"
               />
             </div>
             <div className="mb-12">

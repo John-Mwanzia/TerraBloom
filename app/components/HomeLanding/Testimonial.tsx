@@ -15,7 +15,7 @@ export default function Testimonial() {
             application
           </p>
         </div>
-        <div className="flex justify-center mt-10 gap-32 items-center">
+        <div className="flex justify-center mt-10 md:gap-16 xl:gap-32 items-center">
           <div className="relative">
             <Image
               src="./landing/testimonial/sunshine.svg"
@@ -28,9 +28,9 @@ export default function Testimonial() {
               alt="testimonial farmer"
               width={264}
               height={194}
-              className="absolute xl:w-48 2xl:w-64 xl:top-36 2xl:top-40 xl:-left-28 2xl:-left-36"
+              className="absolute md:w-40 xl:w-48 2xl:w-64 md:top-20 xl:top-36 2xl:top-40 md:-left-16 xl:-left-28 2xl:-left-36"
             />
-            <div className="bg-[#C3CFD9] w-20 h-20 absolute -right-10 rounded-3xl xl:top-44 2xl:top-56"></div>
+            <div className="bg-[#C3CFD9] w-20 h-20 absolute -right-10 rounded-3xl md:top-28  xl:top-44 2xl:top-56"></div>
           </div>
           <div>
             <div className="mb-12 flex  justify-end">

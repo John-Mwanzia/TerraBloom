@@ -4,7 +4,7 @@ import React from "react";
 export default function Testimonial() {
   return (
     <div className=" bg-[#FFF] overflow-x-hidden w-screen  overflow-y-hidden mb-16 pb-12 flex flex-col items-center justify-center ">
-      <div className="xl:max-w-[90%] 2xl:max-w-[80%] px-36">
+      <div className="xl:max-w-[90%] 2xl:max-w-[80%] sm:px-24 xl:px-36">
         <div className=" flex justify-center flex-col items-center">
           <h1 className="font-outfit  text-3xl sm:text-4xl lg:text-5xl mt-16">
             What Our Farmers Say
@@ -15,7 +15,7 @@ export default function Testimonial() {
             application
           </p>
         </div>
-        <div className="flex justify-center mt-10 md:gap-16 xl:gap-32 items-center">
+        <div className="flex justify-center mt-10 sm:gap-16 xl:gap-32 items-center">
           <div className="relative">
             <Image
               src="./landing/testimonial/sunshine.svg"
@@ -28,9 +28,9 @@ export default function Testimonial() {
               alt="testimonial farmer"
               width={264}
               height={194}
-              className="absolute md:w-40 xl:w-48 2xl:w-64 md:top-20 xl:top-36 2xl:top-40 md:-left-16 xl:-left-28 2xl:-left-36"
+              className="absolute sm:w-36 md:w-40 xl:w-48 2xl:w-64 sm:top-20  xl:top-36 2xl:top-40 sm:-left-16 xl:-left-28 2xl:-left-36"
             />
-            <div className="bg-[#C3CFD9] w-20 h-20 absolute -right-10 rounded-3xl md:top-28  xl:top-44 2xl:top-56"></div>
+            <div className="bg-[#C3CFD9] w-20 h-20 absolute -right-10 rounded-3xl sm:top-24 md:top-28  xl:top-44 2xl:top-56"></div>
           </div>
           <div>
             <div className="mb-12 flex  justify-end">
@@ -39,7 +39,7 @@ export default function Testimonial() {
                 alt="quotes"
                 width={98}
                 height={98}
-                className=" md:w-16  xl:w-24"
+                className=" sm:w-10 md:w-16  xl:w-24"
               />
             </div>
             <div className="mb-12">

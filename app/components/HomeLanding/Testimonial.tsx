@@ -4,7 +4,7 @@ import React from "react";
 export default function Testimonial() {
   return (
     <div className=" bg-[#FFF] overflow-x-hidden w-screen  overflow-y-hidden mb-16 pb-12 flex flex-col items-center justify-center ">
-      <div className="xl:max-w-[90%] 2xl:max-w-[80%] px-10 sm:px-24 xl:px-36">
+      <div className="xl:max-w-[90%] 2xl:max-w-[80%] px-8 sm:px-24 xl:px-36">
         <div className=" flex justify-center flex-col items-center">
           <h1 className="font-outfit  text-3xl sm:text-4xl lg:text-5xl mt-16">
             What Our Farmers Say

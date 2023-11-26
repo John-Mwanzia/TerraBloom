@@ -3,6 +3,7 @@ import HeroSection from './components/HomeLanding/HeroSection'
 import AboutSection from './components/HomeLanding/AboutSection'
 import FeaturesSection from './components/HomeLanding/FeaturesSection'
 import Testimonial from './components/HomeLanding/Testimonial'
+import Footer from './components/HomeLanding/Footer'
 
 export default function page() {
   return (
@@ -11,6 +12,7 @@ export default function page() {
         <AboutSection />
         <FeaturesSection />
         <Testimonial />
+        <Footer />
     </div>
   )
 }

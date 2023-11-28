@@ -4,14 +4,14 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="bg-[#30324A] w-screen  h-[69rem] bg-footer-texture bg-cover  bg-[center_-50rem] overflow-hidden ">
+    <div className="bg-[#30324A] w-screen mt-16 max-h-[69rem] bg-footer-texture bg-cover xl:bg-[center_-28rem] 2xl:bg-[center_-50rem] overflow-hidden ">
       <div className="mt-12">
         <h1 className="text-white font-outfit text-4xl text-center">
           Get in Touch
         </h1>
       </div>
       <div className="mt-12 relative ">
-        <div>
+        <div className="relative xl:-left-10 xl:top-16 2xl:left-0 2xl:top-0">
           <div className="relative -top-16 left-10">
             <button>
               <Image
@@ -74,7 +74,7 @@ export default function Footer() {
             </button>
           </div>
         </div>
-        <div className="absolute top-0 right-72">
+        <div className="absolute top-0 xl:right-44 2xl:right-72">
           <div>
             <Image
               src="/landing/footer/cardModal.svg"
@@ -84,7 +84,7 @@ export default function Footer() {
             />
           </div>
         </div>
-        <div className="absolute top-48 right-52">
+        <div className="absolute top-48 xl:right-24 2xl:right-52">
           <div className="relative -left-36 top-12">
             <Image
               src="/landing/footer/socialMedia.svg"

@@ -4,14 +4,14 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="bg-[#30324A] w-screen mt-16 max-h-[69rem] bg-footer-texture bg-cover xl:bg-[center_-28rem] 2xl:bg-[center_-50rem] overflow-hidden ">
+    <div className="bg-[#30324A] w-screen mt-16 max-h-[69rem] bg-footer-texture bg-cover md:bg-[center_-19rem] xl:bg-[center_-28rem] 2xl:bg-[center_-50rem] overflow-hidden ">
       <div className="mt-12">
         <h1 className="text-white font-outfit text-4xl text-center">
           Get in Touch
         </h1>
       </div>
       <div className="mt-12 relative ">
-        <div className="relative xl:-left-10 xl:top-16 2xl:left-0 2xl:top-0">
+        <div className="relative top-10 -left-12 xl:-left-10 xl:top-16 2xl:left-0 2xl:top-0">
           <div className="relative -top-16 left-10">
             <button>
               <Image
@@ -74,17 +74,18 @@ export default function Footer() {
             </button>
           </div>
         </div>
-        <div className="absolute top-0 xl:right-44 2xl:right-72">
+        <div className="absolute top-0 md:-right-10 xl:right-44 2xl:right-72">
           <div>
             <Image
               src="/landing/footer/cardModal.svg"
               width={600}
               height={500}
               alt="blog"
+              className=" md:w-[27rem] xl:w-[37rem]"
             />
           </div>
         </div>
-        <div className="absolute top-48 xl:right-24 2xl:right-52">
+        <div className="absolute top-[29rem] xl:top-48 md:right-16 xl:right-24 2xl:right-52">
           <div className="relative -left-36 top-12">
             <Image
               src="/landing/footer/socialMedia.svg"
@@ -94,7 +95,7 @@ export default function Footer() {
             />
           </div>
           <div className="relative">
-            <div className="absolute -left-32 top-28">
+            <div className="absolute -left-20  xl:-left-32 top-20 xl:top-28">
               <Link href="https://www.twitter.com/farmnet.io/">
                 <Image
                   src="/landing/footer/twitterLogo.svg"
@@ -104,7 +105,7 @@ export default function Footer() {
                 />
               </Link>
             </div>
-            <div className="absolute top-4 left-8">
+            <div className="absolute xl:top-4 left-8">
               <Link href="https://www.instagram.com/farmnet.io/">
                 <Image
                   src="/landing/footer/instagram.svg"
@@ -114,7 +115,7 @@ export default function Footer() {
                 />
               </Link>
             </div>
-            <div className="absolute -top-20 -right-12">
+            <div className="absolute -top-20 right-1 xl:-right-12">
               <Link href="https://www.facebook.com/farmnet.io/">
                 <Image
                   src="/landing/footer/facebook.svg"
@@ -126,7 +127,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="relative -top-56 left-20">
+        <div className="relative md:-top-40 md:left-16 xl:-top-56 xl:left-20">
           <div className="relative -top-6">
             <Image
               src="/landing/footer/terms.svg"
@@ -144,7 +145,7 @@ export default function Footer() {
             />
           </div>
         </div>
-        <div className="relative left-[34rem] -top-96">
+        <div className="relative md:left-[24rem] xl:left-[34rem] -top-96">
           <Image
           src="/landing/footer/copyright.svg"
           width={400}

@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="bg-[#30324A] w-screen h-[1056px] bg-footer-texture bg-cover  bg-[center_-50rem] ">
+    <div className="bg-[#30324A] w-screen  h-[69rem] bg-footer-texture bg-cover  bg-[center_-50rem] overflow-hidden ">
       <div className="mt-12">
         <h1 className="text-white font-outfit text-4xl text-center">
           Get in Touch
@@ -125,6 +125,32 @@ export default function Footer() {
               </Link>
             </div>
           </div>
+        </div>
+        <div className="relative -top-56 left-20">
+          <div className="relative -top-6">
+            <Image
+              src="/landing/footer/terms.svg"
+              width={200}
+              height={200}
+              alt="terms"
+            />
+          </div>
+          <div className="relative -top-16 left-36">
+            <Image
+              src="/landing/footer/privacy.svg"
+              width={200}
+              height={200}
+              alt="privacy"
+            />
+          </div>
+        </div>
+        <div className="relative left-[34rem] -top-96">
+          <Image
+          src="/landing/footer/copyright.svg"
+          width={400}
+          height={200}
+          alt="copy right"  
+          />
         </div>
       </div>
     </div>

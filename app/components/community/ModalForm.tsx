@@ -1,10 +1,8 @@
 import React, { useContext, useState } from "react";
 import { UploadContext } from "../../context/store";
 import { AiFillFileImage, AiOutlineCloseCircle } from "react-icons/ai";
-import { myAction } from "@/utils/actions";
 import { postUpload } from "@/utils/api";
 import toast from "react-hot-toast";
-import { revalidatePath } from "next/cache";
 import { Spinner } from "@nextui-org/react";
 
 export default function ModalForm() {

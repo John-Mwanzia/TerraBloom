@@ -15,16 +15,17 @@ interface Post {
     firstName: string;
     lastName: string;
   };
-  Image?: string;
-  video?: string;
-  gif?: string;
-  file?: string;
-  createdAt: string;
+  Image?: string | null;
+  video?: string | null;
+  gif?: string | null;
+  file?: string | null;
+  createdAt: Date;
   likes: {
     id: string;
     userId: string;
     postId: string;
-  };
+  }[];
+  
 }
 
 interface PostItemProps {
@@ -36,20 +37,20 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
   const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
   const [likedBy, setLikedBy] = useState();
 
-  console.log(post.likes);
-  
-  
+  const formatCreatedAt = (date: Date): string => {
+    return date.toISOString(); // Convert the Date to a string (ISO format)
+  };
 
   const handleLikeUPdate = async ({ postId }: { postId: string }) => {
-    setOptimisticLiked(liked => !liked);
-    
+    setOptimisticLiked((liked) => !liked);
+
     try {
       //api returns responce like this { data: { liked: false } }
       const { data } = await updateLikes({ postId });
       setLiked(data.liked);
       setLikedBy(data.likedBy);
     } catch (error) {
-      setOptimisticLiked((prev) => !prev)
+      setOptimisticLiked((prev) => !prev);
     }
   };
   return (
@@ -67,7 +68,7 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
           />{" "}
           {post.author.firstName} {post.author.lastName}{" "}
           <p className="text-sm">
-            Posted {getTimeSincePostCreation(post.createdAt)}
+            Posted {getTimeSincePostCreation(formatCreatedAt(post.createdAt))}
           </p>
         </div>
       )}
@@ -90,7 +91,7 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
           >
             <div>
               <BiLike
-               color={optimisticLiked ? "#0E9AA9" : "black"}
+                color={optimisticLiked ? "#0E9AA9" : "black"}
                 className="w-6 h-6 "
               />
             </div>

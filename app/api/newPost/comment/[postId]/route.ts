@@ -19,20 +19,20 @@ export const POST = async (req: Request) => {
 
     const commentData = await prisma.comment.create({
       data: {
-        comment,
+        text: comment,
         post: {
           connect: {
             id: post.id,
           },
         },
-        user: {
+        author: {
           connect: {
             id: user.id,
           },
         },
       },
       include: {
-        user: true,
+        author: true,
       },
     });
 

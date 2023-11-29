@@ -10,14 +10,12 @@ import { UploadContext } from "../../context/store";
 interface ImageUploadModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onUpload: (file: File) => void;
   onEmbed: (link: string) => void;
 }
 
 function ImageUploadModal({
   isOpen,
   onClose,
-  onUpload,
   onEmbed,
 }: ImageUploadModalProps) {
   const [mode, setMode] = useState("upload");

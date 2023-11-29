@@ -165,7 +165,6 @@ export default function PostModal({ setShowModal }) {
         isOpen={isImageUploadModalOpen}
         onClose={handleCloseImageUploadModal}
         onEmbed={handleImageEmbed}
-        // onUpload={handleUploadImage} // Pass the upload function
       />
 
       <GifModal

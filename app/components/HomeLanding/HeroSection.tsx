@@ -31,7 +31,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[15.5rem] sm:h-[31rem] md:h-[35.4rem] xl:h-[50rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative">
+    <div className="bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[17.4rem] sm:h-[31rem] md:h-[35.4rem] xl:h-[50rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative">
       <div className="flex justify-between items-center">
         <div className="pl-6 xl:pl-8 2xl:pl-12 pt-2 sm:pt-4 xl:pt-2 2xl:pt-4 z-[99999]">
         <Image
@@ -90,13 +90,13 @@ export default function HeroSection() {
         <div className="h-[0.1875rem] rounded-2xl ml-auto w-[1.4rem] mb-1 bg-[#f55253]"></div>
         <div className="h-[0.1875rem] rounded-2xl w-[1.875rem ] bg-[#f55253] mb-1"></div>
       </div>
-      <div className=" absolute top-0 right-0">
+      <div className=" absolute -right-[3.3rem] top-0 sm:top-0 sm:right-0">
         <Image
           src="/landing/heroFarmerSm.png"
           width={590}
           height={527}
           alt="heroFarmer"
-          className="w-64  sm:w-[520px]  md:block md:h-[567px] md:w-[590px] xl:hidden 2xl:hidden  "
+          className="w-[85%]  sm:w-[520px]  md:block md:h-[567px] md:w-[590px] xl:hidden 2xl:hidden  "
         />
         <img
           src="./landing/heroFarmer.svg"

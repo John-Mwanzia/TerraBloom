@@ -31,7 +31,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[73vw] sm:h-[31rem] md:h-[35.4rem] xl:h-[50rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative">
+    <div className={`bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[73vw] sm:h-[31rem] md:h-[35.4rem] xl:h-[50rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative ${activeMenu ? "fixed" : ""}`}>
       <div className="flex justify-between items-center">
         <div className="pl-4 sm:pl-6 xl:pl-8 2xl:pl-12 pt-2 sm:pt-4 xl:pt-2 2xl:pt-4 z-[99999]">
           <Image
@@ -39,7 +39,7 @@ export default function HeroSection() {
             width={82}
             height={72}
             alt="logo"
-            className="sm:hidden w-14"
+            className={`sm:hidden w-14 ${activeMenu ? "fixed" : ""}`}
           />
           <Image
             src="./bloomCommAssets/Logo.svg"
@@ -52,7 +52,7 @@ export default function HeroSection() {
         <div
           className={` md:pr-4 xl:pr-8  text-black/60  h-screen w-screen fixed  md:flex justify-center gap-24  flex-col md:flex-row md:gap-6 xl:gap-12 2xl:gap-20 items-center z-50  top-0 right-0 md:static md:h-auto md:w-auto md:bg-transparent  md:justify-end md:items-center ${
             activeMenu
-              ? "backdrop-blur bg-opacity-90 bg-black flex  text-white"
+              ? "backdrop-blur bg-opacity-90 bg-black flex text-white h-screen  overscroll-contain"
               : ""
           } transition-all duration-300 ease-in-out`}
         >
@@ -84,7 +84,9 @@ export default function HeroSection() {
       </div>
       <div
         onClick={toggleMenu}
-        className="absolute top-4 right-4 md:hidden z-50 cursor-pointer"
+        className={` md:hidden z-50 cursor-pointer ${
+          activeMenu ? "fixed top-12 right-7" : "top-4 right-4 absolute "
+        }`}
       >
         <div className="h-[0.1875rem] rounded-2xl w-[1.875rem] bg-[#f55253] mb-1"></div>
         <div className="h-[0.1875rem] rounded-2xl ml-auto w-[1.4rem] mb-1 bg-[#f55253]"></div>

@@ -28,10 +28,20 @@ export default function HeroSection() {
 
   const toggleMenu = () => {
     setActiveMenu(!activeMenu);
+
+    if (!activeMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
   };
 
   return (
-    <div className={`bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[73vw] sm:h-[31rem] md:h-[35.4rem] xl:h-[50rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative ${activeMenu ? "fixed" : ""}`}>
+    <div
+      className={`bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[73vw] sm:h-[31rem] md:h-[35.4rem] xl:h-[50rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative ${
+        activeMenu ? "fixed" : ""
+      }`}
+    >
       <div className="flex justify-between items-center">
         <div className="pl-4 sm:pl-6 xl:pl-8 2xl:pl-12 pt-2 sm:pt-4 xl:pt-2 2xl:pt-4 z-[99999]">
           <Image

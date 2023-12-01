@@ -30,9 +30,9 @@ export default function HeroSection() {
     setActiveMenu(!activeMenu);
 
     if (!activeMenu) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden"; // Hide scroll
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "unset";   // Show scroll
     }
   };
 

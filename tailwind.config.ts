@@ -29,6 +29,10 @@ const config: Config = {
         mono: ['DM Mono', '...defaultTheme.fontFamily.mono'],
       },
 
+      screens: {
+        xs: { max: '360px' },
+      },
+
     }
   },
   darkMode: "class",

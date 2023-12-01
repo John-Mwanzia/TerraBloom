@@ -116,7 +116,7 @@ export default function HeroSection() {
           advice, and a supportive farming community—all in one place.Empowering
           farmers to make informed decisions and cultivate growth.
         </p>
-        <p className="lg:hidden">
+        <p className="lg:hidden xs:pr-5">
           Access real-time weather updates, market prices, expert advice, and a
           supportive farming community
         </p>

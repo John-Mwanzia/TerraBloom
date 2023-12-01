@@ -7,10 +7,10 @@ export default function AboutSection() {
       <div className="max-w-[90%] 2xl:max-w-[80%]   flex flex-col md:flex-row justify-center px-4 sm:px-24 md:px-4 lg:px-24 gap-10 xl:gap-32 2xl:gap-48 ">
         <div>
           <Image
-            src="./landing/about.svg"
+            src="./landing/welcome.svg"
             alt="about pic"
-            width={502}
-            height={430}
+            width={477}
+            height={315}
           />
         </div>
         <div>

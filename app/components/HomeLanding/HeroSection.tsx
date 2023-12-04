@@ -38,7 +38,7 @@ export default function HeroSection() {
 
   return (
     <div
-      className={`bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[73vw] sm:h-[31rem] md:h-[35.4rem] xl:h-[50rem] 2xl:h-[63.95rem] mt-8 mb-12 rounded-[1.375rem] relative ${
+      className={`bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[80%] h-[73vw] sm:h-[31rem] md:h-[35.4rem] xl:h-[50rem] 2xl:h-[63.95rem] mt-8 sm:mb-12 rounded-[1.375rem] relative ${
         activeMenu ? "fixed" : ""
       }`}
     >

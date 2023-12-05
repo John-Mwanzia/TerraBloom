@@ -31,13 +31,15 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
             }`}
           >
             <div className="relative">
-              <Image
-                src="/bloomCommAssets/logo.svg"
-                alt="logo"
-                className="mx-auto"
-                width={180}
-                height={133}
-              />
+              <Link href="/community/Home">
+                <Image
+                  src="/bloomCommAssets/Logo.svg"
+                  alt="logochat"
+                  width={180}
+                  height={133}
+                  className="ml-4 mt-4"
+                />
+              </Link>
               <div className="absolute top-4 right-2 text-2xl   xl:hidden">
                 <button onClick={() => setActiveMenu(false)}>
                   <ImCancelCircle />

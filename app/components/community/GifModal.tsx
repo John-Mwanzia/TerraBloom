@@ -1,5 +1,5 @@
 import { UploadContext } from "@/app/context/store";
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import ReactGiphySearchbox from "react-giphy-searchbox";
 
 export default function GifModal({ isOpen, onClose, onUpload }: any) {

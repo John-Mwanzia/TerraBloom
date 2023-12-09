@@ -6,9 +6,7 @@ import React, {
   useRef,
   ChangeEvent,
   DragEvent,
-  useContext,
-  use,
-  useEffect,
+  useContext
 } from "react";
 
 interface VideoModalProps {

@@ -10,7 +10,7 @@ import { UploadContext } from "../context/store";
 
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
-  const { showModal, setShowModal } = useContext(UploadContext);
+  const { showModal } = useContext(UploadContext);
 
   useEffect(() => {
     const screenSize = window.innerWidth;

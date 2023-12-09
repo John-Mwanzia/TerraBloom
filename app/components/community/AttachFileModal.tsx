@@ -1,5 +1,5 @@
 import { UploadContext } from "@/app/context/store";
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { AiFillFileImage } from "react-icons/ai";
 
 interface AttachFileModalProps {

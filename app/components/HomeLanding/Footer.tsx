@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <div className="bg-[#30324A] w-screen mt-16  sm:h-[69rem] bg-footer-texture bg-cover bg-[center_-19rem] sm:bg-[center_-12rem] md:bg-[center_-19rem] xl:bg-[center_-28rem] 2xl:bg-[center_-50rem] overflow-hidden ">
       <div className="mt-12">
-        <h1 className="text-white font-outfit text-4xl text-center">
+        <h1 className="text-white font-outfit text-4xl xl:text-5xl text-center">
           Get in Touch
         </h1>
       </div>
@@ -129,28 +129,32 @@ export default function Footer() {
         </div>
         <div className="relative -top-32 sm:-top-80 sm:left-10 md:-top-40 md:left-16 xl:-top-56 xl:left-20">
           <div className="relative -top-6">
-            <Image
-              src="/landing/footer/terms.svg"
-              width={200}
-              height={200}
-              alt="terms"
-            />
+            <Link href="/terms">
+              <Image
+                src="/landing/footer/terms.svg"
+                width={200}
+                height={200}
+                alt="terms"
+              />
+            </Link>
           </div>
           <div className="relative -top-16 left-36">
-            <Image
-              src="/landing/footer/privacy.svg"
-              width={200}
-              height={200}
-              alt="privacy"
-            />
+            <Link href="/privacy">
+              <Image
+                src="/landing/footer/privacy.svg"
+                width={200}
+                height={200}
+                alt="privacy"
+              />
+            </Link>
           </div>
         </div>
         <div className="relative sm:left-[20rem] md:left-[24rem] xl:left-[34rem] bottom-0 sm:-top-96">
           <Image
-          src="/landing/footer/copyright.svg"
-          width={400}
-          height={200}
-          alt="copy right"  
+            src="/landing/footer/copyright.svg"
+            width={400}
+            height={200}
+            alt="copy right"
           />
         </div>
       </div>

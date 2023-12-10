@@ -11,7 +11,7 @@ export default function Footer() {
         </h1>
       </div>
       <div className="mt-12 relative ">
-        <div className="relative top-48  sm:top-56 md:top-10 -left-10 sm:left-0 md:-left-12 xl:-left-10 xl:top-16 2xl:left-0 2xl:top-0">
+        <div className="relative top-48  sm:top-56 md:top-10 -left-10 sm:left-0 md:-left-12 xl:-left-10 xl:top-16 2xl:left-20 2xl:top-20">
           <div className="relative -top-12 sm:-top-16 left-10">
             <button>
               <Image

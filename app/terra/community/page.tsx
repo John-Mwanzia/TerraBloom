@@ -11,7 +11,7 @@ import React from "react";
 export default function page() {
   return (
     <>
-      <main className=" bg-black">
+      <main className=" bg-black overflow-x-hidden">
         <section className="flex justify-center  pt-4 ">
           <HeroSection />
         </section>

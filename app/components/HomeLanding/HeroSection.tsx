@@ -12,7 +12,7 @@ export default function HeroSection() {
     },
     {
       name: "Market prices",
-      link: "/marketprices",
+      link: "/market-prices",
     },
     {
       name: "Crop Details",

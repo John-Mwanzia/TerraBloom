@@ -25,7 +25,6 @@ interface Post {
     userId: string;
     postId: string;
   }[];
-  
 }
 
 interface PostItemProps {
@@ -34,7 +33,6 @@ interface PostItemProps {
 
 const PostItem: React.FC<PostItemProps> = ({ post }) => {
   const [liked, setLiked] = useState(false);
-  const [optimisticLiked, setOptimisticLiked] = useOptimistic(liked);
   const [likedBy, setLikedBy] = useState();
 
   const formatCreatedAt = (date: Date): string => {
@@ -42,16 +40,12 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
   };
 
   const handleLikeUPdate = async ({ postId }: { postId: string }) => {
-    setOptimisticLiked((liked) => !liked);
-
     try {
       //api returns responce like this { data: { liked: false } }
       const { data } = await updateLikes({ postId });
       setLiked(data.liked);
       setLikedBy(data.likedBy);
-    } catch (error) {
-      setOptimisticLiked((prev) => !prev);
-    }
+    } catch (error) {}
   };
   return (
     <div
@@ -87,15 +81,15 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
         <div className="flex gap-4 items-center">
           <button
             onClick={() => handleLikeUPdate({ postId: post.id })}
-            className={`flex gap-2 ${optimisticLiked ? "text-[#0E9AA9]" : ""}`}
+            className={`flex gap-2 ${liked ? "text-[#0E9AA9]" : ""}`}
           >
             <div>
               <BiLike
-                color={optimisticLiked ? "#0E9AA9" : "black"}
+                color={liked ? "#0E9AA9" : "black"}
                 className="w-6 h-6 "
               />
             </div>
-            {optimisticLiked ? "Liked" : "Like"}
+            {liked ? "Liked" : "Like"}
           </button>
           <button className="flex gap-2">
             <Image

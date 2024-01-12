@@ -16,7 +16,7 @@ export default function HeroSection() {
     },
     {
       name: "Crop Details",
-      link: "/cropdetails",
+      link: "/crop-details",
     },
     {
       name: "Farmer Community",
@@ -32,7 +32,7 @@ export default function HeroSection() {
     if (!activeMenu) {
       document.body.style.overflow = "hidden"; // Hide scroll
     } else {
-      document.body.style.overflow = "unset";   // Show scroll
+      document.body.style.overflow = "unset"; // Show scroll
     }
   };
 

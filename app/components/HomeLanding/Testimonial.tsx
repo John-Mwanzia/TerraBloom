@@ -82,7 +82,63 @@ export default function Testimonial() {
                 </div>
               </div>
             </CarouselItem>
-            <CarouselItem>...</CarouselItem>
+            <CarouselItem>
+              <div className="flex flex-col sm:flex-row justify-center mt-10 sm:gap-16 xl:gap-28 items-center">
+                <div className="relative sm:px-0 xl:pl-20">
+                  <Image
+                    src="./landing/testimonial/sunshine.svg"
+                    alt="testimonial sunshine"
+                    width={376}
+                    height={508}
+                  />
+                  <Image
+                    src="./images/sarah.svg"
+                    alt="testimonial farmer"
+                    width={194}
+                    height={124}
+                    className="absolute w-32 sm:w-36 md:w-40 xl:w-44  top-24 sm:top-20  xl:top-48  -left-2 sm:-left-16 xl:-left-0"
+                  />
+                  <div className="bg-[#C3CFD9] w-20 h-20 absolute -right-2 sm:-right-10 rounded-3xl top-28 sm:top-24 md:top-28  xl:top-44 2xl:top-56"></div>
+                </div>
+                <div>
+                  <div className="mb-12 flex  justify-end">
+                    <Image
+                      src="./landing/testimonial/quotes.svg"
+                      alt="quotes"
+                      width={98}
+                      height={98}
+                      className="w-10 md:w-16  xl:w-24 mt-6 sm:mt-0"
+                    />
+                  </div>
+                  <div className="mb-12">
+                    <p className="max-w-lg">
+                      "Being able to connect with fellow farmers and share
+                      knowledge has been a game-changer. This web app has
+                      created a strong community that supports and uplifts each
+                      other."
+                    </p>
+                  </div>
+                  {/* <div className="flex items-center gap-12 justify-end">
+                    <button>
+                      <Image
+                        src="./landing/testimonial/left-arrow.svg"
+                        alt="arrow"
+                        width={60}
+                        height={53}
+                      />
+                    </button>
+                    <button>
+                      <Image
+                        src="./landing/testimonial/right-arrow.svg"
+                        alt="arrow"
+                        width={60}
+                        height={53}
+                      />
+                    </button>
+                  </div> */}
+                </div>
+              </div>
+            </CarouselItem>
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />

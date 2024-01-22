@@ -61,24 +61,6 @@ export default function Testimonial() {
                       transformed my farming journey.
                     </p>
                   </div>
-                  {/* <div className="flex items-center gap-12 justify-end">
-                    <button>
-                      <Image
-                        src="./landing/testimonial/left-arrow.svg"
-                        alt="arrow"
-                        width={60}
-                        height={53}
-                      />
-                    </button>
-                    <button>
-                      <Image
-                        src="./landing/testimonial/right-arrow.svg"
-                        alt="arrow"
-                        width={60}
-                        height={53}
-                      />
-                    </button>
-                  </div> */}
                 </div>
               </div>
             </CarouselItem>
@@ -118,24 +100,6 @@ export default function Testimonial() {
                       other."
                     </p>
                   </div>
-                  {/* <div className="flex items-center gap-12 justify-end">
-                    <button>
-                      <Image
-                        src="./landing/testimonial/left-arrow.svg"
-                        alt="arrow"
-                        width={60}
-                        height={53}
-                      />
-                    </button>
-                    <button>
-                      <Image
-                        src="./landing/testimonial/right-arrow.svg"
-                        alt="arrow"
-                        width={60}
-                        height={53}
-                      />
-                    </button>
-                  </div> */}
                 </div>
               </div>
             </CarouselItem>

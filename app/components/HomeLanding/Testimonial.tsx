@@ -23,10 +23,10 @@ export default function Testimonial() {
           </p>
         </div>
 
-        <Carousel className="w-screen max-w-full">
+        <Carousel className="">
           <CarouselContent>
             <CarouselItem>
-              <div className="flex flex-col sm:flex-row justify-center mt-10 sm:gap-16 xl:gap-28 items-center">
+              <div className="flex flex-col sm:flex-row justify-center mt-10 sm:gap-16 xl:gap-16 2xl:gap-28 items-center">
                 <div className="relative sm:px-0 xl:pl-20">
                   <Image
                     src="./landing/testimonial/sunshine.svg"
@@ -39,9 +39,9 @@ export default function Testimonial() {
                     alt="testimonial farmer"
                     width={194}
                     height={124}
-                    className="absolute w-32 sm:w-36 md:w-40 xl:w-44  top-24 sm:top-20  xl:top-48  -left-2 sm:-left-16 xl:-left-0"
+                    className="absolute w-32 sm:w-36 md:w-40 xl:w-32 2xl:w-44  top-24 sm:top-20  xl:top-40 2xl:top-48 -left-2 sm:-left-16 xl:-left-0"
                   />
-                  <div className="bg-[#C3CFD9] w-20 h-20 absolute -right-2 sm:-right-10 rounded-3xl top-28 sm:top-24 md:top-28  xl:top-44 2xl:top-56"></div>
+                  <div className="bg-[#C3CFD9] w-20 h-20  lg:w-14 lg:h-14  2xl:w-20 2xl:h-20 absolute -right-2 sm:-right-10 lg:-right-7 2xl:-right-10 rounded-3xl lg:rounded-2xl 2xl:rounded-3xl top-28 sm:top-24 md:top-28  xl:top-44 2xl:top-56"></div>
                 </div>
                 <div>
                   <div className="mb-12 flex  justify-end">
@@ -65,7 +65,7 @@ export default function Testimonial() {
               </div>
             </CarouselItem>
             <CarouselItem>
-              <div className="flex flex-col sm:flex-row justify-center mt-10 sm:gap-16 xl:gap-28 items-center">
+              <div className="flex flex-col sm:flex-row justify-center mt-10 sm:gap-16 xl:gap-16 2xl:gap-28 items-center">
                 <div className="relative sm:px-0 xl:pl-20">
                   <Image
                     src="./landing/testimonial/sunshine.svg"
@@ -78,9 +78,10 @@ export default function Testimonial() {
                     alt="testimonial farmer"
                     width={194}
                     height={124}
-                    className="absolute w-32 sm:w-36 md:w-40 xl:w-44  top-24 sm:top-20  xl:top-48  -left-2 sm:-left-16 xl:-left-0"
+                    className="absolute w-32 sm:w-36 md:w-40 xl:w-32 2xl:w-44  top-24 sm:top-20  xl:top-40 2xl:top-48 -left-2 sm:-left-16 xl:-left-0"
+
                   />
-                  <div className="bg-[#C3CFD9] w-20 h-20 absolute -right-2 sm:-right-10 rounded-3xl top-28 sm:top-24 md:top-28  xl:top-44 2xl:top-56"></div>
+                  <div className="bg-[#C3CFD9] w-20 h-20  lg:w-14 lg:h-14  2xl:w-20 2xl:h-20 absolute -right-2 sm:-right-10 lg:-right-7 2xl:-right-10 rounded-3xl lg:rounded-2xl 2xl:rounded-3xl top-28 sm:top-24 md:top-28  xl:top-44 2xl:top-56"></div>
                 </div>
                 <div>
                   <div className="mb-12 flex  justify-end">

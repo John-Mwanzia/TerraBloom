@@ -117,12 +117,12 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className=" pl-4 mt-[15vw] max-w-[11.5rem] sm:max-w-sm sm:mt-32 xl:mt-42 2xl:mt-48 md:pl-6 xl:pl-8 2xl:pl-12 xl:max-w-xl md:max-w-sm mb-6 sm:mb-10 xl:mb-16">
-        <h1 className=" text-sm sm:text-3xl xl:text-4xl 2xl:text-5xl font-medium font-outfit ">
+      <div className=" pl-2 mt-[15vw] max-w-[11.3rem] sm:max-w-sm sm:mt-32 xl:mt-42 2xl:mt-48 md:pl-6 xl:pl-8 2xl:pl-12 xl:max-w-xl md:max-w-sm mb-6 sm:mb-10 xl:mb-16">
+        <h1 className=" text-sm sm:text-3xl xl:text-4xl 2xl:text-5xl font-bold font-outfit ">
           Empowering Farmers with Knowledge and Insights.
         </h1>
       </div>
-      <div className=" text-[0.6rem] sm:text-base pl-4 max-w-[12rem] sm:max-w-xs xl:max-w-xl 2xl:max-w-2xl md:pl-6 xl:pl-8 2xl:pl-12">
+      <div className=" text-[0.6rem] sm:text-base pl-2 max-w-[12rem] sm:max-w-xs xl:max-w-xl 2xl:max-w-2xl md:pl-6 xl:pl-8 2xl:pl-12">
         <p className=" hidden lg:block font-opensans">
           Our platform provides real-time weather updates, market prices, expert
           advice, and a supportive farming community—all in one place.Empowering

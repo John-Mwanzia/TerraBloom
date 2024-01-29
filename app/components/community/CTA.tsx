@@ -19,8 +19,8 @@ export default async function CTA() {
         />
       </div>
       <div>
-        <div className="flex items-center lg:mb-2 2xl:mb-8">
-          <h1 className="text-white font-old-standard text-5xl md:text-4xl lg:text-5xl">
+        <div className="flex items-center mb-8 lg:mb-2 2xl:mb-8">
+          <h1 className="text-white whitespace-nowrap  font-old-standard text-4xl sm:text-5xl md:text-4xl lg:text-5xl">
             Join Now
           </h1>
           <Image

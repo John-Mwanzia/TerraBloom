@@ -37,7 +37,7 @@ export default function Nav() {
       };
   return (
     <div 
-    className={`bg-white w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[85%]  sm:mb-12 rounded-[1.375rem] relative ${
+    className={` w-[95%] sm:w-[90%] xl:w-[90%] 2xl:w-[85%]   relative ${
       activeMenu ? "fixed" : ""
     }`}
     >

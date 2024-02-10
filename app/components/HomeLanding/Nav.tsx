@@ -52,8 +52,8 @@ export default function Nav() {
           />
           <Image
             src="./bloomCommAssets/Logo.svg"
-            width={180}
-            height={133}
+            width={160}
+            height={113}
             alt="logo"
             className=" hidden sm:block sm:h-[4.8rem] sm:w-[5.4rem] xl:h-[11rem] xl:w-[11.6rem] "
           />

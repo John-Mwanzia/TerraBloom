@@ -7,7 +7,7 @@ import Footer from './components/HomeLanding/Footer'
 
 export default function page() {
   return (
-    <div className='bg-light-gray/40  flex justify-center items-center flex-col overflow-x-hidden'>
+    <div className='bg-light-gray/40  font- flex justify-center items-center flex-col overflow-x-hidden'>
         <HeroSection />
         <AboutSection />
         <FeaturesSection />

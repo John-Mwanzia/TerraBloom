@@ -118,7 +118,7 @@ export default function HeroSection() {
       </div>
 
       <div className=" pl-2 mt-[15vw] max-w-[11.3rem] sm:max-w-sm sm:mt-32 xl:mt-42 2xl:mt-48 md:pl-6 xl:pl-8 2xl:pl-12 xl:max-w-xl md:max-w-sm mb-6 sm:mb-10 xl:mb-16">
-        <h1 className=" text-sm sm:text-3xl xl:text-4xl 2xl:text-5xl font-bold font-outfit ">
+        <h1 className=" text-sm sm:text-3xl xl:text-4xl 2xl:text-5xl font-bold">
           Empowering Farmers with Knowledge and Insights.
         </h1>
       </div>

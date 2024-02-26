@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss"
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 
 const config = {
   darkMode: ["class"],
@@ -70,6 +72,9 @@ const config = {
         outfit: ['Outfit', 'sans-serif'],
         opensans: ['Open sans', 'sans-serif'],
         mono: ['DM Mono', '...defaultTheme.fontFamily.mono'],
+        sans_regular: ['var(--font-sans)', ...fontFamily.sans],
+        sans_bold: ['var(--fontBoldSans)', ...fontFamily.sans],
+        heading: ['var(--font-heading)', ...fontFamily.sans],
       },
       borderRadius: {
         lg: "var(--radius)",

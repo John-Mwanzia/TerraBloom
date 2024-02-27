@@ -53,24 +53,6 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      backgroundImage: {
-        "footer-texture": "url('/landing/footer/grid.svg')",
-      },
-      backgroundColor:{
-        "light-gray": "#E5E5E6",
-        'body-bg': '#F4F4F5',
-        'light-pink': 'rgba(247, 200, 224, 0.42)',
-         
-      },
-      fontFamily: {
-
-        'old-standard': ['Old Standard TT', 'serif'],
-        'staatliches': ['Staatliches', 'cursive'],
-        'inter': ['Inter', 'sans-serif'],
-        outfit: ['Outfit', 'sans-serif'],
-        opensans: ['Open sans', 'sans-serif'],
-        mono: ['DM Mono', '...defaultTheme.fontFamily.mono'],
-      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

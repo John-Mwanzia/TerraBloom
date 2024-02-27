@@ -1,10 +1,11 @@
 "use client";
 
+import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
-export default function HeroSection() {
+export default function HeroSection(userId) {
   const links = [
     {
       name: "Services",
@@ -82,14 +83,18 @@ export default function HeroSection() {
             </div>
           ))}
 
-          <Link
-            href="/sign-up"
-            className={` bg-[#A47344] rounded-3xl text-white px-8 md:px-6 xl:px-8 py-2 font-outfit text-sm xl:text-base ${
-              activeMenu ? "block text-white" : "hidden"
-            } md:block transition-opacity duration-300 ease-in-out`}
-          >
-            Sign Up
-          </Link>
+          {userId.user ? (
+            <UserButton />
+          ) : (
+            <Link
+              href="/sign-up"
+              className={` bg-[#A47344] rounded-3xl text-white px-8 md:px-6 xl:px-8 py-2 font-outfit text-sm xl:text-base ${
+                activeMenu ? "block text-white" : "hidden"
+              } md:block transition-opacity duration-300 ease-in-out`}
+            >
+              Sign Up
+            </Link>
+          )}
         </div>
       </div>
       <div
@@ -117,8 +122,8 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className=" pl-2 mt-[15vw] max-w-[11.3rem] sm:max-w-sm sm:mt-32 xl:mt-42 2xl:mt-48 md:pl-6 xl:pl-8 2xl:pl-12 xl:max-w-xl md:max-w-sm mb-6 sm:mb-10 xl:mb-16">
-        <h1 className=" text-sm sm:text-3xl xl:text-4xl 2xl:text-5xl font-bold">
+      <div className=" pl-2 mt-[15vw] max-w-[11.3rem] sm:max-w-sm sm:mt-32 xl:mt-42 2xl:mt-48 md:pl-6 xl:pl-8 2xl:pl-12 xl:max-w-2xl md:max-w-sm mb-6 sm:mb-10 xl:mb-16">
+        <h1 className=" text-sm sm:text-3xl xl:text-4xl 2xl:text-6xl font-bold font-heading">
           Empowering Farmers with Knowledge and Insights.
         </h1>
       </div>

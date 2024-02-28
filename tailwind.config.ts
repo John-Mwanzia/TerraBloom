@@ -53,6 +53,18 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backgroundColor:{
+        "light-gray": "#E5E5E6",
+        'body-bg': '#F4F4F5',
+        'light-pink': 'rgba(247, 200, 224, 0.42)',
+         
+      },
+      backgroundImage: {
+        "footer-texture": "url('/landing/footer/grid.svg')",
+      },
+      screens: {
+        xs: { max: '360px' },
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

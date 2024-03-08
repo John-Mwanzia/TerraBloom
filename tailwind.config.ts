@@ -63,7 +63,7 @@ const config = {
         "footer-texture": "url('/landing/footer/grid.svg')",
       },
       screens: {
-        xs: { max: '360px' },
+        xs: { max: '379px' },
       },
       borderRadius: {
         lg: "var(--radius)",

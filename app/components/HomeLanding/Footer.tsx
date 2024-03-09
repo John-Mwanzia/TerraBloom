@@ -1,10 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 export default function Footer() {
   return (
-    <div className="bg-[#30324A] w-screen mt-16  sm:h-[69rem] bg-footer-texture bg-cover bg-[center_-19rem] sm:bg-[center_-12rem] md:bg-[center_-19rem] xl:bg-[center_-28rem] 2xl:bg-[center_-50rem] overflow-hidden ">
+    <div className=" w-screen  max-h-[70vh]  bg-footer-texture bg-cover  overflow-hidden ">
+      <div className="-top-20">
+        <Image
+          src="/landing/footer/curve.svg"
+          alt="curve"
+          width={1920}
+          height={400}
+          className="w-screen"
+        />
+      </div>
       <div className="mt-12">
         <h1 className="text-white font-outfit text-4xl xl:text-5xl text-center">
           Get in Touch

@@ -60,7 +60,7 @@ const config = {
          
       },
       backgroundImage: {
-        "footer-texture": "url('/landing/footer/grid.svg')",
+        "footer-texture": "url('/landing/footer/footerbg.png')",
       },
       screens: {
         xs: { max: '379px' },

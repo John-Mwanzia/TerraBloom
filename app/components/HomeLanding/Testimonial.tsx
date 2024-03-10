@@ -10,7 +10,7 @@ import {
 
 export default function Testimonial() {
   return (
-    <div className=" bg-[#FFF] overflow-x-hidden w-screen  overflow-y-hidden mb-16 pb-12 flex flex-col items-center justify-center ">
+    <div className=" bg-[#FFF] overflow-x-hidden w-screen  overflow-y-hidden  pb-24 flex flex-col items-center justify-center ">
       <div className="max-w-[90%] 2xl:max-w-[80%] px-8 sm:px-24 xl:px-36">
         <div className=" flex justify-center flex-col items-center">
           <h1 className="font-outfit  text-3xl sm:text-4xl lg:text-5xl mt-16">

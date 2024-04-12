@@ -1,5 +1,3 @@
-import Image from "next/image";
-import React from "react";
 import {
   Carousel,
   CarouselContent,
@@ -7,6 +5,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Quote } from "lucide-react";
+import Image from "next/image";
 
 export default function Testimonial() {
   return (
@@ -62,13 +62,7 @@ export default function Testimonial() {
                 </div>
                 <div>
                   <div className="mb-12 flex  justify-end">
-                    <Image
-                      src="./landing/testimonial/quotes.svg"
-                      alt="quotes"
-                      width={98}
-                      height={98}
-                      className="w-10 md:w-16  xl:w-24 mt-6 sm:mt-0"
-                    />
+                    <Quote className="text-[#008888] w-44 h-24 " />
                   </div>
                   <div className="mb-12">
                     <p className="sm:max-w-lg">
@@ -118,13 +112,7 @@ export default function Testimonial() {
                 </div>
                 <div>
                   <div className="mb-12 flex  justify-end">
-                    <Image
-                      src="./landing/testimonial/quotes.svg"
-                      alt="quotes"
-                      width={98}
-                      height={98}
-                      className="w-10 md:w-16  xl:w-24 mt-6 sm:mt-0"
-                    />
+                    <Quote className="text-[#008888] w-44 h-24" />
                   </div>
                   <div className="mb-12">
                     <p className="sm:max-w-lg">

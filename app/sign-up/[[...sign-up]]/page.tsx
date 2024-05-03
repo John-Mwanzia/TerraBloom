@@ -1,9 +1,12 @@
-import { SignUp } from "@clerk/nextjs";
+import { SignUp, auth } from "@clerk/nextjs";
 
-export default function Page() {
+export default async function Page() {
+  const { userId } = auth();
+
+  let href = userId ? "/community/Home" : "/newUser";
   return (
     <div className="flex justify-center items-center h-screen">
-      <SignUp afterSignInUrl="/community/Home" />;
+      <SignUp afterSignInUrl={href} />
     </div>
   );
 }

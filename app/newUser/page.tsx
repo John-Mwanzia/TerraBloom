@@ -1,5 +1,6 @@
 import prisma from "@/modules/db";
 import { currentUser } from "@clerk/nextjs";
+import { Loader } from "lucide-react";
 import { redirect } from "next/navigation";
 
 const syncNewUser = async () => {
@@ -31,7 +32,7 @@ const NewUser = async () => {
 
   return (
     <div className="flex justify-center items-center h-screen w-screen">
-      <h1 className="text-3xl">Loading...</h1>
+      <Loader size="50" className="animate-spin " />
     </div>
   );
 };

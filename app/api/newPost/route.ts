@@ -23,7 +23,7 @@ export const POST = async (req: Request) => {
     },
   });
 
-  revalidatePath('/community/Home')
+  revalidatePath('/community/Home',"page")
   return NextResponse.json({ data: post });
 };
 

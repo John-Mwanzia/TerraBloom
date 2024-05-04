@@ -85,7 +85,13 @@ export default function HeroSection(userId) {
             ))}
 
             {userId.user ? (
-              <UserButton />
+              <div
+                className={`
+              ${activeMenu ? "block " : "hidden"}
+              `}
+              >
+                <UserButton />
+              </div>
             ) : (
               <Link
                 href="/sign-up"

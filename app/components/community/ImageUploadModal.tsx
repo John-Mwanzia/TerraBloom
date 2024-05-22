@@ -13,21 +13,13 @@ interface ImageUploadModalProps {
   onEmbed: (link: string) => void;
 }
 
-function ImageUploadModal({
-  isOpen,
-  onClose,
-  onEmbed,
-}: ImageUploadModalProps) {
+function ImageUploadModal({ isOpen, onClose, onEmbed }: ImageUploadModalProps) {
   const [mode, setMode] = useState("upload");
   const [file, setFile] = useState<File | null>(null);
   const [embedLink, setEmbedLink] = useState("");
   const dropAreaRef = useRef<HTMLDivElement>(null);
-  const {
-    previewImage,
-    setPreviewImage,
-    uploadedImage,
-    setUploadedImage,
-  } = useContext(UploadContext);
+  const { previewImage, setPreviewImage, uploadedImage, setUploadedImage } =
+    useContext(UploadContext);
 
   const handleUpload = () => {
     setUploadedImage(previewImage);
@@ -181,7 +173,13 @@ function ImageUploadModal({
           >
             {mode === "upload" ? "Upload" : "Embed"}
           </button>
-          <button className="btn btn-secondary" onClick={onClose}>
+          <button
+            className="btn btn-secondary"
+            onClick={() => {
+              setPreviewImage(null)
+              onClose()
+            }}
+          >
             Cancel
           </button>
         </div>

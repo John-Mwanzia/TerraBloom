@@ -127,7 +127,13 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
           >
             Attach
           </button>
-          <button className="" onClick={onClose}>
+          <button
+            className=""
+            onClick={() => {
+              setPreviewFile(null);
+              onClose();
+            }}
+          >
             Cancel
           </button>
         </div>

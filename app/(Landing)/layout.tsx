@@ -27,7 +27,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
         {activeMenu && (
           <div
             className={`bg-white h-screen fixed w-[16.3rem] ${
-              showModal ? "z-0" : "z-50"
+              showModal ? "z-0" : ""
             }`}
           >
             <div className="relative">

@@ -4,7 +4,10 @@ import getTimeSincePostCreation from "@/handlers/timeStamp";
 import { BiLike } from "react-icons/bi";
 import Image from "next/image";
 import { experimental_useOptimistic as useOptimistic } from "react";
-import { updateLikes } from "@/utils/api";
+import { getComments, updateLikes } from "@/utils/api";
+import toast from "react-hot-toast";
+import { Loader } from "lucide-react";
+import Commentinput from "./CommentInput";
 
 interface Post {
   id: string;
@@ -34,6 +37,9 @@ interface PostItemProps {
 const PostItem: React.FC<PostItemProps> = ({ post }) => {
   const [liked, setLiked] = useState(false);
   const [likedBy, setLikedBy] = useState();
+  const [loading, setLoading] = useState(false);
+  const [unhide, setUnhide] = useState(false);
+  const [comments, setComments] = useState([]);
 
   const formatCreatedAt = (date: Date): string => {
     return date.toISOString(); // Convert the Date to a string (ISO format)
@@ -45,8 +51,25 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
       const { data } = await updateLikes({ postId });
       setLiked(data.liked);
       setLikedBy(data.likedBy);
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
+
+  const handleComments = async (postId: string) => {
+    try {
+      setLoading(true);
+      setUnhide(true);
+      const { data } = await getComments(postId);
+      setComments(data);
+      setLoading(false);
+      console.log(data);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  
   return (
     <div
       key={post.id}
@@ -91,7 +114,10 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
             </div>
             {liked ? "Liked" : "Like"}
           </button>
-          <button className="flex gap-2">
+          <button
+            className="flex gap-2"
+            onClick={() => handleComments(post.id)}
+          >
             <Image
               src="/bloomCommAssets/comment.svg"
               alt="comment"
@@ -105,6 +131,43 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
           <p> 0 comments</p>
         </div>
       </div>
+      {unhide && (
+        <div className="mt-8 flex flex-col items-center ">
+          {loading ? (
+            <div className="flex justify-center items-center">
+              <Loader className="w-20 animate-spin " />
+            </div>
+          ) : (
+            <div className="w-full px-8">
+              {comments.length == 0 ? (
+                <div>No comments yet😔</div>
+              ) : (
+                <div className="mt-6">
+                  {comments.map((comment) => (
+                    <div key={comment.id}>
+                      <div className="bg-primary px-3 py-2 rounded-lg text-white font-bold text-xl w-auto">{
+                      comment.author.firstName.charAt(0) +
+                      comment.author.lastName.charAt(0)
+                      }</div>
+                      <div>{/* comment contents */}</div>
+                      <div>{/* likes */}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div className="flex gap-6 items-start mt-6  ">
+                <div className="bg-primary px-3 py-2 rounded-lg text-white font-bold text-xl">
+                  {/* name initials */}
+                  <h1>JK</h1>
+                </div>
+                <div className="flex-1">
+                  <Commentinput postId={post.id} />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

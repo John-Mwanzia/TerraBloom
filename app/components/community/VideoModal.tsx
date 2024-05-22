@@ -1,12 +1,10 @@
-
-
 import { UploadContext } from "@/app/context/store";
 import React, {
   useState,
   useRef,
   ChangeEvent,
   DragEvent,
-  useContext
+  useContext,
 } from "react";
 
 interface VideoModalProps {
@@ -21,9 +19,8 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
   const [file, setFile] = useState<File | null>(null);
   const [embedLink, setEmbedLink] = useState("");
   const dropAreaRef = useRef<HTMLDivElement>(null);
-  const { previewVideo, setPreviewVideo, setUploadedVideo } = useContext(
-    UploadContext
-  );
+  const { previewVideo, setPreviewVideo, setUploadedVideo } =
+    useContext(UploadContext);
   const [initialVideo, setInitialVideo] = useState<string | null>(null);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -169,7 +166,13 @@ function VideoModal({ isOpen, onClose, onUpload, onEmbed }: VideoModalProps) {
           >
             {mode === "upload" ? "Upload" : "Embed"}
           </button>
-          <button className="" onClick={onClose}>
+          <button
+            className=""
+            onClick={() => {
+              setPreviewVideo(null)
+              onClose()
+            }}
+          >
             Cancel
           </button>
         </div>

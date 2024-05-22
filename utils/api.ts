@@ -74,3 +74,45 @@ export const updateLikes = async ({ postId }: { postId: string }) => {
     );
   }
 };
+
+export const updateComments = async (postId: string, textComment:string, otherContent) => {
+  try {
+    const res = await fetch(
+      new Request(createURL(`/api/newPost/comment/${postId}`)),
+      {
+        method: "POST",
+        body: JSON.stringify({
+          postId,
+          textComment,
+          otherContent
+        }),
+      }
+    );
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error("Failed to update comments.");
+    }
+  } catch (error) {
+    return {
+      message: error.message,
+    };
+  }
+};
+
+export const getComments = async (postId: string) => {
+  try {
+    const res = await fetch(
+      new Request(createURL(`/api/newPost/comment/${postId}`))
+    );
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error("Failed to fetch comments.");
+    }
+  } catch (error) {
+    return {
+      message: error.message,
+    };
+  }
+};

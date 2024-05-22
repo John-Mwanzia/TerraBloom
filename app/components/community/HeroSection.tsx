@@ -30,7 +30,7 @@ export default async function HeroSection() {
           </div>
 
           <div className="mt-16">
-            <h1 className="text-[#A47344] font-semibold font-inter text-5xl z-50">
+            <h1 className="text-[#A47344] font-semibold font-heading text-5xl z-50">
               Unite, Cultivate, and Prosper
             </h1>
           </div>

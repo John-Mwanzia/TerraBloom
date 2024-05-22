@@ -38,9 +38,30 @@ export const POST = async (req: Request) => {
 
     return NextResponse.json({ data: commentData });
   } catch (error) {
-    return NextResponse.json(
-      { error: "Internal Server Error" + error.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
+};
+
+export const GET = async (req: Request, { params }) => {
+  const { postId } = params;
+
+  // get post
+  const post = await prisma.post.findUnique({
+    where: {
+      id: postId,
+    },
+    include: {
+      comments: {
+        include: {
+          author: true,
+        },
+      },
+    },
+  });
+
+  if (!post) {
+    return NextResponse.next();
+  }
+  const comments = post.comments;
+  return NextResponse.json({ data: comments });
 };

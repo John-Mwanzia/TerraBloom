@@ -68,6 +68,8 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
       toast.error(error.message);
     }
   };
+
+  
   return (
     <div
       key={post.id}
@@ -143,7 +145,10 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
                 <div className="mt-6">
                   {comments.map((comment) => (
                     <div key={comment.id}>
-                      <div>{comment.author.firstname}</div>
+                      <div className="bg-primary px-3 py-2 rounded-lg text-white font-bold text-xl w-auto">{
+                      comment.author.firstName.charAt(0) +
+                      comment.author.lastName.charAt(0)
+                      }</div>
                       <div>{/* comment contents */}</div>
                       <div>{/* likes */}</div>
                     </div>
@@ -156,7 +161,7 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
                   <h1>JK</h1>
                 </div>
                 <div className="flex-1">
-                  <Commentinput />
+                  <Commentinput postId={post.id} />
                 </div>
               </div>
             </div>

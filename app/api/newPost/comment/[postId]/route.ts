@@ -1,10 +1,15 @@
 import { getUserFromClerkID } from "@/modules/auth";
 import prisma from "@/modules/db";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: Request) => {
-  const { postId, comment } = await req.json();
+  const { postId, textComment, otherContent } = await req.json();
+  console.log("posId", postId);
+  console.log("textComment", textComment);
+  console.log("otherContent", otherContent);
 
+  const { image, video, file, gif } = otherContent;
   try {
     const user = await getUserFromClerkID();
     const post = await prisma.post.findUnique({
@@ -19,7 +24,11 @@ export const POST = async (req: Request) => {
 
     const commentData = await prisma.comment.create({
       data: {
-        text: comment,
+        text: textComment,
+        Image: image,
+        video: video,
+        file: file,
+        gif: gif,
         post: {
           connect: {
             id: post.id,
@@ -35,7 +44,7 @@ export const POST = async (req: Request) => {
         author: true,
       },
     });
-
+    revalidatePath("/community/Home");
     return NextResponse.json({ data: commentData });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

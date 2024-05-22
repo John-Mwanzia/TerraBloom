@@ -75,7 +75,7 @@ export const updateLikes = async ({ postId }: { postId: string }) => {
   }
 };
 
-export const updateComments = async (postId: string, comment) => {
+export const updateComments = async (postId: string, textComment:string, otherContent) => {
   try {
     const res = await fetch(
       new Request(createURL(`/api/newPost/comment/${postId}`)),
@@ -83,7 +83,8 @@ export const updateComments = async (postId: string, comment) => {
         method: "POST",
         body: JSON.stringify({
           postId,
-          comment
+          textComment,
+          otherContent
         }),
       }
     );

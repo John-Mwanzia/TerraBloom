@@ -128,7 +128,7 @@ export default function Commentinput({ postId }) {
                   placeholder="What are your thoughts? "
                   className="w-full outline-none"
                 />
-                <div className="py-4 ">
+                <div className={` ${!uploadedFile && !uploadedImage && !uploadedVideo && !selectedGif ? "py-0" : "py-4" } `}>
                   {uploadedImage && (
                     <div
                       className="mb-4 text-center outline-none border-none relative"

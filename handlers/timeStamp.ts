@@ -49,3 +49,23 @@ export default function getTimeSincePostCreation(createdAt: string): string {
   // If none of the above conditions are met, return "Just now" (post created very recently).
   return "Just now";
 }
+
+
+
+export const  formatDateString = (dateString) => {
+  // Parse the date string into a Date object
+  const date = new Date(dateString);
+
+  // Array of month names
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  // Extract the month and date
+  const month = monthNames[date.getUTCMonth()]; // getUTCMonth() returns month index (0-11)
+  const day = date.getUTCDate(); // getUTCDate() returns the day of the month
+
+  // Format the date string
+  return `${month} ${day}`;
+}
+
+

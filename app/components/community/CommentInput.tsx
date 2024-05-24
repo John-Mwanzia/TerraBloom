@@ -118,7 +118,7 @@ export default function Commentinput({ postId }) {
   return (
     <div className="w-full   border border-gray-300 ">
       <div className="bg-white  rounded-xl  ">
-        <div className="flex  px-6  pt-4 ">
+        <div className="flex px-2 sm:px-6  pt-4 ">
           <form onSubmit={handleSubmit} className="w-full">
             <div className="">
               <div>
@@ -128,7 +128,16 @@ export default function Commentinput({ postId }) {
                   placeholder="What are your thoughts? "
                   className="w-full outline-none"
                 />
-                <div className={` ${!uploadedFile && !uploadedImage && !uploadedVideo && !selectedGif ? "py-0" : "py-4" } `}>
+                <div
+                  className={` ${
+                    !uploadedFile &&
+                    !uploadedImage &&
+                    !uploadedVideo &&
+                    !selectedGif
+                      ? "py-0"
+                      : "py-4"
+                  } `}
+                >
                   {uploadedImage && (
                     <div
                       className="mb-4 text-center outline-none border-none relative"
@@ -237,7 +246,12 @@ export default function Commentinput({ postId }) {
                   </div>
                 </div>
                 <div className="justify-end">
-                  <button className="bg-primary px-3 py-1 rounded text-white">
+                  <button
+                    disabled={
+                      !textComment && !uploadedFile && !uploadedImage && !uploadedVideo && !selectedGif
+                    }
+                    className={`bg-primary px-3 py-1 rounded disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-black/50 cursor-pointer text-white`}
+                  >
                     {loading ? (
                       <Loader className="w-10 flex items-center justify-center animate-spin" />
                     ) : (

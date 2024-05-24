@@ -153,43 +153,70 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
               <Loader className="w-20 animate-spin " />
             </div>
           ) : (
-            <div className="w-full px-8">
+            <div className="w-full  sm:px-8">
               {comments.length == 0 ? (
                 <div>No comments yet😔</div>
               ) : (
                 <div className="mt-6 w-full">
                   {comments.map((comment) => (
-                    <div key={comment.id} className="flex gap-8 w-full  ">
+                    <div
+                      key={comment.id}
+                      className="flex gap-8 mt-8 w-full items-start   "
+                    >
                       <div className="bg-primary p-1 rounded-lg text-white font-semibold text-base inline-flex">
                         {comment.author.firstName.charAt(0) +
                           comment.author.lastName.charAt(0)}
                       </div>
-                      <div>
-                        {/* comment contents */}
-                        {comment.text && <p>{comment.text}</p>}
-                        {comment.image && (
-                          <img src={comment.image} alt="comment image" />
-                        )}
-                        {comment.video && (
-                          <video src={comment.video} controls />
-                        )}
-                        {comment.gif && (
-                          <img src={comment.gif} alt="comment gif" />
-                        )}
-                        {comment.file && (
-                          <a href={comment.file}>Download File</a>
-                        )}
-                      </div>
-                      <div className=" flex-1">
-                        {/* ellipses for bookmarks */}
+                      <div className="flex flex-col gap-2 font-sans w-full">
+                        <div className="flex gap-5 ">
+                          <div className=" text-sm font-semibold">
+                            {/* comment author */}
+                            {comment.author.firstName +
+                              "  " +
+                              comment.author.lastName}
+                          </div>
+                          <div>{comment.createdAt}</div>
+                          <div className=" flex-1">
+                            {/* ellipses for bookmarks */}
+                            <button className=" float-right ">
+                              <AiOutlineEllipsis />
+                            </button>
+                          </div>
+                        </div>
+                        <div className="text-black/80">
+                          {/* comment contents */}
+                          {comment.text && <p>{comment.text}</p>}
+                          {comment.image && (
+                            <img src={comment.image} alt="comment image" />
+                          )}
+                          {comment.video && (
+                            <video src={comment.video} controls />
+                          )}
+                          {comment.gif && (
+                            <img src={comment.gif} alt="comment gif" />
+                          )}
+                          {comment.file && (
+                            <a href={comment.file}>Download File</a>
+                          )}
+                        </div>
 
-                        <button className=" float-right ">
-                          <AiOutlineEllipsis />
-                        </button>
+                        <div className="flex text-sm w-full">
+                          <div className="flex gap-4 font-semibold">
+                            {/* likes  and replies*/}
+                            <button className="text-black/70 hover:text-black dark:hover:text-white/70 ">
+                              like
+                            </button>
+                            <button className="text-black/70 hover:text-black dark:hover:text-white/70 ">
+                              reply
+                            </button>
+                          </div>
+                          <div className="flex-1">
+                            <p className="float-right"> 2 likes</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   ))}
-                  <div className="bg-primary">{/* likes  and replies*/}</div>
                 </div>
               )}
               <div className="flex gap-6 items-start mt-6  ">

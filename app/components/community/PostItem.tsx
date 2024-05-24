@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import getTimeSincePostCreation from "@/handlers/timeStamp";
+import getTimeSincePostCreation, { formatDateString } from "@/handlers/timeStamp";
 import { BiLike } from "react-icons/bi";
 import Image from "next/image";
 import { experimental_useOptimistic as useOptimistic } from "react";
@@ -175,7 +175,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                               "  " +
                               comment.author.lastName}
                           </div>
-                          <div>{comment.createdAt}</div>
+                          <div className="text-sm">{formatDateString(comment.createdAt)}</div>
                           <div className=" flex-1">
                             {/* ellipses for bookmarks */}
                             <button className=" float-right ">

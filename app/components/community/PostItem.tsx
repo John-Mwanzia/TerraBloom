@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import getTimeSincePostCreation, { formatDateString } from "@/handlers/timeStamp";
+import getTimeSincePostCreation, {
+  formatDateString,
+} from "@/handlers/timeStamp";
 import { BiLike } from "react-icons/bi";
 import Image from "next/image";
 import { experimental_useOptimistic as useOptimistic } from "react";
@@ -9,6 +11,15 @@ import toast from "react-hot-toast";
 import { Loader } from "lucide-react";
 import Commentinput from "./CommentInput";
 import { AiOutlineEllipsis } from "react-icons/ai";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 interface Post {
   id: string;
@@ -70,6 +81,9 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
   };
 
   const handleComments = async (postId: string) => {
+    if (unhide) {
+      return;
+    }
     try {
       setLoading(true);
       setUnhide(true);
@@ -175,12 +189,31 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                               "  " +
                               comment.author.lastName}
                           </div>
-                          <div className="text-sm">{formatDateString(comment.createdAt)}</div>
+                          <div className="text-sm">
+                            {formatDateString(comment.createdAt)}
+                          </div>
                           <div className=" flex-1">
                             {/* ellipses for bookmarks */}
-                            <button className=" float-right ">
-                              <AiOutlineEllipsis />
-                            </button>
+                            <div className=" float-right ">
+                              <DropdownMenu>
+                                <DropdownMenuTrigger>
+                                  <button>
+                                    <AiOutlineEllipsis />
+                                  </button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="mr-48 pr-12">
+                                  {/* <DropdownMenuLabel>
+                                    My Account
+                                  </DropdownMenuLabel> */}
+                                  <DropdownMenuSeparator />
+                                  <DropdownMenuItem className="">
+                                    <button className="">
+                                      Bookmark Comment
+                                    </button>
+                                  </DropdownMenuItem>
+                                </DropdownMenuContent>
+                              </DropdownMenu>
+                            </div>
                           </div>
                         </div>
                         <div className="text-black/80">

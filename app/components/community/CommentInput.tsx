@@ -18,8 +18,6 @@ export default function Commentinput({ postId }) {
   const [isAttachFileModalOpen, setAttachFileModalOpen] = useState(false);
   const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false);
   const [isGifModalOpen, setGifModalOpen] = useState(false);
-
-  useContext(UploadContext);
   const [textComment, setTextComment] = useState("");
   const [loading, setLoading] = useState(false);
   const {
@@ -109,11 +107,26 @@ export default function Commentinput({ postId }) {
       file: uploadedFile || "",
       gif: selectedGif?.images?.original?.url || "",
     };
-    setLoading(true);
-    const res = await updateComments(postId, textComment, otherContent);
-    console.log(res);
-
-    setLoading(false);
+    try {
+      setLoading(true);
+      const res = await updateComments(postId, textComment, otherContent);
+      if (res) {
+        toast.success("comment saved successful");
+      }
+      // clear the comment input
+      setUploadedFile(null);
+      setFileName(null);
+      setPreviewFile(null);
+      setUploadedImage(null);
+      setUploadedVideo(null);
+      setSelectedGif(null);
+      setPreviewImage(null);
+      setPreviewVideo(null);
+      setTextComment("");
+      setLoading(false);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   return (
     <div className="w-full   border border-gray-300 ">
@@ -124,6 +137,7 @@ export default function Commentinput({ postId }) {
               <div>
                 <input
                   type="text"
+                  value={textComment}
                   onChange={(e) => setTextComment(e.target.value)}
                   placeholder="What are your thoughts? "
                   className="w-full outline-none"
@@ -248,7 +262,11 @@ export default function Commentinput({ postId }) {
                 <div className="justify-end">
                   <button
                     disabled={
-                      !textComment && !uploadedFile && !uploadedImage && !uploadedVideo && !selectedGif
+                      !textComment &&
+                      !uploadedFile &&
+                      !uploadedImage &&
+                      !uploadedVideo &&
+                      !selectedGif
                     }
                     className={`bg-primary px-3 py-1 rounded disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-black/50 cursor-pointer text-white`}
                   >

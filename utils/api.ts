@@ -1,3 +1,5 @@
+import { revalidatePath, revalidateTag } from "next/cache";
+
 const createURL = (path: string) => {
   const url = window.location.origin + path;
   return url;
@@ -75,7 +77,11 @@ export const updateLikes = async ({ postId }: { postId: string }) => {
   }
 };
 
-export const updateComments = async (postId: string, textComment:string, otherContent) => {
+export const updateComments = async (
+  postId: string,
+  textComment: string,
+  otherContent
+) => {
   try {
     const res = await fetch(
       new Request(createURL(`/api/newPost/comment/${postId}`)),
@@ -84,11 +90,14 @@ export const updateComments = async (postId: string, textComment:string, otherCo
         body: JSON.stringify({
           postId,
           textComment,
-          otherContent
+          otherContent,
         }),
       }
     );
+
     if (res.ok) {
+      revalidateTag("comments");
+      revalidatePath("/community/Home");
       return res.json();
     } else {
       throw new Error("Failed to update comments.");
@@ -103,7 +112,12 @@ export const updateComments = async (postId: string, textComment:string, otherCo
 export const getComments = async (postId: string) => {
   try {
     const res = await fetch(
-      new Request(createURL(`/api/newPost/comment/${postId}`))
+      new Request(createURL(`/api/newPost/comment/${postId}`)),
+      {
+        next: {
+          tags: ["comments"],
+        },
+      }
     );
     if (res.ok) {
       return res.json();

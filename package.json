@@ -12,6 +12,7 @@
     "@clerk/nextjs": "^4.29.2",
     "@nextui-org/react": "^2.1.13",
     "@prisma/client": "^5.14.0",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
     "@types/bcrypt": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.2",

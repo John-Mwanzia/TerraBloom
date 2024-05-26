@@ -7,6 +7,8 @@ import { Button, Tooltip } from "@nextui-org/react";
 import { UserButton } from "@clerk/nextjs";
 import { ImCancelCircle } from "react-icons/im";
 import { UploadContext } from "../context/store";
+import { Bell, Bookmark, MessageCircle } from "lucide-react";
+
 
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -125,18 +127,12 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                     placement="bottom"
                     content="notifications"
                     classNames={{
-                      base:
-                        "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
+                      base: "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
                       arrow: "bg-neutral-400 dark:bg-white",
                     }}
                   >
                     <Button variant="flat">
-                      <Image
-                        src="/bloomCommAssets/notification.svg"
-                        alt="logochat"
-                        width={22}
-                        height={18}
-                      />
+                      <Bell className="text-black/70" />
                     </Button>
                   </Tooltip>
                 </div>
@@ -146,18 +142,27 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                     placement="bottom"
                     content="messages"
                     classNames={{
-                      base:
-                        "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
+                      base: "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
                       arrow: "bg-neutral-400 dark:bg-white",
                     }}
                   >
                     <Button variant="flat">
-                      <Image
-                        src="/bloomCommAssets/chat.svg"
-                        alt="logochat"
-                        width={22}
-                        height={18}
-                      />
+                      <MessageCircle className="text-black/70" />
+                    </Button>
+                  </Tooltip>
+                </div>
+                <div>
+                  <Tooltip
+                    showArrow
+                    placement="bottom"
+                    content="bookmarks"
+                    classNames={{
+                      base: "py-2 px-4 shadow-xl text-black bg-gradient-to-br from-white to-neutral-400",
+                      arrow: "bg-neutral-400 dark:bg-white",
+                    }}
+                  >
+                    <Button variant="flat">
+                      <Bookmark className="text-black/70" />
                     </Button>
                   </Tooltip>
                 </div>

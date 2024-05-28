@@ -87,10 +87,10 @@ export default function HeroSection(userId) {
             {userId.user ? (
               <div
                 className={`
-              ${activeMenu ? "block " : "hidden"}
+              ${activeMenu ? "block " : "hidden sm:block"}
               `}
               >
-                <UserButton />
+                <UserButton  afterSignOutUrl="/"/>
               </div>
             ) : (
               <Link

@@ -1,13 +1,15 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
+
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -53,17 +55,28 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      backgroundColor:{
+      fontFamily: {
+        "old-standard": ["Old Standard TT", "serif"],
+        staatliches: ["Staatliches", "cursive"],
+        inter: ["Inter", "sans-serif"],
+        outfit: ["Outfit", "sans-serif"],
+        opensans: ["Open sans", "sans-serif"],
+        mono: ["DM Mono", "...defaultTheme.fontFamily.mono"],
+        sans_regular: ["var(--font-sans)", ...fontFamily.sans],
+        sans_bold: ["var(--fontBoldSans)", ...fontFamily.sans],
+        heading: ["var(--font-heading)", ...fontFamily.sans],
+      },
+
+      backgroundColor: {
         "light-gray": "#E5E5E6",
-        'body-bg': '#F4F4F5',
-        'light-pink': 'rgba(247, 200, 224, 0.42)',
-         
+        "body-bg": "#F4F4F5",
+        "light-pink": "rgba(247, 200, 224, 0.42)",
       },
       backgroundImage: {
         "footer-texture": "url('/landing/footer/footerbg.png')",
       },
       screens: {
-        xs: { max: '379px' },
+        xs: { max: "379px" },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -87,6 +100,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

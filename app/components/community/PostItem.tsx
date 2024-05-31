@@ -1,11 +1,15 @@
 "use client";
-import React, { useState } from "react";
+
 import getTimeSincePostCreation, {
   formatDateString,
 } from "@/handlers/timeStamp";
 import { BiLike } from "react-icons/bi";
 import Image from "next/image";
-import { experimental_useOptimistic as useOptimistic } from "react";
+import {
+  useEffect,
+  experimental_useOptimistic as useOptimistic,
+  useState,
+} from "react";
 import { getComments, updateLikes } from "@/utils/api";
 import toast from "react-hot-toast";
 import { Loader } from "lucide-react";
@@ -19,7 +23,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 
 interface Post {
   id: string;
@@ -39,6 +42,12 @@ interface Post {
     id: string;
     userId: string;
     postId: string;
+    user: {
+      firstName: string;
+      id: string;
+      isAdmin: boolean | null;
+      lastName: string;
+    };
   }[];
   comments: {
     id: String;
@@ -60,7 +69,8 @@ interface PostItemProps {
 
 const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
   const [liked, setLiked] = useState(false);
-  const [likedBy, setLikedBy] = useState();
+  const [optimisticLiked, setOptimisticLiked] = useState(liked);
+
   const [loading, setLoading] = useState(false);
   const [unhide, setUnhide] = useState(false);
   const [comments, setComments] = useState([]);
@@ -69,14 +79,35 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
     return date.toISOString(); // Convert the Date to a string (ISO format)
   };
 
-  const handleLikeUPdate = async ({ postId }: { postId: string }) => {
+  const getLikedFromStorage = (postId) => {
+    const liked = localStorage.getItem(`liked-${postId}`);
+    console.log(liked);
+    
+    return liked === null ? false : JSON.parse(liked); // Parse stored value (boolean)
+  };
+
+  useEffect(() => {
+    const likedFromStorage = getLikedFromStorage(post.id);
+    console.log("likedFromStorage", likedFromStorage);
+    
+    setOptimisticLiked(likedFromStorage);
+  }, [post.id]); // Run only when post.id changes
+
+  const handleLikeUPdate = async ({ postId }) => {
     try {
-      //api returns responce like this { data: { liked: false } }
+      // Update optimistic state first for immediate UI change
+      setOptimisticLiked(!optimisticLiked);
+
       const { data } = await updateLikes({ postId });
-      setLiked(data.liked);
-      setLikedBy(data.likedBy);
+      setLiked(data.liked); // Update actual liked state after server response
+
+      // Store the liked state for this post in localStorage
+      localStorage.setItem(`liked-${postId}`, JSON.stringify(data.liked));
     } catch (error) {
       toast.error(error.message);
+
+      // Optionally, revert optimistic state if the API call fails
+      setOptimisticLiked(!optimisticLiked); // Revert optimistic change \
     }
   };
 
@@ -126,19 +157,40 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
       {post.gif && <img src={post.gif} alt="GIF" />}
       {post.file && <a href={post.file}>Download File</a>}
 
+      <div>
+        {/* liked by  */}
+        {post.likes.length > 0 && (
+          <div className=" mt-4">
+            <div className=" flex gap-[2px]  text-white font-semibold text-base">
+              {post.likes.slice(0, 3).map((like) => (
+                <div key={like.id} className="bg-primary  rounded-r-md  p-1">
+                  {like.user.firstName.charAt(0) + like.user.lastName.charAt(0)}
+                </div>
+              ))}
+            </div>
+            {post.likes.length > 3 && (
+              <p className="text-sm">
+                {post.likes[0].user.firstName}
+                and {post.likes.length - 3} others liked this
+              </p>
+            )}
+          </div>
+        )}
+      </div>
+
       <div className="mt-4 border-t flex justify-between items-center pt-4">
         <div className="flex gap-4 items-center">
           <button
             onClick={() => handleLikeUPdate({ postId: post.id })}
-            className={`flex gap-2 ${liked ? "text-[#0E9AA9]" : ""}`}
+            className={`flex gap-2 ${optimisticLiked ? "text-[#0E9AA9]" : ""}`}
           >
             <div>
               <BiLike
-                color={liked ? "#0E9AA9" : "black"}
+                color={optimisticLiked ? "#0E9AA9" : "black"}
                 className="w-6 h-6 "
               />
             </div>
-            {liked ? "Liked" : "Like"}
+            {optimisticLiked ? "Liked" : "Like"}
           </button>
           <button
             className="flex gap-2"

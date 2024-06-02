@@ -1,42 +1,31 @@
 import Image from "next/image";
 import React from "react";
 import Nav from "../components/HomeLanding/Nav";
+import Aside from "../components/crop-details/Aside";
 
 export default function page() {
   return (
     <div className="flex justify-center items-center flex-col bg-zinc-100/50 overflow-x-hidden">
-      <Nav />
-      <div className=" w-[95%] sm:w-[90%] xl:w-[90%]  2xl:w-[80%] mt-6 flex justify-between ">
-        <div className="flex flex-col gap-8  border-r border-gray-300 px-14">
-          <div>
-            <h1 className="text-3xl  font-bold">All Crops</h1>
-          </div>
-          <div className="flex flex-col gap-6 font-semibold">
-            <h3>Vegetables</h3>
-            <h3>Mangos</h3>
-            <h3>Banana</h3>
-            <h3>Beans</h3>
-            <h3>Potatoes</h3>
-            <h3>Tomatoes</h3>
-            <h3>Vegetables</h3>
-            <h3>Vegetables</h3>
-            <h3>Vegetables</h3>
-            <h3>Vegetables</h3>
-            <h3>Vegetables</h3>
-            <h3>Vegetables</h3>
-            <h3>Vegetables</h3>
-          </div>
+      <div className="container">
+        <Nav />
+      </div>
+      <div className=" container mt-6 flex gap-4 justify-between">
+        <div className="z-50">
+          <Aside />
         </div>
-        <div className=" w-[60%]  mb-24 ">
-          <div className="bg-[#32CD32] px-4 py-4  pl-3">Crops</div>
+        <div className=" w-full sm:w-[60%]  mb-24 ">
+          <div className="bg-[#32CD32] text-white font-sans text-2xl font-bold py-2 sm:py-4  pl-3">
+            Crops
+          </div>
           <div className="mt-6">
-            <div className="flex justify-between px-8">
+            <div className="flex justify-between flex-col sm:flex-row sm:px-8">
               <div>
                 <Image
                   src="/cropDetails/mango.svg"
                   alt="mango"
                   width={252}
                   height={168}
+                  className="w-full"
                 />
                 <div className="bg-white px-4 pb-6 rounded-2xl shadow-xl relative -top-8">
                   <h2 className="text-center text-2xl font-semibold pt-2 mb-4">
@@ -62,6 +51,7 @@ export default function page() {
                   alt="mango"
                   width={252}
                   height={168}
+                  className="w-full"
                 />
                 <div className="bg-white px-4 pb-6 rounded-2xl shadow-xl relative -top-8">
                   <h2 className="text-center text-2xl font-semibold pt-2 mb-4">
@@ -82,13 +72,14 @@ export default function page() {
                 </div>
               </div>
             </div>
-            <div className="flex justify-between px-8">
+            <div className="flex justify-between flex-col sm:flex-row sm:px-8">
               <div>
                 <Image
                   src="/cropDetails/potato.svg"
                   alt="mango"
                   width={252}
                   height={168}
+                  className="w-full"
                 />
                 <div className="bg-white px-4 pb-6 rounded-2xl shadow-xl relative -top-8">
                   <h2 className="text-center text-2xl font-semibold pt-2 mb-4">
@@ -114,6 +105,7 @@ export default function page() {
                   alt="mango"
                   width={252}
                   height={168}
+                  className="w-full"
                 />
                 <div className="bg-white px-4 pb-6 rounded-2xl shadow-xl relative -top-8">
                   <h2 className="text-center text-2xl font-semibold pt-2 mb-4">

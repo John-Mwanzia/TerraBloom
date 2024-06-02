@@ -81,15 +81,13 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
 
   const getLikedFromStorage = (postId) => {
     const liked = localStorage.getItem(`liked-${postId}`);
-    console.log(liked);
-    
+
     return liked === null ? false : JSON.parse(liked); // Parse stored value (boolean)
   };
 
   useEffect(() => {
     const likedFromStorage = getLikedFromStorage(post.id);
-    console.log("likedFromStorage", likedFromStorage);
-    
+
     setOptimisticLiked(likedFromStorage);
   }, [post.id]); // Run only when post.id changes
 
@@ -121,7 +119,6 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
       const { data } = await getComments(postId);
       setComments(data);
       setLoading(false);
-      console.log(data);
     } catch (error) {
       toast.error(error.message);
     }

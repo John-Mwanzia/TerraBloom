@@ -1,7 +1,4 @@
-
-
 import React from "react";
-;
 import ModalDisplay from "@/app/components/community/ModalDisplay";
 import Button from "@/app/components/community/Button";
 import prisma from "@/modules/db";
@@ -15,7 +12,11 @@ const getPosts = async () => {
     },
     include: {
       comments: true,
-      likes: true,
+      likes: {
+        include: {
+          user: true,
+        },
+      },
       author: true,
     },
   });
@@ -24,9 +25,10 @@ const getPosts = async () => {
 
 export default async function Page() {
   const user = await currentUser();
-  const {firstName, lastName} = user
-  
+  const { firstName, lastName } = user;
+
   const posts = await getPosts();
+  
 
   return (
     <>
@@ -38,7 +40,12 @@ export default async function Page() {
         <div className="flex-1 overflow-y-auto pb-8">
           <div className="flex flex-col items-center pt-8 gap-16 px-2 md:px-0 relative pb-24">
             {posts.map((post) => (
-              <PostItem key={post.id} post={post}  firstName= {firstName} lastName={lastName}/>
+              <PostItem
+                key={post.id}
+                post={post}
+                firstName={firstName}
+                lastName={lastName}
+              />
             ))}
           </div>
         </div>

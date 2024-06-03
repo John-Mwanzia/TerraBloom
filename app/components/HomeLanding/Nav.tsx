@@ -36,28 +36,30 @@ export default function Nav() {
     }
   };
   return (
-    <div className={`  mb-6 pt-4 sm:pt-0 sm:mb-0 border-b  border-gray-300 relative ${activeMenu ? "fixed z-[99999] " : ""}`}>
-      <div className="flex justify-between items-center">
-        <div className=" pt-2 sm:pt-4 xl:pt-2 2xl:pt-4 z-[99999]">
+    <div
+      className={`relative mb-6 border-b border-gray-300 pt-4 sm:mb-0 sm:pt-0 ${activeMenu ? "fixed z-[99999]" : ""}`}
+    >
+      <div className="flex items-center justify-between">
+        <div className="z-[99999] pt-2 sm:pt-4 xl:pt-2 2xl:pt-4">
           <Image
             src="./landing/logoSmall.svg"
             width={82}
             height={72}
             alt="logo"
-            className={`sm:hidden w-20 ${activeMenu ? "fixed" : ""}`}
+            className={`w-20 sm:hidden ${activeMenu ? "fixed" : ""}`}
           />
           <Image
             src="./bloomCommAssets/Logo.svg"
             width={160}
             height={113}
             alt="logo"
-            className=" hidden sm:block  "
+            className="hidden sm:block"
           />
         </div>
         <div
-          className={`   text-black/60  h-screen w-screen fixed  md:flex justify-center gap-24  flex-col md:flex-row md:gap-6 xl:gap-12 2xl:gap-20 items-center z-50  top-0 right-0 md:static md:h-auto md:w-auto md:bg-transparent  md:justify-end md:items-center ${
+          className={`fixed right-0 top-0 z-50 h-screen w-screen flex-col items-center justify-center gap-24 text-black/60 md:static md:flex md:h-auto md:w-auto md:flex-row md:items-center md:justify-end md:gap-6 md:bg-transparent xl:gap-12 2xl:gap-20 ${
             activeMenu
-              ? "backdrop-blur bg-opacity-90 bg-black flex text-white h-screen  overscroll-contain"
+              ? "flex h-screen overscroll-contain bg-black bg-opacity-90 text-white backdrop-blur"
               : ""
           } transition-all duration-300 ease-in-out`}
         >
@@ -66,11 +68,11 @@ export default function Nav() {
               key={link.name}
               className={` ${
                 activeMenu ? "block text-white" : "hidden"
-              } md:block transition-opacity duration-300 ease-in-out`}
+              } transition-opacity duration-300 ease-in-out md:block`}
             >
               <Link
                 href={link.link}
-                className=" font-outfit sm:text-base font-semibold md:text-sm xl:text-base  "
+                className="font-outfit font-semibold sm:text-base md:text-sm xl:text-base"
               >
                 {link.name}
               </Link>
@@ -79,9 +81,9 @@ export default function Nav() {
 
           <Link
             href="/sign-up"
-            className={` bg-[#A47344] rounded-3xl text-white px-8 md:px-6 xl:px-8 py-2 font-outfit text-sm xl:text-base ${
+            className={`rounded-3xl bg-[#A47344] px-8 py-2 font-outfit text-sm text-white md:px-6 xl:px-8 xl:text-base ${
               activeMenu ? "block text-white" : "hidden"
-            } md:block transition-opacity duration-300 ease-in-out`}
+            } transition-opacity duration-300 ease-in-out md:block`}
           >
             Sign Up
           </Link>
@@ -89,13 +91,13 @@ export default function Nav() {
       </div>
       <div
         onClick={toggleMenu}
-        className={` md:hidden z-50  cursor-pointer ${
-          activeMenu ? "fixed top-12 right-7" : "top-12 right-4 absolute "
+        className={`z-50 cursor-pointer md:hidden ${
+          activeMenu ? "fixed right-7 top-12" : "absolute right-4 top-12"
         }`}
       >
-        <div className="h-[0.1875rem] rounded-2xl w-[1.875rem] bg-[#32CD32] mb-1"></div>
-        <div className="h-[0.1875rem] rounded-2xl ml-auto w-[1.4rem] mb-1 bg-[#32CD32]"></div>
-        <div className="h-[0.1875rem] rounded-2xl w-[1.875rem ] bg-[#32CD32] mb-1"></div>
+        <div className="mb-1 h-[0.1875rem] w-[1.875rem] rounded-2xl bg-[#32CD32]"></div>
+        <div className="mb-1 ml-auto h-[0.1875rem] w-[1.4rem] rounded-2xl bg-[#32CD32]"></div>
+        <div className="w-[1.875rem ] mb-1 h-[0.1875rem] rounded-2xl bg-[#32CD32]"></div>
       </div>
     </div>
   );

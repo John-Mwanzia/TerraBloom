@@ -127,15 +127,15 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
   return (
     <div
       key={post.id}
-      className="bg-white py-8 px-4 shadow-xl md:w-[45rem] flex flex-col"
+      className="flex flex-col bg-white px-4 py-8 shadow-xl md:w-[45rem]"
     >
       {post.author.avatarUrl && (
-        <div className="flex gap-6 items-center mb-4">
+        <div className="mb-4 flex items-center gap-6">
           {" "}
           <img
             src={post.author.avatarUrl}
             alt="avatar"
-            className="w-[3rem] h-[3rem] rounded-full"
+            className="h-[3rem] w-[3rem] rounded-full"
           />{" "}
           {post.author.firstName} {post.author.lastName}{" "}
           <p className="text-sm">
@@ -143,7 +143,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
           </p>
         </div>
       )}
-      <h1 className="text-2xl font-bold mb-6">{post.title}</h1>
+      <h1 className="mb-6 text-2xl font-bold">{post.title}</h1>
       {post.content && (
         <div className="mb-6">
           <p>{post.content}</p>
@@ -157,10 +157,10 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
       <div>
         {/* liked by  */}
         {post.likes.length > 0 && (
-          <div className=" mt-4">
-            <div className=" flex gap-[2px]  text-white font-semibold text-base">
+          <div className="mt-4">
+            <div className="flex gap-[2px] text-base font-semibold text-white">
               {post.likes.slice(0, 3).map((like) => (
-                <div key={like.id} className="bg-primary  rounded-r-md  p-1">
+                <div key={like.id} className="rounded-r-md bg-primary p-1">
                   {like.user.firstName.charAt(0) + like.user.lastName.charAt(0)}
                 </div>
               ))}
@@ -175,8 +175,8 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
         )}
       </div>
 
-      <div className="mt-4 border-t flex justify-between items-center pt-4">
-        <div className="flex gap-4 items-center">
+      <div className="mt-4 flex items-center justify-between border-t pt-4">
+        <div className="flex items-center gap-4">
           <button
             onClick={() => handleLikeUPdate({ postId: post.id })}
             className={`flex gap-2 ${optimisticLiked ? "text-[#0E9AA9]" : ""}`}
@@ -184,7 +184,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
             <div>
               <BiLike
                 color={optimisticLiked ? "#0E9AA9" : "black"}
-                className="w-6 h-6 "
+                className="h-6 w-6"
               />
             </div>
             {optimisticLiked ? "Liked" : "Like"}
@@ -210,13 +210,13 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
         </div>
       </div>
       {unhide && (
-        <div className="mt-8 flex flex-col items-center ">
+        <div className="mt-8 flex flex-col items-center">
           {loading ? (
-            <div className="flex justify-center items-center">
-              <Loader className="w-20 animate-spin " />
+            <div className="flex items-center justify-center">
+              <Loader className="w-20 animate-spin" />
             </div>
           ) : (
-            <div className="w-full  sm:px-8">
+            <div className="w-full sm:px-8">
               {comments.length == 0 ? (
                 <div>No comments yet😔</div>
               ) : (
@@ -224,15 +224,15 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                   {comments.map((comment) => (
                     <div
                       key={comment.id}
-                      className="flex gap-8 mt-8 w-full items-start   "
+                      className="mt-8 flex w-full items-start gap-8"
                     >
-                      <div className="bg-primary p-1 rounded-lg text-white font-semibold text-base inline-flex">
+                      <div className="inline-flex rounded-lg bg-primary p-1 text-base font-semibold text-white">
                         {comment.author.firstName.charAt(0) +
                           comment.author.lastName.charAt(0)}
                       </div>
-                      <div className="flex flex-col gap-2 font-sans w-full">
-                        <div className="flex gap-5 ">
-                          <div className=" text-sm font-semibold">
+                      <div className="flex w-full flex-col gap-2 font-sans">
+                        <div className="flex gap-5">
+                          <div className="text-sm font-semibold">
                             {/* comment author */}
                             {comment.author.firstName +
                               "  " +
@@ -241,9 +241,9 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                           <div className="text-sm">
                             {formatDateString(comment.createdAt)}
                           </div>
-                          <div className=" flex-1">
+                          <div className="flex-1">
                             {/* ellipses for bookmarks */}
-                            <div className=" float-right ">
+                            <div className="float-right">
                               <DropdownMenu>
                                 <DropdownMenuTrigger>
                                   <button>
@@ -282,13 +282,13 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                           )}
                         </div>
 
-                        <div className="flex text-sm w-full">
+                        <div className="flex w-full text-sm">
                           <div className="flex gap-4 font-semibold">
                             {/* likes  and replies*/}
-                            <button className="text-black/70 hover:text-black dark:hover:text-white/70 ">
+                            <button className="text-black/70 hover:text-black dark:hover:text-white/70">
                               like
                             </button>
-                            <button className="text-black/70 hover:text-black dark:hover:text-white/70 ">
+                            <button className="text-black/70 hover:text-black dark:hover:text-white/70">
                               reply
                             </button>
                           </div>
@@ -301,8 +301,8 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                   ))}
                 </div>
               )}
-              <div className="flex gap-6 items-start mt-6  ">
-                <div className="bg-primary p-1 rounded-lg text-white font-semibold text-base inline-flex">
+              <div className="mt-6 flex items-start gap-6">
+                <div className="inline-flex rounded-lg bg-primary p-1 text-base font-semibold text-white">
                   {firstName.charAt(0) + lastName.charAt(0)}
                 </div>
                 <div className="flex-1">

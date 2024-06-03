@@ -17,15 +17,10 @@ export default function Aside() {
   }, [toggleAside]);
 
   return (
-    <div className="flex ">
-      <div
-        className={`
-      ${toggleAside ? "z-50" : ""}
-      `}
-      >
+    <div className="flex">
+      <div className={` ${toggleAside ? "z-50" : ""} `}>
         <button
-          className={`rotate-180 bg-[#32CD32] w-auto sm:hidden 
-           h-auto min-h-min p-1 rounded`}
+          className={`h-auto min-h-min w-auto rotate-180 rounded bg-[#32CD32] p-1 sm:hidden`}
           onClick={() => settoggleAside(!toggleAside)}
         >
           <ArrowLeftFromLine className="text-white" />
@@ -33,13 +28,13 @@ export default function Aside() {
       </div>
       <div
         className={`${
-          toggleAside ? "fixed bg-zinc-100 w-full top-[15vh]" : "hidden"
-        } flex-col gap-8 border-r border-gray-300 px-24 sm:px-14 sm:flex`}
+          toggleAside ? "fixed top-[15vh] w-full bg-zinc-100" : "hidden"
+        } flex-col gap-8 border-r border-gray-300 px-24 sm:flex sm:px-14`}
       >
         <div>
-          <h1 className="text-3xl whitespace-nowrap font-bold">All Crops</h1>
+          <h1 className="whitespace-nowrap text-3xl font-bold">All Crops</h1>
         </div>
-        <div className="flex flex-col gap-6 font-semibold pb-6">
+        <div className="flex flex-col gap-6 pb-6 font-semibold">
           <h3>Vegetables</h3>
           <h3>Mangos</h3>
           <h3>Banana</h3>

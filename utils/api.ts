@@ -48,7 +48,7 @@ export const getPosts = async () => {
     return res.json();
   } else {
     throw new Error(
-      "Something went wrong while fetching posts from API server!"
+      "Something went wrong while fetching posts from API server!",
     );
   }
 };
@@ -62,7 +62,7 @@ export const updateLikes = async ({ postId }: { postId: string }) => {
         body: JSON.stringify({
           postId,
         }),
-      }
+      },
     );
 
     if (res.ok) {
@@ -72,7 +72,7 @@ export const updateLikes = async ({ postId }: { postId: string }) => {
     }
   } catch (error) {
     throw new Error(
-      "Something went wrong while updating like: " + error.message
+      "Something went wrong while updating like: " + error.message,
     );
   }
 };
@@ -80,7 +80,7 @@ export const updateLikes = async ({ postId }: { postId: string }) => {
 export const updateComments = async (
   postId: string,
   textComment: string,
-  otherContent
+  otherContent,
 ) => {
   try {
     const res = await fetch(
@@ -92,7 +92,7 @@ export const updateComments = async (
           textComment,
           otherContent,
         }),
-      }
+      },
     );
 
     if (res.ok) {
@@ -117,7 +117,7 @@ export const getComments = async (postId: string) => {
         next: {
           tags: ["comments"],
         },
-      }
+      },
     );
     if (res.ok) {
       return res.json();

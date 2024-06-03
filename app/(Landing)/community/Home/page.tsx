@@ -28,17 +28,16 @@ export default async function Page() {
   const { firstName, lastName } = user;
 
   const posts = await getPosts();
-  
 
   return (
     <>
-      <div className="h-screen w-full flex flex-col">
-        <div className="bg-white flex justify-between px-4 pb-4 pt-3 border-t border-l">
+      <div className="flex h-screen w-full flex-col">
+        <div className="flex justify-between border-l border-t bg-white px-4 pb-4 pt-3">
           <h1 className="text-3xl">Home</h1>
           <Button />
         </div>
         <div className="flex-1 overflow-y-auto pb-8">
-          <div className="flex flex-col items-center pt-8 gap-16 px-2 md:px-0 relative pb-24">
+          <div className="relative flex flex-col items-center gap-16 px-2 pb-24 pt-8 md:px-0">
             {posts.map((post) => (
               <PostItem
                 key={post.id}

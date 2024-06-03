@@ -1,10 +1,13 @@
 "use client";
 
+import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
-export default function Nav() {
+export default function Nav({ userId }) {
+  console.log(userId);
+
   const links = [
     {
       name: "Services",
@@ -79,14 +82,20 @@ export default function Nav() {
             </div>
           ))}
 
-          <Link
-            href="/sign-up"
-            className={`rounded-3xl bg-[#A47344] px-8 py-2 font-outfit text-sm text-white md:px-6 xl:px-8 xl:text-base ${
-              activeMenu ? "block text-white" : "hidden"
-            } transition-opacity duration-300 ease-in-out md:block`}
-          >
-            Sign Up
-          </Link>
+          {userId ? (
+            <div className={` ${activeMenu ? "block" : "hidden sm:block"} `}>
+              <UserButton afterSignOutUrl="/" />
+            </div>
+          ) : (
+            <Link
+              href="/sign-up"
+              className={`rounded-3xl bg-[#A47344] px-8 py-2 font-outfit text-sm text-white md:px-6 xl:px-8 xl:text-base ${
+                activeMenu ? "block text-white" : "hidden"
+              } transition-opacity duration-300 ease-in-out md:block`}
+            >
+              Sign Up
+            </Link>
+          )}
         </div>
       </div>
       <div

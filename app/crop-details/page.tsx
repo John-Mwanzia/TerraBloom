@@ -2,12 +2,15 @@ import Image from "next/image";
 import React from "react";
 import Nav from "../components/HomeLanding/Nav";
 import Aside from "../components/crop-details/Aside";
+import { auth } from "@clerk/nextjs";
 
-export default function page() {
+export default async function page() {
+  const { userId } = auth();
+
   return (
     <div className="flex flex-col items-center justify-center overflow-x-hidden bg-zinc-100/50">
       <div className="container">
-        <Nav />
+        <Nav userId={userId} />
       </div>
       <div className="container mt-6 flex justify-between gap-4">
         <div className="z-50">
@@ -32,7 +35,13 @@ export default function page() {
                     Mango Farming
                   </h2>
                   <div className="flex justify-center">
-                    <button className="mb-6 flex justify-center gap-2 rounded-lg bg-[#32CD32] px-4 py-2 shadow-lg">
+                    <a
+                      className="mb-6 flex justify-center gap-2 rounded-lg bg-[#32CD32] px-4 py-2 shadow-lg"
+                      href="/cropDetails/files/Mango_Farming.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download="Mango_Farming.pdf"
+                    >
                       <Image
                         src="/cropDetails/file.svg"
                         alt="file"
@@ -41,7 +50,7 @@ export default function page() {
                         className="shadow-lg"
                       />
                       Get Manual Guide
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

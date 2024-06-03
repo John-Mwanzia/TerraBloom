@@ -34,7 +34,7 @@ export default function Aside() {
         <div>
           <h1 className="whitespace-nowrap text-3xl font-bold">All Crops</h1>
         </div>
-        <div className="flex flex-col gap-6 pb-6 font-semibold">
+        <div className="flex flex-col gap-6 pb-6 font-sans">
           <h3>Vegetables</h3>
           <h3>Mangos</h3>
           <h3>Banana</h3>

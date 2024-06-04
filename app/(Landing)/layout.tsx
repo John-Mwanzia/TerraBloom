@@ -8,7 +8,14 @@ import { UserButton } from "@clerk/nextjs";
 import { ImCancelCircle } from "react-icons/im";
 import { UploadContext } from "../context/store";
 import { Bell, Bookmark, MessageCircle } from "lucide-react";
-
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -28,7 +35,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
       <div className="">
         {activeMenu && (
           <div
-            className={`bg-white h-screen fixed w-[16.3rem] ${
+            className={`fixed h-screen w-[16.3rem] bg-white ${
               showModal ? "z-0" : ""
             }`}
           >
@@ -42,13 +49,13 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                   className="ml-4 mt-4"
                 />
               </Link>
-              <div className="absolute top-4 right-2 text-2xl   xl:hidden">
+              <div className="absolute right-2 top-4 text-2xl xl:hidden">
                 <button onClick={() => setActiveMenu(false)}>
                   <ImCancelCircle />
                 </button>
               </div>
             </div>
-            <div className="pl-16 mt-8 ">
+            <div className="mt-8 pl-16">
               <Link href="/community/Home" className="flex gap-1">
                 <Image
                   src="/bloomCommAssets/home.svg"
@@ -70,7 +77,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                   <Link className="py-4 pl-4" href="/community/FAQ">
                     🔮 FAQ
                   </Link>
-                  <Link className="py-4 pl-4 flex gap-1" href="/community/Chat">
+                  <Link className="flex gap-1 py-4 pl-4" href="/community/Chat">
                     <Image
                       src="/bloomCommAssets/chat.svg"
                       alt="logochat"
@@ -92,7 +99,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                     ✨ Showcase
                   </Link>
                   <Link
-                    className="py-4 pl-4 flex gap-1"
+                    className="flex gap-1 py-4 pl-4"
                     href="/community/Events"
                   >
                     <Image
@@ -109,18 +116,16 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
           </div>
         )}
         <div className="">
-          <div
-            className={activeMenu ? "  xl:ml-[16.3rem] static  " : " w-screen"}
-          >
-            <div className="flex justify-between items-center pr-3 border-l">
+          <div className={activeMenu ? "static xl:ml-[16.3rem]" : "w-screen"}>
+            <div className="flex items-center justify-between border-l pr-3">
               <button onClick={() => setActiveMenu(!activeMenu)}>
                 <div className="pl-3">
-                  <div className="h-[0.1875rem] rounded-2xl w-[1.875rem] bg-[#0E9AA9] mb-1"></div>
-                  <div className="h-[0.1875rem] rounded-2xl  w-[1.4rem] mb-1 bg-[#0E9AA9]"></div>
-                  <div className="h-[0.1875rem] rounded-2xl w-[1.875rem ] bg-[#0E9AA9] mb-1"></div>
+                  <div className="mb-1 h-[0.1875rem] w-[1.875rem] rounded-2xl bg-[#0E9AA9]"></div>
+                  <div className="mb-1 h-[0.1875rem] w-[1.4rem] rounded-2xl bg-[#0E9AA9]"></div>
+                  <div className="w-[1.875rem ] mb-1 h-[0.1875rem] rounded-2xl bg-[#0E9AA9]"></div>
                 </div>
               </button>
-              <div className="flex items-center gap-4 py-6 ">
+              <div className="flex items-center gap-4 py-6">
                 <div>
                   <Tooltip
                     showArrow
@@ -161,9 +166,20 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                       arrow: "bg-neutral-400 dark:bg-white",
                     }}
                   >
-                    <Button variant="flat">
-                      <Bookmark className="text-black/70" />
-                    </Button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger>
+                        <Bookmark className="text-black/70" />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="mr-16">
+                        <DropdownMenuLabel> Bookmarks</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <div className="flex">
+                          <DropdownMenuItem>posts</DropdownMenuItem>
+                          <DropdownMenuItem>Comments</DropdownMenuItem>
+                          <DropdownMenuItem>messages</DropdownMenuItem>
+                        </div>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </Tooltip>
                 </div>
                 <div>
@@ -175,8 +191,8 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
           <div
             className={
               activeMenu
-                ? "bg-light-gray/40 fixed top-20 xl:ml-[16.3rem] w-full rounded-tl-sm xl:w-[calc(100vw-16.3rem)]  h-[calc(100vh-5rem)] "
-                : "bg-light-gray/40 fixed top-20 rounded-tl-sm w-screen ml-0 h-[calc(100vh-5rem)]"
+                ? "fixed top-20 h-[calc(100vh-5rem)] w-full rounded-tl-sm bg-light-gray/40 xl:ml-[16.3rem] xl:w-[calc(100vw-16.3rem)]"
+                : "fixed top-20 ml-0 h-[calc(100vh-5rem)] w-screen rounded-tl-sm bg-light-gray/40"
             }
           >
             {children}

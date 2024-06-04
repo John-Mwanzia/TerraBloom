@@ -124,6 +124,11 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
     }
   };
 
+  const handlePostBookmark = (post) => {
+    //save to lacal storage
+    localStorage.setItem("postBookmark", JSON.stringify(post));
+  };
+
   return (
     <div
       key={post.id}
@@ -141,6 +146,27 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
           <p className="text-sm">
             Posted {getTimeSincePostCreation(formatCreatedAt(post.createdAt))}
           </p>
+          <div className="flex-1">
+            {/* ellipses for bookmarks */}
+            <div className="float-right">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <AiOutlineEllipsis size={20} />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="mr-48 pr-12">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="">
+                    <button
+                      onClick={() => handlePostBookmark(post)}
+                      className=""
+                    >
+                      Bookmark post
+                    </button>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
         </div>
       )}
       <h1 className="mb-6 text-2xl font-bold">{post.title}</h1>

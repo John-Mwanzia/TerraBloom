@@ -7,15 +7,8 @@ import { Button, Tooltip } from "@nextui-org/react";
 import { UserButton } from "@clerk/nextjs";
 import { ImCancelCircle } from "react-icons/im";
 import { UploadContext } from "../context/store";
-import { Bell, Bookmark, MessageCircle } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Bell, MessageCircle } from "lucide-react";
+import BookmarkDropdown from "../components/community/BookmarkDropdown";
 
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -166,20 +159,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                       arrow: "bg-neutral-400 dark:bg-white",
                     }}
                   >
-                    <DropdownMenu>
-                      <DropdownMenuTrigger>
-                        <Bookmark className="text-black/70" />
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="mr-16">
-                        <DropdownMenuLabel> Bookmarks</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <div className="flex">
-                          <DropdownMenuItem>posts</DropdownMenuItem>
-                          <DropdownMenuItem>Comments</DropdownMenuItem>
-                          <DropdownMenuItem>messages</DropdownMenuItem>
-                        </div>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                    <BookmarkDropdown />
                   </Tooltip>
                 </div>
                 <div>

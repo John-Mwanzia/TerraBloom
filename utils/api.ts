@@ -130,3 +130,25 @@ export const getComments = async (postId: string) => {
     };
   }
 };
+
+export const saveBookmark = async ({ item, type }) => {
+  try {
+    const res = await fetch(new Request(createURL("/api/bookmark")), {
+      method: "POST",
+      body: JSON.stringify({
+        item,
+        type,
+      }),
+    });
+
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error("Failed to update bookmark");
+    }
+  } catch (error) {
+    return {
+      message: error.message,
+    };
+  }
+};

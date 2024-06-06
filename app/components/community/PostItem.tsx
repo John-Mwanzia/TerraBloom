@@ -10,7 +10,7 @@ import {
   experimental_useOptimistic as useOptimistic,
   useState,
 } from "react";
-import { getComments, updateLikes } from "@/utils/api";
+import { getComments, saveBookmark, updateLikes } from "@/utils/api";
 import toast from "react-hot-toast";
 import { Loader } from "lucide-react";
 import Commentinput from "./CommentInput";
@@ -124,9 +124,18 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
     }
   };
 
-  const handlePostBookmark = (post) => {
-    //save to lacal storage
-    localStorage.setItem("postBookmark", JSON.stringify(post));
+  const handlePostBookmark = async (post) => {
+    // send server
+    const bookmark = {
+      item: post,
+      type: "POST",
+    };
+    try {
+      const { data } = await saveBookmark(bookmark);
+      toast.success(data);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (

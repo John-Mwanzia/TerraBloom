@@ -159,7 +159,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                       arrow: "bg-neutral-400 dark:bg-white",
                     }}
                   >
-                    {/* <BookmarkDropdown /> */}
+                    <BookmarkDropdown />
                   </Tooltip>
                 </div>
                 <div>

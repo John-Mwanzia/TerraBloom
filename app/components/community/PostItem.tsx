@@ -138,6 +138,20 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
     }
   };
 
+  const handleCommentBookmark = async (comment) => {
+    // send server
+    const bookmark = {
+      item: comment,
+      type: "COMMENT",
+    };
+    try {
+      const { data } = await saveBookmark(bookmark);
+      toast.success(data);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div
       key={post.id}
@@ -291,7 +305,12 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                                   </DropdownMenuLabel> */}
                                   <DropdownMenuSeparator />
                                   <DropdownMenuItem className="">
-                                    <button className="">
+                                    <button
+                                      className=""
+                                      onClick={() =>
+                                        handleCommentBookmark(comment)
+                                      }
+                                    >
                                       Bookmark Comment
                                     </button>
                                   </DropdownMenuItem>

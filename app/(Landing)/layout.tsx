@@ -13,7 +13,6 @@ import BookmarkDropdown from "../components/community/BookmarkDropdown";
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const { showModal } = useContext(UploadContext);
-
   useEffect(() => {
     const screenSize = window.innerWidth;
     if (screenSize <= 900) {

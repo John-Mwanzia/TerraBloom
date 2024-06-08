@@ -7,6 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "react-hot-toast";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
+import ReactQueryProvider from "./components/ReactQuery/ReactQueryProvider";
 
 const fontRegularSans = localFont({
   src: "../assets/fonts/Inter-Regular.ttf",
@@ -34,24 +35,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={cn(
-            "min-h-screen font-sans_regular antialiased",
-            fontRegularSans.variable,
-            fontBoldSans.variable,
-            fontHeading.variable
-          )}
-        >
-          <Providers>
-            <ImageProvider>
-              {children}
-              <Toaster position="top-center" />
-            </ImageProvider>
-          </Providers>
-        </body>
-      </html>
-    </ClerkProvider>
+    <ReactQueryProvider>
+      <ClerkProvider>
+        <html lang="en">
+          <body
+            className={cn(
+              "min-h-screen font-sans_regular antialiased",
+              fontRegularSans.variable,
+              fontBoldSans.variable,
+              fontHeading.variable,
+            )}
+          >
+            <Providers>
+              <ImageProvider>
+                {children}
+                <Toaster position="top-center" />
+              </ImageProvider>
+            </Providers>
+          </body>
+        </html>
+      </ClerkProvider>
+    </ReactQueryProvider>
   );
 }

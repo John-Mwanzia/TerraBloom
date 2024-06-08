@@ -10,7 +10,7 @@ import {
   experimental_useOptimistic as useOptimistic,
   useState,
 } from "react";
-import { getComments, updateLikes } from "@/utils/api";
+import { getComments, saveBookmark, updateLikes } from "@/utils/api";
 import toast from "react-hot-toast";
 import { Loader } from "lucide-react";
 import Commentinput from "./CommentInput";
@@ -47,6 +47,7 @@ interface Post {
       id: string;
       isAdmin: boolean | null;
       lastName: string;
+      avatarUrl: string;
     };
   }[];
   comments: {
@@ -63,11 +64,10 @@ interface Post {
 
 interface PostItemProps {
   post: Post;
-  firstName: string;
-  lastName: string;
+  image: string;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
+const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
   const [liked, setLiked] = useState(false);
   const [optimisticLiked, setOptimisticLiked] = useState(liked);
 
@@ -124,6 +124,34 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
     }
   };
 
+  const handlePostBookmark = async (post) => {
+    // send server
+    const bookmark = {
+      item: post,
+      type: "POST",
+    };
+    try {
+      const { data } = await saveBookmark(bookmark);
+      toast.success(data);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const handleCommentBookmark = async (comment) => {
+    // send server
+    const bookmark = {
+      item: comment,
+      type: "COMMENT",
+    };
+    try {
+      const { data } = await saveBookmark(bookmark);
+      toast.success(data);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div
       key={post.id}
@@ -141,6 +169,27 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
           <p className="text-sm">
             Posted {getTimeSincePostCreation(formatCreatedAt(post.createdAt))}
           </p>
+          <div className="flex-1">
+            {/* ellipses for bookmarks */}
+            <div className="float-right">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <AiOutlineEllipsis size={20} />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="mr-48 pr-12">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="">
+                    <button
+                      onClick={() => handlePostBookmark(post)}
+                      className=""
+                    >
+                      Bookmark post
+                    </button>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
         </div>
       )}
       <h1 className="mb-6 text-2xl font-bold">{post.title}</h1>
@@ -160,7 +209,14 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
           <div className="mt-4">
             <div className="flex gap-[2px] text-base font-semibold text-white">
               {post.likes.slice(0, 3).map((like) => (
-                <div key={like.id} className="rounded-r-md bg-primary p-1">
+                <div key={like.id} className="rounded-r-md ">
+                  <Image
+                    src={like.user.avatarUrl}
+                    width={30}
+                    height={30}
+                    alt="user avatar"
+                    className="rounded-r-md "
+                  />
                   {like.user.firstName.charAt(0) + like.user.lastName.charAt(0)}
                 </div>
               ))}
@@ -226,9 +282,14 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                       key={comment.id}
                       className="mt-8 flex w-full items-start gap-8"
                     >
-                      <div className="inline-flex rounded-lg bg-primary p-1 text-base font-semibold text-white">
-                        {comment.author.firstName.charAt(0) +
-                          comment.author.lastName.charAt(0)}
+                      <div>
+                        <Image
+                          src={comment.author.avatarUrl}
+                          width={30}
+                          height={30}
+                          alt="user avatar"
+                          className="rounded-lg"
+                        />
                       </div>
                       <div className="flex w-full flex-col gap-2 font-sans">
                         <div className="flex gap-5">
@@ -256,7 +317,12 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                                   </DropdownMenuLabel> */}
                                   <DropdownMenuSeparator />
                                   <DropdownMenuItem className="">
-                                    <button className="">
+                                    <button
+                                      className=""
+                                      onClick={() =>
+                                        handleCommentBookmark(comment)
+                                      }
+                                    >
                                       Bookmark Comment
                                     </button>
                                   </DropdownMenuItem>
@@ -302,8 +368,14 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                 </div>
               )}
               <div className="mt-6 flex items-start gap-6">
-                <div className="inline-flex rounded-lg bg-primary p-1 text-base font-semibold text-white">
-                  {firstName.charAt(0) + lastName.charAt(0)}
+                <div>
+                  <Image
+                    src={image}
+                    width={30}
+                    height={30}
+                    alt="user avatar"
+                    className="rounded-lg"
+                  />
                 </div>
                 <div className="flex-1">
                   <Commentinput postId={post.id} />

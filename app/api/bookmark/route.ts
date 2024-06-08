@@ -85,36 +85,62 @@ export const POST = async (req: Request) => {
 export const GET = async () => {
   const user = await getUserFromClerkID();
   if (!user) {
-    return NextResponse.json({ error: "The user doesnt exist" });
+    return NextResponse.json({ error: "The user doesn't exist" });
   }
   try {
-    const comments = await prisma.bookmark.findMany({
+    const bookmarks = await prisma.bookmark.findMany({
       where: {
         userId: user.id,
       },
-      include: {
+      select: {
+        type: true,
         post: {
-          include: {
-            author: true,
+          select: {
+            id: true,
+            title: true,
+            content: true,
+            createdAt: true,
+            author: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                avatarUrl: true,
+              },
+            },
           },
         },
         comment: {
-          include: {
-            author: true,
-            post: true,
+          select: {
+            id: true,
+            text: true,
+            createdAt: true,
+            author: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+                avatarUrl: true,
+              },
+            },
+            post: {
+              select: {
+                id: true,
+                title: true,
+              },
+            },
           },
         },
       },
     });
-    console.log(comments);
 
-    if (!comments) {
+    if (!bookmarks) {
       return NextResponse.json({
         data: "No bookmarks found",
       });
     } else {
       return NextResponse.json({
-        data: comments,
+        data: bookmarks,
       });
     }
   } catch (error) {

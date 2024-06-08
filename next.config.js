@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "cdn-icons-png.flaticon.com",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "img.clerk.com",
+        pathname: "**",
+      },
     ],
   },
   experimental: {

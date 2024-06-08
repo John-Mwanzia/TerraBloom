@@ -25,7 +25,7 @@ const getPosts = async () => {
 
 export default async function Page() {
   const user = await currentUser();
-  const { firstName, lastName } = user;
+  const { imageUrl } = user;
 
   const posts = await getPosts();
 
@@ -39,12 +39,7 @@ export default async function Page() {
         <div className="flex-1 overflow-y-auto pb-8">
           <div className="relative flex flex-col items-center gap-16 px-2 pb-24 pt-8 md:px-0">
             {posts.map((post) => (
-              <PostItem
-                key={post.id}
-                post={post}
-                firstName={firstName}
-                lastName={lastName}
-              />
+              <PostItem key={post.id} post={post} image={imageUrl} />
             ))}
           </div>
         </div>

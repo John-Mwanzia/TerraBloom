@@ -14,6 +14,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import useBookmarks from "@/app/hooks/useBookmarks";
 import { formatDateString } from "@/handlers/timeStamp";
+import Image from "next/image";
 
 export default function BookmarkDropdown() {
   const [activeTab, setActiveTab] = useState("posts");
@@ -44,9 +45,11 @@ export default function BookmarkDropdown() {
 
   const filteredData = data
     ? data.data.filter((bookmark) =>
-        activeTab === "posts" ? bookmark.type === "POST" :
-        activeTab === "comments" ? bookmark.type === "COMMENT" :
-        false
+        activeTab === "posts"
+          ? bookmark.type === "POST"
+          : activeTab === "comments"
+            ? bookmark.type === "COMMENT"
+            : false,
       )
     : [];
 
@@ -60,32 +63,75 @@ export default function BookmarkDropdown() {
           <DropdownMenuLabel>Bookmarks</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <div className="mb-3 flex gap-4 border-b border-slate-200">
-            <p className={cn(activeTab === "posts" ? "font-bold" : "", customStyles)} onClick={() => handleTabChange("posts")}>
+            <p
+              className={cn(
+                activeTab === "posts" ? "font-bold" : "",
+                customStyles,
+              )}
+              onClick={() => handleTabChange("posts")}
+            >
               Posts
             </p>
-            <p className={cn(activeTab === "comments" ? "font-bold" : "", customStyles)} onClick={() => handleTabChange("comments")}>
+            <p
+              className={cn(
+                activeTab === "comments" ? "font-bold" : "",
+                customStyles,
+              )}
+              onClick={() => handleTabChange("comments")}
+            >
               Comments
             </p>
           </div>
           {isLoading && <p>Loading...</p>}
           {error && <p>Error loading bookmarks</p>}
-          {filteredData.length === 0 && !isLoading && !error && <p>No bookmarks found</p>}
+          {filteredData.length === 0 && !isLoading && !error && (
+            <p>No bookmarks found</p>
+          )}
           {filteredData.map((bookmark) => (
-            <Link key={bookmark.id} href={bookmark.type === "POST" ? `/post/${bookmark.postId}` : `/post/${bookmark.comment.postId}`}>
+            <Link
+              key={bookmark.id}
+              href={
+                bookmark.type === "POST"
+                  ? `/post/${bookmark.postId}`
+                  : `/post/${bookmark.comment.postId}`
+              }
+            >
               <div className="px-4 py-2 hover:bg-muted">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4">
-                    <div className="inline-flex rounded-lg bg-primary p-1 text-base font-semibold text-white">
-                      {bookmark.type === "POST" 
-                        ? bookmark.post.author.firstName.charAt(0) + bookmark.post.author.lastName.charAt(0)
-                        : bookmark.comment.author.firstName.charAt(0) + bookmark.comment.author.lastName.charAt(0)}
+                    <div className="">
+                      {bookmark.type === "POST" ? (
+                        <Image
+                          src={bookmark.post.author.avatarUrl}
+                          width={30}
+                          height={30}
+                          alt="user avatar"
+                          className="rounded-full"
+                        />
+                      ) : (
+                        <Image
+                          src={bookmark.comment.author.avatarUrl}
+                          width={30}
+                          height={30}
+                          alt="user avatar"
+                          className="rounded-full"
+                        />
+                      )}
                     </div>
                     <div>
                       <div className="font-semibold">
-                        <p>{bookmark.type === "POST" ? bookmark.post.title : bookmark.comment.post.title}</p>
+                        <p>
+                          {bookmark.type === "POST"
+                            ? bookmark.post.title
+                            : bookmark.comment.post.title}
+                        </p>
                       </div>
                       <div className="text-black/80">
-                        <p>{bookmark.type === "POST" ? bookmark.post.content : bookmark.comment.text}</p>
+                        <p>
+                          {bookmark.type === "POST"
+                            ? bookmark.post.content
+                            : bookmark.comment.text}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -111,10 +157,20 @@ export default function BookmarkDropdown() {
                   <div className="flex gap-5">
                     <div>
                       {bookmark.type === "POST"
-                        ? bookmark.post.author.firstName + " " + bookmark.post.author.lastName
-                        : bookmark.comment.author.firstName + " " + bookmark.comment.author.lastName}
+                        ? bookmark.post.author.firstName +
+                          " " +
+                          bookmark.post.author.lastName
+                        : bookmark.comment.author.firstName +
+                          " " +
+                          bookmark.comment.author.lastName}
                     </div>
-                    <div>{formatDateString(bookmark.type === "POST" ? bookmark.post.createdAt : bookmark.comment.createdAt)}</div>
+                    <div>
+                      {formatDateString(
+                        bookmark.type === "POST"
+                          ? bookmark.post.createdAt
+                          : bookmark.comment.createdAt,
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

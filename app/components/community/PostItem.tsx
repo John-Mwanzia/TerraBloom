@@ -47,6 +47,7 @@ interface Post {
       id: string;
       isAdmin: boolean | null;
       lastName: string;
+      avatarUrl: string;
     };
   }[];
   comments: {
@@ -63,11 +64,10 @@ interface Post {
 
 interface PostItemProps {
   post: Post;
-  firstName: string;
-  lastName: string;
+  image: string;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
+const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
   const [liked, setLiked] = useState(false);
   const [optimisticLiked, setOptimisticLiked] = useState(liked);
 
@@ -209,7 +209,14 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
           <div className="mt-4">
             <div className="flex gap-[2px] text-base font-semibold text-white">
               {post.likes.slice(0, 3).map((like) => (
-                <div key={like.id} className="rounded-r-md bg-primary p-1">
+                <div key={like.id} className="rounded-r-md ">
+                  <Image
+                    src={like.user.avatarUrl}
+                    width={30}
+                    height={30}
+                    alt="user avatar"
+                    className="rounded-r-md "
+                  />
                   {like.user.firstName.charAt(0) + like.user.lastName.charAt(0)}
                 </div>
               ))}
@@ -275,9 +282,14 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                       key={comment.id}
                       className="mt-8 flex w-full items-start gap-8"
                     >
-                      <div className="inline-flex rounded-lg bg-primary p-1 text-base font-semibold text-white">
-                        {comment.author.firstName.charAt(0) +
-                          comment.author.lastName.charAt(0)}
+                      <div>
+                        <Image
+                          src={comment.author.avatarUrl}
+                          width={30}
+                          height={30}
+                          alt="user avatar"
+                          className="rounded-lg"
+                        />
                       </div>
                       <div className="flex w-full flex-col gap-2 font-sans">
                         <div className="flex gap-5">
@@ -356,8 +368,14 @@ const PostItem: React.FC<PostItemProps> = ({ post, firstName, lastName }) => {
                 </div>
               )}
               <div className="mt-6 flex items-start gap-6">
-                <div className="inline-flex rounded-lg bg-primary p-1 text-base font-semibold text-white">
-                  {firstName.charAt(0) + lastName.charAt(0)}
+                <div>
+                  <Image
+                    src={image}
+                    width={30}
+                    height={30}
+                    alt="user avatar"
+                    className="rounded-lg"
+                  />
                 </div>
                 <div className="flex-1">
                   <Commentinput postId={post.id} />

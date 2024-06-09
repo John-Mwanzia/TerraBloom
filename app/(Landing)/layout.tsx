@@ -7,7 +7,7 @@ import { Button, Tooltip } from "@nextui-org/react";
 import { UserButton } from "@clerk/nextjs";
 import { ImCancelCircle } from "react-icons/im";
 import { UploadContext } from "../context/store";
-import { Bell, MessageCircle } from "lucide-react";
+import { Bell, MessageCircle, Search } from "lucide-react";
 import BookmarkDropdown from "../components/community/BookmarkDropdown";
 
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
@@ -117,6 +117,20 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                   <div className="w-[1.875rem ] mb-1 h-[0.1875rem] rounded-2xl bg-[#0E9AA9]"></div>
                 </div>
               </button>
+              <div>
+                {/* search */}
+                <div className="flex items-center ">
+                  <div className="bg-light-gray/40 rounded-l-lg pl-4 py-[10px]">
+                  <Search size={20} className="text-black/50" />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className="rounded-r-lg bg-light-gray/40 px-4 py-2 border-none outline-none text-black/70"
+                  />
+                  
+                </div>
+              </div>
               <div className="flex items-center gap-4 py-6">
                 <div>
                   <Tooltip

@@ -64,8 +64,14 @@ export const ImageProvider = ({ children }: { children: ReactNode }) => {
   const [uploadedFile, setUploadedFile] = useState<string | null>(null);
   const [selectedGif, setSelectedGif] = useState<GifType | null>(null);
   const [showModal, setShowModal] = useState(false);
-  /* toggle dark or light theme */
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState<string>("light");
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
 
   return (
     <UploadContext.Provider

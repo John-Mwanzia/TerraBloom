@@ -57,7 +57,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
       <div className={`${theme} dark:bg-black`}>
         {activeMenu && (
           <div
-            className={`fixed h-screen w-[80%] sm:w-[16.3rem] bg-white border-r z-50  dark:border-gray-700 dark:bg-black ${
+            className={`fixed z-50 h-screen w-[80%] border-r bg-white dark:border-gray-700 dark:bg-black sm:w-[16.3rem] ${
               showModal ? "z-0" : ""
             }`}
           >
@@ -80,7 +80,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
             <div className="mt-8 pl-10 pr-2 font-old-standard dark:text-white">
               <Link
                 href="/community/Home"
-                className={`flex items-center gap-1  px-2 py-1 rounded-lg ${pathname === "/community/Home" ? " bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/Home" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
               >
                 <Home size={16} />
                 Home
@@ -90,27 +90,27 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                 <div className="flex flex-col gap-1">
                   <Link
                     href="/community/announcement"
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${pathname === "/community/announcement" ? " bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                    className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/announcement" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
                   >
                     <Star size={16} />
                     Announcements
                   </Link>
                   <Link
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${pathname === "/community/introduction" ? " bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                    className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/introduction" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
                     href="/community/introduction"
                   >
                     <Hand size={16} className="rotate-45 transform" />
                     Introductions
                   </Link>
                   <Link
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${pathname === "/community/FAQ" ? " bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                    className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/FAQ" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
                     href="/community/FAQ"
                   >
                     <Globe size={16} />
                     FAQ
                   </Link>
                   <Link
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${pathname === "/community/Chat" ? " bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                    className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/Chat" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
                     href="/community/Chat"
                   >
                     <MessageCircle size={16} />
@@ -123,21 +123,21 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                 <h1 className="font-bold">Community</h1>
                 <div className="flex flex-col gap-1">
                   <Link
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${pathname === "/community/Community" ? " bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                    className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/Community" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
                     href="/community/Resources"
                   >
                     <Sparkle size={16} />
                     Resources
                   </Link>
                   <Link
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${pathname === "/community/Showcase" ? " bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                    className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/Showcase" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
                     href="/community/Showcase"
                   >
                     <Sparkles size={16} />
                     Showcase
                   </Link>
                   <Link
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${pathname === "/community/Events" ? " bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                    className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/Events" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
                     href="/community/Events"
                   >
                     <CalendarDays size={16} />
@@ -150,7 +150,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                 <h1 className="font-bold">Support</h1>
                 <div className="flex flex-col gap-1">
                   <Link
-                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${pathname === "/community/Support" ? " bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                    className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/Support" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
                     href="/community/Support"
                   >
                     <BiSupport size={16} />
@@ -173,14 +173,17 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               </button>
               <div>
                 {/* search */}
-                <div className="flex items-center ml-5 sm:ml-0">
+                <div className="ml-5 flex items-center sm:ml-0">
                   <div className="rounded-l-lg bg-light-gray/40 py-[10px] pl-4">
-                    <Search size={20} className="text-black/50 dark:text-white" />
+                    <Search
+                      size={20}
+                      className="text-black/50 dark:text-white"
+                    />
                   </div>
                   <input
                     type="text"
                     placeholder="Search"
-                    className="rounded-r-lg border-none w-[55%] sm:w-auto bg-light-gray/40 px-4 py-2 text-black/70 outline-none dark:text-white"
+                    className="w-[55%] rounded-r-lg border-none bg-light-gray/40 px-4 py-2 text-black/70 outline-none dark:text-white sm:w-auto"
                   />
                 </div>
               </div>
@@ -216,7 +219,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                     }}
                   >
                     <Button variant="flat">
-                      <Bell className="text-black/70 dark:text-white/70"  />
+                      <Bell className="text-black/70 dark:text-white/70" />
                     </Button>
                   </Tooltip>
                 </div>
@@ -245,7 +248,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                       arrow: "bg-neutral-400 dark:bg-white",
                     }}
                   >
-                    <BookmarkDropdown  />
+                    <BookmarkDropdown />
                   </Tooltip>
                 </div>
                 <div>
@@ -258,7 +261,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
             className={
               activeMenu
                 ? "fixed top-20 h-[calc(100vh-5rem)] w-full rounded-tl-sm bg-light-gray/40 dark:bg-black xl:ml-[16.3rem] xl:w-[calc(100vw-16.3rem)]"
-                : "fixed top-20 ml-0 h-[calc(100vh-5rem)] w-screen rounded-tl-sm bg-light-gray/40 dark:bg-black "
+                : "fixed top-20 ml-0 h-[calc(100vh-5rem)] w-screen rounded-tl-sm bg-light-gray/40 dark:bg-black"
             }
           >
             {children}

@@ -21,7 +21,7 @@ export default function GifModal({ isOpen, onClose, onUpload }: any) {
         <div className="flex justify-center">
           <div className="mb-4">
             <ReactGiphySearchbox
-              apiKey="pXDMLXZW5bcvRo7M1yulP9Y32QW3pO7l"
+              apiKey={process.env.NEXT_REACT_GIF_API_KEY}
               onSelect={(item: any) => {
                 setSelectedGif(item);
                 onClose();

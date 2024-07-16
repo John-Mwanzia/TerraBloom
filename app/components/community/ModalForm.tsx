@@ -69,7 +69,7 @@ export default function ModalForm() {
         <div className="flex flex-col">
           <div className="mb-6">
             <input
-              className="border-b border-gray-100 outline-none w-full pl-6"
+              className="border-b border-gray-50/20 dark:bg-transparent outline-none w-full pl-6"
               type="text"
               placeholder="Title"
               name="title"
@@ -78,7 +78,7 @@ export default function ModalForm() {
           </div>
           <div>
             <textarea
-              className="border-none outline-none pl-6 w-full"
+              className="border-none outline-none dark:bg-transparent pl-6 border-b border-gray-50/20 w-full"
               name="content"
               id=""
               placeholder="content"

@@ -7,6 +7,7 @@ import AttachFileModal from "./AttachFileModal";
 import ImageUploadModal from "./ImageUploadModal";
 import GifModal from "./GifModal";
 import { UploadContext } from "@/app/context/store";
+import { ImagePlus, Paperclip, Video, X } from "lucide-react";
 
 export default function PostModal({ setShowModal }) {
   const [isVideoModalOpen, setVideoModalOpen] = useState(false);
@@ -14,12 +15,8 @@ export default function PostModal({ setShowModal }) {
   const [isAttachFileModalOpen, setAttachFileModalOpen] = useState(false);
   const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false); // State for ImageUploadModal
   const [isGifModalOpen, setGifModalOpen] = useState(false);
-  const {
-    previewImage,
-    setPreviewImage,
-    uploadedImage,
-    setUploadedImage,
-  } = useContext(UploadContext);
+  const { previewImage, setPreviewImage, uploadedImage, setUploadedImage } =
+    useContext(UploadContext);
 
   // State to store the selected GIF
   const [selectedGif, setSelectedGif] = useState("");
@@ -70,75 +67,62 @@ export default function PostModal({ setShowModal }) {
 
   return (
     <div
-      className="bg-black/80 w-screen h-screen fixed  top-0 right-0"
+      className="fixed right-0 top-0 h-screen w-screen bg-black/80"
       style={{ zIndex: 1000000 }}
     >
       <div>
-        <div className="bg-white w-[23rem] h-[70%] xl:w-[50rem] md:w-[90%] xl:h-[40rem] rounded-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="flex justify-between px-4 pt-6 border-b-2 pb-2">
+        <div className="absolute left-1/2 top-1/2 h-[70%] w-[23rem] -translate-x-1/2 -translate-y-1/2 transform rounded-xl bg-white dark:border dark:border-gray-50/30 dark:bg-black dark:text-white/70 md:w-[90%] xl:h-[40rem] xl:w-[50rem]">
+          <div className="flex justify-between border-b-2 px-4 pb-2 pt-6">
             <h1 className="text-3xl">Create Post</h1>
-            <div className="flex gap-4 items-center">
+            <div className="flex items-center gap-4">
               <div>
                 <button type="button" onClick={() => setShowModal(false)}>
-                  <Image
-                    src="/bloomCommAssets/close.svg"
-                    alt="close"
-                    width={22}
-                    height={18}
-                  />
-                </button>
+                <X size={22} />
+                </button> 
               </div>
             </div>
           </div>
           <div className="mt-6">
             <ModalForm />
           </div>
-          <div className="flex justify-between absolute bottom-4 px-6 border-t-2  w-full pt-4">
-            <div className="flex gap-6">
+          <div className="absolute bottom-4 flex w-full justify-between border-t-2 px-6 pt-4">
+            <div className="flex items-center gap-6">
               <div>
-                <button onClick={handleOpenAttachFileModal}>
-                  <Image
-                    src="/bloomCommAssets/attach.svg"
-                    alt="Attach File"
-                    width={22}
-                    height={18}
-                  />
+                <button type="button" onClick={handleOpenAttachFileModal}>
+                  <Paperclip size={16} />
                 </button>
               </div>
               <div>
-                <button onClick={handleOpenVideoModal}>
-                  <Image
-                    src="/bloomCommAssets/video.svg"
-                    alt="video"
-                    width={22}
-                    height={18}
-                  />
+                <button type="button" onClick={handleOpenVideoModal}>
+                  <Video />
                 </button>
               </div>
 
               <div>
-                <button onClick={handleOpenImageUploadModal}>
-                  <Image
-                    src="/bloomCommAssets/imageUpload.svg"
-                    alt="Image Upload"
-                    width={22}
-                    height={18}
-                  />
+                <button type="button" onClick={handleOpenImageUploadModal}>
+                  <ImagePlus size={16} />
                 </button>
               </div>
               <div>
-                <button onClick={() => setGifModalOpen(true)}>
+                <button type="button" onClick={() => setGifModalOpen(true)}>
                   {" "}
                   {/* Open GifModal */}
                   <Image
+                    src="/bloomCommAssets/gif.png"
+                    alt="GIF"
+                    width={30}
+                    height={38}
+                    className="hidden dark:flex dark:rounded-sm"
+                  />
+                  <Image
                     src="/bloomCommAssets/gif.svg"
                     alt="GIF"
-                    width={22}
+                    width={15}
                     height={18}
+                    className="dark:hidden"
                   />
                 </button>
               </div>
-              {/* Add buttons for other actions here */}
             </div>
           </div>
         </div>

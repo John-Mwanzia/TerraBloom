@@ -42,8 +42,6 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
 
   /* handle toggle dark or light theme */
-  console.log("theme", theme);
-
   const handleThemeToggle = () => {
     if (theme === "light") {
       setTheme("dark");

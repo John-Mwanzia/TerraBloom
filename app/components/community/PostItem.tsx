@@ -155,10 +155,10 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
   return (
     <div
       key={post.id}
-      className="flex flex-col bg-white dark:bg-[#282B31] rounded-md dark:text-white px-4 py-8 shadow-xl md:w-[45rem]"
+      className="flex flex-col rounded-md bg-white px-4 py-8 shadow-xl dark:bg-[#282B31] dark:text-white md:w-[45rem]"
     >
       {post.author.avatarUrl && (
-        <div className="mb-4 flex items-center gap-6">
+        <div className="mb-4 flex items-center gap-2 sm:gap-6">
           {" "}
           <img
             src={post.author.avatarUrl}
@@ -209,13 +209,13 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
           <div className="mt-4">
             <div className="flex gap-[2px] text-base font-semibold text-white">
               {post.likes.slice(0, 3).map((like) => (
-                <div key={like.id} className="rounded-r-md ">
+                <div key={like.id} className="rounded-r-md">
                   <Image
                     src={like.user.avatarUrl}
                     width={30}
                     height={30}
                     alt="user avatar"
-                    className="rounded-r-md "
+                    className="rounded-r-md"
                   />
                 </div>
               ))}
@@ -248,7 +248,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
             className="flex gap-2"
             onClick={() => handleComments(post.id)}
           >
-           <MessageSquareMore size={24} />
+            <MessageSquareMore size={24} />
             comment
           </button>
         </div>
@@ -345,10 +345,10 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
                         <div className="flex w-full text-sm">
                           <div className="flex gap-4 font-semibold">
                             {/* likes  and replies*/}
-                            <button className="text-black/70  hover:text-black dark:hover:text-white/70 dark:text-white">
+                            <button className="text-black/70 hover:text-black dark:text-white dark:hover:text-white/70">
                               like
                             </button>
-                            <button className="text-black/70 hover:text-black dark:hover:text-white/70 dark:text-white">
+                            <button className="text-black/70 hover:text-black dark:text-white dark:hover:text-white/70">
                               reply
                             </button>
                           </div>

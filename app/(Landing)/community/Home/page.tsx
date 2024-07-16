@@ -32,11 +32,11 @@ export default async function Page() {
   return (
     <>
       <div className="flex h-screen w-full flex-col">
-        <div className="flex justify-between border-l border-t bg-white px-4 pb-4 pt-3">
+        <div className="flex justify-between border-l border-t bg-white px-4 pb-4 pt-3 dark:bg-[#282B31] dark:text-white">
           <h1 className="text-3xl">Home</h1>
           <Button />
         </div>
-        <div className="flex-1 overflow-y-auto pb-8">
+        <div className="flex-1 overflow-y-auto pb-8 dark:bg-black">
           <div className="relative flex flex-col items-center gap-16 px-2 pb-24 pt-8 md:px-0">
             {posts.map((post) => (
               <PostItem key={post.id} post={post} image={imageUrl} />

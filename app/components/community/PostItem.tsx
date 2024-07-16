@@ -12,7 +12,7 @@ import {
 } from "react";
 import { getComments, saveBookmark, updateLikes } from "@/utils/api";
 import toast from "react-hot-toast";
-import { Loader } from "lucide-react";
+import { Loader, MessageSquareMore } from "lucide-react";
 import Commentinput from "./CommentInput";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import {
@@ -155,7 +155,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
   return (
     <div
       key={post.id}
-      className="flex flex-col bg-white px-4 py-8 shadow-xl md:w-[45rem]"
+      className="flex flex-col bg-white dark:bg-[#282B31] rounded-md dark:text-white px-4 py-8 shadow-xl md:w-[45rem]"
     >
       {post.author.avatarUrl && (
         <div className="mb-4 flex items-center gap-6">
@@ -217,7 +217,6 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
                     alt="user avatar"
                     className="rounded-r-md "
                   />
-                  {like.user.firstName.charAt(0) + like.user.lastName.charAt(0)}
                 </div>
               ))}
             </div>
@@ -239,8 +238,8 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
           >
             <div>
               <BiLike
-                color={optimisticLiked ? "#0E9AA9" : "black"}
-                className="h-6 w-6"
+                // color={optimisticLiked ? "#0E9AA9" : "black"}
+                className={`h-6 w-6 ${optimisticLiked ? "text-[#0E9AA9]" : ""}`}
               />
             </div>
             {optimisticLiked ? "Liked" : "Like"}
@@ -249,12 +248,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
             className="flex gap-2"
             onClick={() => handleComments(post.id)}
           >
-            <Image
-              src="/bloomCommAssets/comment.svg"
-              alt="comment"
-              width={24}
-              height={24}
-            />
+           <MessageSquareMore size={24} />
             comment
           </button>
         </div>
@@ -331,7 +325,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="text-black/80">
+                        <div className="text-black/80 dark:text-white">
                           {/* comment contents */}
                           {comment.text && <p>{comment.text}</p>}
                           {comment.image && (
@@ -351,10 +345,10 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
                         <div className="flex w-full text-sm">
                           <div className="flex gap-4 font-semibold">
                             {/* likes  and replies*/}
-                            <button className="text-black/70 hover:text-black dark:hover:text-white/70">
+                            <button className="text-black/70  hover:text-black dark:hover:text-white/70 dark:text-white">
                               like
                             </button>
-                            <button className="text-black/70 hover:text-black dark:hover:text-white/70">
+                            <button className="text-black/70 hover:text-black dark:hover:text-white/70 dark:text-white">
                               reply
                             </button>
                           </div>

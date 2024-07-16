@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 type GifType = {
   images: {
@@ -29,6 +29,8 @@ export const UploadContext = createContext<{
   setSelectedGif: (selectedGif: GifType | null) => void;
   showModal: boolean;
   setShowModal: (showModal: boolean) => void;
+  theme: string;
+  setTheme: (theme: string) => void;
 }>({
   previewImage: null,
   setPreviewImage: () => {},
@@ -48,6 +50,8 @@ export const UploadContext = createContext<{
   setSelectedGif: () => {},
   showModal: false,
   setShowModal: () => {},
+  theme: localStorage.getItem("theme") || "light",
+  setTheme: () => {},
 });
 
 export const ImageProvider = ({ children }: { children: ReactNode }) => {
@@ -60,6 +64,19 @@ export const ImageProvider = ({ children }: { children: ReactNode }) => {
   const [uploadedFile, setUploadedFile] = useState<string | null>(null);
   const [selectedGif, setSelectedGif] = useState<GifType | null>(null);
   const [showModal, setShowModal] = useState(false);
+   /* toggle dark or light theme */
+   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+   useEffect(() => {
+    // Check localStorage for theme value on component mount
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
+
+
+
 
   return (
     <UploadContext.Provider
@@ -82,6 +99,9 @@ export const ImageProvider = ({ children }: { children: ReactNode }) => {
         setSelectedGif,
         showModal,
         setShowModal,
+        theme,
+        setTheme
+
       }}
     >
       {children}

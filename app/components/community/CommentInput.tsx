@@ -10,7 +10,7 @@ import VideoModal from "./VideoModal";
 import AttachFileModal from "./AttachFileModal";
 import ImageUploadModal from "./ImageUploadModal";
 import GifModal from "./GifModal";
-import { Loader } from "lucide-react";
+import { FileImage, ImagePlus, Loader, Paperclip, Video } from "lucide-react";
 
 export default function Commentinput({ postId }) {
   const [isVideoModalOpen, setVideoModalOpen] = useState(false);
@@ -129,8 +129,8 @@ export default function Commentinput({ postId }) {
     }
   };
   return (
-    <div className="w-full   border border-gray-300 ">
-      <div className="bg-white  rounded-xl  ">
+    <div className="w-full   border border-gray-300  ">
+      <div className="bg-white dark:bg-[#282B31]  ">
         <div className="flex px-2 sm:px-6  pt-4 ">
           <form onSubmit={handleSubmit} className="w-full">
             <div className="">
@@ -140,7 +140,7 @@ export default function Commentinput({ postId }) {
                   value={textComment}
                   onChange={(e) => setTextComment(e.target.value)}
                   placeholder="What are your thoughts? "
-                  className="w-full outline-none"
+                  className="w-full outline-none border-none dark:bg-[#282B31] dark:text-white"
                 />
                 <div
                   className={` ${
@@ -163,7 +163,7 @@ export default function Commentinput({ postId }) {
                         className="max-h-80 mx-auto"
                       />
                       <button onClick={handleCancel}>
-                        <AiOutlineCloseCircle className=" absolute -top-1 -right-1 text-2xl cursor-pointer" />
+                        <AiOutlineCloseCircle className=" absolute -top-1 -right-1 text-2xl cursor-pointer dark:text-white" />
                       </button>
                     </div>
                   )}
@@ -189,7 +189,7 @@ export default function Commentinput({ postId }) {
                         className="flex items-center justify-start pl-5 text-[#0E9AA9] cursor-pointer"
                         download
                       >
-                        <AiFillFileImage className="text-3xl " />
+                        <AiFillFileImage  className="text-3xl " />
                         {fileName}
                       </a>
                       <button onClick={handleCancel}>
@@ -214,36 +214,21 @@ export default function Commentinput({ postId }) {
                 </div>
               </div>
               <div className="flex justify-between items-end pb-2 ">
-                <div className="flex gap-6 ">
+                <div className="flex items-center gap-6 ">
                   <div>
                     <button type="button" onClick={handleOpenAttachFileModal}>
-                      <Image
-                        src="/bloomCommAssets/attach.svg"
-                        alt="Attach File"
-                        width={15}
-                        height={18}
-                      />
+                    <Paperclip size={16} />
                     </button>
                   </div>
                   <div>
                     <button type="button" onClick={handleOpenVideoModal}>
-                      <Image
-                        src="/bloomCommAssets/video.svg"
-                        alt="video"
-                        width={15}
-                        height={18}
-                      />
+                    <Video />
                     </button>
                   </div>
 
                   <div>
                     <button type="button" onClick={handleOpenImageUploadModal}>
-                      <Image
-                        src="/bloomCommAssets/imageUpload.svg"
-                        alt="Image Upload"
-                        width={15}
-                        height={18}
-                      />
+                    <ImagePlus size={16} />
                     </button>
                   </div>
                   <div>
@@ -251,10 +236,18 @@ export default function Commentinput({ postId }) {
                       {" "}
                       {/* Open GifModal */}
                       <Image
+                        src="/bloomCommAssets/gif.png"
+                        alt="GIF"
+                        width={30}
+                        height={38}
+                        className=" hidden dark:flex dark:rounded-sm"
+                      />
+                      <Image
                         src="/bloomCommAssets/gif.svg"
                         alt="GIF"
                         width={15}
                         height={18}
+                        className=" dark:hidden"
                       />
                     </button>
                   </div>

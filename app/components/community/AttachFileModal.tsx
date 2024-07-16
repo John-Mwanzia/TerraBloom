@@ -1,6 +1,7 @@
 import { UploadContext } from "@/app/context/store";
 import React, { useState, useRef, useContext } from "react";
 import { AiFillFileImage } from "react-icons/ai";
+import { BiCloudUpload } from "react-icons/bi";
 
 interface AttachFileModalProps {
   isOpen: boolean;
@@ -85,10 +86,10 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
     <div
       className={`fixed inset-0 z-50 ${
         isOpen ? "block" : "hidden"
-      } bg-black bg-opacity-80 flex items-center justify-center`}
+      } flex items-center justify-center bg-black bg-opacity-80`}
     >
-      <div className="modal-container p-6 bg-white  w-[90%] md:w-[500px] rounded-lg shadow-lg">
-        <div className="modal-header flex justify-between mb-4">
+      <div className="modal-container w-[90%] rounded-lg bg-white p-6 shadow-lg dark:bg-black dark:border dark:border-gray-50/20 dark:text-white/70 md:w-[500px]">
+        <div className="modal-header mb-4 flex justify-between">
           <h2 className="text-xl font-bold">Attach File</h2>
           <button className="modal-close text-3xl" onClick={onClose}>
             &times;
@@ -97,12 +98,15 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
         <div className="modal-body">
           <div
             ref={dropAreaRef}
-            className={`border border-gray-200 p-12 mb-4 text-center cursor-pointer rounded-lg`}
+            className={`mb-4 cursor-pointer rounded-lg border border-gray-200 dark:border-gray-50/20 p-12 text-center`}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
           >
+            <div className="flex flex-col justify-center items-center gap-1">
+            <BiCloudUpload size={40} />
             <p>Drop your file here</p>
+            </div>
             <input
               type="file"
               className="mt-4"
@@ -112,7 +116,7 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
           </div>
           {/* Display the file preview */}
           {previewFile && (
-            <div className="flex mt-4 gap-2 items-center">
+            <div className="mt-4 flex items-center gap-2">
               <span className="text-2xl">
                 <AiFillFileImage color="#1475cf" />
               </span>
@@ -122,7 +126,7 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
         </div>
         <div className="mt-6">
           <button
-            className="mr-6 bg-[#0E9AA9] py-2 px-4 rounded-md"
+            className="mr-6 rounded-md bg-[#0E9AA9] px-4 py-2"
             onClick={handleAttach}
           >
             Attach

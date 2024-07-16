@@ -57,7 +57,7 @@ export default function BookmarkDropdown() {
     <div>
       <DropdownMenu onOpenChange={handleDropdownOpenChange}>
         <DropdownMenuTrigger>
-          <Bookmark className="text-black/70" />
+          <Bookmark className="text-black/70 dark:text-white/70" />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="mr-16">
           <DropdownMenuLabel>Bookmarks</DropdownMenuLabel>

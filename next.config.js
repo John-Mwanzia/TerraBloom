@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "img.clerk.com",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "w7.pngwing.com",
+        pathname: "**",
+      },  
     ],
   },
   experimental: {

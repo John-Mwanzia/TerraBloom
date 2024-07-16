@@ -6,6 +6,7 @@ import React, {
   useContext,
 } from "react";
 import { UploadContext } from "../../context/store";
+import { BiCloudUpload } from "react-icons/bi";
 
 interface ImageUploadModalProps {
   isOpen: boolean;
@@ -82,10 +83,10 @@ function ImageUploadModal({ isOpen, onClose, onEmbed }: ImageUploadModalProps) {
     <div
       className={`fixed inset-0 z-50 ${
         isOpen ? "block" : "hidden"
-      } bg-black bg-opacity-80 flex items-center justify-center`}
+      } flex items-center justify-center bg-black bg-opacity-80`}
     >
-      <div className="modal-container p-6 bg-white w-[90%] md:w-[500px] rounded-lg shadow-lg">
-        <div className="modal-header flex justify-between mb-4">
+      <div className="modal-container w-[90%] rounded-lg bg-white p-6 shadow-lg dark:border dark:border-gray-50/30 dark:bg-black dark:text-white/70 md:w-[500px]">
+        <div className="modal-header mb-4 flex justify-between">
           <h2 className="text-xl font-bold">Image Upload</h2>
           <button className="modal-close text-3xl" onClick={onClose}>
             &times;
@@ -116,14 +117,17 @@ function ImageUploadModal({ isOpen, onClose, onEmbed }: ImageUploadModalProps) {
           {mode === "upload" && (
             <div
               ref={dropAreaRef}
-              className={`border border-gray-200 p-12 mb-4 text-center cursor-pointer rounded-lg overflow-hidden ${
+              className={`mb-4 cursor-pointer overflow-hidden rounded-lg border border-gray-200 dark:border-gray-50/20 p-12 text-center ${
                 previewImage ? "border-dashed border-[#0E9AA9]" : " "
               }`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
             >
-              <p>Drop your image here</p>
+              <div className="flex flex-col justify-center items-center gap-1">
+            <BiCloudUpload size={40} />
+            <p>Drop your file here</p>
+            </div>
               <input
                 type="file"
                 accept="image/*"
@@ -131,11 +135,11 @@ function ImageUploadModal({ isOpen, onClose, onEmbed }: ImageUploadModalProps) {
                 onChange={handleFileChange}
               />
               {previewImage && (
-                <div className="mb-4 text-center mt-6">
+                <div className="mb-4 mt-6 text-center">
                   <img
                     src={previewImage}
                     alt="Image Preview"
-                    className="max-h-80 mx-auto"
+                    className="mx-auto max-h-80"
                   />
                 </div>
               )}
@@ -151,15 +155,15 @@ function ImageUploadModal({ isOpen, onClose, onEmbed }: ImageUploadModalProps) {
                   setEmbedLink(e.target.value);
                   setPreviewImage(e.target.value);
                 }}
-                className="border border-gray-200 p-2 rounded-lg w-full"
+                className="w-full rounded-lg border border-gray-200 p-2 dark:border-gray-50/20"
               />
 
               {previewImage && (
-                <div className="mb-4 text-center mt-6">
+                <div className="mb-4 mt-6 text-center">
                   <img
                     src={previewImage}
                     alt="Image Preview"
-                    className="max-h-80 mx-auto"
+                    className="mx-auto max-h-80"
                   />
                 </div>
               )}
@@ -168,7 +172,7 @@ function ImageUploadModal({ isOpen, onClose, onEmbed }: ImageUploadModalProps) {
         </div>
         <div className="">
           <button
-            className="mr-4 bg-[#0E9AA9] py-2 px-4 rounded-md"
+            className="mr-4 rounded-md bg-[#0E9AA9] px-4 py-2"
             onClick={mode === "upload" ? handleUpload : handleEmbed}
           >
             {mode === "upload" ? "Upload" : "Embed"}
@@ -176,8 +180,8 @@ function ImageUploadModal({ isOpen, onClose, onEmbed }: ImageUploadModalProps) {
           <button
             className="btn btn-secondary"
             onClick={() => {
-              setPreviewImage(null)
-              onClose()
+              setPreviewImage(null);
+              onClose();
             }}
           >
             Cancel

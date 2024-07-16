@@ -19,7 +19,9 @@ import {
   Sparkles,
   Star,
   Sun,
+  X,
 } from "lucide-react";
+
 import BookmarkDropdown from "../components/community/BookmarkDropdown";
 import { usePathname } from "next/navigation";
 import { Home } from "lucide-react";
@@ -57,7 +59,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
       <div className={`${theme} dark:bg-black`}>
         {activeMenu && (
           <div
-            className={`fixed h-screen w-[16.3rem] bg-white border-r  dark:border-gray-700 dark:bg-black ${
+            className={`fixed h-screen w-[80%] sm:w-[16.3rem] bg-white border-r z-50  dark:border-gray-700 dark:bg-black ${
               showModal ? "z-0" : ""
             }`}
           >
@@ -73,7 +75,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               </Link>
               <div className="absolute right-2 top-4 text-2xl xl:hidden">
                 <button onClick={() => setActiveMenu(false)}>
-                  <ImCancelCircle />
+                  <X className="dark:text-white" />
                 </button>
               </div>
             </div>
@@ -173,14 +175,14 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               </button>
               <div>
                 {/* search */}
-                <div className="flex items-center">
+                <div className="flex items-center ml-5 sm:ml-0">
                   <div className="rounded-l-lg bg-light-gray/40 py-[10px] pl-4">
-                    <Search size={20} className="text-black/50" />
+                    <Search size={20} className="text-black/50 dark:text-white" />
                   </div>
                   <input
                     type="text"
                     placeholder="Search"
-                    className="rounded-r-lg border-none bg-light-gray/40 px-4 py-2 text-black/70 outline-none"
+                    className="rounded-r-lg border-none w-[55%] sm:w-auto bg-light-gray/40 px-4 py-2 text-black/70 outline-none dark:text-white"
                   />
                 </div>
               </div>
@@ -220,7 +222,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                     </Button>
                   </Tooltip>
                 </div>
-                <div>
+                {/* <div>
                   <Tooltip
                     showArrow
                     placement="bottom"
@@ -234,7 +236,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                       <MessageCircle className="text-black/70 dark:text-white/70" />
                     </Button>
                   </Tooltip>
-                </div>
+                </div> */}
                 <div>
                   <Tooltip
                     showArrow

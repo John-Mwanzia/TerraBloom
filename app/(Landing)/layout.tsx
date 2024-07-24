@@ -30,6 +30,8 @@ import { BiSupport } from "react-icons/bi";
 const CommunityLayout = ({ children }: { children: ReactNode }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const { showModal, theme, setTheme } = useContext(UploadContext);
+  const pathname = usePathname();
+
   useEffect(() => {
     const screenSize = window.innerWidth;
     if (screenSize <= 900) {
@@ -37,9 +39,8 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
     } else {
       setActiveMenu(true);
     }
-  }, []);
+  }, [pathname]);
 
-  const pathname = usePathname();
 
   /* handle toggle dark or light theme */
   const handleThemeToggle = () => {
@@ -57,8 +58,8 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
       <div className={`${theme} dark:bg-black`}>
         {activeMenu && (
           <div
-            className={`fixed z-50 h-screen w-[80%] border-r bg-white dark:border-gray-700 dark:bg-black sm:w-[16.3rem] ${
-              showModal ? "z-0" : ""
+            className={`fixed  h-screen w-[80%] border-r bg-white dark:border-gray-700 dark:bg-black sm:w-[16.3rem] ${
+              showModal ? "z-0" : "z-50"
             }`}
           >
             <div className="relative">
@@ -174,7 +175,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               <div>
                 {/* search */}
                 <div className="ml-5 flex items-center sm:ml-0">
-                  <div className="rounded-l-lg bg-light-gray/40 py-[10px] pl-4">
+                  <div className="rounded-l-lg bg-light-gray/40 py-[10px] pl-4 dark:bg-[#2B2E33]/50">
                     <Search
                       size={20}
                       className="text-black/50 dark:text-white"
@@ -183,7 +184,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
                   <input
                     type="text"
                     placeholder="Search"
-                    className="w-[55%] rounded-r-lg border-none bg-light-gray/40 px-4 py-2 text-black/70 outline-none dark:text-white sm:w-auto"
+                    className="w-[55%] rounded-r-lg border-none bg-light-gray/40 px-4 py-2 text-black/70 outline-none dark:bg-[#2B2E33]/50 dark:text-white sm:w-auto"
                   />
                 </div>
               </div>
@@ -260,8 +261,8 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
           <div
             className={
               activeMenu
-                ? "fixed top-20 h-[calc(100vh-5rem)] w-full rounded-tl-sm bg-light-gray/40 dark:bg-black xl:ml-[16.3rem] xl:w-[calc(100vw-16.3rem)]"
-                : "fixed top-20 ml-0 h-[calc(100vh-5rem)] w-screen rounded-tl-sm bg-light-gray/40 dark:bg-black"
+                ? "fixed top-20 min-h-[calc(100vh-5rem)] w-full rounded-tl-sm bg-light-gray/40 dark:bg-black xl:ml-[16.3rem] xl:w-[calc(100vw-16.3rem)]"
+                : "fixed top-20 ml-0 min-h-[calc(100vh-5rem)] w-screen rounded-tl-sm bg-light-gray/40 dark:bg-black"
             }
           >
             {children}

@@ -155,7 +155,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
   return (
     <div
       key={post.id}
-      className="flex flex-col rounded-md bg-white px-4 py-8 shadow-xl dark:bg-[#282B31] dark:text-white md:w-[45rem]"
+      className="flex flex-col rounded-md bg-white px-4 py-8 shadow-xl dark:bg-[#2B2E33]/50 dark:text-white md:w-[45rem]"
     >
       {post.author.avatarUrl && (
         <div className="mb-4 flex items-center gap-2 sm:gap-6">

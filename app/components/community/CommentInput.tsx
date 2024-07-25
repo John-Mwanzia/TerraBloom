@@ -129,9 +129,9 @@ export default function Commentinput({ postId }) {
     }
   };
   return (
-    <div className="w-full   border border-gray-300  ">
-      <div className="bg-white dark:bg-[#282B31]  ">
-        <div className="flex px-2 sm:px-6  pt-4 ">
+    <div className="w-full border border-gray-300">
+      <div className="bg-white dark:bg-[#282B31]">
+        <div className="flex px-2 pt-4 sm:px-6">
           <form onSubmit={handleSubmit} className="w-full">
             <div className="">
               <div>
@@ -140,7 +140,7 @@ export default function Commentinput({ postId }) {
                   value={textComment}
                   onChange={(e) => setTextComment(e.target.value)}
                   placeholder="What are your thoughts? "
-                  className="w-full outline-none border-none dark:bg-[#282B31] dark:text-white"
+                  className="w-full border-none outline-none dark:bg-[#282B31] dark:text-white"
                 />
                 <div
                   className={` ${
@@ -154,46 +154,46 @@ export default function Commentinput({ postId }) {
                 >
                   {uploadedImage && (
                     <div
-                      className="mb-4 text-center outline-none border-none relative"
+                      className="relative mb-4 border-none text-center outline-none"
                       contentEditable="true"
                     >
                       <img
                         src={uploadedImage}
                         alt="Uploaded Image"
-                        className="max-h-80 mx-auto"
+                        className="mx-auto max-h-80"
                       />
                       <button onClick={handleCancel}>
-                        <AiOutlineCloseCircle className=" absolute -top-1 -right-1 text-2xl cursor-pointer dark:text-white" />
+                        <AiOutlineCloseCircle className="absolute -right-1 -top-1 cursor-pointer text-2xl dark:text-white" />
                       </button>
                     </div>
                   )}
                   {uploadedVideo && (
                     <div
-                      className="mb-4 text-center outline-none border-none"
+                      className="mb-4 border-none text-center outline-none"
                       contentEditable="true"
                     >
                       <video
                         src={uploadedVideo}
                         controls
-                        className="max-h-80 mx-auto"
+                        className="mx-auto max-h-80"
                       ></video>
                       <button onClick={handleCancel}>
-                        <AiOutlineCloseCircle className=" absolute -top-1 -right-1 text-2xl cursor-pointer" />
+                        <AiOutlineCloseCircle className="absolute -right-1 -top-1 cursor-pointer text-2xl" />
                       </button>
                     </div>
                   )}
                   {uploadedFile && (
-                    <div className="mb-4 text-center outline-none border-none bg-[#F0F3F5] w-[24rem] py-4 ml-12 relative rounded-md">
+                    <div className="relative mb-4 ml-12 w-[24rem] rounded-md border-none bg-[#F0F3F5] py-4 text-center outline-none">
                       <a
                         href={uploadedFile}
-                        className="flex items-center justify-start pl-5 text-[#0E9AA9] cursor-pointer"
+                        className="flex cursor-pointer items-center justify-start pl-5 text-[#0E9AA9]"
                         download
                       >
-                        <AiFillFileImage  className="text-3xl " />
+                        <AiFillFileImage className="text-3xl" />
                         {fileName}
                       </a>
                       <button onClick={handleCancel}>
-                        <AiOutlineCloseCircle className=" absolute -top-1 -right-1 text-2xl cursor-pointer" />
+                        <AiOutlineCloseCircle className="absolute -right-1 -top-1 cursor-pointer text-2xl" />
                       </button>
                     </div>
                   )}
@@ -202,33 +202,33 @@ export default function Commentinput({ postId }) {
                       <img
                         src={selectedGif.images.original.url}
                         alt="Selected GIF"
-                        className="h-[17.5rem]  mx-auto md:ml-6"
+                        className="mx-auto h-[17.5rem] md:ml-6"
                         onError={(e) => toast.error("Error loading GIF:")}
                       />
 
                       <button onClick={handleCancel}>
-                        <AiOutlineCloseCircle className=" absolute -top-1 -right-1 text-2xl cursor-pointer" />
+                        <AiOutlineCloseCircle className="absolute -right-1 -top-1 cursor-pointer text-2xl" />
                       </button>
                     </div>
                   )}
                 </div>
               </div>
-              <div className="flex justify-between items-end pb-2 ">
-                <div className="flex items-center gap-6 ">
+              <div className="flex items-end justify-between pb-2">
+                <div className="flex items-center gap-6">
                   <div>
                     <button type="button" onClick={handleOpenAttachFileModal}>
-                    <Paperclip size={16} />
+                      <Paperclip size={16} />
                     </button>
                   </div>
                   <div>
                     <button type="button" onClick={handleOpenVideoModal}>
-                    <Video />
+                      <Video />
                     </button>
                   </div>
 
                   <div>
                     <button type="button" onClick={handleOpenImageUploadModal}>
-                    <ImagePlus size={16} />
+                      <ImagePlus size={16} />
                     </button>
                   </div>
                   <div>
@@ -240,14 +240,14 @@ export default function Commentinput({ postId }) {
                         alt="GIF"
                         width={30}
                         height={38}
-                        className=" hidden dark:flex dark:rounded-sm"
+                        className="hidden dark:flex dark:rounded-sm"
                       />
                       <Image
                         src="/bloomCommAssets/gif.svg"
                         alt="GIF"
                         width={15}
                         height={18}
-                        className=" dark:hidden"
+                        className="dark:hidden"
                       />
                     </button>
                   </div>
@@ -261,10 +261,10 @@ export default function Commentinput({ postId }) {
                       !uploadedVideo &&
                       !selectedGif
                     }
-                    className={`bg-primary px-3 py-1 rounded disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-black/50 cursor-pointer text-white`}
+                    className={`cursor-pointer rounded bg-primary px-3 py-1 text-white disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-black/50 dark:bg-[#0E9AA9] dark:text-white dark:disabled:cursor-not-allowed dark:disabled:bg-white dark:disabled:text-black`}
                   >
                     {loading ? (
-                      <Loader className="w-10 flex items-center justify-center animate-spin" />
+                      <Loader className="flex w-10 animate-spin items-center justify-center" />
                     ) : (
                       "Send"
                     )}

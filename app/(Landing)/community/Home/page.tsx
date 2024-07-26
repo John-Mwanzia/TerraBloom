@@ -24,10 +24,20 @@ const getPosts = async () => {
 };
 
 export default async function Page() {
+  let posts = [];
+  let error = null;
+  // to avoid hydration issues due to use of time-dependent APIs such as the Date()
+  const referenceDate = new Date(); // The server-side rendering time
+
   const user = await currentUser();
   const { imageUrl } = user;
 
-  const posts = await getPosts();
+  try {
+    posts = await getPosts();
+  } catch (err) {
+    console.log(" posts = await getPosts()", err);
+    error = "Error occured trying to fetch posts";
+  }
 
   return (
     <>
@@ -36,13 +46,19 @@ export default async function Page() {
           <h1 className="text-3xl">Home</h1>
           <Button />
         </div>
-        <div className="flex-1 overflow-y-auto pb-8 dark:bg-black">
-          <div className="relative flex flex-col items-center gap-16 px-2 pb-24 pt-8 md:px-0">
-            {posts.map((post) => (
-              <PostItem key={post.id} post={post} image={imageUrl} />
-            ))}
+        {error ? (
+          <div className="mt-12 flex justify-center">
+            <h2 className="text-red-500">{error}</h2>
           </div>
-        </div>
+        ) : (
+          <div className="flex-1 overflow-y-auto pb-8 dark:bg-black">
+            <div className="relative flex flex-col items-center gap-16 px-2 pb-24 pt-8 md:px-0">
+              {posts.map((post) => (
+                <PostItem key={post.id} post={post} image={imageUrl} referenceDate={referenceDate} />
+              ))}
+            </div>
+          </div>
+        )}
         <ModalDisplay />
       </div>
     </>

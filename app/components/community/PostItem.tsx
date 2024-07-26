@@ -65,9 +65,10 @@ interface Post {
 interface PostItemProps {
   post: Post;
   image: string;
+  referenceDate: Date;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
+const PostItem: React.FC<PostItemProps> = ({ post, image, referenceDate }) => {
   const [liked, setLiked] = useState(false);
   const [optimisticLiked, setOptimisticLiked] = useState(liked);
 
@@ -75,11 +76,11 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
   const [unhide, setUnhide] = useState(false);
   const [comments, setComments] = useState([]);
 
-  const formatCreatedAt = (date: Date): string => {
-    return date.toISOString(); // Convert the Date to a string (ISO format)
-  };
 
   const getLikedFromStorage = (postId) => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
     const liked = localStorage.getItem(`liked-${postId}`);
 
     return liked === null ? false : JSON.parse(liked); // Parse stored value (boolean)
@@ -167,7 +168,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
           />{" "}
           {post.author.firstName} {post.author.lastName}{" "}
           <p className="text-sm">
-            Posted {getTimeSincePostCreation(formatCreatedAt(post.createdAt))}
+            Posted {getTimeSincePostCreation(post.createdAt, referenceDate)}
           </p>
           <div className="flex-1">
             {/* ellipses for bookmarks */}
@@ -301,9 +302,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
                             <div className="float-right">
                               <DropdownMenu>
                                 <DropdownMenuTrigger>
-                                  <button>
-                                    <AiOutlineEllipsis />
-                                  </button>
+                                  <AiOutlineEllipsis />
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className="mr-48 pr-12">
                                   {/* <DropdownMenuLabel>

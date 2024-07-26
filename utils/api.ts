@@ -8,6 +8,7 @@ const createURL = (path: string) => {
 export const postUpload = async ({
   title,
   content,
+  space,
   image,
   video,
   file,
@@ -15,6 +16,7 @@ export const postUpload = async ({
 }: {
   title: string;
   content: string;
+  space: string;
   image: string;
   video: string;
   file: string;
@@ -25,6 +27,7 @@ export const postUpload = async ({
     body: JSON.stringify({
       title,
       content,
+      space,
       image,
       video,
       file,

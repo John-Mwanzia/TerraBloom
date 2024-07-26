@@ -71,7 +71,7 @@ export default function PostModal({ setShowModal }) {
       style={{ zIndex: 1000000 }}
     >
       <div>
-        <div className="absolute left-1/2 top-1/2 h-[70%] w-[23rem] -translate-x-1/2 -translate-y-1/2 transform rounded-xl bg-white dark:border dark:border-gray-50/30 dark:bg-black dark:text-white/70 md:w-[90%] xl:h-[40rem] xl:w-[50rem]">
+        <div className="absolute  left-1/2 top-1/2 h-[70%] w-[95%] -translate-x-1/2 -translate-y-1/2 transform rounded-xl bg-white dark:border dark:border-gray-50/30 dark:bg-black dark:text-white/70 md:w-[90%] xl:h-[40rem] xl:w-[50rem]">
           <div className="flex justify-between border-b-2 px-4 pb-2 pt-6">
             <h1 className="text-3xl">Create Post</h1>
             <div className="flex items-center gap-4">

@@ -3,7 +3,13 @@ import { currentUser } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
 import { redirect } from "next/navigation";
 
-const syncNewUser = async () => {
+// admin path { communityAccess: 'true' }
+
+interface SearchParams {
+  communityAccess: string;
+}
+
+const syncNewUser = async (searchParams: SearchParams) => {
   const user = await currentUser();
 
   const existingUser = await prisma.user.findUnique({
@@ -17,6 +23,8 @@ const syncNewUser = async () => {
       data: {
         clerkId: user?.id as string,
         email: user?.emailAddresses[0].emailAddress as string,
+        isCommunityMember:
+          searchParams.communityAccess === "true" ? true : false,
         avatarUrl: user?.imageUrl as string,
         firstName: user?.firstName as string,
         lastName: user?.lastName as string,
@@ -27,13 +35,12 @@ const syncNewUser = async () => {
   redirect("/community/Home");
 };
 
-const NewUser = async () => {
-  await syncNewUser();
+export default async function page({ searchParams }) {
+  await syncNewUser(searchParams);
 
   return (
-    <div className="flex justify-center items-center h-screen w-screen">
-      <Loader size="50" className="animate-spin " />
+    <div className="flex h-screen w-screen items-center justify-center">
+      <Loader size="50" className="animate-spin" />
     </div>
   );
-};
-export default NewUser;
+}

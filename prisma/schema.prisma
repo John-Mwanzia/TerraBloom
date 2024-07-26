@@ -19,6 +19,7 @@ model User {
   avatarUrl     String
   clerkId       String         @unique
   isAdmin       Boolean        @default(false)
+  isCommunityMember Boolean    @default(false)
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   posts         Post[]

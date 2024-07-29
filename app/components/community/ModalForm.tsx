@@ -3,7 +3,9 @@ import { UploadContext } from "../../context/store";
 import { AiFillFileImage, AiOutlineCloseCircle } from "react-icons/ai";
 import { postUpload } from "@/utils/api";
 import toast from "react-hot-toast";
-import { Spinner } from "@nextui-org/react";
+import { usePathname } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { Loader } from "lucide-react";
 
 export default function ModalForm() {
   const {
@@ -28,6 +30,12 @@ export default function ModalForm() {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  // Get the current pathname
+  const path = usePathname();
+
+  // Split the pathname by "/" into an array, filter out empty strings, and get the last segment
+  const space = path.split("/").filter(Boolean).pop();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -35,6 +43,7 @@ export default function ModalForm() {
     const res = await postUpload({
       title,
       content,
+      space,
       image: uploadedImage || "",
       video: uploadedVideo || "",
       file: uploadedFile || "",
@@ -42,6 +51,7 @@ export default function ModalForm() {
     });
 
     setIsLoading(false);
+
     if (res) {
       setPreviewImage(null);
       setUploadedImage(null);
@@ -69,60 +79,62 @@ export default function ModalForm() {
         <div className="flex flex-col">
           <div className="mb-6">
             <input
-              className="border-b border-gray-50/20 dark:bg-transparent outline-none w-full pl-6"
+              className="w-full border-b border-gray-50/20 pl-6 outline-none dark:bg-transparent"
               type="text"
               placeholder="Title"
               name="title"
               onChange={(e) => setTitle(e.target.value)}
+              required
             />
           </div>
           <div>
             <textarea
-              className="border-none outline-none dark:bg-transparent pl-6 border-b border-gray-50/20 w-full"
+              className="w-full border-b border-none border-gray-50/20 pl-6 outline-none dark:bg-transparent"
               name="content"
               id=""
               placeholder="content"
               style={{ resize: "none", height: "auto" }}
               onChange={(e) => setContent(e.target.value)}
+              required
             ></textarea>
           </div>
 
           {uploadedImage && (
             <div
-              className="mb-4 text-center outline-none border-none"
+              className="mb-4 border-none text-center outline-none"
               contentEditable="true"
             >
               <img
                 src={uploadedImage}
                 alt="Uploaded Image"
-                className="max-h-80 mx-auto"
+                className="mx-auto max-h-80"
               />
             </div>
           )}
           {uploadedVideo && (
             <div
-              className="mb-4 text-center outline-none border-none"
+              className="mb-4 border-none text-center outline-none"
               contentEditable="true"
             >
               <video
                 src={uploadedVideo}
                 controls
-                className="max-h-80 mx-auto"
+                className="mx-auto max-h-80"
               ></video>
             </div>
           )}
           {uploadedFile && (
-            <div className="mb-4 text-center outline-none border-none bg-[#F0F3F5] w-[24rem] py-4 ml-12 relative rounded-md">
+            <div className="relative mb-4 ml-12 w-[24rem] rounded-md border-none bg-[#F0F3F5] py-4 text-center outline-none">
               <a
                 href={uploadedFile}
-                className="flex items-center justify-start pl-5 text-[#0E9AA9] cursor-pointer"
+                className="flex cursor-pointer items-center justify-start pl-5 text-[#0E9AA9]"
                 download
               >
-                <AiFillFileImage className="text-3xl " />
+                <AiFillFileImage className="text-3xl" />
                 {fileName}
               </a>
               <button onClick={handleCancel}>
-                <AiOutlineCloseCircle className=" absolute -top-1 -right-1 text-2xl cursor-pointer" />
+                <AiOutlineCloseCircle className="absolute -right-1 -top-1 cursor-pointer text-2xl" />
               </button>
             </div>
           )}
@@ -131,7 +143,7 @@ export default function ModalForm() {
               <img
                 src={selectedGif.images.original.url}
                 alt="Selected GIF"
-                className="h-[17.5rem]  mx-auto md:ml-6"
+                className="mx-auto h-[17.5rem] md:ml-6"
                 onError={(e) => toast.error("Error loading GIF:")}
               />
             </div>
@@ -139,10 +151,19 @@ export default function ModalForm() {
         </div>
         <button
           type="submit"
-          className="bg-[#0E9AA9] absolute bottom-4 z-10 right-6 rounded px-4 py-1 cursor-pointer"
-          disabled={isLoading}
+          className="absolute bottom-4 right-6 z-10 cursor-pointer rounded bg-[#0E9AA9] px-4 py-1 disabled:cursor-not-allowed"
+          disabled={isLoading || !title || !content}
         >
-          {isLoading ? ( <p className="flex items-center gap-3 ">Posting <span><Spinner size="sm" /></span> </p> ) : "Post"}
+          {isLoading ? (
+            <p className="flex items-center gap-3">
+              Posting{" "}
+              <span>
+                <Loader size={20} className="text-white animate-spin"  />
+              </span>{" "}
+            </p>
+          ) : (
+            "Post"
+          )}
         </button>
       </form>
     </div>

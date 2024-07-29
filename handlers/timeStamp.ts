@@ -1,12 +1,12 @@
-export default function getTimeSincePostCreation(createdAt: string): string {
+export default function getTimeSincePostCreation(
+  createdAt: Date,
+  referenceDate: Date,
+): string {
   // Parse the 'createdAt' string into a Date object, representing the exact date and time when the post was created.
   const postDate = new Date(createdAt);
 
-  // Create a Date object representing the current date and time when this code is executed.
-  const currentDate = new Date();
-
   // Calculate the time difference between the current date and the post's creation date in milliseconds.
-  const timeDifference = currentDate.getTime() - postDate.getTime();
+  const timeDifference = referenceDate.getTime() - postDate.getTime();
 
   // Convert the time difference into seconds.
   const seconds = Math.floor(timeDifference / 1000);
@@ -50,15 +50,25 @@ export default function getTimeSincePostCreation(createdAt: string): string {
   return "Just now";
 }
 
-
-
-export const  formatDateString = (dateString) => {
+export const formatDateString = (dateString) => {
   // Parse the date string into a Date object
   const date = new Date(dateString);
 
   // Array of month names
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   // Extract the month and date
   const month = monthNames[date.getUTCMonth()]; // getUTCMonth() returns month index (0-11)
@@ -66,6 +76,4 @@ export const  formatDateString = (dateString) => {
 
   // Format the date string
   return `${month} ${day}`;
-}
-
-
+};

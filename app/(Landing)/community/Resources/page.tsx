@@ -10,7 +10,7 @@ export default function page() {
   return (
     <>
       <div className="h-[calc(100vh-5rem)]">
-        <div className="pt-6flex flex justify-between border-l border-t bg-white px-4 pb-4 pt-3 dark:bg-[#2B2E33]/50 dark:text-white">
+        <div className="flex justify-between border-l border-t bg-white px-4 pb-4 pt-3 dark:bg-[#2B2E33]/50 dark:text-white">
           <h1 className="text-3xl">Resources</h1>
           <button
             className="rounded bg-[#0E9AA9] px-3 py-2"
@@ -20,7 +20,7 @@ export default function page() {
           </button>
         </div>
 
-        <div className="mx-auto px-24 mt-8">
+        <div className="mx-auto sm:px-24 mt-8">
           <Tabs defaultValue="all" className="w-auto">
             <TabsList>
               {resourseTyte.map((type) => (

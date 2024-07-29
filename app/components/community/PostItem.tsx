@@ -14,7 +14,11 @@ import { getComments, saveBookmark, updateLikes } from "@/utils/api";
 import toast from "react-hot-toast";
 import { Loader, MessageSquareMore } from "lucide-react";
 import Commentinput from "./CommentInput";
-import { AiOutlineEllipsis } from "react-icons/ai";
+import {
+  AiFillFileImage,
+  AiOutlineCloseCircle,
+  AiOutlineEllipsis,
+} from "react-icons/ai";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -65,9 +69,10 @@ interface Post {
 interface PostItemProps {
   post: Post;
   image: string;
+  referenceDate: Date;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
+const PostItem: React.FC<PostItemProps> = ({ post, image, referenceDate }) => {
   const [liked, setLiked] = useState(false);
   const [optimisticLiked, setOptimisticLiked] = useState(liked);
 
@@ -75,11 +80,10 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
   const [unhide, setUnhide] = useState(false);
   const [comments, setComments] = useState([]);
 
-  const formatCreatedAt = (date: Date): string => {
-    return date.toISOString(); // Convert the Date to a string (ISO format)
-  };
-
   const getLikedFromStorage = (postId) => {
+    if (typeof window === "undefined") {
+      return false;
+    }
     const liked = localStorage.getItem(`liked-${postId}`);
 
     return liked === null ? false : JSON.parse(liked); // Parse stored value (boolean)
@@ -167,7 +171,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
           />{" "}
           {post.author.firstName} {post.author.lastName}{" "}
           <p className="text-sm">
-            Posted {getTimeSincePostCreation(formatCreatedAt(post.createdAt))}
+            Posted {getTimeSincePostCreation(post.createdAt, referenceDate)}
           </p>
           <div className="flex-1">
             {/* ellipses for bookmarks */}
@@ -201,7 +205,18 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
       {post.Image && <img src={post.Image} alt="Post Image" />}
       {post.video && <video src={post.video} controls />}
       {post.gif && <img src={post.gif} alt="GIF" />}
-      {post.file && <a href={post.file}>Download File</a>}
+      {post.file && (
+        <div className="relative mb-4 ml-12 w-[24rem] rounded-md border-none bg-[#F0F3F5] py-4 text-center outline-none">
+          <a
+            href={post.file}
+            className="flex cursor-pointer items-center justify-start pl-5 text-[#0E9AA9]"
+            download
+          >
+            <AiFillFileImage className="text-3xl" />
+            {/* {post.file} */}
+          </a>
+        </div>
+      )}
 
       <div>
         {/* liked by  */}
@@ -301,9 +316,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image }) => {
                             <div className="float-right">
                               <DropdownMenu>
                                 <DropdownMenuTrigger>
-                                  <button>
-                                    <AiOutlineEllipsis />
-                                  </button>
+                                  <AiOutlineEllipsis />
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className="mr-48 pr-12">
                                   {/* <DropdownMenuLabel>

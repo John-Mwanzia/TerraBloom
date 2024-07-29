@@ -19,6 +19,7 @@ model User {
   avatarUrl     String
   clerkId       String         @unique
   isAdmin       Boolean        @default(false)
+  isCommunityMember Boolean    @default(false)
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
   posts         Post[]
@@ -75,6 +76,10 @@ model Introduction {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   content   String
+  Image     String?
+  video     String?
+  gif       String?
+  file      String?
   author    User     @relation(fields: [authorId], references: [id])
   authorId  String   @unique @db.ObjectId
   createdAt DateTime @default(now())

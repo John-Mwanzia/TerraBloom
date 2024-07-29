@@ -14,7 +14,11 @@ import { getComments, saveBookmark, updateLikes } from "@/utils/api";
 import toast from "react-hot-toast";
 import { Loader, MessageSquareMore } from "lucide-react";
 import Commentinput from "./CommentInput";
-import { AiOutlineEllipsis } from "react-icons/ai";
+import {
+  AiFillFileImage,
+  AiOutlineCloseCircle,
+  AiOutlineEllipsis,
+} from "react-icons/ai";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -76,9 +80,8 @@ const PostItem: React.FC<PostItemProps> = ({ post, image, referenceDate }) => {
   const [unhide, setUnhide] = useState(false);
   const [comments, setComments] = useState([]);
 
-
   const getLikedFromStorage = (postId) => {
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
       return false;
     }
     const liked = localStorage.getItem(`liked-${postId}`);
@@ -202,7 +205,18 @@ const PostItem: React.FC<PostItemProps> = ({ post, image, referenceDate }) => {
       {post.Image && <img src={post.Image} alt="Post Image" />}
       {post.video && <video src={post.video} controls />}
       {post.gif && <img src={post.gif} alt="GIF" />}
-      {post.file && <a href={post.file}>Download File</a>}
+      {post.file && (
+        <div className="relative mb-4 ml-12 w-[24rem] rounded-md border-none bg-[#F0F3F5] py-4 text-center outline-none">
+          <a
+            href={post.file}
+            className="flex cursor-pointer items-center justify-start pl-5 text-[#0E9AA9]"
+            download
+          >
+            <AiFillFileImage className="text-3xl" />
+            {/* {post.file} */}
+          </a>
+        </div>
+      )}
 
       <div>
         {/* liked by  */}

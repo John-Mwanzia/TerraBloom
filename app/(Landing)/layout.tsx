@@ -19,6 +19,7 @@ import {
   Sparkles,
   Star,
   Sun,
+  Users,
   X,
 } from "lucide-react";
 
@@ -41,7 +42,6 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
     }
   }, [pathname]);
 
-
   /* handle toggle dark or light theme */
   const handleThemeToggle = () => {
     if (theme === "light") {
@@ -58,7 +58,7 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
       <div className={`${theme} dark:bg-black`}>
         {activeMenu && (
           <div
-            className={`fixed  h-screen w-[80%] border-r bg-white dark:border-gray-700 dark:bg-black sm:w-[16.3rem] ${
+            className={`fixed h-screen w-[80%] border-r bg-white dark:border-gray-700 dark:bg-black sm:w-[16.3rem] ${
               showModal ? "z-0" : "z-50"
             }`}
           >
@@ -123,6 +123,13 @@ const CommunityLayout = ({ children }: { children: ReactNode }) => {
               <div className="mt-4">
                 <h1 className="font-bold">Community</h1>
                 <div className="flex flex-col gap-1">
+                  <Link
+                    className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/Members" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
+                    href="/community/Members"
+                  >
+                    <Users size={16} />
+                    Members
+                  </Link>
                   <Link
                     className={`flex items-center gap-1 rounded-lg px-2 py-1 ${pathname === "/community/Community" ? "bg-[#D5EBFF] text-[#009AFF] dark:bg-[#1B4264]" : "hover:bg-gray-300/30 dark:hover:bg-blue-500/30"}`}
                     href="/community/Resources"

@@ -10,34 +10,32 @@ import React from "react";
 
 export default function page() {
   return (
-    <>
-      <main className=" bg-black overflow-x-hidden">
-        <section className="flex justify-center  pt-4 ">
+      <main className=" bg-black  overflow-y-auto">
+        <section className="flex justify-center overflow-x-hidden   pt-4 ">
           <HeroSection />
         </section>
 
-        <section className="flex justify-center mt-44 pb-40">
+        <section className="flex justify-center overflow-x-hidden mt-44 pb-40">
           <Conversation />
         </section>
-        <section className="flex justify-center  pb-40">
+        <section className="flex justify-center overflow-x-hidden  pb-40">
           <Features />
         </section>
 
-        <section className="flex justify-center mt-24  mb-40 ">
+        <section className="flex justify-center overflow-x-hidden mt-24  mb-40 ">
           <StatsSection />
         </section>
 
-        <section className="flex justify-center mt-24  pb-40 ">
+        <section className="flex justify-center overflow-x-hidden mt-24  pb-40 ">
           <CTA />
         </section>
 
-        <section className="flex justify-center mt-24  pb-40 ">
+        <section className="flex justify-center overflow-x-hidden mt-24  pb-40 ">
           <FAQ />
         </section>
-        <section className="flex justify-center mt-24 pb-6">
+        <section className="flex justify-center overflow-x-hidden mt-24 pb-6">
           <Footer />
         </section>
       </main>
-    </>
   );
 }

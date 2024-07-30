@@ -9,7 +9,7 @@ export default async function CTA() {
   let href = userId ? "/community/Home" : "/newUser";
 
   return (
-    <div className="flex justify-center items-center flex-col md:flex-row md:gap-6 lg:gap-64 max-w-[80%]">
+    <div className="flex justify-center items-center flex-col md:flex-row md:gap-6 lg:gap-64 container">
       <div>
         <Image
           src="/terraCommAssets/join.svg"

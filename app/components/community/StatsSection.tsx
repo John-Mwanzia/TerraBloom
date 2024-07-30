@@ -4,7 +4,7 @@ import React from "react";
 export default function StatsSection() {
   return (
     <div className="pb-8">
-      <div className="flex justify-center flex-col gap-4 md:flex-row md:gap-4 lg:gap-12 2xl:gap-96">
+      <div className="flex justify-center  flex-col gap-4 md:flex-row md:gap-4 lg:gap-12 2xl:gap-96">
         <div className=" bg-[#1E1E1E] rounded-lg w-[22rem] md:w-[28rem] lg:w-[38rem]  text-center py-2 px-2 md:py-2 md:px-4 lg:px-16 lg:py-8">
           <h1 className="text-[#FF0] text-6xl  font-bold font-old-standard mb-12">
             30+

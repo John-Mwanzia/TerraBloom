@@ -3,7 +3,7 @@ import React from "react";
 
 export default function FAQ() {
   return (
-    <div className="max-w-[80%]">
+    <div className="container">
       <h1 className="text-4xl mt-4 font-old-standard text-white mb-4">
         Curious Corners
       </h1>

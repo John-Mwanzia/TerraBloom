@@ -22,7 +22,7 @@ const JoinSpace: React.FC<JoinSpaceProps> = async ({ space, userId }) => {
     // Perform join space action
     try {
       const { message } = await joinSpace(space.id, userId);
-      router.push(`Chat/${space.id}`);
+      router.push(`Chat/${space.id}?userId=${userId}`);
       toast.success(message);
     } catch (error) {
       toast.error(error);

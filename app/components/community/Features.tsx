@@ -3,8 +3,8 @@ import React from "react";
 
 export default function Features() {
   return (
-    <div className="max-w-[80%]">
-      <h1 className="text-4xl mt-4 whitespace-nowrap text-center sm:text-left font-old-standard text-white mb-28">
+    <div className="container">
+      <h1 className="text-4xl mt-4  text-center sm:text-left font-opensans text-white mb-28">
         Explore Our Features
       </h1>
       <div className="flex flex-col md:flex-row justify-center items-start gap-12">

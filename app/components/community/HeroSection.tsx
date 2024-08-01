@@ -10,7 +10,7 @@ export default async function HeroSection() {
 
   return (
     <>
-      <div className="relative flex max-w-[80%] items-center justify-center gap-4">
+      <div className="relative flex container items-center justify-center gap-4">
         <div>
           <div className="relative flex items-center">
             <Image
@@ -35,8 +35,8 @@ export default async function HeroSection() {
             </h1>
           </div>
 
-          <div className="mt-16 max-w-lg">
-            <p className="font-outfit text-lg text-white/70">
+          <div className="mt-16 sm:max-w-lg flex justify-center ">
+            <p className="font-opensans  sm:text-lg text-white/70">
               Join the Terra Community to learn, share, and grow with other
               farmers. Discover new farming techniques, exchange ideas, and stay
               updated on the latest innovations in agriculture. Let's cultivate

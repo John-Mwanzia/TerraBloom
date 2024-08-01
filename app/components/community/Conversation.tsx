@@ -4,7 +4,7 @@ import React from "react";
 export default function Conversation() {
   return (
     <>
-      <div className="flex justify-center flex-col md:flex-row items-start gap-16  lg:gap-96 max-w-[80%] ">
+      <div className="flex justify-center flex-col md:flex-row items-start gap-16  lg:gap-96 container">
         <div className="flex justify-center">
           <Image
             src="/terraCommAssets/convo.svg"

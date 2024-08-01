@@ -1,6 +1,7 @@
 
 import { Loader } from "lucide-react";
 import React from "react";
+// @ts-ignore
 import { useFormStatus } from "react-dom";
 
 export default function ActionsButton({ name }: { name: string }) {

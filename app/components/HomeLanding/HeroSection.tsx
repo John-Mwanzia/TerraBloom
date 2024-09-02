@@ -9,8 +9,8 @@ import { useEffect, useState } from "react";
 export default function HeroSection(userId) {
   const links = [
     {
-      name: "Services",
-      link: "/services",
+      name: "Weaather",
+      link: "/weaather-updates",
     },
     {
       name: "Market prices",

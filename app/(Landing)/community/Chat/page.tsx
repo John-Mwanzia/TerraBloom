@@ -102,7 +102,7 @@ export default async function page() {
           <h2 className="txt-3xl mb-2 font-bold dark:text-white">
             Your Chatspaces
           </h2>
-          <div>
+          <div className="dark:text-white">
             {chatspaces.length > 0 ? (
               chatspaces.map((chatspace) => (
                 <Link

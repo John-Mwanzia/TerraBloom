@@ -10,7 +10,18 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Image from "next/image";
-import { Calendar, Paperclip, SendHorizontal, Smile, Users } from "lucide-react";
+import {
+  Calendar,
+  Paperclip,
+  SendHorizontal,
+  Smile,
+  Users,
+} from "lucide-react";
+import MessageList from "@/app/components/community/ChatList";
+import LeaveSpaceButton from "@/app/components/community/LeaveSpaceButton";
+import ChatGifModalButton from "@/app/components/community/chat_gifModal_button";
+import ChatMediaShare from "@/app/components/community/chat_media_share";
+import ChatForm from "@/app/components/community/chat_form";
 
 type ChatSpace = {
   id: string;
@@ -104,99 +115,96 @@ export default async function page({ params, searchParams }) {
       redirect("/community/Chat");
     }
 
-    return <ChatSpaceComponent chatspace={chatspace} />;
+    return (
+      <ChatSpaceComponent
+        chatspace={chatspace}
+        userId={userId}
+        chatId={chatId}
+      />
+    );
   } catch (error) {
     redirect("/community/Chat");
   }
 }
 
+type chatsProps = {
+  chatspace: ChatSpace;
+  userId: string;
+  chatId: string;
+};
+
 // This is the component responsible for rendering the chat space
-function ChatSpaceComponent({ chatspace }: { chatspace: ChatSpace }) {
+function ChatSpaceComponent({ chatspace, userId, chatId }: chatsProps) {
+
+
   return (
     <div className="relative">
-      <div className="fixed h-[100vh] w-[15%] border-r border-gray-300 mr-3">
-        <div>
-          <h1 className="text-ellipsis  px-4 py-2 bg-gray-300/50 rounded-md w-full">{chatspace.title}</h1>
-        </div>
-        <div>
-          <Sheet>
-            <SheetTrigger className="flex my-2 gap-2 px-4 py-2 bg-gray-300/50 rounded-md w-full">
-              <Users className="text-blue-500" /> 
-              <p>Members</p>
-            </SheetTrigger>
-            <SheetContent>
-              <SheetHeader>
-                <SheetTitle>Space members</SheetTitle>
-                <SheetDescription>
-                  <p className="py-4"> {chatspace.members.length} members</p>
-                  <ul>
-                    {chatspace.members.map((member) => (
-                      <li key={member.id} className="flex gap-2">
-                        <Image
-                          src={member.user.avatarUrl}
-                          alt="avatar"
-                          width={30}
-                          height={30}
-                          className="rounded-full"
-                        />
-                        {member.user.firstName + member.user.lastName}
-                        <p></p>
-                      </li>
-                    ))}
-                  </ul>
-                </SheetDescription>
-              </SheetHeader>
-            </SheetContent>
-          </Sheet>
-        </div>
-        <div className="text-ellipsis flex gap-2 items-center   px-4 py-2 bg-gray-300/50 rounded-md w-full"> 
-        <Calendar className="text-blue-500" />
-        <p>created {chatspace.createdAt.getDate() +"/" +chatspace.createdAt.getMonth() + "/" + chatspace.createdAt.getFullYear()}</p>
+      <div className="fixed mr-3 h-[100vh] w-[15%] border-r-[1px] border-blue-500/50">
+        <div className="mr-4 dark:text-white">
+          <div className="">
+            <h1 className="w-full text-ellipsis rounded-md bg-gray-300/50 dark:bg-[#2B2E33]/50 px-4 py-2">
+              {chatspace.title}
+            </h1>
+          </div>
+          <div>
+            <Sheet>
+              <SheetTrigger className="my-2 flex w-full gap-2 rounded-md bg-gray-300/50 dark:bg-[#2B2E33]/50 px-4 py-2">
+                <Users className="text-blue-500" />
+                <p>Members</p>
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle>Space members</SheetTitle>
+                  <SheetDescription>
+                    <p className="py-4"> {chatspace.members.length} members</p>
+                    <ul className="flex flex-col gap-2">
+                      {chatspace.members.map((member) => (
+                        <li key={member.id} className="flex items-center gap-2">
+                          <Image
+                            src={member.user.avatarUrl}
+                            alt="avatar"
+                            width={30}
+                            height={30}
+                            className="rounded-full"
+                          />
+                          {member.user.firstName + member.user.lastName}
+                          <p></p>
+                        </li>
+                      ))}
+                    </ul>
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
+          </div>
+          <div className="flex w-full items-center gap-2 text-ellipsis rounded-md bg-gray-300/50 dark:bg-[#2B2E33]/50 px-4 py-2">
+            <Calendar className="text-blue-500" />
+            <p>
+              created{" "}
+              {chatspace.createdAt.getDate() +
+                "/" +
+                chatspace.createdAt.getMonth() +
+                "/" +
+                chatspace.createdAt.getFullYear()}
+            </p>
+          </div>
         </div>
       </div>
-      <div className=" flex flex-col ml-[18%] h-[calc(100vh-15vh)]  w-[calc(100vw-31vw)]">
-        <div className="flex w-full  items-center justify-between bg-zinc-200/50 py-1 px-4">
-          <div>
+      <div className="ml-[18%] flex h-[calc(100vh-15vh)] w-[calc(100vw-31vw)] flex-col">
+        <div className="mb-12 flex w-full items-center justify-between border-b-[1px] border-blue-500/50 px-4 py-1">
+          <div className="flex-1 text-center">
             <h2>Conversations</h2>
           </div>
-          <button className="rounded-lg bg-red-500 px-4 py-2 text-white">
-            leave space
-          </button>
+
+          <LeaveSpaceButton userId={userId} chatSpaceId={chatId} />
         </div>
-        <div className=" w-full  h-full flex-1 ">
-          {" "}
-          {chatspace.messages.map((message) => (
-            <div key={message.id}>
-             
-              <strong>{message.author.firstName}</strong>: {message.text}
-            </div>
-          ))}
+        <div className="h-full w-full flex-1 overflow-y-auto">
+        <MessageList chatId={chatId} userId={userId}  initialMessages={chatspace.messages} />
         </div>
         {/* input message to chat */}
-        <div className="flex gap-5 items-center  w-full px-8">
-          <div className="flex items-center gap-2">
-            <button>
-              <Smile />
-            </button>
-            <button>
-              <Paperclip />
-            </button>
-            <button>gif</button>
-          </div>
-          <div className="flex-1 w-full">
-            <form action="">
-              <input
-                type="text"
-                placeholder="Type your message here..."
-                className="border border-blue-500 px-3 py-2 rounded-lg shadow-md shadow-blue-500 outline-none flex-1 w-full bg-transparent"
-              />
-            </form>
-          </div>
-          <div>
-            <button type="submit">
-              <SendHorizontal />
-            </button>
-          </div>
+        <div className="flex w-full items-center gap-5 px-8">
+         
+         <ChatForm chatId={chatId} userId={userId} />
         </div>
       </div>
     </div>

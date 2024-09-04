@@ -53,7 +53,7 @@ export const joinSpace = async ( spaceId:string, userId:string ) => {
           }
         }
       });
-      return { message: ' added to the chat space successfully' };
+      return { message: ' Joined space successfully' };
     } else {
       return { message: 'You are already a member of the chat space' };
     }

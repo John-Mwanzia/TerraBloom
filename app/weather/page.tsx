@@ -4,7 +4,7 @@ export default function page() {
   return (
     <div>
       <h1>
-        services
+       weather updates
         
       </h1>
     </div>

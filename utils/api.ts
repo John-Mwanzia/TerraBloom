@@ -155,3 +155,51 @@ export const saveBookmark = async ({ item, type }) => {
     };
   }
 };
+
+
+
+export const leaveSpace = async ({ chatId, userId }) => {
+  try {
+    const res = await fetch(new Request(createURL("/api/leaveSpace")), {
+      method: "POST",
+      body: JSON.stringify({
+        chatId,
+        userId,
+      }),
+    });
+
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error("Failed to leave space.");
+    }
+  } catch (error) {
+    return {
+      message: error.message,
+    };
+  }
+}
+
+
+export const sendChatToServer = async ({ chatId, userId, text }) => {
+  try {
+    const res = await fetch(new Request(createURL("/api/chats")), {
+      method: "POST",
+      body: JSON.stringify({
+        chatId,
+        userId,
+        text,
+      }),
+    });
+
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error("Failed to send chat.");
+    }
+  } catch (error) {
+    return {
+      message: error.message,
+    };
+  }
+}

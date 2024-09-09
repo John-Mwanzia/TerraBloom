@@ -74,6 +74,14 @@ const config = {
       },
       backgroundImage: {
         "footer-texture": "url('/landing/footer/footerbg.png')",
+        "weather-cloudy": "url('/weather/cloudy.jpg')",
+        "weather-rainy": "url('/weather/rainy.jpg')",
+        "weather-stormy": "url('/weather/stormy.jpg')",
+        "weather-sunny": "url('/weather/sunny.jpg')",
+        "weather-night-clear": "url('/weather/night-clear.jpg')",
+        "weather-night-cloudy": "url('/weather/stormy.jpg')",
+        "weather-night-rainy": "url('/weather/rainy.jpg')",
+        "weather-night-stormy": "url('/weather/stormy.jpg')",
       },
       screens: {
         xs: { max: "379px" },

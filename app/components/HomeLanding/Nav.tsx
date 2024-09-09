@@ -10,16 +10,16 @@ export default function Nav({ userId }) {
 
   const links = [
     {
-      name: "Services",
-      link: "/services",
-    },
-    {
-      name: "Market prices",
-      link: "/market-prices",
+      name: "Weather",
+      link: "/weather-updates",
     },
     {
       name: "Crop Details",
       link: "/crop-details",
+    },
+    {
+      name: "Market prices",
+      link: "/market-prices",
     },
     {
       name: "Farmer Community",
@@ -40,10 +40,10 @@ export default function Nav({ userId }) {
   };
   return (
     <div
-      className={`relative mb-6 border-b border-gray-300 pt-4 sm:mb-0 sm:pt-0 ${activeMenu ? "fixed z-[99999]" : ""}`}
+      className={`relative mb-6 border-b border-gray-300 pt-2 sm:mb-0 sm:pt-0 ${activeMenu ? "fixed z-[99999]" : ""}`}
     >
       <div className="flex items-center justify-between">
-        <div className="z-[99999] pt-2 sm:pt-4 xl:pt-2 2xl:pt-4">
+        <Link href="/" className="z-[99999] pt-2 sm:pt-4 xl:pt-2 2xl:pt-4">
           <Image
             src="./landing/logoSmall.svg"
             width={82}
@@ -53,12 +53,12 @@ export default function Nav({ userId }) {
           />
           <Image
             src="./bloomCommAssets/Logo.svg"
-            width={160}
-            height={113}
+            width={85}
+            height={85}
             alt="logo"
             className="hidden sm:block"
           />
-        </div>
+        </Link>
         <div
           className={`fixed right-0 top-0 z-50 h-screen w-screen flex-col items-center justify-center gap-24 text-black/60 md:static md:flex md:h-auto md:w-auto md:flex-row md:items-center md:justify-end md:gap-6 md:bg-transparent xl:gap-12 2xl:gap-20 ${
             activeMenu

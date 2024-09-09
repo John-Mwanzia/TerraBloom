@@ -108,7 +108,7 @@ export default async function page() {
                 <Link
                   key={chatspace.id}
                   href={`Chat/${chatspace.chatSpace.id}?userId=${user.id}`}
-                  className="flex items-center gap-1 rounded-md bg-[#F1F5F9] px-2 py-1 hover:bg-slate-200"
+                  className="flex items-center gap-1 rounded-md bg-[#F1F5F9] px-2 py-1 dark:bg-[#2B2E33]/70 hover:bg-slate-200"
                 >
                   <Globe size={18} className="text-blue-500" />
                   {chatspace.chatSpace.title}

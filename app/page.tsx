@@ -5,6 +5,7 @@ import FeaturesSection from "./components/HomeLanding/FeaturesSection";
 import Testimonial from "./components/HomeLanding/Testimonial";
 import Footer from "./components/HomeLanding/Footer";
 import { auth } from "@clerk/nextjs";
+import ScrollToTop from "./components/HomeLanding/ScrollToTop";
 
 export default function page() {
   const { userId } = auth();
@@ -16,6 +17,7 @@ export default function page() {
       <FeaturesSection />
       <Testimonial />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

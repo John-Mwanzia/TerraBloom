@@ -16,7 +16,12 @@ const nextConfig = {
         protocol: "https",
         hostname: "w7.pngwing.com",
         pathname: "**",
-      },  
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.weatherapi.com",
+        pathname: "**",
+      },
     ],
   },
   experimental: {

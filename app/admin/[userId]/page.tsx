@@ -4,6 +4,14 @@ import React from "react";
 import { redirect } from "next/navigation";
 import { UserButton } from "@clerk/nextjs";
 import { Settings } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 type User = {
   id: string;
@@ -39,7 +47,7 @@ export default async function page({ params }) {
     console.log(error);
     redirect("/");
   }
-// total users
+  // total users
   const userCount = await prisma.user.count();
 
   // new users this week
@@ -65,7 +73,7 @@ export default async function page({ params }) {
           {/* Navbar */}
           <nav className="flex justify-between rounded bg-white p-4 shadow">
             <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-            <ul className="flex space-x-4">
+            <ul className="flex space-x-8">
               <li>
                 <Link href={`/admin/${userId}`} className="hover:underline">
                   Dashboard
@@ -104,10 +112,16 @@ export default async function page({ params }) {
         </div>
 
         {/* settings*/}
-        <div className="absolute bottom-0 right-0 p-4">
-          <Link  href="/admin/settings" className="text-blue-500 hover:underline">
-          <Settings />
-          </Link>
+        <div className="absolute bottom-0 right-12 p-4">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="rounded-full bg-white p-2 text-blue-500 shadow-lg">
+              <Settings />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>Settings</DropdownMenuLabel>
+               {/* theme */}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </div>

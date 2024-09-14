@@ -270,7 +270,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image, referenceDate }) => {
         <div>
           <p>
             {post.comments.length}{" "}
-            {post.comments.length == 1 ? "comment" : "comments"}
+            {post.comments.length === 1 ? "comment" : "comments"}
           </p>
         </div>
       </div>
@@ -282,7 +282,7 @@ const PostItem: React.FC<PostItemProps> = ({ post, image, referenceDate }) => {
             </div>
           ) : (
             <div className="w-full sm:px-8">
-              {comments.length == 0 ? (
+              {comments.length === 0 ? (
                 <div>No comments yet😔</div>
               ) : (
                 <div className="mt-6 w-full">

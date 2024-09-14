@@ -65,6 +65,8 @@ model Comment {
   post      Post       @relation(fields: [postId], references: [id])
   postId    String     @db.ObjectId
   bookmarks Bookmark[]
+   announcement      Announcement?        @relation(fields: [announcementId], references: [id])
+  announcementId    String?      @db.ObjectId
 }
 
 model Like {
@@ -74,6 +76,8 @@ model Like {
   userId    String   @db.ObjectId
   post      Post     @relation(fields: [postId], references: [id])
   postId    String   @db.ObjectId
+  announcement      Announcement? @relation(fields: [announcementId], references: [id])
+  announcementId    String?      @db.ObjectId
 }
 
 model Introduction {
@@ -94,10 +98,17 @@ model Announcement {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   content   String
+  Image     String?
+  video     String?
+  gif       String?
+  file      String?
   author    User     @relation("Announcements", fields: [authorId], references: [id])
   authorId  String   @db.ObjectId
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  comments  Comment[]
+  likes     Like[]
+  bookmarks Bookmark[]
 }
 
 model Bookmark {
@@ -107,6 +118,8 @@ model Bookmark {
   userId    String       @db.ObjectId
   post      Post?        @relation(fields: [postId], references: [id])
   postId    String?      @db.ObjectId
+  announcement      Announcement?        @relation(fields: [announcementId], references: [id])
+  announcementId    String?      @db.ObjectId
   comment   Comment?     @relation(fields: [commentId], references: [id])
   commentId String?      @db.ObjectId
 }

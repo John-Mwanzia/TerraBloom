@@ -86,4 +86,27 @@ export const POST = async (req: Request) => {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
   }
+
+  if(space === 'announcement'){
+    try {
+      const post = await prisma.announcement.create({
+        data: {
+          title: data.title,
+          content: data.content,
+          Image: data.image,
+          video: data.video,
+          file: data.file,
+          gif: data.gif,
+          author: {
+            connect: {
+              id: user.id,
+            },
+          },
+        },
+      });
+      return NextResponse.json({ data: post });
+    } catch (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+  }
 };

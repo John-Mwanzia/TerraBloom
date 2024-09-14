@@ -85,7 +85,7 @@ export default async function page({ params }) {
                 </Link>
               </li>
               <li>
-                <Link href="/admin/users" className="hover:underline">
+                <Link href={`/admin/${userId}/announcement`} className="hover:underline">
                   Announcemets
                 </Link>
               </li>

@@ -6,7 +6,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 export default function Nav({ userId }) {
-  console.log(userId);
 
   const links = [
     {
@@ -45,14 +44,14 @@ export default function Nav({ userId }) {
       <div className="flex items-center justify-between">
         <Link href="/" className="z-[99999] pt-2 sm:pt-4 xl:pt-2 2xl:pt-4">
           <Image
-            src="./landing/logoSmall.svg"
+            src="/landing/logoSmall.svg"
             width={82}
             height={72}
             alt="logo"
             className={`w-20 sm:hidden ${activeMenu ? "fixed" : ""}`}
           />
           <Image
-            src="./bloomCommAssets/Logo.svg"
+            src="/bloomCommAssets/Logo.svg"
             width={85}
             height={85}
             alt="logo"

@@ -37,9 +37,9 @@ export default async function page({ params }) {
     }
 
     // check if user is admin
-    // if (!user.isAdmin) {
-    //  redirect('/')
-    // }
+    if (!user.isAdmin) {
+     redirect('/')
+    }
 
     // set admin details
     admin = user;

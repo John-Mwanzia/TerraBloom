@@ -12,6 +12,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import UserReportDownloadButton from "@/app/components/admin/UserReportDownloadButton";
 
 type User = {
   id: string;
@@ -21,6 +30,7 @@ type User = {
   avatarUrl: string;
   isAdmin: boolean;
 };
+
 
 export default async function page({ params }) {
   const { userId } = params;
@@ -37,9 +47,9 @@ export default async function page({ params }) {
     }
 
     // check if user is admin
-    // if (!user.isAdmin) {
-    //  redirect('/')
-    // }
+    if (!user.isAdmin) {
+      redirect("/");
+    }
 
     // set admin details
     admin = user;
@@ -66,6 +76,15 @@ export default async function page({ params }) {
   // active chat rooms
   const activeChatRooms = await prisma.chatSpace.count();
 
+  const users = await prisma.user.findMany({
+    include:{
+      posts: true,
+      comments: true,
+      Likes: true
+    }
+  })
+  
+
   return (
     <div>
       <div className="relative min-h-screen bg-gray-100 p-5">
@@ -80,12 +99,25 @@ export default async function page({ params }) {
                 </Link>
               </li>
               <li>
-                <Link href="/admin/reports" className="hover:underline">
-                  Reports
-                </Link>
+                <Sheet>
+                  <SheetTrigger>Reports</SheetTrigger>
+                  <SheetContent>
+                    <SheetHeader>
+                      <SheetTitle>Reports</SheetTitle>
+                      <SheetDescription>
+                        <UserReportDownloadButton users={users} />
+                      </SheetDescription>
+                    </SheetHeader>
+                  </SheetContent>
+                </Sheet>
+
+                <Link href="/admin/reports" className="hover:underline"></Link>
               </li>
               <li>
-                <Link href={`/admin/${userId}/announcement`} className="hover:underline">
+                <Link
+                  href={`/admin/${userId}/announcement`}
+                  className="hover:underline"
+                >
                   Announcemets
                 </Link>
               </li>
@@ -119,7 +151,7 @@ export default async function page({ params }) {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuLabel>Settings</DropdownMenuLabel>
-               {/* theme */}
+              {/* theme */}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

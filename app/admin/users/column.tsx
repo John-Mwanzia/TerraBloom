@@ -11,8 +11,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Checkbox } from "@/components/ui/checkbox"
-
+import { Checkbox } from "@/components/ui/checkbox";
+import { changeUserRole } from "@/actions/userRole";
+import toast from "react-hot-toast";
 
 export type User = {
   id: string;
@@ -42,6 +43,20 @@ export type User = {
   Likes: {
     id: string;
   }[];
+};
+
+const handleUserRole = async (id: string) => {
+  try {
+    const res = await changeUserRole(id);
+    if (res.status === 200) {
+      toast.success(res.message);
+    }
+    if (res.status === 400) {
+      toast.success(res.message);
+    }
+  } catch (error) {
+    toast.error(error.message);
+  }
 };
 
 export const columns: ColumnDef<User>[] = [
@@ -99,39 +114,38 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: "email",
-    header: ({column}) => (
+    header: ({ column }) => (
       <Button
-      variant="ghost"
-       onClick={()=> column.toggleSorting(column.getIsSorted() === 'asc')}
-       >
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
         Email
         <ArrowUpDown
-        className={`h-4 w-4 ${column.getIsSorted() ? 'text-gray-900' :  'text-gray-400'}`}
+          className={`h-4 w-4 ${column.getIsSorted() ? "text-gray-900" : "text-gray-400"}`}
         />
-       </Button>
+      </Button>
     ),
-    cell: ({row})=> <span>{row.original.email}</span>
+    cell: ({ row }) => <span>{row.original.email}</span>,
   },
   {
     accessorKey: "posts",
-    header: ()=> <span>Posts</span>,
-    cell: ({row})=> <span>{row.original.posts.length}</span>
-    
+    header: () => <span>Posts</span>,
+    cell: ({ row }) => <span>{row.original.posts.length}</span>,
   },
   {
     accessorKey: "comments",
-    header: ()=> <span>Comments</span>,
-    cell: ({row}) =><span>{row.original.comments.length}</span>
+    header: () => <span>Comments</span>,
+    cell: ({ row }) => <span>{row.original.comments.length}</span>,
   },
   {
     accessorKey: "likes",
-    header: ()=> <span>Likes</span>,
-    cell: ({row}) =><span>{row.original.Likes.length}</span>
+    header: () => <span>Likes</span>,
+    cell: ({ row }) => <span>{row.original.Likes.length}</span>,
   },
   {
     accessorKey: "isAdmin",
-    header: ()=> <span>Role</span>,
-    cell: ({row}) =><span>{row.original.isAdmin ? 'admin': 'user'}</span>
+    header: () => <span>Role</span>,
+    cell: ({ row }) => <span>{row.original.isAdmin ? "admin" : "user"}</span>,
   },
   {
     id: "actions",
@@ -153,7 +167,24 @@ export const columns: ColumnDef<User>[] = [
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <a href={`/manage/user/${row.original.id}`}>manage user role</a>
+            <DropdownMenu>
+              <DropdownMenuTrigger>manage user role</DropdownMenuTrigger>
+              <DropdownMenuContent className="mr-24 mt-6">
+                <DropdownMenuLabel>User Role</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  {row.original.isAdmin ? (
+                    <button onClick={() => handleUserRole(row.original.id)}>
+                      Revoke admin
+                    </button>
+                  ) : (
+                    <button onClick={() => handleUserRole(row.original.id)}>
+                      set as admin
+                    </button>
+                  )}
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

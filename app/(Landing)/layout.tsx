@@ -1,11 +1,10 @@
 "use client";
-import React, { ReactNode, use, useContext, useEffect } from "react";
+import React, { ReactNode, useContext, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Button, Tooltip } from "@nextui-org/react";
 import { UserButton } from "@clerk/nextjs";
-import { ImCancelCircle } from "react-icons/im";
 import { UploadContext } from "../context/store";
 import {
   Bell,

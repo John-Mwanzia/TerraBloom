@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // PostModal.js
 import React, { useContext, useState } from "react";
 import ModalForm from "./ModalForm";
@@ -15,7 +16,7 @@ export default function PostModal({ setShowModal }) {
   const [isAttachFileModalOpen, setAttachFileModalOpen] = useState(false);
   const [isImageUploadModalOpen, setImageUploadModalOpen] = useState(false); // State for ImageUploadModal
   const [isGifModalOpen, setGifModalOpen] = useState(false);
-  const { previewImage, setPreviewImage, uploadedImage, setUploadedImage } =
+  const {  setUploadedImage } =
     useContext(UploadContext);
 
   // State to store the selected GIF
@@ -130,7 +131,7 @@ export default function PostModal({ setShowModal }) {
       <AttachFileModal
         isOpen={isAttachFileModalOpen}
         onClose={() => setAttachFileModalOpen(false)}
-        onAttach={(file) => {
+        onAttach={() => {
           // Handle attaching the file here
 
           // Close the modal

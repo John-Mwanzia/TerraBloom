@@ -4,9 +4,9 @@ import Link from "next/link";
 import React from "react";
 
 export default async function CTA() {
-  const { userId } = await auth();
+  const { userId } =  auth();
 
-  let href = userId ? "/community/Home" : "/newUser";
+  const href = userId ? "/community/Home" : "/newUser";
 
   return (
     <div className="flex justify-center items-center flex-col md:flex-row md:gap-6 lg:gap-64 container">
@@ -31,7 +31,7 @@ export default async function CTA() {
           />
         </div>
         <p className=" font-outfit text-white/70 max-w-xl">
-          Don't miss out on the opportunity to be part of a rapidly growing
+          Don&apos;t miss out on the opportunity to be part of a rapidly growing
           community of passionate farmers. Empower your farming journey with
           valuable insights and connections.
         </p>

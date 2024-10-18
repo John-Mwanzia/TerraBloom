@@ -15,7 +15,7 @@ export default function Footer() {
       </div>
       <div className="mt-12">
         <h3 className="text-white">
-          © 2023 TerraBloom, The Farmer's Community
+          © 2023 TerraBloom, The Farmer&apos;s Community
         </h3>
       </div>
     </div>

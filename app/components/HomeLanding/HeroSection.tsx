@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { UserButton } from "@clerk/nextjs";
@@ -6,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function HeroSection(userId) {
+export default function HeroSection(userId:  {user: string}) {
   const links = [
     {
       name: "Weather",
@@ -29,7 +30,7 @@ export default function HeroSection(userId) {
 
   const [activeMenu, setActiveMenu] = useState(false);
   const [menuAnimationCompleted, setMenuAnimationCompleted] = useState(false);
-
+  console.log(menuAnimationCompleted)
   useEffect(() => {
     console.log("Initializing AOS...");
     Aos.init({ duration: 2000 });
@@ -86,7 +87,7 @@ export default function HeroSection(userId) {
                 : ""
             } transition-all duration-300 ease-in-out`}
           >
-            {links.map((link, index) => (
+            {links.map((link) => (
               <div
                 key={link.name}
                 className={` ${

@@ -1,18 +1,17 @@
 import Button from "@/app/components/community/Button";
 import ModalDisplay from "@/app/components/community/ModalDisplay";
 import prisma from "@/modules/db";
-import { currentUser } from "@clerk/nextjs";
-import React, { useState } from "react";
+import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import getTimeSincePostCreation from "@/handlers/timeStamp";
+import Image from "next/image";
 
 interface Introduction {
   id: string;
@@ -34,8 +33,7 @@ export default async function page() {
   let introductions = [];
   let error = null;
 
-  const user = await currentUser();
-  const { imageUrl } = user;
+  //const user = await currentUser();
 
   try {
     introductions = await prisma.introduction.findMany({
@@ -49,7 +47,7 @@ export default async function page() {
   }
   const referenceDate = new Date(); // The server-side rendering time
 
-  const handleintroductionBookmark = async (introduction) => {};
+  //const handleintroductionBookmark = async (introduction) => {};
 
   return (
     <>
@@ -69,7 +67,9 @@ export default async function page() {
                 {introduction.author.avatarUrl && (
                   <div className="mb-4 flex items-center gap-2 sm:gap-6">
                     {" "}
-                    <img
+                    <Image
+                     width={50}
+                      height={50}
                       src={introduction.author.avatarUrl}
                       alt="avatar"
                       className="h-[3rem] w-[3rem] rounded-full"
@@ -115,12 +115,12 @@ export default async function page() {
                   </div>
                 )}
                 {introduction.Image && (
-                  <img src={introduction.Image} alt="introduction Image" />
+                  <Image width={180} height={90} src={introduction.Image} alt="introduction Image" />
                 )}
                 {introduction.video && (
                   <video src={introduction.video} controls />
                 )}
-                {introduction.gif && <img src={introduction.gif} alt="GIF" />}
+                {introduction.gif && <Image width={180} height={90} src={introduction.gif} alt="GIF" />}
                 {introduction.file && (
                   <a href={introduction.file}>Download File</a>
                 )}

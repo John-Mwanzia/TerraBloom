@@ -7,7 +7,7 @@ import { BiLike } from "react-icons/bi";
 import Image from "next/image";
 import {
   useEffect,
-  experimental_useOptimistic as useOptimistic,
+  // experimental_useOptimistic as useOptimistic,
   useState,
 } from "react";
 import { getComments, saveBookmark, updateLikes } from "@/utils/api";
@@ -16,14 +16,12 @@ import { Loader, MessageSquareMore } from "lucide-react";
 import Commentinput from "./CommentInput";
 import {
   AiFillFileImage,
-  AiOutlineCloseCircle,
   AiOutlineEllipsis,
 } from "react-icons/ai";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -55,13 +53,13 @@ interface Post {
     };
   }[];
   comments: {
-    id: String;
-    text: String;
+    id: string;
+    text: string;
     Image?: string | null;
     video?: string | null;
     gif?: string | null;
     file?: string | null;
-    authorId: String;
+    authorId: string;
     postId: string;
   }[];
 }

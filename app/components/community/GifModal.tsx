@@ -2,8 +2,15 @@ import { UploadContext } from "@/app/context/store";
 import React, { useContext } from "react";
 import ReactGiphySearchbox from "react-giphy-searchbox";
 
-export default function GifModal({ isOpen, onClose, onUpload }: any) {
+interface GifModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onUpload: (gifUrl: string) => void;
+}
+
+export default function GifModal({ isOpen, onClose,onUpload }: GifModalProps) {
   const { setSelectedGif } = useContext(UploadContext);
+  console.log(onUpload)
 
   return (
     <div
@@ -22,7 +29,7 @@ export default function GifModal({ isOpen, onClose, onUpload }: any) {
           <div className="mb-4">
             <ReactGiphySearchbox
               apiKey={process.env.NEXT_PUBLIC_REACT_GIF_API_KEY}
-              onSelect={(item: any) => {
+              onSelect={(item: never) => {
                 setSelectedGif(item);
                 onClose();
               }}

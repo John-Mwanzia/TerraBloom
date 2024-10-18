@@ -1,6 +1,5 @@
 import { getUserFromClerkID } from "@/modules/auth";
 import prisma from "@/modules/db";
-import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: Request) => {

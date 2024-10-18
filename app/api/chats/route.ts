@@ -3,10 +3,9 @@ import prisma from "@/modules/db";
 import { NextResponse } from "next/server";
 const pusherServer = getPusherInstance();
 
-export async function POST(req: Request, res: Response) {
-  const {chatId, userId, text} = await req.json();
+export async function POST(req: Request) {
+  const { chatId, userId, text } = await req.json();
 
-  // also save the message to the database
 
   try {
     // Save the message to the database
@@ -33,9 +32,8 @@ export async function POST(req: Request, res: Response) {
     pusherServer.trigger(`chat_${chatId}`, "new-message", newMessage);
 
     // Respond with the new message
-    return NextResponse.json({message: "Message sent", data: newMessage});
-
-} catch (error) {
-    return NextResponse.json({message: error.message}, {status: 500});
+    return NextResponse.json({ message: "Message sent", data: newMessage });
+  } catch (error) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }

@@ -7,9 +7,7 @@ import { Settings } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -22,19 +20,19 @@ import {
 } from "@/components/ui/sheet";
 import UserReportDownloadButton from "@/app/components/admin/UserReportDownloadButton";
 
-type User = {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  avatarUrl: string;
-  isAdmin: boolean;
-};
+//type User = {
+//  id: string;
+//  email: string;
+//  firstName: string;
+//  lastName: string;
+//  avatarUrl: string;
+//  isAdmin: boolean;
+//};
 
 
 export default async function page({ params }) {
   const { userId } = params;
-  let admin: User = null;
+  //let admin: User = null;
   try {
     const user = await prisma.user.findUnique({
       where: {
@@ -52,7 +50,7 @@ export default async function page({ params }) {
     }
 
     // set admin details
-    admin = user;
+    //admin = user;
   } catch (error) {
     console.log(error);
     redirect("/");

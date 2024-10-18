@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, {
   useState,
   useRef,
@@ -16,10 +17,11 @@ interface ImageUploadModalProps {
 
 function ImageUploadModal({ isOpen, onClose, onEmbed }: ImageUploadModalProps) {
   const [mode, setMode] = useState("upload");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [file, setFile] = useState<File | null>(null);
   const [embedLink, setEmbedLink] = useState("");
   const dropAreaRef = useRef<HTMLDivElement>(null);
-  const { previewImage, setPreviewImage, uploadedImage, setUploadedImage } =
+  const { previewImage, setPreviewImage, setUploadedImage } =
     useContext(UploadContext);
 
   const handleUpload = () => {

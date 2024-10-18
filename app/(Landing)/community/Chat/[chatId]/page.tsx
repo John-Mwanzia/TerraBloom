@@ -12,15 +12,10 @@ import {
 import Image from "next/image";
 import {
   Calendar,
-  Paperclip,
-  SendHorizontal,
-  Smile,
   Users,
 } from "lucide-react";
 import MessageList from "@/app/components/community/ChatList";
 import LeaveSpaceButton from "@/app/components/community/LeaveSpaceButton";
-import ChatGifModalButton from "@/app/components/community/chat_gifModal_button";
-import ChatMediaShare from "@/app/components/community/chat_media_share";
 import ChatForm from "@/app/components/community/chat_form";
 
 type ChatSpace = {
@@ -123,6 +118,7 @@ export default async function page({ params, searchParams }) {
       />
     );
   } catch (error) {
+    console.log(error)
     redirect("/community/Chat");
   }
 }

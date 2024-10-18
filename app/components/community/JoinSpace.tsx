@@ -16,16 +16,16 @@ type JoinSpaceProps = {
   userId: string;
 };
 
-const JoinSpace: React.FC<JoinSpaceProps> = async ({ space, userId }) => {
+const JoinSpace: React.FC<JoinSpaceProps> = ({ space, userId }) => {
   const router = useRouter();
   const handleSpaceJoin = async (id: string) => {
     // Perform join space action
     try {
-      const { message } = await joinSpace(space.id, userId);
-      router.push(`Chat/${space.id}?userId=${userId}`);
+      const { message } = await joinSpace(id, userId);
+      router.push(`Chat/${id}?userId=${userId}`);
       toast.success(message);
     } catch (error) {
-      toast.error(error);
+      toast.error(error.message || "An error occurred");
     }
   };
 

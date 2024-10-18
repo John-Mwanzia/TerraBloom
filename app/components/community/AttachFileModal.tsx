@@ -17,7 +17,6 @@ function AttachFileModal({ isOpen, onClose, onAttach }: AttachFileModalProps) {
     setFileName,
     previewFile,
     setPreviewFile,
-    uploadedFile,
     setUploadedFile,
   } = useContext(UploadContext);
   // const [fileName, setFileName] = useState<string | null>(null);

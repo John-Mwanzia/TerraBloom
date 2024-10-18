@@ -1,15 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useState } from "react";
 import { UploadContext } from "../../context/store";
 import { AiFillFileImage, AiOutlineCloseCircle } from "react-icons/ai";
 import { postUpload } from "@/utils/api";
 import toast from "react-hot-toast";
 import { usePathname } from "next/navigation";
-import { revalidatePath } from "next/cache";
 import { Loader } from "lucide-react";
 
 export default function ModalForm() {
   const {
-    previewImage,
     setPreviewImage,
     uploadedImage,
     setUploadedImage,
@@ -17,7 +16,6 @@ export default function ModalForm() {
     setUploadedVideo,
     fileName,
     setFileName,
-    previewFile,
     setPreviewFile,
     uploadedFile,
     setUploadedFile,
@@ -144,7 +142,7 @@ export default function ModalForm() {
                 src={selectedGif.images.original.url}
                 alt="Selected GIF"
                 className="mx-auto h-[17.5rem] md:ml-6"
-                onError={(e) => toast.error("Error loading GIF:")}
+                onError={() => toast.error("Error loading GIF:")}
               />
             </div>
           )}

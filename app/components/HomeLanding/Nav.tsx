@@ -65,7 +65,7 @@ export default function Nav({ userId }) {
               : ""
           } transition-all duration-300 ease-in-out`}
         >
-          {links.map((link, index) => (
+          {links.map((link) => (
             <div
               key={link.name}
               className={` ${

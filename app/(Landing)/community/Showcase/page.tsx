@@ -4,7 +4,7 @@ import PostModal from "@/app/components/community/PostModal";
 import { ShieldCheck } from "lucide-react";
 import React, { useState } from "react";
 
-export default function page() {
+export default function Page() {
   const [showModal, setShowModal] = useState(false);
   return (
     <>

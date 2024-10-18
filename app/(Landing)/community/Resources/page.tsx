@@ -4,9 +4,16 @@ import React, { useState } from "react";
 import PostModal from "@/app/components/community/PostModal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function page() {
+export default function Page() {
   const [showModal, setShowModal] = useState(false);
-  const resourseTyte = ["all", "tutorials", "articles", "videos", "podcasts", "files"];
+  const resourseTyte = [
+    "all",
+    "tutorials",
+    "articles",
+    "videos",
+    "podcasts",
+    "files",
+  ];
   return (
     <>
       <div className="h-[calc(100vh-5rem)]">
@@ -20,15 +27,18 @@ export default function page() {
           </button>
         </div>
 
-        <div className="mx-auto sm:px-24 mt-8">
+        <div className="mx-auto mt-8 sm:px-24">
           <Tabs defaultValue="all" className="w-auto">
             <TabsList>
               {resourseTyte.map((type) => (
-                <TabsTrigger value={type}>{type}</TabsTrigger>
+                <TabsTrigger key={type} value={type}>
+                  {type}
+                </TabsTrigger>
               ))}
             </TabsList>
             {resourseTyte.map((type) => (
               <TabsContent
+                key={type}
                 value={type === "all" ? "all" : type}
                 className="mt-12 rounded-xl bg-white px-12 py-8 text-center shadow-xl dark:bg-[#2B2E33]/50 dark:text-white"
               >

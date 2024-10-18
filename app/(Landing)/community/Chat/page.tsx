@@ -9,18 +9,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { CreateSpace } from "@/actions/Space";
-import ActionsButton from "@/app/components/community/ActionsButton";
 import Link from "next/link";
 import SpaceForm from "@/app/components/community/SpaceForm";
 import { Globe } from "lucide-react";
 import JoinSpace from "@/app/components/community/JoinSpace";
 
-interface UserChatspace {
-  id: string;
-  title: string;
-  createdAt: Date;
-}
+//interface UserChatspace {
+//  id: string;
+//  title: string;
+//  createdAt: Date;
+//}
 
 export default async function page() {
   const clerkUser = await currentUser();

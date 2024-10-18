@@ -4,9 +4,9 @@ import Link from "next/link";
 import React from "react";
 
 export default async function HeroSection() {
-  const { userId } = await auth();
+  const { userId } =  auth();
 
-  let href = userId ? "/community/Home" : "/newUser?communityAccess=true";
+  const href = userId ? "/community/Home" : "/newUser?communityAccess=true";
 
   return (
     <>
@@ -39,7 +39,7 @@ export default async function HeroSection() {
             <p className="font-opensans  sm:text-lg text-white/70">
               Join the Terra Community to learn, share, and grow with other
               farmers. Discover new farming techniques, exchange ideas, and stay
-              updated on the latest innovations in agriculture. Let's cultivate
+              updated on the latest innovations in agriculture. Let&apos;s cultivate
               success together!
             </p>
           </div>

@@ -1,18 +1,19 @@
 "use client";
 
 import { createContactSupport } from "@/actions/contact";
+import Image from "next/image";
 import React, { useRef } from "react";
 import toast from "react-hot-toast";
 import { object, string } from "yup";
 
-let userSchema = object({
+const userSchema = object({
   name: string().required(),
   email: string().email().required(),
   phone: string().required(),
   subject: string().required(),
   message: string().required(),
 });
-export default function page() {
+export default function Page() {
   const ref = useRef<HTMLFormElement>(null);
   const handleSubmit = async (formData: FormData) => {
     const name = formData.get("name");
@@ -33,7 +34,7 @@ export default function page() {
         ref.current.reset();
       }
     } catch (error) {
-      if(error.status === 500) {
+      if (error.status === 500) {
         toast.error(error.message);
       }
     }
@@ -50,7 +51,7 @@ export default function page() {
       <div className="mb-24">
         <form
           action={handleSubmit}
-          ref={ref} 
+          ref={ref}
           className="relative mb-24 flex items-center justify-center gap-16 px-2 sm:px-0"
         >
           <div className="relative rounded-xl bg-white px-20 pb-24 pt-8 shadow-xl dark:bg-[#2B2E33]/50 dark:text-white sm:w-[60%]">
@@ -120,7 +121,9 @@ export default function page() {
               </button>
             </div>
 
-            <img
+            <Image
+              width={100} 
+              height={100}
               src="/bloomCommAssets/letterSend.svg"
               className="absolute -bottom-6 right-48 w-44"
               alt="lettersend"

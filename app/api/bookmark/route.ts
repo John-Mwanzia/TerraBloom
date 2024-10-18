@@ -144,6 +144,7 @@ export const GET = async () => {
       });
     }
   } catch (error) {
+    console.log(error)
     return NextResponse.json(
       { error: "An error occurred while fetching bookmarks" },
       { status: 500 },

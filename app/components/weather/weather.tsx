@@ -4,7 +4,6 @@ import { Loader, Search } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect } from "react";
 import Nav from "../HomeLanding/Nav";
-import { user } from "@nextui-org/react";
 
 type weatherData = {
   location: {
@@ -94,6 +93,7 @@ export default function Weather({ userId }) {
       console.log("Geolocation is not supported by this browser.");
       getCityWeather(city);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city]);
 
   const updateBackground = (data: weatherData) => {

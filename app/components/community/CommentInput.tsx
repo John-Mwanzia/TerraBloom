@@ -1,16 +1,16 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useState } from "react";
 import { UploadContext } from "../../context/store";
 import { AiFillFileImage, AiOutlineCloseCircle } from "react-icons/ai";
-import { postUpload, updateComments } from "@/utils/api";
+import {  updateComments } from "@/utils/api";
 import toast from "react-hot-toast";
-import { Spinner } from "@nextui-org/react";
 
 import Image from "next/image";
 import VideoModal from "./VideoModal";
 import AttachFileModal from "./AttachFileModal";
 import ImageUploadModal from "./ImageUploadModal";
 import GifModal from "./GifModal";
-import { FileImage, ImagePlus, Loader, Paperclip, Video } from "lucide-react";
+import {  ImagePlus, Loader, Paperclip, Video } from "lucide-react";
 
 export default function Commentinput({ postId }) {
   const [isVideoModalOpen, setVideoModalOpen] = useState(false);
@@ -21,7 +21,6 @@ export default function Commentinput({ postId }) {
   const [textComment, setTextComment] = useState("");
   const [loading, setLoading] = useState(false);
   const {
-    previewImage,
     setPreviewImage,
     uploadedImage,
     setUploadedImage,
@@ -30,13 +29,11 @@ export default function Commentinput({ postId }) {
     setUploadedVideo,
     fileName,
     setFileName,
-    previewFile,
     setPreviewFile,
     uploadedFile,
     setUploadedFile,
     selectedGif,
     setSelectedGif,
-    setShowModal,
   } = useContext(UploadContext);
 
   // State to store the selected GIF
@@ -45,7 +42,7 @@ export default function Commentinput({ postId }) {
     setAttachFileModalOpen(true);
   };
 
-  const handleImageEmbed = (link) => {
+  const handleImageEmbed = (link: string) => {
     setUploadedImage(link);
   };
 
@@ -203,7 +200,7 @@ export default function Commentinput({ postId }) {
                         src={selectedGif.images.original.url}
                         alt="Selected GIF"
                         className="mx-auto h-[17.5rem] md:ml-6"
-                        onError={(e) => toast.error("Error loading GIF:")}
+                        onError={() => toast.error("Error loading GIF:")}
                       />
 
                       <button onClick={handleCancel}>
@@ -278,7 +275,7 @@ export default function Commentinput({ postId }) {
       <AttachFileModal
         isOpen={isAttachFileModalOpen}
         onClose={() => setAttachFileModalOpen(false)}
-        onAttach={(file) => {
+        onAttach={() => {
           // Handle attaching the file here
 
           // Close the modal

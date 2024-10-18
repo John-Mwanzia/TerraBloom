@@ -1,5 +1,4 @@
 import prisma from "@/modules/db";
-import { get } from "http";
 import Image from "next/image";
 import React from "react";
 import {
@@ -57,7 +56,7 @@ interface User {
     video?: string | null;
     gif?: string | null;
     file?: string | null;
-    authorId: String;
+    authorId: string;
     postId: string;
   }[];
 }
@@ -120,117 +119,121 @@ export default async function page() {
                       </div>
                     </SheetTrigger>
                     <SheetContent className="!bg-black text-white">
-                        <SheetHeader>
-                          <SheetTitle>
-                            <div className="mb-12 flex gap-6 text-white">
-                              <Image
-                                src={user.avatarUrl}
-                                alt="user avatar"
-                                width={60}
-                                height={60}
-                                className="rounded-lg"
-                              />
-                              <h1>Profile</h1>
-                            </div>
-                          </SheetTitle>
-                          <SheetDescription>
-                            <Tabs defaultValue="posts" className="w-[400px]">
-                              <TabsList>
-                                <TabsTrigger value="posts">posts</TabsTrigger>
-                                <TabsTrigger value="comments">
-                                  Comments
-                                </TabsTrigger>
-                                <TabsTrigger value="about">About</TabsTrigger>
-                              </TabsList>
-                              <TabsContent value="posts">
-                                {user.posts.length > 0 ? (
-                                  user.posts.map((post) => (
-                                    <Link
-                                      key={post.id}
-                                      href={`/post/${post.id}`}
-                                    >
-                                      <div className="px-4 py-2 hover:bg-muted">
-                                        <div className="flex items-start justify-between">
-                                          <div className="flex items-start gap-4">
-                                            <div className="">
-                                              {
-                                                <Image
-                                                  src={user.avatarUrl}
-                                                  width={30}
-                                                  height={30}
-                                                  alt="user avatar"
-                                                  className="rounded-full"
-                                                />
-                                              }
-                                            </div>
-                                            <div>
-                                              <div className="font-semibold">
-                                                <p>{post.title}</p>
-                                              </div>
-                                              <div className="">
-                                                <p>{post.content}</p>
-                                              </div>
-                                            </div>
+                      <SheetHeader>
+                        <SheetTitle>
+                          <div className="mb-12 flex gap-6 text-white">
+                            <Image
+                              src={user.avatarUrl}
+                              alt="user avatar"
+                              width={60}
+                              height={60}
+                              className="rounded-lg"
+                            />
+                            <h1>Profile</h1>
+                          </div>
+                        </SheetTitle>
+                        <SheetDescription>
+                          <Tabs defaultValue="posts" className="w-[400px]">
+                            <TabsList>
+                              <TabsTrigger value="posts">posts</TabsTrigger>
+                              <TabsTrigger value="comments">
+                                Comments
+                              </TabsTrigger>
+                              <TabsTrigger value="about">About</TabsTrigger>
+                            </TabsList>
+                            <TabsContent value="posts">
+                              {user.posts.length > 0 ? (
+                                user.posts.map((post) => (
+                                  <Link
+                                    key={post.id}
+                                    href={`/post/${post.id}`}
+                                  >
+                                    <div className="px-4 py-2 hover:bg-muted">
+                                      <div className="flex items-start justify-between">
+                                        <div className="flex items-start gap-4">
+                                          <div className="">
+                                            {
+                                              <Image
+                                                src={user.avatarUrl}
+                                                width={30}
+                                                height={30}
+                                                alt="user avatar"
+                                                className="rounded-full"
+                                              />
+                                            }
                                           </div>
-                                        </div>
-                                        <div className="mt-2 flex w-full flex-col gap-2 px-12 font-sans text-xs">
-                                          <div className="flex gap-5">
-                                            <div>
-                                              {user.firstName +
-                                                " " +
-                                                user.lastName}
+                                          <div>
+                                            <div className="font-semibold">
+                                              <p>{post.title}</p>
                                             </div>
-                                            <div>
-                                              {formatDateString(post.createdAt)}
+                                            <div className="">
+                                              <p>{post.content}</p>
                                             </div>
                                           </div>
                                         </div>
                                       </div>
-                                    </Link>
-                                  ))
-                                ) : (
-                                  <h2 className="p-6">No posts yet</h2>
-                                )}
-                              </TabsContent>
-                              <TabsContent value="comments">
-                                {user.comments.length > 0 ? (
-                                  user.comments.map((comment) => (
-                                    <div
-                                      key={comment.id}
-                                      className="dark:text-white"
-                                    >
-                                      {comment.text && <p>{comment.text}</p>}
-                                      {comment.Image && (
-                                        <img
-                                          src={comment.Image}
-                                          alt="comment image"
-                                        />
-                                      )}
-                                      {comment.video && (
-                                        <video src={comment.video} controls />
-                                      )}
-                                      {comment.gif && (
-                                        <img
-                                          src={comment.gif}
-                                          alt="comment gif"
-                                        />
-                                      )}
-                                      {comment.file && (
-                                        <a href={comment.file}>Download File</a>
-                                      )}
+                                      <div className="mt-2 flex w-full flex-col gap-2 px-12 font-sans text-xs">
+                                        <div className="flex gap-5">
+                                          <div>
+                                            {user.firstName +
+                                              " " +
+                                              user.lastName}
+                                          </div>
+                                          <div>
+                                            {formatDateString(post.createdAt)}
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
-                                  ))
-                                ) : (
-                                  <h2 className="p-6">No comments yet</h2>
-                                )}
-                              </TabsContent>
-                              <TabsContent value="about">
-                                joined as member on{" "}
-                                {formatDateString(user.createdAt)}
-                              </TabsContent>
-                            </Tabs>
-                          </SheetDescription>
-                        </SheetHeader>
+                                  </Link>
+                                ))
+                              ) : (
+                                <h2 className="p-6">No posts yet</h2>
+                              )}
+                            </TabsContent>
+                            <TabsContent value="comments">
+                              {user.comments.length > 0 ? (
+                                user.comments.map((comment) => (
+                                  <div
+                                    key={comment.id}
+                                    className="dark:text-white"
+                                  >
+                                    {comment.text && <p>{comment.text}</p>}
+                                    {comment.Image && (
+                                      <Image
+                                        width={180}
+                                        height={90}
+                                        src={comment.Image}
+                                        alt="comment image"
+                                      />
+                                    )}
+                                    {comment.video && (
+                                      <video src={comment.video} controls />
+                                    )}
+                                    {comment.gif && (
+                                      <Image
+                                        width={180}
+                                        height={90}
+                                        src={comment.gif}
+                                        alt="comment gif"
+                                      />
+                                    )}
+                                    {comment.file && (
+                                      <a href={comment.file}>Download File</a>
+                                    )}
+                                  </div>
+                                ))
+                              ) : (
+                                <h2 className="p-6">No comments yet</h2>
+                              )}
+                            </TabsContent>
+                            <TabsContent value="about">
+                              joined as member on{" "}
+                              {formatDateString(user.createdAt)}
+                            </TabsContent>
+                          </Tabs>
+                        </SheetDescription>
+                      </SheetHeader>
                     </SheetContent>
                   </Sheet>
                 </div>

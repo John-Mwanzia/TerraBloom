@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -29,6 +28,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import React from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

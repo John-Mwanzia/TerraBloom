@@ -1,13 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import Aos from "aos";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from "react";
 
-export default function HeroSection(userId:  {user: string}) {
+interface HeroSectionProps {
+
+  userId:string,
+  admin: {
+       id: string,
+       isAdmin: boolean
+  }
+
+}
+
+export default function HeroSection({userId, admin}: HeroSectionProps) {
+  
+
   const links = [
     {
       name: "Weather",
@@ -27,7 +41,7 @@ export default function HeroSection(userId:  {user: string}) {
       link: "/terra/community",
     },
   ];
-
+  const router = useRouter()
   const [activeMenu, setActiveMenu] = useState(false);
   const [menuAnimationCompleted, setMenuAnimationCompleted] = useState(false);
   console.log(menuAnimationCompleted)
@@ -43,6 +57,11 @@ export default function HeroSection(userId:  {user: string}) {
       }, 200);
     }
   }, [activeMenu]);
+
+ const handleAdminRedirection = async()=>{
+   router.push(`/admin/${admin.id}`)
+}
+
 
   const toggleMenu = () => {
     setActiveMenu(!activeMenu);
@@ -87,6 +106,7 @@ export default function HeroSection(userId:  {user: string}) {
                 : ""
             } transition-all duration-300 ease-in-out`}
           >
+            
             {links.map((link) => (
               <div
                 key={link.name}
@@ -103,7 +123,10 @@ export default function HeroSection(userId:  {user: string}) {
               </div>
             ))}
 
-            {userId.user ? (
+
+            {admin.isAdmin?(<Button className="bg-primary text-white" variant="ghost" onClick={handleAdminRedirection}>Admin page</Button>) : null}
+
+            {userId? (
               <div className={` ${activeMenu ? "block" : "hidden sm:block"} `}>
                 <UserButton afterSignOutUrl="/" />
               </div>

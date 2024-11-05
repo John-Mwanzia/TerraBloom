@@ -6,13 +6,28 @@ import Testimonial from "./components/HomeLanding/Testimonial";
 import Footer from "./components/HomeLanding/Footer";
 import { auth } from "@clerk/nextjs";
 import ScrollToTop from "./components/HomeLanding/ScrollToTop";
+import { getUserFromClerkID } from "@/modules/auth";
 
-export default function page() {
+export default async function page() {
+interface Admin{
+       id: string,
+       isAdmin: boolean
+
+  }
+
   const { userId } = auth();
+  let admin:Admin = {
+    id: "",
+    isAdmin: false
+  }
+  if(userId){
+     const user = await getUserFromClerkID();
+     admin = user
+  }
 
   return (
     <div className="bg-light-gray/40  font- flex justify-center items-center flex-col overflow-x-hidden">
-      <HeroSection user={userId} />
+      <HeroSection userId={userId} admin = {admin} />
       <AboutSection />
       <FeaturesSection />
       <Testimonial />

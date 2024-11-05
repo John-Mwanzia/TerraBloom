@@ -56,7 +56,10 @@ export const getUserFromClerkID = async (select = { id: true }) => {
     where: {
       clerkId: userId as string,
     },
-    select,
+    select:{
+      id:true,
+      isAdmin: true
+    } 
   });
 
   return user;

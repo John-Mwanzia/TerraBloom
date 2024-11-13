@@ -203,3 +203,18 @@ export const sendChatToServer = async ({ chatId, userId, text }) => {
     };
   }
 }
+
+
+export async function triggerInsertCrops() {
+  const newUrl = createURL("/api/CropAdd")
+  console.log('newUrl', newUrl)
+  try {
+    const response = await fetch(new Request(createURL("/api/CropAdd")), {
+      method: 'POST',
+    });
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error("Failed to trigger insert:", error);
+  }
+}

@@ -22,6 +22,47 @@ const nextConfig = {
         hostname: "cdn.weatherapi.com",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "media.istockphoto.com",
+        pathname: "**",
+
+      },
+      {
+        protocol: "https",
+        hostname: "i0.wp.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "img.freepik.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "encrypted-tbn2.gstatic.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "as1.ftcdn.net",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.shutterstock.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "encrypted-tbn0.gstatic.com",
+        pathname: "**",
+      }
     ],
   },
   experimental: {

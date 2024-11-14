@@ -1,11 +1,35 @@
-import Image from "next/image";
+// page.tsx
 import React from "react";
 import Nav from "../components/HomeLanding/Nav";
-import Aside from "../components/crop-details/Aside";
+// import Aside from "../components/crop-details/Aside";
 import { auth } from "@clerk/nextjs";
+import prisma from "@/modules/db";
+import CropList from "../components/crop-details/CropList";
 
-export default async function page() {
+const ITEMS_PER_PAGE = 8; // Show 8 items per page
+
+export default async function page({ searchParams }: { searchParams: { page?: string } }) {
   const { userId } = auth();
+  
+  // Determine the current page from search parameters, default to 1
+  const currentPage = searchParams.page ? parseInt(searchParams.page, 10) : 1;
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+
+  // Fetch crop details with pagination
+  const cropDetails = await prisma.crop.findMany({
+    select: {
+      name: true,
+      category: true,
+      image: true,
+      manualPdf: true
+    },
+    skip: offset,
+    take: ITEMS_PER_PAGE
+  });
+
+  // Fetch total number of crops for pagination
+  const totalCrops = await prisma.crop.count();
+  const totalPages = Math.ceil(totalCrops / ITEMS_PER_PAGE);
 
   return (
     <div className="flex flex-col items-center justify-center overflow-x-hidden bg-zinc-100/50">
@@ -13,128 +37,19 @@ export default async function page() {
         <Nav userId={userId} />
       </div>
       <div className="container mt-6 flex justify-between gap-4">
-        <div className="z-50">
-          <Aside />
-        </div>
-        <div className="mb-24 w-full sm:w-[60%]">
+        {/* <div className="z-50">
+          <Aside crops={cropDetails} />
+        </div> */}
+        <div className="mb-24 w-full">
           <div className="bg-[#32CD32] py-2 pl-3 font-sans text-2xl font-bold text-white sm:py-4">
             Crops
           </div>
           <div className="mt-6">
-            <div className="flex flex-col justify-between sm:flex-row sm:px-8">
-              <div>
-                <Image
-                  src="/cropDetails/mango.svg"
-                  alt="mango"
-                  width={252}
-                  height={168}
-                  className="w-full"
-                />
-                <div className="relative -top-8 rounded-2xl bg-white px-4 pb-6 shadow-xl">
-                  <h2 className="mb-4 pt-2 text-center text-2xl font-semibold">
-                    Mango Farming
-                  </h2>
-                  <div className="flex justify-center">
-                    <a
-                      className="mb-6 flex justify-center gap-2 rounded-lg bg-[#32CD32] px-4 py-2 shadow-lg"
-                      href="/cropDetails/files/Mango_Farming.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      download="Mango_Farming.pdf"
-                    >
-                      <Image
-                        src="/cropDetails/file.svg"
-                        alt="file"
-                        width={24}
-                        height={24}
-                        className="shadow-lg"
-                      />
-                      Get Manual Guide
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <Image
-                  src="/cropDetails/banana.svg"
-                  alt="mango"
-                  width={252}
-                  height={168}
-                  className="w-full"
-                />
-                <div className="relative -top-8 rounded-2xl bg-white px-4 pb-6 shadow-xl">
-                  <h2 className="mb-4 pt-2 text-center text-2xl font-semibold">
-                    Banana Farming
-                  </h2>
-                  <div className="flex justify-center">
-                    <button className="mb-6 flex justify-center gap-2 rounded-lg bg-[#32CD32] px-4 py-2 shadow-lg">
-                      <Image
-                        src="/cropDetails/file.svg"
-                        alt="file"
-                        width={24}
-                        height={24}
-                        className="shadow-lg"
-                      />
-                      Get Manual Guide
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col justify-between sm:flex-row sm:px-8">
-              <div>
-                <Image
-                  src="/cropDetails/potato.svg"
-                  alt="mango"
-                  width={252}
-                  height={168}
-                  className="w-full"
-                />
-                <div className="relative -top-8 rounded-2xl bg-white px-4 pb-6 shadow-xl">
-                  <h2 className="mb-4 pt-2 text-center text-2xl font-semibold">
-                    Potato Farming
-                  </h2>
-                  <div className="flex justify-center">
-                    <button className="mb-6 flex justify-center gap-2 rounded-lg bg-[#32CD32] px-4 py-2 shadow-lg">
-                      <Image
-                        src="/cropDetails/file.svg"
-                        alt="file"
-                        width={24}
-                        height={24}
-                        className="shadow-lg"
-                      />
-                      Get Manual Guide
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <Image
-                  src="/cropDetails/mango.svg"
-                  alt="mango"
-                  width={252}
-                  height={168}
-                  className="w-full"
-                />
-                <div className="relative -top-8 rounded-2xl bg-white px-4 pb-6 shadow-xl">
-                  <h2 className="mb-4 pt-2 text-center text-2xl font-semibold">
-                    Mango Farming
-                  </h2>
-                  <div className="flex justify-center">
-                    <button className="mb-6 flex justify-center gap-2 rounded-lg bg-[#32CD32] px-4 py-2 shadow-lg">
-                      <Image
-                        src="/cropDetails/file.svg"
-                        alt="file"
-                        width={24}
-                        height={24}
-                        className="shadow-lg"
-                      />
-                      Get Manual Guide
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CropList 
+              crops={cropDetails} 
+              currentPage={currentPage} 
+              totalPages={totalPages} 
+            />
           </div>
         </div>
       </div>

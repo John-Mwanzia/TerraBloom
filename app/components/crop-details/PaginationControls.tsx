@@ -1,50 +1,46 @@
-// PaginationControls.tsx
-"use client";
+// app/CustomPagination.tsx
+// import Link from "next/link";
 
-import { useRouter, useSearchParams } from "next/navigation";
-
-interface PaginationControlsProps {
+interface CustomPaginationProps {
   currentPage: number;
   totalPages: number;
+  onPageChange: (page: number) => void;
 }
 
-export default function PaginationControls({ currentPage, totalPages }: PaginationControlsProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const goToPage = (page: number) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("page", page.toString());
-    router.push(`?${params.toString()}`);
-  };
-
+const CustomPagination: React.FC<CustomPaginationProps> = ({
+  currentPage,
+  totalPages,
+  onPageChange,
+}) => {
   return (
-    <div className="mt-8 flex justify-center space-x-2">
+    <div className="flex items-center space-x-2">
       <button
-        onClick={() => goToPage(currentPage - 1)}
-        disabled={currentPage === 1}
-        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage <= 1}
+        className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
       >
         Previous
       </button>
-
-      {Array.from({ length: totalPages }, (_, index) => (
+      {[...Array(totalPages)].map((_, index) => (
         <button
           key={index}
-          onClick={() => goToPage(index + 1)}
-          className={`px-4 py-2 ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+          onClick={() => onPageChange(index + 1)}
+          className={`px-3 py-1 rounded ${
+            index + 1 === currentPage ? "bg-blue-500 text-white" : "bg-gray-200"
+          }`}
         >
           {index + 1}
         </button>
       ))}
-
       <button
-        onClick={() => goToPage(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage >= totalPages}
+        className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
       >
         Next
       </button>
     </div>
   );
-}
+};
+
+export default CustomPagination;

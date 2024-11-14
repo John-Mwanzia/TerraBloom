@@ -115,3 +115,13 @@ html::-webkit-scrollbar-thumb {
 .pulse-shadow {
   animation: pulseShadow 2s infinite;
 }
+
+/* Remove any default list-style or bullet styling */
+.pagination-item {
+  list-style-type: none;
+}
+
+/* Override any appearance of dots or similar markers */
+.pagination-item::before {
+  content: none;
+}

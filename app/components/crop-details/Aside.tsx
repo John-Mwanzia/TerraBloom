@@ -3,7 +3,14 @@
 import { ArrowLeftFromLine } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
-export default function Aside() {
+interface CropType {
+  name: string;
+  category: string;
+  image: string;
+  manualPdf: string;
+}
+
+export default function Aside({crops}: {crops: CropType[]}) {
   const [toggleAside, settoggleAside] = useState(false);
 
   useEffect(() => {
@@ -35,19 +42,12 @@ export default function Aside() {
           <h1 className="whitespace-nowrap text-3xl font-bold">All Crops</h1>
         </div>
         <div className="flex flex-col gap-6 pb-6 font-sans">
-          <h3>Vegetables</h3>
-          <h3>Mangos</h3>
-          <h3>Banana</h3>
-          <h3>Beans</h3>
-          <h3>Potatoes</h3>
-          <h3>Tomatoes</h3>
-          <h3>Vegetables</h3>
-          <h3>Vegetables</h3>
-          <h3>Vegetables</h3>
-          <h3>Vegetables</h3>
-          <h3>Vegetables</h3>
-          <h3>Vegetables</h3>
-          <h3>Vegetables</h3>
+          {
+            crops.map((crop, index) => (
+              <h3 key={index}>{crop.name}</h3>
+            ))
+          }
+          
         </div>
       </div>
     </div>

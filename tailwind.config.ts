@@ -1,8 +1,9 @@
 import type { Config } from "tailwindcss";
 
 import { fontFamily } from "tailwindcss/defaultTheme";
+import { withUt } from "uploadthing/tw";
 
-const config = {
+export default withUt({
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -107,7 +108,7 @@ const config = {
       },
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+}) satisfies Config;
 
-export default config;

@@ -7,6 +7,9 @@ import { Toaster } from "react-hot-toast";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import ReactQueryProvider from "./components/ReactQuery/ReactQueryProvider";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "./api/uploadthing/core";
 
 const fontRegularSans = localFont({
   src: "../assets/fonts/Inter-Regular.ttf",
@@ -45,6 +48,15 @@ export default function RootLayout({
               fontHeading.variable,
             )}
           >
+            <NextSSRPlugin
+          /**
+           * The `extractRouterConfig` will extract **only** the route configs
+           * from the router to prevent additional information from being
+           * leaked to the client. The data passed to the client is the same
+           * as if you were to fetch `/api/uploadthing` directly.
+           */
+          routerConfig={extractRouterConfig(ourFileRouter)}
+        />
             <Providers>
               <ImageProvider>
                 {children}

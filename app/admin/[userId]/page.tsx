@@ -19,6 +19,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import UserReportDownloadButton from "@/app/components/admin/UserReportDownloadButton";
+import ContactsReportDownloadButton from "@/app/components/admin/contactsReportDownloadButton";
 
 //type User = {
 //  id: string;
@@ -28,7 +29,6 @@ import UserReportDownloadButton from "@/app/components/admin/UserReportDownloadB
 //  avatarUrl: string;
 //  isAdmin: boolean;
 //};
-
 
 export default async function page({ params }) {
   const { userId } = params;
@@ -75,13 +75,15 @@ export default async function page({ params }) {
   const activeChatRooms = await prisma.chatSpace.count();
 
   const users = await prisma.user.findMany({
-    include:{
+    include: {
       posts: true,
       comments: true,
-      Likes: true
-    }
-  })
-  
+      Likes: true,
+    },
+  });
+
+  const contacts = await prisma.contact.findMany();
+
 
   return (
     <div>
@@ -102,8 +104,9 @@ export default async function page({ params }) {
                   <SheetContent>
                     <SheetHeader>
                       <SheetTitle>Reports</SheetTitle>
-                      <SheetDescription>
+                      <SheetDescription className="flex flex-col space-y-4">
                         <UserReportDownloadButton users={users} />
+                        <ContactsReportDownloadButton contacts={contacts} />
                       </SheetDescription>
                     </SheetHeader>
                   </SheetContent>
@@ -122,6 +125,11 @@ export default async function page({ params }) {
               <li>
                 <Link href="/admin/users" className="hover:underline">
                   Users
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/addCropInfo" className="hover:underline">
+                  add-crop-info
                 </Link>
               </li>
 

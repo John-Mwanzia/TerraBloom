@@ -47,7 +47,19 @@ export default function Aside({crops}: {crops: CropType[]}) {
               <h3 key={index}>{crop.name}</h3>
             ))
           }
-          
+          {/* <h3>Vegetables</h3>
+          <h3>Mangos</h3>
+          <h3>Banana</h3>
+          <h3>Beans</h3>
+          <h3>Potatoes</h3>
+          <h3>Tomatoes</h3>
+          <h3>Carrots</h3>
+          <h3>Garlic</h3>
+          <h3>Onions</h3>
+          <h3>Watermelon</h3>
+          <h3>Passion Fruits</h3>
+          <h3>Sorghum</h3>
+          <h3>Lettuce</h3> */}
         </div>
       </div>
     </div>

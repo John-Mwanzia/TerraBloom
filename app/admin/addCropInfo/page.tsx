@@ -42,8 +42,8 @@ export default function CropAddPage() {
       setCategory("");
       setImageUrl(null);
       setPdfUrl(null);
-    } catch (error) {
-      alert(`Error: ${(error as Error).message}`);
+    } catch (err) {
+      toast.error(err.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -92,8 +92,7 @@ export default function CropAddPage() {
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {
               if (res && res[0]) setImageUrl(res[0].url);
-              console.log("Files", res[0].url);
-              alert("Image upload successful!");
+              toast.success("Image upload successful!");
             }}
             onUploadError={(error: Error) =>
               alert(`Image upload failed: ${error.message}`)
@@ -106,11 +105,11 @@ export default function CropAddPage() {
             Manual PDF
           </label>
           <UploadDropzone
-            endpoint="productPdf" 
+            endpoint="productPdf"
             onClientUploadComplete={(res) => {
               if (res && res[0]) setPdfUrl(res[0].url);
-              console.log("res", res);
-              alert("PDF upload successful!");
+              toast.success("PDF upload successful!");
+              console.log("PDF URL:", res[0].url);
             }}
             onUploadError={(error: Error) =>
               alert(`PDF upload failed: ${error.message}`)

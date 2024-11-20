@@ -51,7 +51,7 @@ const CropsList: React.FC<CropsListProps> = ({ crops }) => {
         <p>
           Can&apos;t find the crop you need?{" "}
           <a
-            href="/crop-request"
+            href="/community/Support"
             className="text-blue-500 hover:underline"
             target="_blank"
             rel="noopener noreferrer"

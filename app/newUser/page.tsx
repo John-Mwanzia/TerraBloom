@@ -32,7 +32,7 @@ const syncNewUser = async (searchParams: SearchParams) => {
     });
   }
 
-  redirect("/community/Home");
+  redirect("/");
 };
 
 export default async function page({ searchParams }) {

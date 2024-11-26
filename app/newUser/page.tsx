@@ -32,7 +32,27 @@ const syncNewUser = async (searchParams: SearchParams) => {
     });
   }
 
-  redirect("/");
+  if (
+    existingUser?.isCommunityMember !==
+    (searchParams.communityAccess === "true")
+  ) {
+    await prisma.user.update({
+      where: {
+        clerkId: user?.id as string,
+      },
+      data: {
+        isCommunityMember:
+          searchParams.communityAccess === "true" ? true : false,
+      },
+    });
+  }
+
+  //  redirect based on if searchParams.communityAccess is true or false
+  if (searchParams.communityAccess === "true") {
+    redirect("/community/Home");
+  } else {
+    redirect("/");
+  }
 };
 
 export default async function page({ searchParams }) {

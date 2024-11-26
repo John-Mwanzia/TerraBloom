@@ -1,12 +1,12 @@
-import { auth } from "@clerk/nextjs";
+// import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export default async function HeroSection() {
-  const { userId } =  auth();
+  // const { userId } =  auth();
 
-  const href = userId ? "/community/Home" : "/newUser?communityAccess=true";
+  const href =  "/newUser?communityAccess=true";
 
   return (
     <>

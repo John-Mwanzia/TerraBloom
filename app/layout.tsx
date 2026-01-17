@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 import type { Metadata } from "next";
 import { Providers } from "./providers";
@@ -60,6 +61,7 @@ export default function RootLayout({
             <Providers>
               <ImageProvider>
                 {children}
+                <SpeedInsights />
                 <Toaster position="top-center" />
               </ImageProvider>
             </Providers>

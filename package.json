@@ -41,7 +41,7 @@
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.3",
     "lucide-react": "^0.314.0",
-    "next": "^14.0.4",
+    "next": "14.2.35",
     "postcss": "8.4.29",
     "prettier-plugin-tailwindcss": "^0.6.1",
     "pusher": "^5.2.0",
